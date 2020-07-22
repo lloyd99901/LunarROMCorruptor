@@ -1,4 +1,6 @@
 # LunarROMCorruptor
+![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/preview.png)
+
 Corrupt any file using multiple different ‘Engines’
 
 ## Notes
