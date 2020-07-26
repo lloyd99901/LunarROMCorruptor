@@ -99,6 +99,9 @@
             this.SaveasTxt = new System.Windows.Forms.TextBox();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.FileSelectiontxt = new System.Windows.Forms.TextBox();
+            this.EmulatorFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.MainSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.MainOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -1127,6 +1130,7 @@
             this.Openfilebtn.TabIndex = 0;
             this.Openfilebtn.Text = "Open File";
             this.Openfilebtn.UseVisualStyleBackColor = false;
+            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
             // 
             // SaveasTxt
             // 
@@ -1174,6 +1178,18 @@
             this.FileSelectiontxt.Size = new System.Drawing.Size(481, 20);
             this.FileSelectiontxt.TabIndex = 86;
             // 
+            // EmulatorFileDialog
+            // 
+            this.EmulatorFileDialog.Filter = "Executable Files *.exe|*.exe";
+            // 
+            // MainSaveFileDialog
+            // 
+            this.MainSaveFileDialog.Filter = "All Files *.*|*.*";
+            // 
+            // MainOpenFileDialog
+            // 
+            this.MainOpenFileDialog.Filter = "All files (*.*)|*.*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1185,6 +1201,7 @@
             this.Controls.Add(this.Panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LunarROMCorruptor - v0.1 - UNSTABLE BUILD";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TabPage2.ResumeLayout(false);
@@ -1288,6 +1305,9 @@
         internal System.Windows.Forms.TextBox SaveasTxt;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.TextBox FileSelectiontxt;
+        internal System.Windows.Forms.OpenFileDialog EmulatorFileDialog;
+        internal System.Windows.Forms.SaveFileDialog MainSaveFileDialog;
+        internal System.Windows.Forms.OpenFileDialog MainOpenFileDialog;
     }
 }
 

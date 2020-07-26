@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows.Forms;
 
@@ -33,14 +35,60 @@ namespace LunarROMCorruptor
 {
     public partial class Form1 : Form
     {
+        byte[] ROM;
+        byte[] backupROM;
+        byte[] ROMmerge;
+        int MaxByte;
+        int StartByte;
+        int EndByte;
+        readonly Random rnd;
         public Form1()
         {
             InitializeComponent();
         }
 
+        static public double LinearInterpolationCalculation(double v0, double v1, double t)
+        {
+            return Math.Round(Math.Abs(v0 + (t * (v1 - v0))));
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void LoadFile()
+        {
+            if (MainOpenFileDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                if(MultipleFilesChbx.Checked)
+                {
+                    FileSelectiontxt.Text = MainOpenFileDialog.FileName;
+                    SaveasTxt.Text = MainOpenFileDialog.FileName;
+                    MultipleFileList.Items.Add(FileSelectiontxt.Text);
+                }
+                else
+                {
+                    ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+                    FileSelectiontxt.Text = MainOpenFileDialog.FileName;
+                    SaveasTxt.Text = MainOpenFileDialog.FileName;
+                    MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+                    string exc = Path.GetExtension(MainOpenFileDialog.FileName);
+                    SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(MainOpenFileDialog.FileName), "CorruptedFile" + exc);;
+                    MaxByte = ROM.Length - 1;
+                    StartByteTrackBar.Maximum = MaxByte;
+                    EndByteTrackbar.Maximum = MaxByte;
+                    EndByteNumb.Maximum = MaxByte;
+                    EndByteNumb.Value = MaxByte;
+                    StartByteNumb.Maximum = MaxByte;
+                    backupROM = ROM;
+                }
+            }
+        }
+
+        private void Openfilebtn_Click(object sender, EventArgs e)
+        {
+            LoadFile();
         }
     }
 }
