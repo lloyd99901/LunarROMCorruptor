@@ -72,10 +72,6 @@
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.IntensityTrackbar = new System.Windows.Forms.TrackBar();
             this.TabPage3 = new System.Windows.Forms.TabPage();
-            this.MultipleFileList = new System.Windows.Forms.ListBox();
-            this.MultipleFileListControlspnl = new System.Windows.Forms.Panel();
-            this.MultipleFileRemoveallitems = new System.Windows.Forms.Button();
-            this.MultipleFileRemoveselectitems = new System.Windows.Forms.Button();
             this.StashItemList = new System.Windows.Forms.ListBox();
             this.StashList = new System.Windows.Forms.ListBox();
             this.StashEditor = new System.Windows.Forms.Button();
@@ -87,6 +83,35 @@
             this.TabControl2 = new System.Windows.Forms.TabControl();
             this.TabPage4 = new System.Windows.Forms.TabPage();
             this.ManualEnginePanel = new System.Windows.Forms.Panel();
+            this.GroupBox8 = new System.Windows.Forms.GroupBox();
+            this.PasterandombitCHECK = new System.Windows.Forms.CheckBox();
+            this.NumericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.MakeBitEqualCHECK = new System.Windows.Forms.CheckBox();
+            this.GroupBox7 = new System.Windows.Forms.GroupBox();
+            this.DoubleCheck = new System.Windows.Forms.RadioButton();
+            this.DevideRadio = new System.Windows.Forms.RadioButton();
+            this.MultiRadio = new System.Windows.Forms.RadioButton();
+            this.MULTIORDIVIDENUMBER = new System.Windows.Forms.NumericUpDown();
+            this.MULTIORDIVIDECHeck = new System.Windows.Forms.CheckBox();
+            this.Label25 = new System.Windows.Forms.Label();
+            this.GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.ReplaceCHECK = new System.Windows.Forms.CheckBox();
+            this.NumericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.NumericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.Label22 = new System.Windows.Forms.Label();
+            this.Label16 = new System.Windows.Forms.Label();
+            this.GroupBox4 = new System.Windows.Forms.GroupBox();
+            this.SHIFTBYTECHECK = new System.Windows.Forms.CheckBox();
+            this.Label12 = new System.Windows.Forms.Label();
+            this.NumericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.RepeatRandomBitCHECK = new System.Windows.Forms.CheckBox();
+            this.GroupBox5 = new System.Windows.Forms.GroupBox();
+            this.IncrementCHECK = new System.Windows.Forms.CheckBox();
+            this.Label14 = new System.Windows.Forms.Label();
+            this.NumericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.Label8 = new System.Windows.Forms.Label();
+            this.NumericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.MultipleFilesChbx = new System.Windows.Forms.CheckBox();
             this.Restorefilebtn = new System.Windows.Forms.Button();
@@ -115,9 +140,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).BeginInit();
             this.TabPage3.SuspendLayout();
-            this.MultipleFileListControlspnl.SuspendLayout();
             this.TabControl2.SuspendLayout();
             this.TabPage4.SuspendLayout();
+            this.ManualEnginePanel.SuspendLayout();
+            this.GroupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown8)).BeginInit();
+            this.GroupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MULTIORDIVIDENUMBER)).BeginInit();
+            this.GroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown10)).BeginInit();
+            this.GroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown7)).BeginInit();
+            this.GroupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown4)).BeginInit();
+            this.GroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown2)).BeginInit();
             this.Panel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -298,6 +336,7 @@
             this.OverrideArgumentschbox.TabIndex = 81;
             this.OverrideArgumentschbox.Text = "Override Arguments:";
             this.OverrideArgumentschbox.UseVisualStyleBackColor = true;
+            this.OverrideArgumentschbox.CheckedChanged += new System.EventHandler(this.OverrideArgumentschbox_CheckedChanged);
             // 
             // Runemulatorchbox
             // 
@@ -312,6 +351,7 @@
             this.Runemulatorchbox.TabIndex = 75;
             this.Runemulatorchbox.Text = "Run emulator/program after corruption";
             this.Runemulatorchbox.UseVisualStyleBackColor = false;
+            this.Runemulatorchbox.CheckedChanged += new System.EventHandler(this.Runemulatorchbox_CheckedChanged);
             // 
             // ProgramToRunlbl
             // 
@@ -368,6 +408,7 @@
             this.BrowseEmulatorbutton.TabIndex = 80;
             this.BrowseEmulatorbutton.Text = "Browse";
             this.BrowseEmulatorbutton.UseVisualStyleBackColor = false;
+            this.BrowseEmulatorbutton.Click += new System.EventHandler(this.BrowseEmulatorbutton_Click);
             // 
             // TabPage1
             // 
@@ -390,6 +431,7 @@
             this.UseHexchbox.TabIndex = 167;
             this.UseHexchbox.Text = "Display HEX Instead of Denary";
             this.UseHexchbox.UseVisualStyleBackColor = true;
+            this.UseHexchbox.CheckedChanged += new System.EventHandler(this.UseHexchbox_CheckedChanged);
             // 
             // ConsoleButton
             // 
@@ -404,10 +446,12 @@
             this.ConsoleButton.TabIndex = 163;
             this.ConsoleButton.Text = "Console and Debugger";
             this.ConsoleButton.UseVisualStyleBackColor = false;
+            this.ConsoleButton.Click += new System.EventHandler(this.ConsoleButton_Click);
             // 
             // ByteEditButton
             // 
             this.ByteEditButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(75)))));
+            this.ByteEditButton.Enabled = false;
             this.ByteEditButton.FlatAppearance.BorderSize = 0;
             this.ByteEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ByteEditButton.ForeColor = System.Drawing.Color.Aqua;
@@ -432,6 +476,7 @@
             this.StashEditorButton.TabIndex = 0;
             this.StashEditorButton.Text = "Stash Editor";
             this.StashEditorButton.UseVisualStyleBackColor = false;
+            this.StashEditorButton.Click += new System.EventHandler(this.StashEditorButton_Click);
             // 
             // CorruptionEngineComboBox
             // 
@@ -455,6 +500,7 @@
             this.CorruptionEngineComboBox.Size = new System.Drawing.Size(156, 21);
             this.CorruptionEngineComboBox.TabIndex = 166;
             this.CorruptionEngineComboBox.Text = "Manual";
+            this.CorruptionEngineComboBox.SelectedIndexChanged += new System.EventHandler(this.CorruptionEngineComboBox_SelectedIndexChanged);
             // 
             // CorruptionEnginelbl
             // 
@@ -499,6 +545,7 @@
             this.EndByteTrackbar.TabStop = false;
             this.EndByteTrackbar.TickFrequency = 0;
             this.EndByteTrackbar.Value = 1;
+            this.EndByteTrackbar.Scroll += new System.EventHandler(this.EndByteTrackbar_Scroll);
             // 
             // Endbytelbl
             // 
@@ -582,6 +629,7 @@
             this.StartByteTrackBar.TabStop = false;
             this.StartByteTrackBar.TickFrequency = 0;
             this.StartByteTrackBar.Value = 1;
+            this.StartByteTrackBar.Scroll += new System.EventHandler(this.StartByteTrackBar_Scroll);
             // 
             // CorruptnthbyteCheckbox
             // 
@@ -594,6 +642,7 @@
             this.CorruptnthbyteCheckbox.TabIndex = 88;
             this.CorruptnthbyteCheckbox.Text = "Corrupt every nth byte";
             this.CorruptnthbyteCheckbox.UseVisualStyleBackColor = true;
+            this.CorruptnthbyteCheckbox.CheckedChanged += new System.EventHandler(this.CorruptnthbyteCheckbox_CheckedChanged);
             // 
             // AllowLargeIntensity
             // 
@@ -606,6 +655,7 @@
             this.AllowLargeIntensity.TabIndex = 66;
             this.AllowLargeIntensity.Text = "Allow Large Intensity";
             this.AllowLargeIntensity.UseVisualStyleBackColor = true;
+            this.AllowLargeIntensity.CheckedChanged += new System.EventHandler(this.AllowLargeIntensity_CheckedChanged);
             // 
             // StartBytelbl
             // 
@@ -660,6 +710,7 @@
             0,
             0,
             0});
+            this.EveryNthByte.ValueChanged += new System.EventHandler(this.EveryNthByte_ValueChanged);
             // 
             // CorrupteverynthbyteTrackbar
             // 
@@ -675,6 +726,7 @@
             this.CorrupteverynthbyteTrackbar.TabStop = false;
             this.CorrupteverynthbyteTrackbar.TickFrequency = 0;
             this.CorrupteverynthbyteTrackbar.Value = 1;
+            this.CorrupteverynthbyteTrackbar.Scroll += new System.EventHandler(this.CorrupteverynthbyteTrackbar_Scroll);
             // 
             // Label15
             // 
@@ -740,6 +792,7 @@
             0,
             0,
             0});
+            this.Intensity.ValueChanged += new System.EventHandler(this.Intensity_ValueChanged);
             // 
             // IntensityTrackbar
             // 
@@ -755,14 +808,13 @@
             this.IntensityTrackbar.TabStop = false;
             this.IntensityTrackbar.TickFrequency = 0;
             this.IntensityTrackbar.Value = 1;
+            this.IntensityTrackbar.Scroll += new System.EventHandler(this.IntensityTrackbar_Scroll);
             // 
             // TabPage3
             // 
             this.TabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.TabPage3.Controls.Add(this.StashListlbl);
             this.TabPage3.Controls.Add(this.Panel4);
-            this.TabPage3.Controls.Add(this.MultipleFileList);
-            this.TabPage3.Controls.Add(this.MultipleFileListControlspnl);
             this.TabPage3.Controls.Add(this.StashItemList);
             this.TabPage3.Controls.Add(this.StashList);
             this.TabPage3.Controls.Add(this.StashEditor);
@@ -778,65 +830,6 @@
             this.TabPage3.Size = new System.Drawing.Size(744, 279);
             this.TabPage3.TabIndex = 0;
             this.TabPage3.Text = "Main Corruption Parameters";
-            // 
-            // MultipleFileList
-            // 
-            this.MultipleFileList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MultipleFileList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
-            this.MultipleFileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MultipleFileList.ForeColor = System.Drawing.Color.Silver;
-            this.MultipleFileList.FormattingEnabled = true;
-            this.MultipleFileList.HorizontalScrollbar = true;
-            this.MultipleFileList.IntegralHeight = false;
-            this.MultipleFileList.Location = new System.Drawing.Point(432, 19);
-            this.MultipleFileList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MultipleFileList.Name = "MultipleFileList";
-            this.MultipleFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.MultipleFileList.Size = new System.Drawing.Size(307, 219);
-            this.MultipleFileList.TabIndex = 167;
-            this.MultipleFileList.Visible = false;
-            // 
-            // MultipleFileListControlspnl
-            // 
-            this.MultipleFileListControlspnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MultipleFileListControlspnl.Controls.Add(this.MultipleFileRemoveallitems);
-            this.MultipleFileListControlspnl.Controls.Add(this.MultipleFileRemoveselectitems);
-            this.MultipleFileListControlspnl.Location = new System.Drawing.Point(431, 238);
-            this.MultipleFileListControlspnl.Name = "MultipleFileListControlspnl";
-            this.MultipleFileListControlspnl.Size = new System.Drawing.Size(308, 35);
-            this.MultipleFileListControlspnl.TabIndex = 168;
-            this.MultipleFileListControlspnl.Visible = false;
-            // 
-            // MultipleFileRemoveallitems
-            // 
-            this.MultipleFileRemoveallitems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.MultipleFileRemoveallitems.FlatAppearance.BorderSize = 0;
-            this.MultipleFileRemoveallitems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MultipleFileRemoveallitems.ForeColor = System.Drawing.Color.Aqua;
-            this.MultipleFileRemoveallitems.Location = new System.Drawing.Point(155, 6);
-            this.MultipleFileRemoveallitems.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MultipleFileRemoveallitems.Name = "MultipleFileRemoveallitems";
-            this.MultipleFileRemoveallitems.Size = new System.Drawing.Size(151, 23);
-            this.MultipleFileRemoveallitems.TabIndex = 0;
-            this.MultipleFileRemoveallitems.Text = "Remove all Items";
-            this.MultipleFileRemoveallitems.UseVisualStyleBackColor = false;
-            // 
-            // MultipleFileRemoveselectitems
-            // 
-            this.MultipleFileRemoveselectitems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.MultipleFileRemoveselectitems.FlatAppearance.BorderSize = 0;
-            this.MultipleFileRemoveselectitems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MultipleFileRemoveselectitems.ForeColor = System.Drawing.Color.Aqua;
-            this.MultipleFileRemoveselectitems.Location = new System.Drawing.Point(2, 6);
-            this.MultipleFileRemoveselectitems.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MultipleFileRemoveselectitems.Name = "MultipleFileRemoveselectitems";
-            this.MultipleFileRemoveselectitems.Size = new System.Drawing.Size(152, 23);
-            this.MultipleFileRemoveselectitems.TabIndex = 0;
-            this.MultipleFileRemoveselectitems.Text = "Remove Selected Item(s)";
-            this.MultipleFileRemoveselectitems.UseVisualStyleBackColor = false;
             // 
             // StashItemList
             // 
@@ -998,12 +991,456 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ManualEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            this.ManualEnginePanel.Controls.Add(this.GroupBox8);
+            this.ManualEnginePanel.Controls.Add(this.GroupBox7);
+            this.ManualEnginePanel.Controls.Add(this.GroupBox3);
+            this.ManualEnginePanel.Controls.Add(this.GroupBox4);
+            this.ManualEnginePanel.Controls.Add(this.RepeatRandomBitCHECK);
+            this.ManualEnginePanel.Controls.Add(this.GroupBox5);
+            this.ManualEnginePanel.Controls.Add(this.GroupBox2);
             this.ManualEnginePanel.Location = new System.Drawing.Point(6, 6);
             this.ManualEnginePanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManualEnginePanel.Name = "ManualEnginePanel";
             this.ManualEnginePanel.Size = new System.Drawing.Size(734, 267);
             this.ManualEnginePanel.TabIndex = 137;
             this.ManualEnginePanel.Tag = "color:normal";
+            // 
+            // GroupBox8
+            // 
+            this.GroupBox8.Controls.Add(this.PasterandombitCHECK);
+            this.GroupBox8.Controls.Add(this.NumericUpDown8);
+            this.GroupBox8.Controls.Add(this.MakeBitEqualCHECK);
+            this.GroupBox8.ForeColor = System.Drawing.Color.White;
+            this.GroupBox8.Location = new System.Drawing.Point(323, 71);
+            this.GroupBox8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox8.Name = "GroupBox8";
+            this.GroupBox8.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox8.Size = new System.Drawing.Size(191, 63);
+            this.GroupBox8.TabIndex = 84;
+            this.GroupBox8.TabStop = false;
+            this.GroupBox8.Text = "Experimental";
+            // 
+            // PasterandombitCHECK
+            // 
+            this.PasterandombitCHECK.AutoSize = true;
+            this.PasterandombitCHECK.ForeColor = System.Drawing.Color.White;
+            this.PasterandombitCHECK.Location = new System.Drawing.Point(6, 13);
+            this.PasterandombitCHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.PasterandombitCHECK.Name = "PasterandombitCHECK";
+            this.PasterandombitCHECK.Size = new System.Drawing.Size(161, 17);
+            this.PasterandombitCHECK.TabIndex = 65;
+            this.PasterandombitCHECK.Text = "Paste byte to Random Place";
+            this.PasterandombitCHECK.UseVisualStyleBackColor = true;
+            // 
+            // NumericUpDown8
+            // 
+            this.NumericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown8.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown8.Location = new System.Drawing.Point(116, 33);
+            this.NumericUpDown8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown8.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.NumericUpDown8.Minimum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            -2147483648});
+            this.NumericUpDown8.Name = "NumericUpDown8";
+            this.NumericUpDown8.Size = new System.Drawing.Size(68, 22);
+            this.NumericUpDown8.TabIndex = 63;
+            this.NumericUpDown8.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // MakeBitEqualCHECK
+            // 
+            this.MakeBitEqualCHECK.AutoSize = true;
+            this.MakeBitEqualCHECK.ForeColor = System.Drawing.Color.White;
+            this.MakeBitEqualCHECK.Location = new System.Drawing.Point(6, 36);
+            this.MakeBitEqualCHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MakeBitEqualCHECK.Name = "MakeBitEqualCHECK";
+            this.MakeBitEqualCHECK.Size = new System.Drawing.Size(111, 17);
+            this.MakeBitEqualCHECK.TabIndex = 65;
+            this.MakeBitEqualCHECK.Text = "Make byte equal: ";
+            this.MakeBitEqualCHECK.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox7
+            // 
+            this.GroupBox7.Controls.Add(this.DoubleCheck);
+            this.GroupBox7.Controls.Add(this.DevideRadio);
+            this.GroupBox7.Controls.Add(this.MultiRadio);
+            this.GroupBox7.Controls.Add(this.MULTIORDIVIDENUMBER);
+            this.GroupBox7.Controls.Add(this.MULTIORDIVIDECHeck);
+            this.GroupBox7.Controls.Add(this.Label25);
+            this.GroupBox7.ForeColor = System.Drawing.Color.White;
+            this.GroupBox7.Location = new System.Drawing.Point(170, 11);
+            this.GroupBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox7.Name = "GroupBox7";
+            this.GroupBox7.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox7.Size = new System.Drawing.Size(228, 54);
+            this.GroupBox7.TabIndex = 83;
+            this.GroupBox7.TabStop = false;
+            // 
+            // DoubleCheck
+            // 
+            this.DoubleCheck.AutoSize = true;
+            this.DoubleCheck.Location = new System.Drawing.Point(74, 16);
+            this.DoubleCheck.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.DoubleCheck.Name = "DoubleCheck";
+            this.DoubleCheck.Size = new System.Drawing.Size(31, 17);
+            this.DoubleCheck.TabIndex = 76;
+            this.DoubleCheck.TabStop = true;
+            this.DoubleCheck.Text = "^";
+            this.DoubleCheck.UseVisualStyleBackColor = true;
+            // 
+            // DevideRadio
+            // 
+            this.DevideRadio.AutoSize = true;
+            this.DevideRadio.Location = new System.Drawing.Point(44, 16);
+            this.DevideRadio.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.DevideRadio.Name = "DevideRadio";
+            this.DevideRadio.Size = new System.Drawing.Size(30, 17);
+            this.DevideRadio.TabIndex = 76;
+            this.DevideRadio.TabStop = true;
+            this.DevideRadio.Text = "/";
+            this.DevideRadio.UseVisualStyleBackColor = true;
+            // 
+            // MultiRadio
+            // 
+            this.MultiRadio.AutoSize = true;
+            this.MultiRadio.Location = new System.Drawing.Point(8, 16);
+            this.MultiRadio.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MultiRadio.Name = "MultiRadio";
+            this.MultiRadio.Size = new System.Drawing.Size(29, 17);
+            this.MultiRadio.TabIndex = 76;
+            this.MultiRadio.TabStop = true;
+            this.MultiRadio.Text = "*";
+            this.MultiRadio.UseVisualStyleBackColor = true;
+            // 
+            // MULTIORDIVIDENUMBER
+            // 
+            this.MULTIORDIVIDENUMBER.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.MULTIORDIVIDENUMBER.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MULTIORDIVIDENUMBER.ForeColor = System.Drawing.Color.White;
+            this.MULTIORDIVIDENUMBER.Location = new System.Drawing.Point(142, 14);
+            this.MULTIORDIVIDENUMBER.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MULTIORDIVIDENUMBER.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.MULTIORDIVIDENUMBER.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MULTIORDIVIDENUMBER.Name = "MULTIORDIVIDENUMBER";
+            this.MULTIORDIVIDENUMBER.Size = new System.Drawing.Size(80, 22);
+            this.MULTIORDIVIDENUMBER.TabIndex = 63;
+            this.MULTIORDIVIDENUMBER.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // MULTIORDIVIDECHeck
+            // 
+            this.MULTIORDIVIDECHeck.AutoSize = true;
+            this.MULTIORDIVIDECHeck.ForeColor = System.Drawing.Color.White;
+            this.MULTIORDIVIDECHeck.Location = new System.Drawing.Point(4, -2);
+            this.MULTIORDIVIDECHeck.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MULTIORDIVIDECHeck.Name = "MULTIORDIVIDECHeck";
+            this.MULTIORDIVIDECHeck.Size = new System.Drawing.Size(156, 17);
+            this.MULTIORDIVIDECHeck.TabIndex = 75;
+            this.MULTIORDIVIDECHeck.Text = "Do math operations on byte";
+            this.MULTIORDIVIDECHeck.UseVisualStyleBackColor = true;
+            // 
+            // Label25
+            // 
+            this.Label25.AutoSize = true;
+            this.Label25.ForeColor = System.Drawing.Color.White;
+            this.Label25.Location = new System.Drawing.Point(104, 18);
+            this.Label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label25.Name = "Label25";
+            this.Label25.Size = new System.Drawing.Size(32, 13);
+            this.Label25.TabIndex = 69;
+            this.Label25.Text = "bit by";
+            // 
+            // GroupBox3
+            // 
+            this.GroupBox3.Controls.Add(this.ReplaceCHECK);
+            this.GroupBox3.Controls.Add(this.NumericUpDown9);
+            this.GroupBox3.Controls.Add(this.NumericUpDown10);
+            this.GroupBox3.Controls.Add(this.Label22);
+            this.GroupBox3.Controls.Add(this.Label16);
+            this.GroupBox3.ForeColor = System.Drawing.Color.White;
+            this.GroupBox3.Location = new System.Drawing.Point(402, 11);
+            this.GroupBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox3.Name = "GroupBox3";
+            this.GroupBox3.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox3.Size = new System.Drawing.Size(272, 54);
+            this.GroupBox3.TabIndex = 82;
+            this.GroupBox3.TabStop = false;
+            // 
+            // ReplaceCHECK
+            // 
+            this.ReplaceCHECK.AutoSize = true;
+            this.ReplaceCHECK.ForeColor = System.Drawing.Color.White;
+            this.ReplaceCHECK.Location = new System.Drawing.Point(7, 1);
+            this.ReplaceCHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ReplaceCHECK.Name = "ReplaceCHECK";
+            this.ReplaceCHECK.Size = new System.Drawing.Size(66, 17);
+            this.ReplaceCHECK.TabIndex = 65;
+            this.ReplaceCHECK.Text = "Replace";
+            this.ReplaceCHECK.UseVisualStyleBackColor = true;
+            // 
+            // NumericUpDown9
+            // 
+            this.NumericUpDown9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown9.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown9.Location = new System.Drawing.Point(60, 19);
+            this.NumericUpDown9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown9.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NumericUpDown9.Name = "NumericUpDown9";
+            this.NumericUpDown9.Size = new System.Drawing.Size(80, 22);
+            this.NumericUpDown9.TabIndex = 63;
+            this.NumericUpDown9.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // NumericUpDown10
+            // 
+            this.NumericUpDown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown10.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown10.Location = new System.Drawing.Point(179, 19);
+            this.NumericUpDown10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown10.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NumericUpDown10.Name = "NumericUpDown10";
+            this.NumericUpDown10.Size = new System.Drawing.Size(80, 22);
+            this.NumericUpDown10.TabIndex = 63;
+            this.NumericUpDown10.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // Label22
+            // 
+            this.Label22.AutoSize = true;
+            this.Label22.ForeColor = System.Drawing.Color.White;
+            this.Label22.Location = new System.Drawing.Point(7, 21);
+            this.Label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label22.Name = "Label22";
+            this.Label22.Size = new System.Drawing.Size(47, 13);
+            this.Label22.TabIndex = 69;
+            this.Label22.Text = "Replace";
+            // 
+            // Label16
+            // 
+            this.Label16.AutoSize = true;
+            this.Label16.ForeColor = System.Drawing.Color.White;
+            this.Label16.Location = new System.Drawing.Point(146, 24);
+            this.Label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label16.Name = "Label16";
+            this.Label16.Size = new System.Drawing.Size(26, 13);
+            this.Label16.TabIndex = 69;
+            this.Label16.Text = "with";
+            // 
+            // GroupBox4
+            // 
+            this.GroupBox4.Controls.Add(this.SHIFTBYTECHECK);
+            this.GroupBox4.Controls.Add(this.Label12);
+            this.GroupBox4.Controls.Add(this.NumericUpDown7);
+            this.GroupBox4.Location = new System.Drawing.Point(170, 72);
+            this.GroupBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox4.Name = "GroupBox4";
+            this.GroupBox4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox4.Size = new System.Drawing.Size(149, 62);
+            this.GroupBox4.TabIndex = 80;
+            this.GroupBox4.TabStop = false;
+            // 
+            // SHIFTBYTECHECK
+            // 
+            this.SHIFTBYTECHECK.AutoSize = true;
+            this.SHIFTBYTECHECK.ForeColor = System.Drawing.Color.White;
+            this.SHIFTBYTECHECK.Location = new System.Drawing.Point(4, 0);
+            this.SHIFTBYTECHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.SHIFTBYTECHECK.Name = "SHIFTBYTECHECK";
+            this.SHIFTBYTECHECK.Size = new System.Drawing.Size(113, 17);
+            this.SHIFTBYTECHECK.TabIndex = 67;
+            this.SHIFTBYTECHECK.Text = "Shift Right X bytes";
+            this.SHIFTBYTECHECK.UseVisualStyleBackColor = true;
+            // 
+            // Label12
+            // 
+            this.Label12.AutoSize = true;
+            this.Label12.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Label12.ForeColor = System.Drawing.Color.White;
+            this.Label12.Location = new System.Drawing.Point(7, 24);
+            this.Label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label12.Name = "Label12";
+            this.Label12.Size = new System.Drawing.Size(54, 17);
+            this.Label12.TabIndex = 16;
+            this.Label12.Text = "Shift int:";
+            // 
+            // NumericUpDown7
+            // 
+            this.NumericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown7.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown7.Location = new System.Drawing.Point(64, 23);
+            this.NumericUpDown7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown7.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NumericUpDown7.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NumericUpDown7.Name = "NumericUpDown7";
+            this.NumericUpDown7.Size = new System.Drawing.Size(60, 22);
+            this.NumericUpDown7.TabIndex = 63;
+            this.NumericUpDown7.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // RepeatRandomBitCHECK
+            // 
+            this.RepeatRandomBitCHECK.AutoSize = true;
+            this.RepeatRandomBitCHECK.ForeColor = System.Drawing.Color.White;
+            this.RepeatRandomBitCHECK.Location = new System.Drawing.Point(13, 71);
+            this.RepeatRandomBitCHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RepeatRandomBitCHECK.Name = "RepeatRandomBitCHECK";
+            this.RepeatRandomBitCHECK.Size = new System.Drawing.Size(84, 17);
+            this.RepeatRandomBitCHECK.TabIndex = 78;
+            this.RepeatRandomBitCHECK.Text = "Repeat byte";
+            this.RepeatRandomBitCHECK.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox5
+            // 
+            this.GroupBox5.Controls.Add(this.IncrementCHECK);
+            this.GroupBox5.Controls.Add(this.Label14);
+            this.GroupBox5.Controls.Add(this.NumericUpDown4);
+            this.GroupBox5.Location = new System.Drawing.Point(6, 3);
+            this.GroupBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox5.Name = "GroupBox5";
+            this.GroupBox5.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox5.Size = new System.Drawing.Size(158, 62);
+            this.GroupBox5.TabIndex = 81;
+            this.GroupBox5.TabStop = false;
+            // 
+            // IncrementCHECK
+            // 
+            this.IncrementCHECK.AutoSize = true;
+            this.IncrementCHECK.ForeColor = System.Drawing.Color.White;
+            this.IncrementCHECK.Location = new System.Drawing.Point(10, 0);
+            this.IncrementCHECK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.IncrementCHECK.Name = "IncrementCHECK";
+            this.IncrementCHECK.Size = new System.Drawing.Size(96, 17);
+            this.IncrementCHECK.TabIndex = 67;
+            this.IncrementCHECK.Text = "Increment byte";
+            this.IncrementCHECK.UseVisualStyleBackColor = true;
+            // 
+            // Label14
+            // 
+            this.Label14.AutoSize = true;
+            this.Label14.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Label14.ForeColor = System.Drawing.Color.White;
+            this.Label14.Location = new System.Drawing.Point(7, 21);
+            this.Label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label14.Name = "Label14";
+            this.Label14.Size = new System.Drawing.Size(90, 17);
+            this.Label14.TabIndex = 16;
+            this.Label14.Text = "Increment Int :";
+            // 
+            // NumericUpDown4
+            // 
+            this.NumericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown4.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown4.Location = new System.Drawing.Point(101, 20);
+            this.NumericUpDown4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown4.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.NumericUpDown4.Minimum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            -2147483648});
+            this.NumericUpDown4.Name = "NumericUpDown4";
+            this.NumericUpDown4.Size = new System.Drawing.Size(49, 22);
+            this.NumericUpDown4.TabIndex = 63;
+            // 
+            // GroupBox2
+            // 
+            this.GroupBox2.Controls.Add(this.Label8);
+            this.GroupBox2.Controls.Add(this.NumericUpDown2);
+            this.GroupBox2.Location = new System.Drawing.Point(6, 71);
+            this.GroupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox2.Name = "GroupBox2";
+            this.GroupBox2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GroupBox2.Size = new System.Drawing.Size(158, 63);
+            this.GroupBox2.TabIndex = 79;
+            this.GroupBox2.TabStop = false;
+            // 
+            // Label8
+            // 
+            this.Label8.AutoSize = true;
+            this.Label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Label8.ForeColor = System.Drawing.Color.White;
+            this.Label8.Location = new System.Drawing.Point(6, 21);
+            this.Label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label8.Name = "Label8";
+            this.Label8.Size = new System.Drawing.Size(106, 17);
+            this.Label8.TabIndex = 16;
+            this.Label8.Text = "Selection Length:";
+            // 
+            // NumericUpDown2
+            // 
+            this.NumericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.NumericUpDown2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericUpDown2.ForeColor = System.Drawing.Color.White;
+            this.NumericUpDown2.Location = new System.Drawing.Point(112, 20);
+            this.NumericUpDown2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NumericUpDown2.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NumericUpDown2.Name = "NumericUpDown2";
+            this.NumericUpDown2.Size = new System.Drawing.Size(41, 22);
+            this.NumericUpDown2.TabIndex = 63;
+            this.NumericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Panel3
             // 
@@ -1026,13 +1463,14 @@
             // MultipleFilesChbx
             // 
             this.MultipleFilesChbx.AutoSize = true;
+            this.MultipleFilesChbx.Enabled = false;
             this.MultipleFilesChbx.ForeColor = System.Drawing.Color.White;
             this.MultipleFilesChbx.Location = new System.Drawing.Point(165, 51);
             this.MultipleFilesChbx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MultipleFilesChbx.Name = "MultipleFilesChbx";
-            this.MultipleFilesChbx.Size = new System.Drawing.Size(86, 17);
+            this.MultipleFilesChbx.Size = new System.Drawing.Size(191, 17);
             this.MultipleFilesChbx.TabIndex = 89;
-            this.MultipleFilesChbx.Text = "Multiple Files";
+            this.MultipleFilesChbx.Text = "Multiple Files (Not implemented yet)";
             this.MultipleFilesChbx.UseVisualStyleBackColor = true;
             // 
             // Restorefilebtn
@@ -1074,6 +1512,7 @@
             this.Changesaveasbtn.TabIndex = 1;
             this.Changesaveasbtn.Text = "Change Save as";
             this.Changesaveasbtn.UseVisualStyleBackColor = false;
+            this.Changesaveasbtn.Click += new System.EventHandler(this.Changesaveasbtn_Click);
             // 
             // FileSelectionlbl
             // 
@@ -1200,6 +1639,7 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(768, 546);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LunarROMCorruptor - v0.1 - UNSTABLE BUILD";
@@ -1222,9 +1662,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).EndInit();
             this.TabPage3.ResumeLayout(false);
             this.TabPage3.PerformLayout();
-            this.MultipleFileListControlspnl.ResumeLayout(false);
             this.TabControl2.ResumeLayout(false);
             this.TabPage4.ResumeLayout(false);
+            this.ManualEnginePanel.ResumeLayout(false);
+            this.ManualEnginePanel.PerformLayout();
+            this.GroupBox8.ResumeLayout(false);
+            this.GroupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown8)).EndInit();
+            this.GroupBox7.ResumeLayout(false);
+            this.GroupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MULTIORDIVIDENUMBER)).EndInit();
+            this.GroupBox3.ResumeLayout(false);
+            this.GroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown10)).EndInit();
+            this.GroupBox4.ResumeLayout(false);
+            this.GroupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown7)).EndInit();
+            this.GroupBox5.ResumeLayout(false);
+            this.GroupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown4)).EndInit();
+            this.GroupBox2.ResumeLayout(false);
+            this.GroupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown2)).EndInit();
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -1278,10 +1738,6 @@
         internal System.Windows.Forms.NumericUpDown Intensity;
         private System.Windows.Forms.TrackBar IntensityTrackbar;
         internal System.Windows.Forms.TabPage TabPage3;
-        internal System.Windows.Forms.ListBox MultipleFileList;
-        internal System.Windows.Forms.Panel MultipleFileListControlspnl;
-        internal System.Windows.Forms.Button MultipleFileRemoveallitems;
-        internal System.Windows.Forms.Button MultipleFileRemoveselectitems;
         internal System.Windows.Forms.ListBox StashItemList;
         internal System.Windows.Forms.ListBox StashList;
         internal System.Windows.Forms.Button StashEditor;
@@ -1308,6 +1764,35 @@
         internal System.Windows.Forms.OpenFileDialog EmulatorFileDialog;
         internal System.Windows.Forms.SaveFileDialog MainSaveFileDialog;
         internal System.Windows.Forms.OpenFileDialog MainOpenFileDialog;
+        internal System.Windows.Forms.GroupBox GroupBox8;
+        internal System.Windows.Forms.CheckBox PasterandombitCHECK;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown8;
+        internal System.Windows.Forms.CheckBox MakeBitEqualCHECK;
+        internal System.Windows.Forms.GroupBox GroupBox7;
+        internal System.Windows.Forms.RadioButton DoubleCheck;
+        internal System.Windows.Forms.RadioButton DevideRadio;
+        internal System.Windows.Forms.RadioButton MultiRadio;
+        internal System.Windows.Forms.NumericUpDown MULTIORDIVIDENUMBER;
+        internal System.Windows.Forms.CheckBox MULTIORDIVIDECHeck;
+        internal System.Windows.Forms.Label Label25;
+        internal System.Windows.Forms.GroupBox GroupBox3;
+        internal System.Windows.Forms.CheckBox ReplaceCHECK;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown9;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown10;
+        internal System.Windows.Forms.Label Label22;
+        internal System.Windows.Forms.Label Label16;
+        internal System.Windows.Forms.GroupBox GroupBox4;
+        internal System.Windows.Forms.CheckBox SHIFTBYTECHECK;
+        private System.Windows.Forms.Label Label12;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown7;
+        internal System.Windows.Forms.CheckBox RepeatRandomBitCHECK;
+        internal System.Windows.Forms.GroupBox GroupBox5;
+        internal System.Windows.Forms.CheckBox IncrementCHECK;
+        private System.Windows.Forms.Label Label14;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown4;
+        internal System.Windows.Forms.GroupBox GroupBox2;
+        private System.Windows.Forms.Label Label8;
+        internal System.Windows.Forms.NumericUpDown NumericUpDown2;
     }
 }
 
