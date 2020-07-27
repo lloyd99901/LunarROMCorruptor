@@ -63,22 +63,10 @@
             this.ComboBox1 = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Label4 = new System.Windows.Forms.Label();
-            this.MathOperNumb = new System.Windows.Forms.NumericUpDown();
-            this.RepeatNumb = new System.Windows.Forms.NumericUpDown();
-            this.ShiftNUMB = new System.Windows.Forms.NumericUpDown();
-            this.IncreDecreNumb = new System.Windows.Forms.NumericUpDown();
-            this.Label3 = new System.Windows.Forms.Label();
-            this.Label8 = new System.Windows.Forms.Label();
-            this.Label7 = new System.Windows.Forms.Label();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.ComboBox2 = new System.Windows.Forms.ComboBox();
             this.Button1 = new System.Windows.Forms.Button();
             this.MergeEnginePanel = new System.Windows.Forms.Panel();
             this.TextBox5 = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
-            this.LunarEnginePanel = new System.Windows.Forms.Panel();
-            this.Label6 = new System.Windows.Forms.Label();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
             this.HellEnginePanel.SuspendLayout();
@@ -86,12 +74,7 @@
             this.Vector2EnginePanel.SuspendLayout();
             this.NightmareEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IncreDecrenumbnightmare)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MathOperNumb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RepeatNumb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ShiftNUMB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncreDecreNumb)).BeginInit();
             this.MergeEnginePanel.SuspendLayout();
-            this.LunarEnginePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFileDialog1
@@ -547,182 +530,6 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Corruption Type:";
             // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label4.ForeColor = System.Drawing.Color.White;
-            this.Label4.Location = new System.Drawing.Point(3, 2);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(90, 17);
-            this.Label4.TabIndex = 93;
-            this.Label4.Text = "Lunar Engine";
-            // 
-            // MathOperNumb
-            // 
-            this.MathOperNumb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.MathOperNumb.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MathOperNumb.ForeColor = System.Drawing.Color.White;
-            this.MathOperNumb.Location = new System.Drawing.Point(278, 125);
-            this.MathOperNumb.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.MathOperNumb.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MathOperNumb.Name = "MathOperNumb";
-            this.MathOperNumb.Size = new System.Drawing.Size(213, 22);
-            this.MathOperNumb.TabIndex = 96;
-            this.MathOperNumb.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // RepeatNumb
-            // 
-            this.RepeatNumb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.RepeatNumb.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RepeatNumb.ForeColor = System.Drawing.Color.White;
-            this.RepeatNumb.Location = new System.Drawing.Point(278, 99);
-            this.RepeatNumb.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.RepeatNumb.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.RepeatNumb.Name = "RepeatNumb";
-            this.RepeatNumb.Size = new System.Drawing.Size(213, 22);
-            this.RepeatNumb.TabIndex = 96;
-            this.RepeatNumb.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // ShiftNUMB
-            // 
-            this.ShiftNUMB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.ShiftNUMB.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShiftNUMB.ForeColor = System.Drawing.Color.White;
-            this.ShiftNUMB.Location = new System.Drawing.Point(278, 71);
-            this.ShiftNUMB.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.ShiftNUMB.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ShiftNUMB.Name = "ShiftNUMB";
-            this.ShiftNUMB.Size = new System.Drawing.Size(213, 22);
-            this.ShiftNUMB.TabIndex = 96;
-            this.ShiftNUMB.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // IncreDecreNumb
-            // 
-            this.IncreDecreNumb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.IncreDecreNumb.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IncreDecreNumb.ForeColor = System.Drawing.Color.White;
-            this.IncreDecreNumb.Location = new System.Drawing.Point(278, 44);
-            this.IncreDecreNumb.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.IncreDecreNumb.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.IncreDecreNumb.Name = "IncreDecreNumb";
-            this.IncreDecreNumb.Size = new System.Drawing.Size(213, 22);
-            this.IncreDecreNumb.TabIndex = 96;
-            this.IncreDecreNumb.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label3.ForeColor = System.Drawing.Color.White;
-            this.Label3.Location = new System.Drawing.Point(167, 19);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(105, 17);
-            this.Label3.TabIndex = 93;
-            this.Label3.Text = "Corruption Type:";
-            // 
-            // Label8
-            // 
-            this.Label8.AutoSize = true;
-            this.Label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label8.ForeColor = System.Drawing.Color.White;
-            this.Label8.Location = new System.Drawing.Point(14, 127);
-            this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(258, 17);
-            this.Label8.TabIndex = 94;
-            this.Label8.Text = "Do math operations (like * / and ^ to byte)";
-            // 
-            // Label7
-            // 
-            this.Label7.AutoSize = true;
-            this.Label7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label7.ForeColor = System.Drawing.Color.White;
-            this.Label7.Location = new System.Drawing.Point(170, 101);
-            this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(102, 17);
-            this.Label7.TabIndex = 94;
-            this.Label7.Text = "REPEAT amount:";
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label2.ForeColor = System.Drawing.Color.White;
-            this.Label2.Location = new System.Drawing.Point(90, 43);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(182, 17);
-            this.Label2.TabIndex = 94;
-            this.Label2.Text = "Increment/Decrement number";
-            // 
-            // ComboBox2
-            // 
-            this.ComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
-            this.ComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ComboBox2.ForeColor = System.Drawing.Color.White;
-            this.ComboBox2.FormattingEnabled = true;
-            this.ComboBox2.Items.AddRange(new object[] {
-            "RANDOM",
-            "RANDOMTILT",
-            "TILT",
-            "ENTERTAINME",
-            "TILT ENTERTAIN ME",
-            "SHIFT",
-            "REPEAT"});
-            this.ComboBox2.Location = new System.Drawing.Point(278, 19);
-            this.ComboBox2.Name = "ComboBox2";
-            this.ComboBox2.Size = new System.Drawing.Size(227, 21);
-            this.ComboBox2.TabIndex = 95;
-            this.ComboBox2.Text = "RANDOM";
-            // 
             // Button1
             // 
             this.Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
@@ -781,40 +588,6 @@
             this.Label9.TabIndex = 93;
             this.Label9.Text = "Merge Engine";
             // 
-            // LunarEnginePanel
-            // 
-            this.LunarEnginePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LunarEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.LunarEnginePanel.Controls.Add(this.Label4);
-            this.LunarEnginePanel.Controls.Add(this.MathOperNumb);
-            this.LunarEnginePanel.Controls.Add(this.RepeatNumb);
-            this.LunarEnginePanel.Controls.Add(this.ShiftNUMB);
-            this.LunarEnginePanel.Controls.Add(this.IncreDecreNumb);
-            this.LunarEnginePanel.Controls.Add(this.Label3);
-            this.LunarEnginePanel.Controls.Add(this.Label8);
-            this.LunarEnginePanel.Controls.Add(this.Label7);
-            this.LunarEnginePanel.Controls.Add(this.Label6);
-            this.LunarEnginePanel.Controls.Add(this.Label2);
-            this.LunarEnginePanel.Controls.Add(this.ComboBox2);
-            this.LunarEnginePanel.Location = new System.Drawing.Point(14, 15);
-            this.LunarEnginePanel.Name = "LunarEnginePanel";
-            this.LunarEnginePanel.Size = new System.Drawing.Size(723, 185);
-            this.LunarEnginePanel.TabIndex = 157;
-            this.LunarEnginePanel.Tag = "color:normal";
-            // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label6.ForeColor = System.Drawing.Color.White;
-            this.Label6.Location = new System.Drawing.Point(181, 73);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(91, 17);
-            this.Label6.TabIndex = 94;
-            this.Label6.Text = "SHIFT amount:";
-            // 
             // CorruptionEngineOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,7 +597,6 @@
             this.Controls.Add(this.Vector2EnginePanel);
             this.Controls.Add(this.NightmareEnginePanel);
             this.Controls.Add(this.MergeEnginePanel);
-            this.Controls.Add(this.LunarEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
             this.Controls.Add(this.HellEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
@@ -844,14 +616,8 @@
             this.NightmareEnginePanel.ResumeLayout(false);
             this.NightmareEnginePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IncreDecrenumbnightmare)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MathOperNumb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RepeatNumb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ShiftNUMB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncreDecreNumb)).EndInit();
             this.MergeEnginePanel.ResumeLayout(false);
             this.MergeEnginePanel.PerformLayout();
-            this.LunarEnginePanel.ResumeLayout(false);
-            this.LunarEnginePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -892,21 +658,9 @@
         internal System.Windows.Forms.ComboBox ComboBox1;
         private System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label Label4;
-        public System.Windows.Forms.NumericUpDown MathOperNumb;
-        public System.Windows.Forms.NumericUpDown RepeatNumb;
-        public System.Windows.Forms.NumericUpDown ShiftNUMB;
-        public System.Windows.Forms.NumericUpDown IncreDecreNumb;
-        public System.Windows.Forms.Label Label3;
-        public System.Windows.Forms.Label Label8;
-        public System.Windows.Forms.Label Label7;
-        public System.Windows.Forms.Label Label2;
-        public System.Windows.Forms.ComboBox ComboBox2;
         internal System.Windows.Forms.Button Button1;
         public System.Windows.Forms.Panel MergeEnginePanel;
         public System.Windows.Forms.TextBox TextBox5;
         private System.Windows.Forms.Label Label9;
-        public System.Windows.Forms.Panel LunarEnginePanel;
-        public System.Windows.Forms.Label Label6;
     }
 }

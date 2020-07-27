@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.FilesaveSavebtn = new System.Windows.Forms.Button();
             this.FilesaveReloadbtn = new System.Windows.Forms.Button();
@@ -74,7 +75,7 @@
             this.TabPage3 = new System.Windows.Forms.TabPage();
             this.StashItemList = new System.Windows.Forms.ListBox();
             this.StashList = new System.Windows.Forms.ListBox();
-            this.StashEditor = new System.Windows.Forms.Button();
+            this.StashEditorbtn = new System.Windows.Forms.Button();
             this.DeleteStash = new System.Windows.Forms.Button();
             this.Corruptusingstash = new System.Windows.Forms.Button();
             this.RefreshStash = new System.Windows.Forms.Button();
@@ -127,6 +128,7 @@
             this.EmulatorFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.MainOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.CorruptButtonColorChanger = new System.Windows.Forms.Timer(this.components);
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -489,7 +491,6 @@
             "Manual",
             "Nightmare Engine",
             "Vector2 Engine",
-            "Lunar Engine",
             "Merge Engine",
             "Logic Engine",
             "Lerp Engine",
@@ -817,7 +818,7 @@
             this.TabPage3.Controls.Add(this.Panel4);
             this.TabPage3.Controls.Add(this.StashItemList);
             this.TabPage3.Controls.Add(this.StashList);
-            this.TabPage3.Controls.Add(this.StashEditor);
+            this.TabPage3.Controls.Add(this.StashEditorbtn);
             this.TabPage3.Controls.Add(this.DeleteStash);
             this.TabPage3.Controls.Add(this.Corruptusingstash);
             this.TabPage3.Controls.Add(this.RefreshStash);
@@ -865,20 +866,20 @@
             this.StashList.Size = new System.Drawing.Size(172, 179);
             this.StashList.TabIndex = 158;
             // 
-            // StashEditor
+            // StashEditorbtn
             // 
-            this.StashEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StashEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(70)))));
-            this.StashEditor.FlatAppearance.BorderSize = 0;
-            this.StashEditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StashEditor.ForeColor = System.Drawing.Color.Lime;
-            this.StashEditor.Location = new System.Drawing.Point(567, 223);
-            this.StashEditor.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StashEditor.Name = "StashEditor";
-            this.StashEditor.Size = new System.Drawing.Size(172, 23);
-            this.StashEditor.TabIndex = 0;
-            this.StashEditor.Text = "Stash Editor";
-            this.StashEditor.UseVisualStyleBackColor = false;
+            this.StashEditorbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StashEditorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(70)))));
+            this.StashEditorbtn.FlatAppearance.BorderSize = 0;
+            this.StashEditorbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StashEditorbtn.ForeColor = System.Drawing.Color.Lime;
+            this.StashEditorbtn.Location = new System.Drawing.Point(567, 223);
+            this.StashEditorbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StashEditorbtn.Name = "StashEditorbtn";
+            this.StashEditorbtn.Size = new System.Drawing.Size(172, 23);
+            this.StashEditorbtn.TabIndex = 0;
+            this.StashEditorbtn.Text = "Stash Editor";
+            this.StashEditorbtn.UseVisualStyleBackColor = false;
             // 
             // DeleteStash
             // 
@@ -1555,6 +1556,7 @@
             this.CorruptButton.Tag = "";
             this.CorruptButton.Text = "Corrupt";
             this.CorruptButton.UseVisualStyleBackColor = false;
+            this.CorruptButton.Click += new System.EventHandler(this.CorruptButton_Click);
             // 
             // Openfilebtn
             // 
@@ -1629,6 +1631,11 @@
             // 
             this.MainOpenFileDialog.Filter = "All files (*.*)|*.*";
             // 
+            // CorruptButtonColorChanger
+            // 
+            this.CorruptButtonColorChanger.Interval = 3000;
+            this.CorruptButtonColorChanger.Tick += new System.EventHandler(this.CorruptButtonColorChanger_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1644,6 +1651,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LunarROMCorruptor - v0.1 - UNSTABLE BUILD";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.TabPage2.ResumeLayout(false);
             this.TabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).EndInit();
@@ -1739,8 +1748,7 @@
         private System.Windows.Forms.TrackBar IntensityTrackbar;
         internal System.Windows.Forms.TabPage TabPage3;
         internal System.Windows.Forms.ListBox StashItemList;
-        internal System.Windows.Forms.ListBox StashList;
-        internal System.Windows.Forms.Button StashEditor;
+        internal System.Windows.Forms.Button StashEditorbtn;
         internal System.Windows.Forms.Button DeleteStash;
         internal System.Windows.Forms.Button Corruptusingstash;
         internal System.Windows.Forms.Button RefreshStash;
@@ -1793,6 +1801,8 @@
         internal System.Windows.Forms.GroupBox GroupBox2;
         private System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.NumericUpDown NumericUpDown2;
+        public System.Windows.Forms.ListBox StashList;
+        private System.Windows.Forms.Timer CorruptButtonColorChanger;
     }
 }
 

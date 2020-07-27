@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 //MIT License
@@ -37,7 +38,7 @@ namespace LunarROMCorruptor
 
         private int StartByte;
         private int EndByte;
-        private readonly Random rnd;
+        Random rnd = new Random();
         private Programlog LoggingForm = new Programlog();
 
         private CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -126,6 +127,7 @@ namespace LunarROMCorruptor
                     MaxByte = ROM.Length - 1;
                     StartByteTrackBar.Maximum = MaxByte;
                     EndByteTrackbar.Maximum = MaxByte;
+                    EndByteTrackbar.Value = MaxByte;
                     EndByteNumb.Maximum = MaxByte;
                     EndByteNumb.Value = MaxByte;
                     StartByteNumb.Maximum = MaxByte;
@@ -215,7 +217,6 @@ namespace LunarROMCorruptor
 
         private void CorruptionEngineComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            objForm2.LunarEnginePanel.Visible = false;
             objForm2.MergeEnginePanel.Visible = false;
             objForm2.LogicEnginePanel.Visible = false;
             objForm2.HellEnginePanel.Visible = false;
@@ -227,10 +228,6 @@ namespace LunarROMCorruptor
             {
                 case "Nightmare Engine":
                     objForm2.NightmareEnginePanel.Visible = true;
-                    break;
-
-                case "Lunar Engine":
-                    objForm2.LunarEnginePanel.Visible = true;
                     break;
 
                 case "Merge Engine":
@@ -290,13 +287,153 @@ namespace LunarROMCorruptor
 
         private void StashEditorButton_Click(object sender, EventArgs e)
         {
-            StashEditor oForm = new StashEditor();
-            oForm.Show();
+            StashEditor frm1 = new StashEditor();
+            frm1.ShowDialog();
         }
 
         public void ReportException(Exception ex)
         {
             LoggingForm.RichTextBox1.AppendText("\n" + DateTime.Now.ToString() + " - [Exception]: " + ex.ToString());
+        }
+
+        private void CorruptButton_Click(object sender, EventArgs e)
+        {
+            StashItemList.Items.Clear();
+            ROM = backupROM;
+            //Here is where the multiple files check should occurr
+            if (string.IsNullOrEmpty(FileSelectiontxt.Text))
+            {
+                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (StartByteNumb.Value > EndByteNumb.Value)
+            {
+                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (EndByteNumb.Value < StartByteNumb.Value) //This check may not be necessary
+            {
+                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            try
+            {
+                File.WriteAllBytes(SaveasTxt.Text, backupROM);
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("You haven't got a file open! Error code: 3x013");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+            //Hell engine goes here.#
+
+            byte[] FinROM = StartCorruption(ROM);
+            if (FinROM == null)
+            {
+                MessageBox.Show("FinROM returned NULL!");
+                return;
+            }
+
+            File.WriteAllBytes(SaveasTxt.Text, FinROM);
+
+            CorruptButton.BackColor = Color.Green;
+            using (var soundPlayer = new SoundPlayer(Properties.Resources.success))
+            {
+                soundPlayer.Play();
+            }
+            CorruptButtonColorChanger.Start();
+        }
+
+        private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
+        {
+            CorruptButton.BackColor = Color.FromArgb(255, 32, 32, 32);
+            CorruptButtonColorChanger.Stop();
+        }
+
+        public byte[] StartCorruption(byte[] ROM)
+        {
+            if (StartByteNumb.Value > MaxByte)
+            {
+                StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
+            }
+            try
+            {
+                StartByte = (int)StartByteNumb.Value;
+            }
+            catch
+            {
+                MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor v3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            try
+            {
+                EndByte = (int)EndByteNumb.Value;
+            }
+            catch
+            {
+                MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor v3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            switch (CorruptionEngineComboBox.Text)
+            {
+                case "Nightmare Engine":
+                    if (CorruptnthbyteCheckbox.Checked)
+                    {
+                        //CorruptNTH selected
+                    }
+                    else
+                    {
+                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
+                        {
+                            if (objForm2.ComboBox1.Text == "RANDOM")
+                            {
+                                long i = rnd.Next(StartByte, EndByte);
+                                ROM[i] = (byte)rnd.Next(0, 256);
+                                StashItemList.Items.Add("L: FILE("+ i + ").set("+ ROM[i]+")");
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                    MessageBox.Show("Default case was hit in the StartCorruption function!");
+                    break;
+            }
+            return ROM;
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path1 in files)
+            {
+                MainOpenFileDialog.FileName = path1;
+                ROM = File.ReadAllBytes(path1);
+                MaxByte = ROM.Length - 1;
+                StartByteNumb.Maximum = MaxByte;
+                StartByteTrackBar.Maximum = MaxByte;
+                EndByteTrackbar.Maximum = MaxByte;
+                EndByteTrackbar.Value = MaxByte;
+                EndByteNumb.Maximum = MaxByte;
+                EndByteNumb.Value = MaxByte;
+                FileSelectiontxt.Text = path1;
+                SaveasTxt.Text = path1;
+                var exc = Path.GetExtension(path1);
+                SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(path1), "CorruptedFile" + exc);
+                backupROM = ROM;
+                MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+            }
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
         }
     }
 }

@@ -137,14 +137,7 @@
             this.stashitemcmbx.Items.AddRange(new object[] {
             "set",
             "add",
-            "sub",
-            "shift",
-            "repeat",
-            "changecolornes",
-            "pasteandbyte",
-            "times",
-            "divide",
-            "double"});
+            "sub"});
             this.stashitemcmbx.Location = new System.Drawing.Point(12, 145);
             this.stashitemcmbx.Name = "stashitemcmbx";
             this.stashitemcmbx.Size = new System.Drawing.Size(136, 21);
@@ -202,6 +195,7 @@
             // restorebtn
             // 
             this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.restorebtn.Enabled = false;
             this.restorebtn.FlatAppearance.BorderSize = 0;
             this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
@@ -227,6 +221,7 @@
             this.newfilestashbtn.TabIndex = 2;
             this.newfilestashbtn.Text = "Add new file to Stash";
             this.newfilestashbtn.UseVisualStyleBackColor = false;
+            this.newfilestashbtn.Click += new System.EventHandler(this.newfilestashbtn_Click);
             // 
             // removeitembtn
             // 
@@ -241,6 +236,7 @@
             this.removeitembtn.TabIndex = 2;
             this.removeitembtn.Text = "Remove";
             this.removeitembtn.UseVisualStyleBackColor = false;
+            this.removeitembtn.Click += new System.EventHandler(this.removeitembtn_Click);
             // 
             // additemsbtn
             // 
@@ -255,6 +251,7 @@
             this.additemsbtn.TabIndex = 2;
             this.additemsbtn.Text = "Add";
             this.additemsbtn.UseVisualStyleBackColor = false;
+            this.additemsbtn.Click += new System.EventHandler(this.additemsbtn_Click);
             // 
             // addbtn
             // 
@@ -268,6 +265,7 @@
             this.addbtn.TabIndex = 2;
             this.addbtn.Text = "Add";
             this.addbtn.UseVisualStyleBackColor = false;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
             // Openfilebtn
             // 
@@ -295,6 +293,7 @@
             this.remove50btn.TabIndex = 2;
             this.remove50btn.Text = "Remove 50%";
             this.remove50btn.UseVisualStyleBackColor = false;
+            this.remove50btn.Click += new System.EventHandler(this.remove50btn_Click);
             // 
             // removeselbtn
             // 
@@ -308,6 +307,7 @@
             this.removeselbtn.TabIndex = 2;
             this.removeselbtn.Text = "Remove Selected";
             this.removeselbtn.UseVisualStyleBackColor = false;
+            this.removeselbtn.Click += new System.EventHandler(this.removeselbtn_Click);
             // 
             // Panel1
             // 
