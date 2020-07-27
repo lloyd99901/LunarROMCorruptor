@@ -49,9 +49,7 @@
             this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
             this.TabPage1 = new System.Windows.Forms.TabPage();
             this.UseHexchbox = new System.Windows.Forms.CheckBox();
-            this.ConsoleButton = new System.Windows.Forms.Button();
             this.ByteEditButton = new System.Windows.Forms.Button();
-            this.StashEditorButton = new System.Windows.Forms.Button();
             this.CorruptionEngineComboBox = new System.Windows.Forms.ComboBox();
             this.CorruptionEnginelbl = new System.Windows.Forms.Label();
             this.EndByteNumb = new System.Windows.Forms.NumericUpDown();
@@ -435,21 +433,6 @@
             this.UseHexchbox.UseVisualStyleBackColor = true;
             this.UseHexchbox.CheckedChanged += new System.EventHandler(this.UseHexchbox_CheckedChanged);
             // 
-            // ConsoleButton
-            // 
-            this.ConsoleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(75)))));
-            this.ConsoleButton.FlatAppearance.BorderSize = 0;
-            this.ConsoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConsoleButton.ForeColor = System.Drawing.Color.Aqua;
-            this.ConsoleButton.Location = new System.Drawing.Point(118, 232);
-            this.ConsoleButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.ConsoleButton.Name = "ConsoleButton";
-            this.ConsoleButton.Size = new System.Drawing.Size(139, 23);
-            this.ConsoleButton.TabIndex = 163;
-            this.ConsoleButton.Text = "Console and Debugger";
-            this.ConsoleButton.UseVisualStyleBackColor = false;
-            this.ConsoleButton.Click += new System.EventHandler(this.ConsoleButton_Click);
-            // 
             // ByteEditButton
             // 
             this.ByteEditButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(75)))));
@@ -457,28 +440,14 @@
             this.ByteEditButton.FlatAppearance.BorderSize = 0;
             this.ByteEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ByteEditButton.ForeColor = System.Drawing.Color.Aqua;
-            this.ByteEditButton.Location = new System.Drawing.Point(336, 232);
+            this.ByteEditButton.Location = new System.Drawing.Point(336, 228);
             this.ByteEditButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ByteEditButton.Name = "ByteEditButton";
             this.ByteEditButton.Size = new System.Drawing.Size(77, 23);
             this.ByteEditButton.TabIndex = 164;
             this.ByteEditButton.Text = "Byte Edit";
             this.ByteEditButton.UseVisualStyleBackColor = false;
-            // 
-            // StashEditorButton
-            // 
-            this.StashEditorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(75)))));
-            this.StashEditorButton.FlatAppearance.BorderSize = 0;
-            this.StashEditorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StashEditorButton.ForeColor = System.Drawing.Color.Aqua;
-            this.StashEditorButton.Location = new System.Drawing.Point(258, 232);
-            this.StashEditorButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StashEditorButton.Name = "StashEditorButton";
-            this.StashEditorButton.Size = new System.Drawing.Size(77, 23);
-            this.StashEditorButton.TabIndex = 0;
-            this.StashEditorButton.Text = "Stash Editor";
-            this.StashEditorButton.UseVisualStyleBackColor = false;
-            this.StashEditorButton.Click += new System.EventHandler(this.StashEditorButton_Click);
+            this.ByteEditButton.Visible = false;
             // 
             // CorruptionEngineComboBox
             // 
@@ -578,9 +547,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(55)))));
             this.Panel4.Controls.Add(this.UseHexchbox);
-            this.Panel4.Controls.Add(this.ConsoleButton);
             this.Panel4.Controls.Add(this.ByteEditButton);
-            this.Panel4.Controls.Add(this.StashEditorButton);
             this.Panel4.Controls.Add(this.CorruptionEngineComboBox);
             this.Panel4.Controls.Add(this.CorruptionEnginelbl);
             this.Panel4.Controls.Add(this.EndByteNumb);
@@ -880,6 +847,7 @@
             this.StashEditorbtn.TabIndex = 0;
             this.StashEditorbtn.Text = "Stash Editor";
             this.StashEditorbtn.UseVisualStyleBackColor = false;
+            this.StashEditorbtn.Click += new System.EventHandler(this.StashEditorbtn_Click);
             // 
             // DeleteStash
             // 
@@ -895,6 +863,7 @@
             this.DeleteStash.TabIndex = 0;
             this.DeleteStash.Text = "Delete";
             this.DeleteStash.UseVisualStyleBackColor = false;
+            this.DeleteStash.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
             // Corruptusingstash
             // 
@@ -926,6 +895,7 @@
             this.RefreshStash.TabIndex = 0;
             this.RefreshStash.Text = "Refresh";
             this.RefreshStash.UseVisualStyleBackColor = false;
+            this.RefreshStash.Click += new System.EventHandler(this.RefreshStash_Click);
             // 
             // RenameStash
             // 
@@ -941,6 +911,7 @@
             this.RenameStash.TabIndex = 0;
             this.RenameStash.Text = "Rename";
             this.RenameStash.UseVisualStyleBackColor = false;
+            this.RenameStash.Click += new System.EventHandler(this.RenameStash_Click);
             // 
             // TransferStash
             // 
@@ -959,6 +930,7 @@
             this.TransferStash.Tag = "";
             this.TransferStash.Text = "4";
             this.TransferStash.UseVisualStyleBackColor = false;
+            this.TransferStash.Click += new System.EventHandler(this.TransferStash_Click);
             // 
             // TabControl2
             // 
@@ -1487,6 +1459,7 @@
             this.Restorefilebtn.TabIndex = 163;
             this.Restorefilebtn.Text = "Restore File";
             this.Restorefilebtn.UseVisualStyleBackColor = false;
+            this.Restorefilebtn.Click += new System.EventHandler(this.Restorefilebtn_Click);
             // 
             // SaveAslbl
             // 
@@ -1723,9 +1696,7 @@
         internal System.Windows.Forms.Button BrowseEmulatorbutton;
         internal System.Windows.Forms.TabPage TabPage1;
         internal System.Windows.Forms.CheckBox UseHexchbox;
-        internal System.Windows.Forms.Button ConsoleButton;
         internal System.Windows.Forms.Button ByteEditButton;
-        internal System.Windows.Forms.Button StashEditorButton;
         internal System.Windows.Forms.ComboBox CorruptionEngineComboBox;
         private System.Windows.Forms.Label CorruptionEnginelbl;
         internal System.Windows.Forms.NumericUpDown EndByteNumb;

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Media;
+using System.Text;
 using System.Windows.Forms;
+
+//LunarROMCorruptor 2020 - LunarHunter
 
 //MIT License
 
@@ -38,13 +42,14 @@ namespace LunarROMCorruptor
 
         private int StartByte;
         private int EndByte;
-        Random rnd = new Random();
-        private Programlog LoggingForm = new Programlog();
+        private readonly Random rnd = new Random();
 
-        private CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
+        private readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
         {
             TopLevel = false
         };
+
+        private readonly StashEditor frm1 = new StashEditor();
 
         public Form1()
         {
@@ -72,7 +77,7 @@ namespace LunarROMCorruptor
             try
             {
                 EmulatorLocationtxt.Text = File.ReadAllText(Application.StartupPath + "\\executablepath.ini");
-                if (string.IsNullOrEmpty(EmulatorLocationtxt.Text))
+                if (!string.IsNullOrEmpty(EmulatorLocationtxt.Text))
                 {
                     Runemulatorchbox.Checked = true;
                     EmulatorLocationtxt.BackColor = Color.White;
@@ -81,7 +86,7 @@ namespace LunarROMCorruptor
             }
             catch (Exception ex)
             {
-                ReportException(ex);
+                Console.WriteLine(ex);
             }
             finally
             {
@@ -210,11 +215,6 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void ConsoleButton_Click(object sender, EventArgs e)
-        {
-            LoggingForm.Show();
-        }
-
         private void CorruptionEngineComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             objForm2.MergeEnginePanel.Visible = false;
@@ -285,17 +285,6 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void StashEditorButton_Click(object sender, EventArgs e)
-        {
-            StashEditor frm1 = new StashEditor();
-            frm1.ShowDialog();
-        }
-
-        public void ReportException(Exception ex)
-        {
-            LoggingForm.RichTextBox1.AppendText("\n" + DateTime.Now.ToString() + " - [Exception]: " + ex.ToString());
-        }
-
         private void CorruptButton_Click(object sender, EventArgs e)
         {
             StashItemList.Items.Clear();
@@ -345,12 +334,39 @@ namespace LunarROMCorruptor
                 soundPlayer.Play();
             }
             CorruptButtonColorChanger.Start();
+
+            StartEmulator();
         }
 
         private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
         {
             CorruptButton.BackColor = Color.FromArgb(255, 32, 32, 32);
             CorruptButtonColorChanger.Stop();
+        }
+
+        private void StartEmulator()
+        {
+            try
+            {
+                if (ReopenChbox.Checked == true)
+                {
+                    var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(EmulatorLocationtxt.Text));
+                    if (processes.Length > 0)
+                        processes[0].CloseMainWindow();
+                }
+                System.Threading.Thread.Sleep(300);
+                Process p = new Process();
+                p.StartInfo.FileName = EmulatorLocationtxt.Text;
+                if (OverrideArgumentschbox.Checked == false)
+                    p.StartInfo.Arguments = "\"" + SaveasTxt.Text + "\"";
+                else
+                    p.StartInfo.Arguments = OverrideArguments.Text;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error when starting process/emulator: " + ex.ToString());
+            }
         }
 
         public byte[] StartCorruption(byte[] ROM)
@@ -379,10 +395,107 @@ namespace LunarROMCorruptor
             }
             switch (CorruptionEngineComboBox.Text)
             {
-                case "Nightmare Engine":
+                case "Nightmare Engine": //This is the Nightmare Engine
                     if (CorruptnthbyteCheckbox.Checked)
                     {
                         //CorruptNTH selected
+                        int i1 = StartByte;
+                        while (i1 <= EndByte)
+                        {
+                            if (objForm2.ComboBox1.Text == "RANDOM")
+                            {
+                                ROM[i1] = (byte)rnd.Next(0, 256);
+                                StashItemList.Items.Add("L: FILE(" + i1 + ").set(" + ROM[i1] + ")");
+                            }
+                            if (objForm2.ComboBox1.Text == "RANDOMTILT")
+                            {
+                                switch (rnd.Next(0, 3))
+                                {
+                                    case 0:
+                                        ROM[i1] = (byte)((byte)rnd.Next(0, 256) % (Byte.MaxValue + 1));
+                                        StashItemList.Items.Add("L: FILE(" + i1 + ").set(" + ROM[i1] + ")");
+                                        break;
+
+                                    case 1:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i1] + rand) % (byte.MaxValue + 1);
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            int NewValue = (int)((ROM[i1] + objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    case 2:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i1] - rand) % (byte.MaxValue + 1);
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            int NewValue = (int)((ROM[i1] - objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    default:
+                                        MessageBox.Show("Default case hit on Nightmare Engine!");
+                                        break;
+                                }
+                            }
+                            if (objForm2.ComboBox1.Text == "TILT")
+                            {
+                                switch (rnd.Next(0, 2))
+                                {
+                                    case 0:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i1] + rand) % (byte.MaxValue + 1);
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            int NewValue = (int)((ROM[i1] + objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    case 1:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i1] - rand) % (byte.MaxValue + 1);
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            int NewValue = (int)((ROM[i1] - objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i1] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i1 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    default:
+                                        MessageBox.Show("Default case hit on Nightmare Engine!");
+                                        break;
+                                }
+                            }
+                            i1 += (int)EveryNthByte.Value;
+                        }
                     }
                     else
                     {
@@ -392,7 +505,103 @@ namespace LunarROMCorruptor
                             {
                                 long i = rnd.Next(StartByte, EndByte);
                                 ROM[i] = (byte)rnd.Next(0, 256);
-                                StashItemList.Items.Add("L: FILE("+ i + ").set("+ ROM[i]+")");
+                                StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                            }
+                            if (objForm2.ComboBox1.Text == "RANDOMTILT")
+                            {
+                                switch (rnd.Next(0, 3))
+                                {
+                                    case 0:
+                                        long i = rnd.Next(StartByte, EndByte);
+                                        ROM[i] = (byte)((byte)rnd.Next(0, 256) % (Byte.MaxValue + 1));
+                                        StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                        break;
+
+                                    case 1:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            long i2 = rnd.Next(StartByte, EndByte);
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i2] + rand) % (byte.MaxValue + 1);
+                                            ROM[i2] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i2 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            long i3 = rnd.Next(StartByte, EndByte);
+                                            int NewValue = (int)((ROM[i3] + objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i3] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i3 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    case 2:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            long i2 = rnd.Next(StartByte, EndByte);
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i2] - rand) % (byte.MaxValue + 1);
+                                            ROM[i2] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i2 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            long i3 = rnd.Next(StartByte, EndByte);
+                                            int NewValue = (int)((ROM[i3] - objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i3] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i3 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    default:
+                                        MessageBox.Show("Default case hit on Nightmare Engine!");
+                                        break;
+                                }
+                            }
+                            if (objForm2.ComboBox1.Text == "TILT")
+                            {
+                                switch (rnd.Next(0, 2))
+                                {
+                                    case 0:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            long i2 = rnd.Next(StartByte, EndByte);
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i2] + rand) % (byte.MaxValue + 1);
+                                            ROM[i2] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i2 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            long i3 = rnd.Next(StartByte, EndByte);
+                                            int NewValue = (int)((ROM[i3] + objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i3] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i3 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    case 1:
+                                        if (objForm2.USERANDOMNIGHTMARE.Checked == true)
+                                        {
+                                            long i2 = rnd.Next(StartByte, EndByte);
+                                            var rand = rnd.Next(0, (int)objForm2.IncreDecrenumbnightmare.Value);
+                                            int NewValue = (ROM[i2] - rand) % (byte.MaxValue + 1);
+                                            ROM[i2] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i2 + ").add(" + rand + ")");
+                                        }
+                                        else
+                                        {
+                                            long i3 = rnd.Next(StartByte, EndByte);
+                                            int NewValue = (int)((ROM[i3] - objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
+                                            ROM[i3] = (byte)Math.Abs(NewValue);
+                                            StashItemList.Items.Add("L: FILE(" + i3 + ").add(" + objForm2.IncreDecrenumbnightmare.Value + ")");
+                                        }
+                                        break;
+
+                                    default:
+                                        MessageBox.Show("Default case hit on Nightmare Engine!");
+                                        break;
+                                }
                             }
                         }
                     }
@@ -433,6 +642,101 @@ namespace LunarROMCorruptor
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void Restorefilebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                File.WriteAllBytes(SaveasTxt.Text, backupROM);
+                CorruptButton.BackColor = Color.Green;
+                using (var soundPlayer = new SoundPlayer(Properties.Resources.success))
+                {
+                    soundPlayer.Play();
+                }
+                CorruptButtonColorChanger.Start();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("You don't have a file open!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void TransferStash_Click(object sender, EventArgs e)
+        {
+            StringBuilder builder = new StringBuilder();
+            StashList.Items.Clear();
+
+            foreach (var listitem in StashItemList.Items)
+            {
+                builder.Append(listitem);
+                builder.AppendLine();
+            }
+            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + rnd.Next(1000, 999999999) + ".lunarstash", builder.ToString());
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+            FileInfo[] diar1 = di.GetFiles();
+
+            // list the names of all files in the specified directory
+            foreach (var dra in diar1)
+                StashList.Items.Add(dra);
+        }
+
+        private void StashEditorbtn_Click(object sender, EventArgs e)
+        {
+            frm1.Show();
+            try { frm1.AttemptStashLoad(Application.StartupPath + "\\CorruptionStashList\\" + StashList.SelectedItems[0].ToString()); }
+            catch { }
+        }
+
+        private void RenameStash_Click(object sender, EventArgs e)
+        {
+            InputBox input = new InputBox();
+            input.Text = "Rename to?";
+            input.ShowDialog();
+            if (string.IsNullOrEmpty(input.textBox1.Text)) { return; }
+            var exc = Path.GetExtension(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
+            File.Move(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem), Application.StartupPath + "\\CorruptionStashList\\" + input.textBox1.Text + exc);
+            StashList.Items.Clear();
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+            FileInfo[] diar1 = di.GetFiles();
+
+            // list the names of all files in the specified directory
+            foreach (var dra in diar1)
+                StashList.Items.Add(dra);
+            input.Dispose();
+        }
+
+        private void RefreshStash_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+            FileInfo[] diar1 = di.GetFiles();
+
+            di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+            diar1 = di.GetFiles();
+            foreach (var dra in diar1)
+            {
+                StashList.Items.Add(dra);
+            }
+        }
+
+        private void DeleteStash_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                StashList.Items.Clear();
+                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+                FileInfo[] diar1 = di.GetFiles();
+
+                // list the names of all files in the specified directory
+                foreach (var dra in diar1)
+                    StashList.Items.Add(dra);
             }
         }
     }

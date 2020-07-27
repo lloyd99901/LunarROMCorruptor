@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 
@@ -7,23 +6,19 @@ namespace LunarROMCorruptor
 {
     public partial class StashEditor : Form
     {
-
         public StashEditor()
         {
             InitializeComponent();
         }
 
-        private void Openfilebtn_Click(object sender, EventArgs e)
+        public void AttemptStashLoad(string fileloc)
         {
             try
             {
-                if (OpenFileDialog1.ShowDialog() != DialogResult.Cancel)
+                stashListbox.Items.Clear();
+                foreach (var line in File.ReadLines(fileloc))
                 {
-                    stashListbox.Items.Clear();
-                    foreach (var line in File.ReadLines(OpenFileDialog1.FileName))
-                    {
-                        stashListbox.Items.Add(line);
-                    }
+                    stashListbox.Items.Add(line);
                 }
             }
             catch (Exception ex)
@@ -32,26 +27,16 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void StashEditor_Load(object sender, EventArgs e)
+        private void Openfilebtn_Click(object sender, EventArgs e)
         {
-            //Until I figure out how to access other parts of forms that are already open (like VB.net), this code DOESN'T work. - L
-            //stashListbox.Items.Clear();
-            //try
-            //{
-            //    foreach (var line in File.ReadLines(Application.StartupPath + "\\CorruptionStashList\\" + f1.StashList.GetItemText(f1.StashList.SelectedItem))){
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            
+            if (OpenFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                AttemptStashLoad(OpenFileDialog1.FileName);
+            }
         }
 
         private void removeselbtn_Click(object sender, EventArgs e)
         {
-            
             foreach (var item in stashListbox.SelectedItems)
             {
                 RemovedItemslstbx.Items.Add(item);
@@ -60,7 +45,6 @@ namespace LunarROMCorruptor
             {
                 stashListbox.Items.Remove(stashListbox.SelectedItems[0]);
             }
-
         }
 
         private void remove50btn_Click(object sender, EventArgs e)
@@ -78,7 +62,6 @@ namespace LunarROMCorruptor
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -104,7 +87,12 @@ namespace LunarROMCorruptor
 
         private void newfilestashbtn_Click(object sender, EventArgs e)
         {
-            
+        }
+
+        private void StashEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }

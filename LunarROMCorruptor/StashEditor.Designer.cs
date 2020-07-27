@@ -205,7 +205,6 @@
             this.restorebtn.TabIndex = 2;
             this.restorebtn.Text = "Restore";
             this.restorebtn.UseVisualStyleBackColor = false;
-            this.restorebtn.Click += new System.EventHandler(this.StashEditor_Load);
             // 
             // newfilestashbtn
             // 
@@ -350,8 +349,9 @@
             this.MinimumSize = new System.Drawing.Size(368, 509);
             this.Name = "StashEditor";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StashEditor";
-            this.Load += new System.EventHandler(this.StashEditor_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StashEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.valueStashnum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocationStash)).EndInit();
             this.Panel1.ResumeLayout(false);
