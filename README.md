@@ -11,10 +11,12 @@ Corrupt any file using multiple different ‘Engines’
 ---
 
 ## About
-This project started around 2019 and was orignally made in VB.NET. I was fasinated by other corruptors and wanted to make my own. The project was finished at the same year, but since the code was very messy, I decided not to release it. A year later, I decided to remake it in C#, mainly because I want to teach myself more C#, but also to do some code refactoring to make it more optimized.
+This project started around 2019 and was originally made in VB.NET. I was fascinated by other corruptors and wanted to make my own. The project was finished at the same year, but since the code was very messy, I decided not to release it. A year later, I decided to remake it in C#, mainly because I want to teach myself more C#, but also to do some code refactoring to make it more optimized.
 
-LunarROMCorruptor uses engines to corrupt files, each engine has it's own usage and it's own settings that can be changed.
+LunarROMCorruptor uses engines to corrupt files, each engine has its own usage and its own settings that can be changed.
 I've included the Nightmare Engine, which is an engine from the Windows Glitch Harvester, into the project so that people that are most familiar with that engine can use it.
+
+![Example](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/fceux_2019-05-08_20-40-56.png)
 
 ### Engines
 Along with the Nightmare Engine, I've included:
@@ -28,7 +30,7 @@ Along with the Nightmare Engine, I've included:
 Pull requests are welcome. Major and minor.
 
 ## Notes
-Active development is in the unstable branch of this repo. The master branch is for stabe updates.
+Active development is in the unstable branch of this repo. The master branch is for stable updates.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
