@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LunarROMCorruptor
@@ -87,6 +88,16 @@ namespace LunarROMCorruptor
 
         private void newfilestashbtn_Click(object sender, EventArgs e)
         {
+            Program.Form.StashList.Items.Clear();
+            StringBuilder builder = new StringBuilder();
+            foreach (var listitem in stashListbox.Items)
+            {
+                builder.Append(listitem);
+                builder.AppendLine();
+            }
+            var fileCount = Directory.GetFiles(Application.StartupPath + @"\CorruptionStashList\", "*.*", SearchOption.TopDirectoryOnly).Length;
+            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + fileCount + 1 + ".lunarstash", builder.ToString());
+            Program.Form.RefreshCorruptionStashList();
         }
 
         private void StashEditor_FormClosing(object sender, FormClosingEventArgs e)

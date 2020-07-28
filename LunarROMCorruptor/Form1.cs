@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Media;
+using System.Net.Configuration;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 //LunarROMCorruptor 2020 - LunarHunter
@@ -67,7 +69,7 @@ namespace LunarROMCorruptor
         {
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\"))
             {
-                MessageBox.Show("Welcome to LunarROMCorruptorV3! Make sure you read the agreement before using this corruptor. Other than that enjoy corrupting whatever you like!");
+                MessageBox.Show("Welcome to LunarROMCorruptor! Make sure you read the agreement before using this corruptor. Other than that enjoy corrupting whatever you like!");
             }
             Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
             Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
@@ -143,10 +145,18 @@ namespace LunarROMCorruptor
 
         public void SaveCorruptedFile()
         {
-            int fileCount = Directory.GetFiles(Application.StartupPath + "\\Saves\\", " *.* ", SearchOption.TopDirectoryOnly).Length;
-            string exc = Path.GetExtension(SaveasTxt.Text);
-            File.Copy(SaveasTxt.Text, Application.StartupPath + "\\Saves\\" + Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
-            FilesaveList.Items.Add(Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
+            try
+            {
+                int fileCount = Directory.GetFiles(Application.StartupPath + "\\Saves\\", " *.* ", SearchOption.TopDirectoryOnly).Length;
+                string exc = Path.GetExtension(SaveasTxt.Text);
+                File.Copy(SaveasTxt.Text, Application.StartupPath + "\\Saves\\" + Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
+                FilesaveList.Items.Add(Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("SaveCorruptedFile Argument Exception: Is there a file loaded?");
+            }
+
         }
 
         public void LoadFile()
@@ -262,6 +272,7 @@ namespace LunarROMCorruptor
             objForm2.LerpEnginePanel.Visible = false;
             objForm2.Vector2EnginePanel.Visible = false;
             ManualEnginePanel.Hide();
+            objForm2.Show();
             switch (CorruptionEngineComboBox.Text)
             {
                 case "Nightmare Engine":
@@ -426,7 +437,7 @@ namespace LunarROMCorruptor
             }
             catch
             {
-                MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor v3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             try
@@ -435,7 +446,7 @@ namespace LunarROMCorruptor
             }
             catch
             {
-                MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor v3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             switch (CorruptionEngineComboBox.Text)
@@ -450,6 +461,7 @@ namespace LunarROMCorruptor
                             if (objForm2.ComboBox1.Text == "RANDOM")
                             {
                                 ROM[i1] = (byte)rnd.Next(0, 256);
+                                //ROM = Core.CorruptByte(ROM, i1, Enums.CorruptType.SET);
                                 StashItemList.Items.Add("L: FILE(" + i1 + ").set(" + ROM[i1] + ")");
                             }
                             if (objForm2.ComboBox1.Text == "RANDOMTILT")
@@ -852,7 +864,7 @@ namespace LunarROMCorruptor
                 }
                 CorruptButtonColorChanger.Start();
             }
-            catch (ArgumentNullException)
+            catch (ArgumentException)
             {
                 MessageBox.Show("You don't have a file open!");
             }
@@ -913,24 +925,37 @@ namespace LunarROMCorruptor
 
         private void DeleteStash_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                File.Delete(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
-                StashList.Items.Clear();
-                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
-                FileInfo[] diar1 = di.GetFiles();
+                if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                             MessageBoxButtons.YesNo,
+                             MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    File.Delete(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
+                    StashList.Items.Clear();
+                    DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+                    FileInfo[] diar1 = di.GetFiles();
 
-                // list the names of all files in the specified directory
-                foreach (var dra in diar1)
-                    StashList.Items.Add(dra);
+                    // list the names of all files in the specified directory
+                    foreach (var dra in diar1)
+                        StashList.Items.Add(dra);
+                }
             }
+            catch(UnauthorizedAccessException)
+            {
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void FilesaveCopysavetobtn_Click(object sender, EventArgs e)
         {
-            File.Copy(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), SaveasTxt.Text, true);
+            try{File.Copy(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), SaveasTxt.Text, true);}
+            catch (ArgumentException){ MessageBox.Show("Argument Exception (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);}
         }
 
         private void FilesaveReloadbtn_Click(object sender, EventArgs e)
@@ -963,18 +988,95 @@ namespace LunarROMCorruptor
 
         private void FilesaveDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
-                             MessageBoxButtons.YesNo,
-                             MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                File.Delete(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
-                FilesaveList.Items.Clear();
-                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
-                FileInfo[] diar1 = di.GetFiles();
+                if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    File.Delete(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
+                    FilesaveList.Items.Clear();
+                    DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+                    FileInfo[] diar1 = di.GetFiles();
 
-                // list the names of all files in the specified directory
-                foreach (var dra in diar1)
-                    FilesaveList.Items.Add(dra);
+                    // list the names of all files in the specified directory
+                    foreach (var dra in diar1)
+                        FilesaveList.Items.Add(dra);
+                }
+            }
+            catch(UnauthorizedAccessException)
+            {
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void Corruptusingstash_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                foreach (var line in File.ReadAllLines(Application.StartupPath + "\\CorruptionStashList\\" + StashList.GetItemText(StashList.SelectedItem)))
+                {
+                    Object[] splitStrings;
+                    Object[] Instructions;
+                    try
+                    {
+                        splitStrings = line.Split(new string[] { "(", ")" }, StringSplitOptions.None);
+                        Instructions = line.Split(new string[] { ".", "(" }, StringSplitOptions.None);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error while splitting important variables: " + ex.Message);
+                        return;
+                    }
+                    Object i;
+                    Object result;
+                    Object corruptiontype;
+                    try
+                    {
+                        i = splitStrings[1];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Invaild Corruption Location: " + ex.ToString());
+                        return;
+                    }
+
+                    try
+                    {
+                        result = splitStrings[3];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Invaild Result Location: " + ex.ToString());
+                        return;
+                    }
+
+                    try
+                    {
+                        corruptiontype = Instructions[2];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Invaild Corruption Instruction: " + ex.ToString());
+                        return;
+                    }
+
+                    if (Char.IsDigit((char)i) == false | Char.IsDigit((char)result) == false)
+                    {
+                        MessageBox.Show("IsNumeric Location/Result Check Failed, File is most likely corrupted or is blank.");
+                        return;
+                    }
+
+                }
             }
         }
     }

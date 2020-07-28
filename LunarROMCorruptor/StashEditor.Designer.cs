@@ -65,7 +65,7 @@
             this.stashListbox.Location = new System.Drawing.Point(160, 0);
             this.stashListbox.Name = "stashListbox";
             this.stashListbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.stashListbox.Size = new System.Drawing.Size(283, 470);
+            this.stashListbox.Size = new System.Drawing.Size(309, 503);
             this.stashListbox.TabIndex = 161;
             // 
             // RemovedItemslstbx
@@ -81,7 +81,7 @@
             this.RemovedItemslstbx.Location = new System.Drawing.Point(12, 270);
             this.RemovedItemslstbx.Name = "RemovedItemslstbx";
             this.RemovedItemslstbx.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.RemovedItemslstbx.Size = new System.Drawing.Size(136, 114);
+            this.RemovedItemslstbx.Size = new System.Drawing.Size(136, 147);
             this.RemovedItemslstbx.TabIndex = 160;
             // 
             // valueStashnum
@@ -215,7 +215,7 @@
             this.newfilestashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newfilestashbtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newfilestashbtn.ForeColor = System.Drawing.Color.Aqua;
-            this.newfilestashbtn.Location = new System.Drawing.Point(12, 434);
+            this.newfilestashbtn.Location = new System.Drawing.Point(12, 467);
             this.newfilestashbtn.Name = "newfilestashbtn";
             this.newfilestashbtn.Size = new System.Drawing.Size(136, 23);
             this.newfilestashbtn.TabIndex = 2;
@@ -230,7 +230,7 @@
             this.removeitembtn.FlatAppearance.BorderSize = 0;
             this.removeitembtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeitembtn.ForeColor = System.Drawing.Color.Aqua;
-            this.removeitembtn.Location = new System.Drawing.Point(87, 390);
+            this.removeitembtn.Location = new System.Drawing.Point(87, 423);
             this.removeitembtn.Name = "removeitembtn";
             this.removeitembtn.Size = new System.Drawing.Size(61, 23);
             this.removeitembtn.TabIndex = 2;
@@ -245,7 +245,7 @@
             this.additemsbtn.FlatAppearance.BorderSize = 0;
             this.additemsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.additemsbtn.ForeColor = System.Drawing.Color.Aqua;
-            this.additemsbtn.Location = new System.Drawing.Point(12, 390);
+            this.additemsbtn.Location = new System.Drawing.Point(12, 423);
             this.additemsbtn.Name = "additemsbtn";
             this.additemsbtn.Size = new System.Drawing.Size(57, 23);
             this.additemsbtn.TabIndex = 2;
@@ -331,7 +331,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(160, 470);
+            this.Panel1.Size = new System.Drawing.Size(160, 503);
             this.Panel1.TabIndex = 160;
             // 
             // SaveFileDialog1
@@ -343,7 +343,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(443, 470);
+            this.ClientSize = new System.Drawing.Size(469, 503);
             this.Controls.Add(this.stashListbox);
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

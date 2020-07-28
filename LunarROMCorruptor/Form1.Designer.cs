@@ -885,6 +885,7 @@
             this.Corruptusingstash.TabIndex = 0;
             this.Corruptusingstash.Text = "Corrupt File using Selected Stash";
             this.Corruptusingstash.UseVisualStyleBackColor = false;
+            this.Corruptusingstash.Click += new System.EventHandler(this.Corruptusingstash_Click);
             // 
             // RefreshStash
             // 
