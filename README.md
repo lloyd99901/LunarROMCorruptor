@@ -46,10 +46,10 @@ Stash saves are different. Instead of saving the whole file, instead, it saves t
 Also using the stash editor, if you find that a certain corruption changes the color of Mario, you can remove bytes one at a time until you find the corrupted byte that causes it, then you can go nuts with that byte. (Similar to how the Stash Saves and Editor works on the Windows Glitch Harvester)
 
 ### Misc
-With more engines and settings to play around with, the more interesting results you can get with the engines.
-Allows drag and drop. No need to search for the file you want to corrupt.
-Can run an emulator after corruption.
-Audible feedback when the corruption is done.
+- With more engines and settings to play around with, the more interesting results you can get with the engines.
+- Allows drag and drop. No need to search for the file you want to corrupt.
+- Can run an emulator after corruption.
+- Audible feedback when the corruption is done.
 
 ## Progress
 - [x] Import GUI from the old project
