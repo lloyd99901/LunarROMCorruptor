@@ -88,7 +88,7 @@
             this.MakeBitEqualCHECK = new System.Windows.Forms.CheckBox();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
             this.DoubleCheck = new System.Windows.Forms.RadioButton();
-            this.DevideRadio = new System.Windows.Forms.RadioButton();
+            this.DivideRadio = new System.Windows.Forms.RadioButton();
             this.MultiRadio = new System.Windows.Forms.RadioButton();
             this.MULTIORDIVIDENUMBER = new System.Windows.Forms.NumericUpDown();
             this.MULTIORDIVIDECHeck = new System.Windows.Forms.CheckBox();
@@ -175,6 +175,7 @@
             this.FilesaveSavebtn.TabIndex = 160;
             this.FilesaveSavebtn.Text = "Save";
             this.FilesaveSavebtn.UseVisualStyleBackColor = false;
+            this.FilesaveSavebtn.Click += new System.EventHandler(this.FilesaveSavebtn_Click);
             // 
             // FilesaveReloadbtn
             // 
@@ -190,6 +191,7 @@
             this.FilesaveReloadbtn.TabIndex = 160;
             this.FilesaveReloadbtn.Text = "Reload list";
             this.FilesaveReloadbtn.UseVisualStyleBackColor = false;
+            this.FilesaveReloadbtn.Click += new System.EventHandler(this.FilesaveReloadbtn_Click);
             // 
             // FilesaveRenameBtn
             // 
@@ -205,6 +207,7 @@
             this.FilesaveRenameBtn.TabIndex = 157;
             this.FilesaveRenameBtn.Text = "Rename";
             this.FilesaveRenameBtn.UseVisualStyleBackColor = false;
+            this.FilesaveRenameBtn.Click += new System.EventHandler(this.FilesaveRenameBtn_Click);
             // 
             // TabPage2
             // 
@@ -238,6 +241,7 @@
             this.FilesaveCopysavetobtn.TabIndex = 158;
             this.FilesaveCopysavetobtn.Text = "Copy Save to Corrupted File";
             this.FilesaveCopysavetobtn.UseVisualStyleBackColor = false;
+            this.FilesaveCopysavetobtn.Click += new System.EventHandler(this.FilesaveCopysavetobtn_Click);
             // 
             // FilesaveDelete
             // 
@@ -253,6 +257,7 @@
             this.FilesaveDelete.TabIndex = 156;
             this.FilesaveDelete.Text = "Delete";
             this.FilesaveDelete.UseVisualStyleBackColor = false;
+            this.FilesaveDelete.Click += new System.EventHandler(this.FilesaveDelete_Click);
             // 
             // FilesaveList
             // 
@@ -1046,7 +1051,7 @@
             // GroupBox7
             // 
             this.GroupBox7.Controls.Add(this.DoubleCheck);
-            this.GroupBox7.Controls.Add(this.DevideRadio);
+            this.GroupBox7.Controls.Add(this.DivideRadio);
             this.GroupBox7.Controls.Add(this.MultiRadio);
             this.GroupBox7.Controls.Add(this.MULTIORDIVIDENUMBER);
             this.GroupBox7.Controls.Add(this.MULTIORDIVIDECHeck);
@@ -1072,17 +1077,17 @@
             this.DoubleCheck.Text = "^";
             this.DoubleCheck.UseVisualStyleBackColor = true;
             // 
-            // DevideRadio
+            // DivideRadio
             // 
-            this.DevideRadio.AutoSize = true;
-            this.DevideRadio.Location = new System.Drawing.Point(44, 16);
-            this.DevideRadio.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.DevideRadio.Name = "DevideRadio";
-            this.DevideRadio.Size = new System.Drawing.Size(30, 17);
-            this.DevideRadio.TabIndex = 76;
-            this.DevideRadio.TabStop = true;
-            this.DevideRadio.Text = "/";
-            this.DevideRadio.UseVisualStyleBackColor = true;
+            this.DivideRadio.AutoSize = true;
+            this.DivideRadio.Location = new System.Drawing.Point(44, 16);
+            this.DivideRadio.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.DivideRadio.Name = "DivideRadio";
+            this.DivideRadio.Size = new System.Drawing.Size(30, 17);
+            this.DivideRadio.TabIndex = 76;
+            this.DivideRadio.TabStop = true;
+            this.DivideRadio.Text = "/";
+            this.DivideRadio.UseVisualStyleBackColor = true;
             // 
             // MultiRadio
             // 
@@ -1749,7 +1754,7 @@
         internal System.Windows.Forms.CheckBox MakeBitEqualCHECK;
         internal System.Windows.Forms.GroupBox GroupBox7;
         internal System.Windows.Forms.RadioButton DoubleCheck;
-        internal System.Windows.Forms.RadioButton DevideRadio;
+        internal System.Windows.Forms.RadioButton DivideRadio;
         internal System.Windows.Forms.RadioButton MultiRadio;
         internal System.Windows.Forms.NumericUpDown MULTIORDIVIDENUMBER;
         internal System.Windows.Forms.CheckBox MULTIORDIVIDECHeck;

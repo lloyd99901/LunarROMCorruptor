@@ -63,9 +63,9 @@ namespace LunarROMCorruptor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream success {
+        internal static System.IO.UnmanagedMemoryStream success2 {
             get {
-                return ResourceManager.GetStream("success", resourceCulture);
+                return ResourceManager.GetStream("success2", resourceCulture);
             }
         }
     }

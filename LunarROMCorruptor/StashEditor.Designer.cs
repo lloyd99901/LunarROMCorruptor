@@ -61,6 +61,7 @@
             this.stashListbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stashListbox.FormattingEnabled = true;
             this.stashListbox.HorizontalScrollbar = true;
+            this.stashListbox.IntegralHeight = false;
             this.stashListbox.Location = new System.Drawing.Point(160, 0);
             this.stashListbox.Name = "stashListbox";
             this.stashListbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;

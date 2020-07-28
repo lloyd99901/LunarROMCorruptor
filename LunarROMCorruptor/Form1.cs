@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -84,31 +85,68 @@ namespace LunarROMCorruptor
                     BrowseEmulatorbutton.Enabled = true;
                 }
             }
+            catch (FileNotFoundException) { Console.WriteLine("executablepath.ini not found. Ignoring."); }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Error Loading executablepath.ini: " + ex.Message);
             }
             finally
             {
-                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
-                FileInfo[] diar1 = di.GetFiles();
+                //DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+                //FileInfo[] diar1 = di.GetFiles();
 
-                // list the names of all files in the specified directory
-                foreach (FileInfo dra in diar1)
-                {
-                    FilesaveList.Items.Add(dra);
-                }
-                di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
-                diar1 = di.GetFiles();
-                foreach (var dra in diar1)
-                {
-                    StashList.Items.Add(dra);
-                }
+                //// list the names of all files in the specified directory
+                //foreach (FileInfo dra in diar1)
+                //{
+                //    FilesaveList.Items.Add(dra);
+                //}
+                //di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+                //diar1 = di.GetFiles();
+                //foreach (var dra in diar1)
+                //{
+                //    StashList.Items.Add(dra);
+                //}
+                RefreshCorruptionStashList();
+                RefreshFileSaves();
+
                 objForm2.TopLevel = false;
                 TabPage4.Controls.Add(objForm2);
                 objForm2.Dock = DockStyle.Fill;
                 objForm2.Show();
             }
+        }
+
+        public void RefreshCorruptionStashList()
+        {
+            StashList.Items.Clear();
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
+            FileInfo[] diar1 = di.GetFiles();
+            diar1 = di.GetFiles();
+            foreach (var dra in diar1)
+            {
+                StashList.Items.Add(dra);
+            }
+        }
+
+        public void RefreshFileSaves()
+        {
+            FilesaveList.Items.Clear();
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+            FileInfo[] diar1 = di.GetFiles();
+
+            // list the names of all files in the specified directory
+            foreach (FileInfo dra in diar1)
+            {
+                FilesaveList.Items.Add(dra);
+            }
+        }
+
+        public void SaveCorruptedFile()
+        {
+            int fileCount = Directory.GetFiles(Application.StartupPath + "\\Saves\\", " *.* ", SearchOption.TopDirectoryOnly).Length;
+            string exc = Path.GetExtension(SaveasTxt.Text);
+            File.Copy(SaveasTxt.Text, Application.StartupPath + "\\Saves\\" + Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
+            FilesaveList.Items.Add(Path.GetFileNameWithoutExtension(SaveasTxt.Text) + fileCount + 1 + exc);
         }
 
         public void LoadFile()
@@ -322,20 +360,27 @@ namespace LunarROMCorruptor
             byte[] FinROM = StartCorruption(ROM);
             if (FinROM == null)
             {
-                MessageBox.Show("FinROM returned NULL!");
+                MessageBox.Show("FinROM returned NULL! Corruption Failed!");
                 return;
             }
 
             File.WriteAllBytes(SaveasTxt.Text, FinROM);
 
+            if (FilesaveEnableAutoSaves.Checked)
+            {
+                SaveCorruptedFile();
+            }
+
             CorruptButton.BackColor = Color.Green;
-            using (var soundPlayer = new SoundPlayer(Properties.Resources.success))
+            using (var soundPlayer = new SoundPlayer(Properties.Resources.success2))
             {
                 soundPlayer.Play();
             }
             CorruptButtonColorChanger.Start();
-
-            StartEmulator();
+            if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
+            {
+                StartEmulator();
+            }
         }
 
         private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
@@ -607,6 +652,156 @@ namespace LunarROMCorruptor
                     }
                     break;
 
+                case "Manual":
+                    if (CorruptnthbyteCheckbox.Checked) //CorruptNTH mode
+                    {
+                        int i = StartByte;
+                        while (i <= EndByte)
+                        {
+                            if (IncrementCHECK.Checked)
+                            {
+                                int NewValue = (int)((ROM[i] + NumericUpDown4.Value) % (byte.MaxValue + 1));
+                                ROM[i] = ((byte)NewValue);
+                                StashItemList.Items.Add("L: FILE(" + i + ").add(" + NumericUpDown4.Value + ")");
+                            }
+                            if (SHIFTBYTECHECK.Checked)
+                            {
+                                long j = (long)(i + NumericUpDown7.Value);
+                                if (j >= StartByte && j <= EndByte)
+                                {
+                                    ROM[j] = ROM[i];
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + NumericUpDown7.Value + ")");
+                                }
+                            }
+                            if (MakeBitEqualCHECK.Checked)
+                            {
+                                int NewValue = (int)NumericUpDown8.Value;
+                                ROM[i] = (byte)NewValue;
+                                StashItemList.Items.Add("L: FILE(" + i + ").add(" + NewValue + ")");
+                            }
+                            if (ReplaceCHECK.Checked)
+                            {
+                                if (ROM[i] == (byte)NumericUpDown9.Value)
+                                {
+                                    ROM[i] = (byte)NumericUpDown10.Value;
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + NumericUpDown10.Value + ")");
+                                }
+                            }
+                            if (PasterandombitCHECK.Checked)
+                            {
+                                byte copy = ROM[rnd.Next(StartByte, EndByte)];
+                                ROM[i] = copy;
+                                StashItemList.Items.Add("L: FILE(" + i + ").set(" + copy + ")");
+                            }
+                            if (RepeatRandomBitCHECK.Checked)
+                            {
+                                List<byte> list = new List<byte>();
+                                for (int i2 = 0; i2 <= NumericUpDown2.Value - 1; i2++)
+                                    list.Add(ROM[i + i2]);
+                                // ListBox3.Items.Add(String.Join(" ", list))
+                                foreach (var itemcon in list)
+                                {
+                                    long final = rnd.Next(StartByte, EndByte);
+                                    ROM[final] = itemcon;
+                                    StashItemList.Items.Add("L: FILE(" + final + ").set(" + itemcon + ")");
+                                }
+                            }
+                            if (MULTIORDIVIDECHeck.Checked)
+                            {
+                                if (MultiRadio.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(ROM[i] * MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }
+                                if (DivideRadio.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(ROM[i] / MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }
+                                if (DoubleCheck.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(Math.Pow(ROM[i], (double)MULTIORDIVIDENUMBER.Value)) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }
+                            }
+                            i += (int)EveryNthByte.Value;
+                        }
+                    }
+                    else //Intense mode
+                    {
+                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
+                        {
+                            long i = rnd.Next(StartByte, EndByte);
+                            if (IncrementCHECK.Checked)
+                            {
+                                int NewValue = (int)((ROM[i] + NumericUpDown4.Value) % (byte.MaxValue + 1));
+                                ROM[i] = ((byte)NewValue);
+                                StashItemList.Items.Add("L: FILE(" + i + ").add(" + NumericUpDown4.Value + ")");
+                            }                            
+                            if (SHIFTBYTECHECK.Checked)
+                            {
+                                long j = (long)(i + NumericUpDown7.Value);
+                                if (j >= StartByte && j <= EndByte)
+                                {
+                                    ROM[j] = ROM[i];
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + NumericUpDown7.Value + ")");
+                                }
+                            }
+                            if (MakeBitEqualCHECK.Checked)
+                            {
+                                int NewValue = (int)NumericUpDown8.Value;
+                                ROM[i] = (byte)NewValue;
+                                StashItemList.Items.Add("L: FILE(" + i + ").add(" + NewValue + ")");
+                            }
+                            if (ReplaceCHECK.Checked)
+                            {
+                                if (ROM[i] == (byte)NumericUpDown9.Value)
+                                {
+                                    ROM[i] = (byte)NumericUpDown10.Value;
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + NumericUpDown10.Value + ")");
+                                }
+                            }
+                            if (PasterandombitCHECK.Checked)
+                            {
+                                byte copy = ROM[rnd.Next(StartByte, EndByte)];
+                                ROM[i] = copy;
+                                StashItemList.Items.Add("L: FILE(" + i + ").set(" + copy + ")");
+                            }
+                            if (RepeatRandomBitCHECK.Checked)
+                            {
+                                List<byte> list = new List<byte>();
+                                for (int i2 = 0; i2 <= NumericUpDown2.Value - 1; i2++)
+                                    list.Add(ROM[i + i2]);
+                                // ListBox3.Items.Add(String.Join(" ", list))
+                                foreach (var itemcon in list)
+                                {
+                                    long final = rnd.Next(StartByte, EndByte);
+                                    ROM[final] = itemcon;
+                                    StashItemList.Items.Add("L: FILE(" + final + ").set(" + itemcon + ")");
+                                }
+                            }
+                            if (MULTIORDIVIDECHeck.Checked)
+                            {
+                                if (MultiRadio.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(ROM[i] * MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }                                
+                                if (DivideRadio.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(ROM[i] / MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }                                
+                                if (DoubleCheck.Checked)
+                                {
+                                    ROM[i] = (byte)((byte)(Math.Pow(ROM[i], (double)MULTIORDIVIDENUMBER.Value)) % (byte.MaxValue + 1));
+                                    StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                                }
+                            }
+                        }
+                    }
+                    break;
+
                 default:
                     MessageBox.Show("Default case was hit in the StartCorruption function!");
                     break;
@@ -651,7 +846,7 @@ namespace LunarROMCorruptor
             {
                 File.WriteAllBytes(SaveasTxt.Text, backupROM);
                 CorruptButton.BackColor = Color.Green;
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success))
+                using (var soundPlayer = new SoundPlayer(Properties.Resources.success2))
                 {
                     soundPlayer.Play();
                 }
@@ -713,15 +908,7 @@ namespace LunarROMCorruptor
 
         private void RefreshStash_Click(object sender, EventArgs e)
         {
-            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
-            FileInfo[] diar1 = di.GetFiles();
-
-            di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
-            diar1 = di.GetFiles();
-            foreach (var dra in diar1)
-            {
-                StashList.Items.Add(dra);
-            }
+            RefreshCorruptionStashList();
         }
 
         private void DeleteStash_Click(object sender, EventArgs e)
@@ -730,6 +917,7 @@ namespace LunarROMCorruptor
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                File.Delete(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
                 StashList.Items.Clear();
                 DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
                 FileInfo[] diar1 = di.GetFiles();
@@ -737,6 +925,56 @@ namespace LunarROMCorruptor
                 // list the names of all files in the specified directory
                 foreach (var dra in diar1)
                     StashList.Items.Add(dra);
+            }
+        }
+
+        private void FilesaveCopysavetobtn_Click(object sender, EventArgs e)
+        {
+            File.Copy(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), SaveasTxt.Text, true);
+        }
+
+        private void FilesaveReloadbtn_Click(object sender, EventArgs e)
+        {
+            RefreshFileSaves();
+        }
+
+        private void FilesaveSavebtn_Click(object sender, EventArgs e)
+        {
+            SaveCorruptedFile();
+        }
+
+        private void FilesaveRenameBtn_Click(object sender, EventArgs e)
+        {
+            InputBox input = new InputBox();
+            input.Text = "Rename to?";
+            input.ShowDialog();
+            if (string.IsNullOrEmpty(input.textBox1.Text)) { return; }
+            var exc = Path.GetExtension(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
+            File.Move(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), Application.StartupPath + "\\Saves\\" + input.textBox1.Text + exc);
+            FilesaveList.Items.Clear();
+            DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+            FileInfo[] diar1 = di.GetFiles();
+
+            // list the names of all files in the specified directory
+            foreach (var dra in diar1)
+                FilesaveList.Items.Add(dra);
+            input.Dispose();
+        }
+
+        private void FilesaveDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                             MessageBoxButtons.YesNo,
+                             MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                File.Delete(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
+                FilesaveList.Items.Clear();
+                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
+                FileInfo[] diar1 = di.GetFiles();
+
+                // list the names of all files in the specified directory
+                foreach (var dra in diar1)
+                    FilesaveList.Items.Add(dra);
             }
         }
     }
