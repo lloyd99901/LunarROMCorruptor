@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LunarROMCorruptor
@@ -16,9 +11,33 @@ namespace LunarROMCorruptor
             InitializeComponent();
         }
 
-        public static implicit operator CorruptionEngineOptions(bool v)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (OpenFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                try
+                {
+                    TextBox5.Text = OpenFileDialog1.FileName;
+                    FileInfo myFile = new FileInfo(Program.Form.FileSelectiontxt.Text);
+                    long sizeInBytes = myFile.Length;
+                    FileInfo myFile2 = new FileInfo(TextBox5.Text);
+                    long sizeInBytes2 = myFile2.Length;
+                    if (sizeInBytes2 < sizeInBytes)
+                    {
+                        MessageBox.Show("This file must be the same/bigger size in order for this engine to work.");
+                        TextBox5.Text = "";
+                        return;
+                    }
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Please load a file into the corruptor first before loading in a file in the merge engine. (Argument Exception)");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
     }
 }

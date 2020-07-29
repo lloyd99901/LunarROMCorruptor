@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace LunarROMCorruptor
+namespace LunarROMCorruptor.CorruptionEngines
 {
-    public enum CorruptionOptions
-    {
-        RANDOM,
-        RANDOMTILT,
-        TILT
-    }
-
     internal class NightmareEngine
     {
         private static readonly Random rnd = new Random();

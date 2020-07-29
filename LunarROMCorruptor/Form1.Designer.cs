@@ -464,9 +464,7 @@
             this.CorruptionEngineComboBox.Items.AddRange(new object[] {
             "Manual",
             "Nightmare Engine",
-            "Vector2 Engine",
             "Merge Engine",
-            "Logic Engine",
             "Lerp Engine",
             "Hell Engine"});
             this.CorruptionEngineComboBox.Location = new System.Drawing.Point(256, 201);

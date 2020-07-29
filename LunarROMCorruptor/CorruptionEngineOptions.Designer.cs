@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorruptionEngineOptions));
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CorrTypeMerge = new System.Windows.Forms.ComboBox();
-            this.CheckBox4 = new System.Windows.Forms.CheckBox();
+            this.Mod256MergeEnginechkbox = new System.Windows.Forms.CheckBox();
             this.ReplaceByteWithSamePos = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel = new System.Windows.Forms.Panel();
             this.BitwiseThing = new System.Windows.Forms.ComboBox();
@@ -88,8 +88,6 @@
             this.CorrTypeMerge.FormattingEnabled = true;
             this.CorrTypeMerge.Items.AddRange(new object[] {
             "NONE",
-            "GREATER",
-            "LESS THAN",
             "RANGE"});
             this.CorrTypeMerge.Location = new System.Drawing.Point(8, 105);
             this.CorrTypeMerge.Name = "CorrTypeMerge";
@@ -97,18 +95,18 @@
             this.CorrTypeMerge.TabIndex = 99;
             this.CorrTypeMerge.Text = "NONE";
             // 
-            // CheckBox4
+            // Mod256MergeEnginechkbox
             // 
-            this.CheckBox4.AutoSize = true;
-            this.CheckBox4.BackColor = System.Drawing.Color.Transparent;
-            this.CheckBox4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckBox4.ForeColor = System.Drawing.Color.White;
-            this.CheckBox4.Location = new System.Drawing.Point(403, 65);
-            this.CheckBox4.Name = "CheckBox4";
-            this.CheckBox4.Size = new System.Drawing.Size(71, 17);
-            this.CheckBox4.TabIndex = 98;
-            this.CheckBox4.Text = "Mod 256";
-            this.CheckBox4.UseVisualStyleBackColor = false;
+            this.Mod256MergeEnginechkbox.AutoSize = true;
+            this.Mod256MergeEnginechkbox.BackColor = System.Drawing.Color.Transparent;
+            this.Mod256MergeEnginechkbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mod256MergeEnginechkbox.ForeColor = System.Drawing.Color.White;
+            this.Mod256MergeEnginechkbox.Location = new System.Drawing.Point(403, 65);
+            this.Mod256MergeEnginechkbox.Name = "Mod256MergeEnginechkbox";
+            this.Mod256MergeEnginechkbox.Size = new System.Drawing.Size(71, 17);
+            this.Mod256MergeEnginechkbox.TabIndex = 98;
+            this.Mod256MergeEnginechkbox.Text = "Mod 256";
+            this.Mod256MergeEnginechkbox.UseVisualStyleBackColor = false;
             // 
             // ReplaceByteWithSamePos
             // 
@@ -529,6 +527,7 @@
             this.Button1.TabIndex = 96;
             this.Button1.Text = "Open File";
             this.Button1.UseVisualStyleBackColor = false;
+            this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // MergeEnginePanel
             // 
@@ -537,7 +536,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MergeEnginePanel.BackColor = System.Drawing.Color.Teal;
             this.MergeEnginePanel.Controls.Add(this.CorrTypeMerge);
-            this.MergeEnginePanel.Controls.Add(this.CheckBox4);
+            this.MergeEnginePanel.Controls.Add(this.Mod256MergeEnginechkbox);
             this.MergeEnginePanel.Controls.Add(this.ReplaceByteWithSamePos);
             this.MergeEnginePanel.Controls.Add(this.Label15);
             this.MergeEnginePanel.Controls.Add(this.Label13);
@@ -581,12 +580,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(748, 213);
-            this.Controls.Add(this.Vector2EnginePanel);
-            this.Controls.Add(this.NightmareEnginePanel);
             this.Controls.Add(this.MergeEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
             this.Controls.Add(this.HellEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
+            this.Controls.Add(this.Vector2EnginePanel);
+            this.Controls.Add(this.NightmareEnginePanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CorruptionEngineOptions";
@@ -613,7 +612,7 @@
 
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;
         public System.Windows.Forms.ComboBox CorrTypeMerge;
-        public System.Windows.Forms.CheckBox CheckBox4;
+        public System.Windows.Forms.CheckBox Mod256MergeEnginechkbox;
         public System.Windows.Forms.CheckBox ReplaceByteWithSamePos;
         public System.Windows.Forms.Panel LogicEnginePanel;
         internal System.Windows.Forms.ComboBox BitwiseThing;
