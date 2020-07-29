@@ -36,7 +36,7 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void removeselbtn_Click(object sender, EventArgs e)
+        private void Removeselbtn_Click(object sender, EventArgs e)
         {
             foreach (var item in stashListbox.SelectedItems)
             {
@@ -48,7 +48,7 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void remove50btn_Click(object sender, EventArgs e)
+        private void Remove50btn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,12 +65,12 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void addbtn_Click(object sender, EventArgs e)
+        private void Addbtn_Click(object sender, EventArgs e)
         {
-            stashListbox.Items.Add("L: FILE(" + LocationStash.Value + ")." + stashitemcmbx.Text + "(" + valueStashnum.Value + ")");
+            stashListbox.Items.Add("L: FILE(" + LocationStash.Value + ").set(" + valueStashnum.Value + ")");
         }
 
-        private void additemsbtn_Click(object sender, EventArgs e)
+        private void Additemsbtn_Click(object sender, EventArgs e)
         {
             foreach (var item in RemovedItemslstbx.SelectedItems)
                 stashListbox.Items.Add(item);
@@ -78,7 +78,7 @@ namespace LunarROMCorruptor
                 RemovedItemslstbx.Items.RemoveAt(RemovedItemslstbx.SelectedIndex);
         }
 
-        private void removeitembtn_Click(object sender, EventArgs e)
+        private void Removeitembtn_Click(object sender, EventArgs e)
         {
             while (RemovedItemslstbx.SelectedItems.Count > 0)
             {
@@ -86,7 +86,7 @@ namespace LunarROMCorruptor
             }
         }
 
-        private void newfilestashbtn_Click(object sender, EventArgs e)
+        private void Newfilestashbtn_Click(object sender, EventArgs e)
         {
             Program.Form.StashList.Items.Clear();
             StringBuilder builder = new StringBuilder();

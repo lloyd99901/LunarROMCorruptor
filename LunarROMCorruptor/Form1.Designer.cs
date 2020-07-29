@@ -168,7 +168,7 @@
             this.FilesaveSavebtn.FlatAppearance.BorderSize = 0;
             this.FilesaveSavebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FilesaveSavebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.FilesaveSavebtn.Location = new System.Drawing.Point(593, 27);
+            this.FilesaveSavebtn.Location = new System.Drawing.Point(597, 27);
             this.FilesaveSavebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveSavebtn.Name = "FilesaveSavebtn";
             this.FilesaveSavebtn.Size = new System.Drawing.Size(140, 88);
@@ -184,7 +184,7 @@
             this.FilesaveReloadbtn.FlatAppearance.BorderSize = 0;
             this.FilesaveReloadbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FilesaveReloadbtn.ForeColor = System.Drawing.Color.Aqua;
-            this.FilesaveReloadbtn.Location = new System.Drawing.Point(593, 175);
+            this.FilesaveReloadbtn.Location = new System.Drawing.Point(597, 175);
             this.FilesaveReloadbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveReloadbtn.Name = "FilesaveReloadbtn";
             this.FilesaveReloadbtn.Size = new System.Drawing.Size(140, 23);
@@ -200,7 +200,7 @@
             this.FilesaveRenameBtn.FlatAppearance.BorderSize = 0;
             this.FilesaveRenameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FilesaveRenameBtn.ForeColor = System.Drawing.Color.Aqua;
-            this.FilesaveRenameBtn.Location = new System.Drawing.Point(593, 199);
+            this.FilesaveRenameBtn.Location = new System.Drawing.Point(597, 199);
             this.FilesaveRenameBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveRenameBtn.Name = "FilesaveRenameBtn";
             this.FilesaveRenameBtn.Size = new System.Drawing.Size(68, 23);
@@ -234,7 +234,7 @@
             this.FilesaveCopysavetobtn.FlatAppearance.BorderSize = 0;
             this.FilesaveCopysavetobtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FilesaveCopysavetobtn.ForeColor = System.Drawing.Color.Aqua;
-            this.FilesaveCopysavetobtn.Location = new System.Drawing.Point(593, 116);
+            this.FilesaveCopysavetobtn.Location = new System.Drawing.Point(597, 116);
             this.FilesaveCopysavetobtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveCopysavetobtn.Name = "FilesaveCopysavetobtn";
             this.FilesaveCopysavetobtn.Size = new System.Drawing.Size(140, 58);
@@ -250,7 +250,7 @@
             this.FilesaveDelete.FlatAppearance.BorderSize = 0;
             this.FilesaveDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FilesaveDelete.ForeColor = System.Drawing.Color.Aqua;
-            this.FilesaveDelete.Location = new System.Drawing.Point(662, 199);
+            this.FilesaveDelete.Location = new System.Drawing.Point(666, 199);
             this.FilesaveDelete.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveDelete.Name = "FilesaveDelete";
             this.FilesaveDelete.Size = new System.Drawing.Size(71, 23);
@@ -273,7 +273,7 @@
             this.FilesaveList.Location = new System.Drawing.Point(12, 27);
             this.FilesaveList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveList.Name = "FilesaveList";
-            this.FilesaveList.Size = new System.Drawing.Size(575, 239);
+            this.FilesaveList.Size = new System.Drawing.Size(581, 239);
             this.FilesaveList.TabIndex = 155;
             // 
             // FilesaveEnableAutoSaves
@@ -334,7 +334,7 @@
             // 
             this.OverrideArgumentschbox.AutoSize = true;
             this.OverrideArgumentschbox.ForeColor = System.Drawing.Color.White;
-            this.OverrideArgumentschbox.Location = new System.Drawing.Point(166, 30);
+            this.OverrideArgumentschbox.Location = new System.Drawing.Point(166, 28);
             this.OverrideArgumentschbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.OverrideArgumentschbox.Name = "OverrideArgumentschbox";
             this.OverrideArgumentschbox.Size = new System.Drawing.Size(122, 17);
@@ -379,10 +379,10 @@
             this.OverrideArguments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.OverrideArguments.Enabled = false;
             this.OverrideArguments.ForeColor = System.Drawing.Color.White;
-            this.OverrideArguments.Location = new System.Drawing.Point(296, 25);
+            this.OverrideArguments.Location = new System.Drawing.Point(292, 25);
             this.OverrideArguments.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.OverrideArguments.Name = "OverrideArguments";
-            this.OverrideArguments.Size = new System.Drawing.Size(446, 20);
+            this.OverrideArguments.Size = new System.Drawing.Size(449, 20);
             this.OverrideArguments.TabIndex = 74;
             // 
             // EmulatorLocationtxt
@@ -393,11 +393,11 @@
             this.EmulatorLocationtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmulatorLocationtxt.Enabled = false;
             this.EmulatorLocationtxt.ForeColor = System.Drawing.Color.White;
-            this.EmulatorLocationtxt.Location = new System.Drawing.Point(156, 50);
+            this.EmulatorLocationtxt.Location = new System.Drawing.Point(157, 51);
             this.EmulatorLocationtxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.EmulatorLocationtxt.Name = "EmulatorLocationtxt";
             this.EmulatorLocationtxt.ReadOnly = true;
-            this.EmulatorLocationtxt.Size = new System.Drawing.Size(586, 20);
+            this.EmulatorLocationtxt.Size = new System.Drawing.Size(584, 20);
             this.EmulatorLocationtxt.TabIndex = 74;
             // 
             // BrowseEmulatorbutton
@@ -814,10 +814,10 @@
             this.StashItemList.FormattingEnabled = true;
             this.StashItemList.HorizontalScrollbar = true;
             this.StashItemList.IntegralHeight = false;
-            this.StashItemList.Location = new System.Drawing.Point(431, 19);
+            this.StashItemList.Location = new System.Drawing.Point(431, 21);
             this.StashItemList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashItemList.Name = "StashItemList";
-            this.StashItemList.Size = new System.Drawing.Size(115, 254);
+            this.StashItemList.Size = new System.Drawing.Size(115, 252);
             this.StashItemList.TabIndex = 158;
             // 
             // StashList
@@ -831,11 +831,11 @@
             this.StashList.FormattingEnabled = true;
             this.StashList.HorizontalScrollbar = true;
             this.StashList.IntegralHeight = false;
-            this.StashList.Location = new System.Drawing.Point(567, 19);
+            this.StashList.Location = new System.Drawing.Point(567, 21);
             this.StashList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashList.Name = "StashList";
             this.StashList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.StashList.Size = new System.Drawing.Size(172, 179);
+            this.StashList.Size = new System.Drawing.Size(172, 177);
             this.StashList.TabIndex = 158;
             // 
             // StashEditorbtn
@@ -928,10 +928,10 @@
             this.TransferStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransferStash.Font = new System.Drawing.Font("Webdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.TransferStash.ForeColor = System.Drawing.Color.Silver;
-            this.TransferStash.Location = new System.Drawing.Point(547, 19);
+            this.TransferStash.Location = new System.Drawing.Point(547, 21);
             this.TransferStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TransferStash.Name = "TransferStash";
-            this.TransferStash.Size = new System.Drawing.Size(19, 254);
+            this.TransferStash.Size = new System.Drawing.Size(19, 252);
             this.TransferStash.TabIndex = 0;
             this.TransferStash.Tag = "";
             this.TransferStash.Text = "4";
@@ -980,7 +980,7 @@
             this.ManualEnginePanel.Location = new System.Drawing.Point(6, 6);
             this.ManualEnginePanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManualEnginePanel.Name = "ManualEnginePanel";
-            this.ManualEnginePanel.Size = new System.Drawing.Size(734, 267);
+            this.ManualEnginePanel.Size = new System.Drawing.Size(731, 267);
             this.ManualEnginePanel.TabIndex = 137;
             this.ManualEnginePanel.Tag = "color:normal";
             // 
@@ -1562,7 +1562,7 @@
             this.SaveasTxt.Location = new System.Drawing.Point(262, 29);
             this.SaveasTxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SaveasTxt.Name = "SaveasTxt";
-            this.SaveasTxt.Size = new System.Drawing.Size(481, 20);
+            this.SaveasTxt.Size = new System.Drawing.Size(479, 20);
             this.SaveasTxt.TabIndex = 85;
             // 
             // Panel1
@@ -1595,7 +1595,7 @@
             this.FileSelectiontxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FileSelectiontxt.Name = "FileSelectiontxt";
             this.FileSelectiontxt.ReadOnly = true;
-            this.FileSelectiontxt.Size = new System.Drawing.Size(481, 20);
+            this.FileSelectiontxt.Size = new System.Drawing.Size(479, 20);
             this.FileSelectiontxt.TabIndex = 86;
             // 
             // EmulatorFileDialog

@@ -58,7 +58,6 @@
             this.Label13 = new System.Windows.Forms.Label();
             this.NightmareEnginePanel = new System.Windows.Forms.Panel();
             this.Label23 = new System.Windows.Forms.Label();
-            this.USERANDOMNIGHTMARE = new System.Windows.Forms.CheckBox();
             this.IncreDecrenumbnightmare = new System.Windows.Forms.NumericUpDown();
             this.ComboBox1 = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -433,7 +432,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NightmareEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.NightmareEnginePanel.Controls.Add(this.Label23);
-            this.NightmareEnginePanel.Controls.Add(this.USERANDOMNIGHTMARE);
             this.NightmareEnginePanel.Controls.Add(this.IncreDecrenumbnightmare);
             this.NightmareEnginePanel.Controls.Add(this.ComboBox1);
             this.NightmareEnginePanel.Controls.Add(this.Label1);
@@ -455,17 +453,6 @@
             this.Label23.Size = new System.Drawing.Size(121, 17);
             this.Label23.TabIndex = 93;
             this.Label23.Text = "Nightmare Engine";
-            // 
-            // USERANDOMNIGHTMARE
-            // 
-            this.USERANDOMNIGHTMARE.AutoSize = true;
-            this.USERANDOMNIGHTMARE.ForeColor = System.Drawing.Color.White;
-            this.USERANDOMNIGHTMARE.Location = new System.Drawing.Point(27, 74);
-            this.USERANDOMNIGHTMARE.Name = "USERANDOMNIGHTMARE";
-            this.USERANDOMNIGHTMARE.Size = new System.Drawing.Size(255, 17);
-            this.USERANDOMNIGHTMARE.TabIndex = 92;
-            this.USERANDOMNIGHTMARE.Text = "USE Random (Uses number box as maximum)";
-            this.USERANDOMNIGHTMARE.UseVisualStyleBackColor = true;
             // 
             // IncreDecrenumbnightmare
             // 
@@ -653,7 +640,6 @@
         internal System.Windows.Forms.Label Label13;
         public System.Windows.Forms.Panel NightmareEnginePanel;
         private System.Windows.Forms.Label Label23;
-        internal System.Windows.Forms.CheckBox USERANDOMNIGHTMARE;
         internal System.Windows.Forms.NumericUpDown IncreDecrenumbnightmare;
         internal System.Windows.Forms.ComboBox ComboBox1;
         private System.Windows.Forms.Label Label1;
