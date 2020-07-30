@@ -9,14 +9,10 @@
 
 ## Corrupt any file using multiple different ‘Engines’
 
-### Requirements
-.NET Framework 4 is required to run the program.
-For development, Microsoft Visual Studio Community 2019 is recommended.
-
 ## Features
 
 ### Corrupt Every Nth Byte and Intensity Mode
-Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1th byte corrupts the entire file)
+Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1st byte corrupts the entire file)
 Intensity allows for a more randomized corruption by selecting random addresses to corrupt.
 
 ### File Saves and Stash Saves
@@ -49,7 +45,7 @@ Here are the following engines that come with LunarROMCorruptor
 - With more engines and settings to play around with, the more interesting results you can get with the engines.
 - Allows drag and drop. No need to search for the file you want to corrupt.
 - Can run an emulator after corruption.
-- Audible feedback when the corruption is done.
+- Audible feedback when corruption is done.
 
 ## Progress
 - [x] Import GUI from the old project
@@ -65,6 +61,9 @@ A year later, I decided to remake it in C#, mainly because I want to teach mysel
 LunarROMCorruptor uses engines to corrupt files, each engine has its usage and its own settings that can be changed.
 I've included the Nightmare Engine, which is an engine from the Windows Glitch Harvester, into the project so that people that are most familiar with that engine can use it.
 
+### Requirements
+.NET Framework 4 is required to run the program.
+For development, Microsoft Visual Studio Community 2019 is recommended.
 ## Contributing
 Pull requests are welcome. Major and minor.
 ## Notes
