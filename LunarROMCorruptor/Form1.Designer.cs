@@ -127,6 +127,13 @@
             this.MainSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.MainOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CorruptButtonColorChanger = new System.Windows.Forms.Timer(this.components);
+            this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AboutVerLabel = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -159,6 +166,9 @@
             this.Panel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // FilesaveSavebtn
@@ -784,6 +794,7 @@
             // TabPage3
             // 
             this.TabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.TabPage3.Controls.Add(this.EnableStashSavesChkbox);
             this.TabPage3.Controls.Add(this.StashListlbl);
             this.TabPage3.Controls.Add(this.Panel4);
             this.TabPage3.Controls.Add(this.StashItemList);
@@ -942,6 +953,7 @@
             this.TabControl2.Controls.Add(this.TabPage4);
             this.TabControl2.Controls.Add(this.TabPage2);
             this.TabControl2.Controls.Add(this.TabPage1);
+            this.TabControl2.Controls.Add(this.tabPage5);
             this.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl2.Location = new System.Drawing.Point(0, 71);
             this.TabControl2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1373,6 +1385,11 @@
             this.NumericUpDown4.Name = "NumericUpDown4";
             this.NumericUpDown4.Size = new System.Drawing.Size(49, 22);
             this.NumericUpDown4.TabIndex = 63;
+            this.NumericUpDown4.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // GroupBox2
             // 
@@ -1613,6 +1630,95 @@
             this.CorruptButtonColorChanger.Interval = 3000;
             this.CorruptButtonColorChanger.Tick += new System.EventHandler(this.CorruptButtonColorChanger_Tick);
             // 
+            // EnableStashSavesChkbox
+            // 
+            this.EnableStashSavesChkbox.AutoSize = true;
+            this.EnableStashSavesChkbox.Checked = true;
+            this.EnableStashSavesChkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EnableStashSavesChkbox.ForeColor = System.Drawing.Color.White;
+            this.EnableStashSavesChkbox.Location = new System.Drawing.Point(577, 2);
+            this.EnableStashSavesChkbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.EnableStashSavesChkbox.Name = "EnableStashSavesChkbox";
+            this.EnableStashSavesChkbox.Size = new System.Drawing.Size(122, 17);
+            this.EnableStashSavesChkbox.TabIndex = 168;
+            this.EnableStashSavesChkbox.Text = "Enable Stash Saves";
+            this.EnableStashSavesChkbox.UseVisualStyleBackColor = true;
+            this.EnableStashSavesChkbox.CheckedChanged += new System.EventHandler(this.EnableStashSavesChkbox_CheckedChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.tabPage5.Controls.Add(this.panel5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(744, 279);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "About";
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(55)))));
+            this.panel5.Controls.Add(this.richTextBox1);
+            this.panel5.Controls.Add(this.AboutVerLabel);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.pictureBox1);
+            this.panel5.Location = new System.Drawing.Point(7, 6);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(730, 267);
+            this.panel5.TabIndex = 136;
+            this.panel5.Tag = "color:normal";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 112);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(145, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(269, 37);
+            this.label1.TabIndex = 158;
+            this.label1.Text = "LunarROMCorruptor";
+            // 
+            // AboutVerLabel
+            // 
+            this.AboutVerLabel.AutoSize = true;
+            this.AboutVerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.AboutVerLabel.ForeColor = System.Drawing.Color.DarkGray;
+            this.AboutVerLabel.Location = new System.Drawing.Point(148, 50);
+            this.AboutVerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AboutVerLabel.Name = "AboutVerLabel";
+            this.AboutVerLabel.Size = new System.Drawing.Size(90, 21);
+            this.AboutVerLabel.TabIndex = 158;
+            this.AboutVerLabel.Text = "vernumber";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Location = new System.Drawing.Point(153, 74);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(568, 185);
+            this.richTextBox1.TabIndex = 159;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1676,6 +1782,10 @@
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1778,6 +1888,13 @@
         internal System.Windows.Forms.NumericUpDown NumericUpDown2;
         public System.Windows.Forms.ListBox StashList;
         private System.Windows.Forms.Timer CorruptButtonColorChanger;
+        internal System.Windows.Forms.CheckBox EnableStashSavesChkbox;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AboutVerLabel;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

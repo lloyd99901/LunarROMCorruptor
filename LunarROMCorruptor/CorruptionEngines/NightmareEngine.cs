@@ -13,7 +13,7 @@ namespace LunarROMCorruptor.CorruptionEngines
             {
                 case CorruptionOptions.RANDOM:
                     ROM[i] = (byte)rnd.Next(0, 256);
-                    Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                     break;
 
                 case CorruptionOptions.RANDOMTILT:
@@ -21,20 +21,20 @@ namespace LunarROMCorruptor.CorruptionEngines
                     {
                         case 0:
                             ROM[i] = (byte)((byte)rnd.Next(0, 256) % (Byte.MaxValue + 1));
-                            Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                             break;
 
                         case 1:
                             int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
                             break;
 
                         case 2:
 
                             NewValue = (int)((ROM[i] - Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
                             break;
 
                         default:
@@ -49,13 +49,13 @@ namespace LunarROMCorruptor.CorruptionEngines
                         case 0:
                             int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
                             break;
 
                         case 1:
                             NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItemList.Items.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
                             break;
                     }
                     break;

@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>The LunarROMCorruptor is a program that allows you to corrupt any ROMs/files using the LunarROMCorruptor just by tweaking a few settings.
+
+LunarROMCorruptor uses engines to corrupt files, each engine has its usage and its own settings that can be changed. I've included the Nightmare Engine, which is an engine from the Windows Glitch Harvester, into the project so that people that are most familiar with that engine can use it.
+
+This project started around 2019 and was originally made in VB.NET. I was fascinated by other corruptors and wanted to make my own. The project was finished in the same year, but since the code was very messy, I decided not to release it.
+
+A year later, I decided to remake it in C#, mainly because I want to teach myself more C#, but also to do some code refactoring to make it more optimized.
+
+CHANGELOG:
+
+v0.1:
+No changes</value>
+  </data>
   <metadata name="EmulatorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>29, 13</value>
   </metadata>
