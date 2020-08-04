@@ -27,14 +27,14 @@ namespace LunarROMCorruptor.CorruptionEngines
                         case 1:
                             int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                             break;
 
                         case 2:
 
                             NewValue = (int)((ROM[i] - Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                             break;
 
                         default:
@@ -49,13 +49,13 @@ namespace LunarROMCorruptor.CorruptionEngines
                         case 0:
                             int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                             break;
 
                         case 1:
                             NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
                             ROM[i] = (byte)Math.Abs(NewValue);
-                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + Program.Form.objForm2.IncreDecrenumbnightmare.Value + ")");
+                            Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
                             break;
                     }
                     break;

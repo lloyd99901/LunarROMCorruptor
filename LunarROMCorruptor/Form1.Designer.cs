@@ -952,8 +952,8 @@
             this.TabControl2.Controls.Add(this.TabPage3);
             this.TabControl2.Controls.Add(this.TabPage4);
             this.TabControl2.Controls.Add(this.TabPage2);
-            this.TabControl2.Controls.Add(this.TabPage1);
             this.TabControl2.Controls.Add(this.tabPage5);
+            this.TabControl2.Controls.Add(this.TabPage1);
             this.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl2.Location = new System.Drawing.Point(0, 71);
             this.TabControl2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
