@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private string vernumber = "v0.1";
+        private readonly string vernumber = "v0.1";
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -315,7 +315,7 @@ namespace LunarROMCorruptor
         {
             StashItemList.Items.Clear();
             StashItems.Clear();
-            StashItems.TrimExcess(); //This probably isn't required, it resizes the interal array to free up more memory.
+            StashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
             ROM = backupROM;
             //Here is where the multiple files check should occurr
             if (string.IsNullOrEmpty(FileSelectiontxt.Text))
@@ -399,20 +399,6 @@ namespace LunarROMCorruptor
             }
 
             File.WriteAllBytes(SaveasTxt.Text, FinROM);
-            if (EnableStashSavesChkbox.Checked)
-            {
-                if (StashItems.Count > 50000)
-                {
-                    StashItemList.Items.Add("LargeStash");
-                }
-                else
-                {
-                    foreach (var item in StashItems)
-                    {
-                        StashItemList.Items.Add(item);
-                    }
-                }
-            }
 
             if (FilesaveEnableAutoSaves.Checked)
             {
@@ -428,6 +414,21 @@ namespace LunarROMCorruptor
             if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
             {
                 StartEmulator();
+            }
+
+            if (EnableStashSavesChkbox.Checked)
+            {
+                if (StashItems.Count > 50000)
+                {
+                    StashItemList.Items.Add("LargeStash");
+                }
+                else
+                {
+                    foreach (var item in StashItems)
+                    {
+                        StashItemList.Items.Add(item);
+                    }
+                }
             }
         }
 
@@ -538,72 +539,7 @@ namespace LunarROMCorruptor
                         int i = StartByte;
                         while (i <= EndByte)
                         {
-                            if (IncrementCHECK.Checked)
-                            {
-                                int NewValue = (int)((ROM[i] + NumericUpDown4.Value) % (byte.MaxValue + 1));
-                                ROM[i] = ((byte)NewValue);
-                                StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown4.Value + ")");
-                            }
-                            if (SHIFTBYTECHECK.Checked)
-                            {
-                                long j = (long)(i + NumericUpDown7.Value);
-                                if (j >= StartByte && j <= EndByte)
-                                {
-                                    ROM[j] = ROM[i];
-                                    StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown7.Value + ")");
-                                }
-                            }
-                            if (MakeBitEqualCHECK.Checked)
-                            {
-                                int NewValue = (int)NumericUpDown8.Value;
-                                ROM[i] = (byte)NewValue;
-                                StashItems.Add("L: FILE(" + i + ").set(" + NewValue + ")");
-                            }
-                            if (ReplaceCHECK.Checked)
-                            {
-                                if (ROM[i] == (byte)NumericUpDown9.Value)
-                                {
-                                    ROM[i] = (byte)NumericUpDown10.Value;
-                                    StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown10.Value + ")");
-                                }
-                            }
-                            if (PasterandombitCHECK.Checked)
-                            {
-                                byte copy = ROM[rnd.Next(StartByte, EndByte)];
-                                ROM[i] = copy;
-                                StashItems.Add("L: FILE(" + i + ").set(" + copy + ")");
-                            }
-                            if (RepeatRandomBitCHECK.Checked)
-                            {
-                                List<byte> list = new List<byte>();
-                                for (int i2 = 0; i2 <= NumericUpDown2.Value - 1; i2++)
-                                    list.Add(ROM[i + i2]);
-                                // ListBox3.Items.Add(String.Join(" ", list))
-                                foreach (var itemcon in list)
-                                {
-                                    long final = rnd.Next(StartByte, EndByte);
-                                    ROM[final] = itemcon;
-                                    StashItems.Add("L: FILE(" + final + ").set(" + itemcon + ")");
-                                }
-                            }
-                            if (MULTIORDIVIDECHeck.Checked)
-                            {
-                                if (MultiRadio.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(ROM[i] * MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                                if (DivideRadio.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(ROM[i] / MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                                if (DoubleCheck.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(Math.Pow(ROM[i], (double)MULTIORDIVIDENUMBER.Value)) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                            }
+                            ManualEngine.CorruptByte(ROM, i, StartByte, EndByte);
                             i += (int)EveryNthByte.Value;
                         }
                     }
@@ -612,72 +548,7 @@ namespace LunarROMCorruptor
                         for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
                         {
                             long i = rnd.Next(StartByte, EndByte);
-                            if (IncrementCHECK.Checked)
-                            {
-                                int NewValue = (int)((ROM[i] + NumericUpDown4.Value) % (byte.MaxValue + 1));
-                                ROM[i] = ((byte)NewValue);
-                                StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown4.Value + ")");
-                            }
-                            if (SHIFTBYTECHECK.Checked)
-                            {
-                                long j = (long)(i + NumericUpDown7.Value);
-                                if (j >= StartByte && j <= EndByte)
-                                {
-                                    ROM[j] = ROM[i];
-                                    StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown7.Value + ")");
-                                }
-                            }
-                            if (MakeBitEqualCHECK.Checked)
-                            {
-                                int NewValue = (int)NumericUpDown8.Value;
-                                ROM[i] = (byte)NewValue;
-                                StashItems.Add("L: FILE(" + i + ").set(" + NewValue + ")");
-                            }
-                            if (ReplaceCHECK.Checked)
-                            {
-                                if (ROM[i] == (byte)NumericUpDown9.Value)
-                                {
-                                    ROM[i] = (byte)NumericUpDown10.Value;
-                                    StashItems.Add("L: FILE(" + i + ").set(" + NumericUpDown10.Value + ")");
-                                }
-                            }
-                            if (PasterandombitCHECK.Checked)
-                            {
-                                byte copy = ROM[rnd.Next(StartByte, EndByte)];
-                                ROM[i] = copy;
-                                StashItems.Add("L: FILE(" + i + ").set(" + copy + ")");
-                            }
-                            if (RepeatRandomBitCHECK.Checked)
-                            {
-                                List<byte> list = new List<byte>();
-                                for (int i2 = 0; i2 <= NumericUpDown2.Value - 1; i2++)
-                                    list.Add(ROM[i + i2]);
-                                // ListBox3.Items.Add(String.Join(" ", list))
-                                foreach (var itemcon in list)
-                                {
-                                    long final = rnd.Next(StartByte, EndByte);
-                                    ROM[final] = itemcon;
-                                    StashItems.Add("L: FILE(" + final + ").set(" + itemcon + ")");
-                                }
-                            }
-                            if (MULTIORDIVIDECHeck.Checked)
-                            {
-                                if (MultiRadio.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(ROM[i] * MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                                if (DivideRadio.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(ROM[i] / MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                                if (DoubleCheck.Checked)
-                                {
-                                    ROM[i] = (byte)((byte)(Math.Pow(ROM[i], (double)MULTIORDIVIDENUMBER.Value)) % (byte.MaxValue + 1));
-                                    StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
-                                }
-                            }
+                            ManualEngine.CorruptByte(ROM, i, StartByte, EndByte);
                         }
                     }
                     break;
