@@ -411,7 +411,7 @@ namespace LunarROMCorruptor
                 soundPlayer.Play();
             }
             CorruptButtonColorChanger.Start();
-            if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
+            if (Runemulatorchbox.Checked && !string.IsNullOrEmpty(EmulatorLocationtxt.Text))
             {
                 StartEmulator();
             }
