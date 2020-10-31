@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v0.1";
+        private readonly string vernumber = "v0.2";
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -55,7 +55,7 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "LunarROMCorruptor - " + vernumber + " - UNSTABLE BUILD";
+            Text = "LunarROMCorruptor - " + vernumber; // + " - UNSTABLE BUILD";
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\"))
             {
@@ -446,7 +446,7 @@ namespace LunarROMCorruptor
                 {
                     var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(EmulatorLocationtxt.Text));
                     if (processes.Length > 0)
-                        processes[0].CloseMainWindow();
+                        processes[0].Kill();
                 }
                 System.Threading.Thread.Sleep(300);
                 Process p = new Process();
@@ -694,11 +694,14 @@ namespace LunarROMCorruptor
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                if (MessageBox.Show("Are you sure you want to delete the selected items?", "",
                              MessageBoxButtons.YesNo,
                              MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    File.Delete(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
+                    foreach (var item in StashList.SelectedItems)
+                    {
+                        File.Delete(Application.StartupPath + @"\CorruptionStashList\" + item.ToString());
+                    }
                     StashList.Items.Clear();
                     DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
                     FileInfo[] diar1 = di.GetFiles();
@@ -710,7 +713,7 @@ namespace LunarROMCorruptor
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or you have authorization to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -764,11 +767,14 @@ namespace LunarROMCorruptor
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to deleted the selected item?", "",
+                if (MessageBox.Show("Are you sure you want to delete the selected items?", "",
                  MessageBoxButtons.YesNo,
                  MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    File.Delete(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
+                    foreach (var item in FilesaveList.SelectedItems)
+                    {
+                        File.Delete(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(item.ToString()));
+                    }
                     FilesaveList.Items.Clear();
                     DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
                     FileInfo[] diar1 = di.GetFiles();
@@ -780,7 +786,7 @@ namespace LunarROMCorruptor
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or have authorization to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

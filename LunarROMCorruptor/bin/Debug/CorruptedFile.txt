@@ -1,2 +1,2 @@
-This is a test of the LunarROMCorruptor
+This is a test of the LunarROMCorﬁuptor
 This text should be corrupted.

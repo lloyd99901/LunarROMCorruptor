@@ -96,7 +96,8 @@ namespace LunarROMCorruptor
                 builder.AppendLine();
             }
             var fileCount = Directory.GetFiles(Application.StartupPath + @"\CorruptionStashList\", "*.*", SearchOption.TopDirectoryOnly).Length;
-            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + fileCount + 1 + ".lunarstash", builder.ToString());
+            fileCount += 1;
+            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + fileCount + ".lunarstash", builder.ToString());
             Program.Form.RefreshCorruptionStashList();
         }
 
