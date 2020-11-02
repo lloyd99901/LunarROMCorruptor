@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v0.2";
+        private readonly string vernumber = "v0.3";
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -55,7 +55,7 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "LunarROMCorruptor - " + vernumber; // + " - UNSTABLE BUILD";
+            Text = "LunarROMCorruptor - " + vernumber + " - UNSTABLE BUILD";
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\"))
             {
@@ -325,11 +325,13 @@ namespace LunarROMCorruptor
             }
             if (StartByteNumb.Value > EndByteNumb.Value)
             {
-                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (EndByteNumb.Value < StartByteNumb.Value) //This check may not be necessary
             {
-                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("End Byte cannot be lower than Start Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             try
             {
@@ -338,10 +340,12 @@ namespace LunarROMCorruptor
             catch (ArgumentNullException)
             {
                 MessageBox.Show("You haven't got a file open! Error code: 3x013");
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                return;
             }
             if (StartByteNumb.Value > MaxByte)
             {
