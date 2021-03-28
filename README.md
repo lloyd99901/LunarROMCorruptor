@@ -49,7 +49,7 @@ Here are the following engines that come with LunarROMCorruptor
 
 ## Progress
 - [x] Import GUI from the old project
-- [ ] Fully convert the VB.NET code from the old project and convert to C#
+- [x] Fully convert the VB.NET code from the old project and convert to C#
 - [x] Do bug testing
 - [x] Code Refactoring (Optimize the engines, code cleanup, etc)
 

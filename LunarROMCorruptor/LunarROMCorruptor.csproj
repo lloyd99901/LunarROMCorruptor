@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\dragicon.png" />
     <None Include="Resources\icon %282%29.png" />
     <None Include="Resources\success2.wav" />
   </ItemGroup>

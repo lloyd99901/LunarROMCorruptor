@@ -67,7 +67,7 @@ namespace LunarROMCorruptor
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            stashListbox.Items.Add("L: FILE(" + LocationStash.Value + ").set(" + valueStashnum.Value + ")");
+            stashListbox.Items.Add("[x] File(" + LocationStash.Value + ").SET(" + valueStashnum.Value + ")");
         }
 
         private void Additemsbtn_Click(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace LunarROMCorruptor
             }
             var fileCount = Directory.GetFiles(Application.StartupPath + @"\CorruptionStashList\", "*.*", SearchOption.TopDirectoryOnly).Length;
             fileCount += 1;
-            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + fileCount + ".lunarstash", builder.ToString());
+            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + fileCount + ".stash", builder.ToString());
             Program.Form.RefreshCorruptionStashList();
         }
 
