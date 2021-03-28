@@ -55,11 +55,11 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "LunarROMCorruptor - " + vernumber + " - UNSTABLE BUILD";
+            Text = "LunarROMCorruptor - " + vernumber;// + " - UNSTABLE BUILD";
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\"))
             {
-                MessageBox.Show("Welcome to LunarROMCorruptor! Make sure you read the agreement before using this corruptor. Other than that enjoy corrupting whatever you like!");
+                MessageBox.Show("Welcome to LunarROMCorruptor!\n\nDisclaimer:\nLunarROMCorruptor is distributed under an MIT license.\n\nBy clicking OK, you agree to that license and also understand the risks and disclaimers provided.\n\nThis program can irreversibly corrupt personal or critical system data if you're not careful.\nThis program comes with no warranty of ANY kind and is provided 'AS IS'.\nYou're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.\n\nThis message will not show up again.\n\nEnjoy!", "LunarROMCorruptor - INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
             Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
@@ -318,6 +318,7 @@ namespace LunarROMCorruptor
             StashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
             ROM = backupROM;
             //Here is where the multiple files check should occurr
+            //Checks if the file is fit for corruption
             if (string.IsNullOrEmpty(FileSelectiontxt.Text))
             {
                 MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -326,11 +327,6 @@ namespace LunarROMCorruptor
             if (StartByteNumb.Value > EndByteNumb.Value)
             {
                 MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (EndByteNumb.Value < StartByteNumb.Value) //This check may not be necessary
-            {
-                MessageBox.Show("End Byte cannot be lower than Start Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -369,7 +365,7 @@ namespace LunarROMCorruptor
                 MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            //The file will now be read.
             ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
             //Hell engine goes here.
             byte[] FinROM = null;
@@ -422,7 +418,7 @@ namespace LunarROMCorruptor
 
             if (EnableStashSavesChkbox.Checked)
             {
-                if (StashItems.Count > 50000)
+                if (StashItems.Count > 50000) //This check is for preventing too many GUI rendering updates on the listbox. The items are contained in a variable but are not shown.
                 {
                     StashItemList.Items.Add("LargeStash");
                 }
@@ -566,6 +562,7 @@ namespace LunarROMCorruptor
 
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
+            DragandDropICON.Hide();
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path1 in files)
             {
@@ -591,6 +588,8 @@ namespace LunarROMCorruptor
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
+                DragandDropICON.BringToFront();
+                DragandDropICON.Show();
                 e.Effect = DragDropEffects.Copy;
             }
         }
@@ -649,7 +648,7 @@ namespace LunarROMCorruptor
                 }
             }
 
-            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + rnd.Next(1000, 999999999) + ".lunarstash", builder.ToString());
+            File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + rnd.Next(1000, 999999999) + ".stash", builder.ToString());
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
             FileInfo[] diar1 = di.GetFiles();
 
@@ -870,6 +869,30 @@ namespace LunarROMCorruptor
         {
             StashItemList.Enabled = EnableStashSavesChkbox.Checked;
             TransferStash.Enabled = EnableStashSavesChkbox.Checked;
+        }
+
+        private void StartByteNumb_ValueChanged(object sender, EventArgs e)
+        {
+            StartByteTrackBar.Value = (int)StartByteNumb.Value;
+        }
+
+        private void EndByteNumb_ValueChanged(object sender, EventArgs e)
+        {
+            EndByteTrackbar.Value = (int)EndByteNumb.Value;
+        }
+
+        private void Form1_DragLeave(object sender, EventArgs e)
+        {
+            DragandDropICON.Hide();
+        }
+
+        private void StashList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                StashList.SelectedIndex = StashList.IndexFromPoint(e.X, e.Y);
+                contextStripStash.Show(Cursor.Position);
+            }
         }
     }
 }

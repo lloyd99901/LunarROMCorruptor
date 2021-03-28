@@ -14,7 +14,7 @@ namespace LunarROMCorruptor.CorruptionEngines
             {
                 int NewValue = (int)((ROM[i] + Program.Form.NumericUpDown4.Value) % (byte.MaxValue + 1));
                 ROM[i] = ((byte)NewValue);
-                Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             }
             if (Program.Form.SHIFTBYTECHECK.Checked)
             {
@@ -22,28 +22,28 @@ namespace LunarROMCorruptor.CorruptionEngines
                 if (j >= StartByte && j <= EndByte)
                 {
                     ROM[j] = ROM[i];
-                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             if (Program.Form.MakeBitEqualCHECK.Checked)
             {
                 int NewValue = (int)Program.Form.NumericUpDown8.Value;
                 ROM[i] = (byte)NewValue;
-                Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + NewValue + ")");
+                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + NewValue + ")");
             }
             if (Program.Form.ReplaceCHECK.Checked)
             {
                 if (ROM[i] == (byte)Program.Form.NumericUpDown9.Value)
                 {
                     ROM[i] = (byte)Program.Form.NumericUpDown10.Value;
-                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             if (Program.Form.PasterandombitCHECK.Checked)
             {
                 byte copy = ROM[rnd.Next(StartByte, EndByte)];
                 ROM[i] = copy;
-                Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + copy + ")");
+                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + copy + ")");
             }
             if (Program.Form.RepeatRandomBitCHECK.Checked)
             {
@@ -55,7 +55,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                 {
                     long final = rnd.Next(StartByte, EndByte);
                     ROM[final] = itemcon;
-                    Program.Form.StashItems.Add("L: FILE(" + final + ").set(" + itemcon + ")");
+                    Program.Form.StashItems.Add("[x] File(" + final + ").SET(" + itemcon + ")");
                 }
             }
             if (Program.Form.MULTIORDIVIDECHeck.Checked)
@@ -63,17 +63,17 @@ namespace LunarROMCorruptor.CorruptionEngines
                 if (Program.Form.MultiRadio.Checked)
                 {
                     ROM[i] = (byte)((byte)(ROM[i] * Program.Form.MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DivideRadio.Checked)
                 {
                     ROM[i] = (byte)((byte)(ROM[i] / Program.Form.MULTIORDIVIDENUMBER.Value) % (byte.MaxValue + 1));
-                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DoubleCheck.Checked)
                 {
                     ROM[i] = (byte)((byte)(Math.Pow(ROM[i], (double)Program.Form.MULTIORDIVIDENUMBER.Value)) % (byte.MaxValue + 1));
-                    Program.Form.StashItems.Add("L: FILE(" + i + ").set(" + ROM[i] + ")");
+                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             return ROM;
