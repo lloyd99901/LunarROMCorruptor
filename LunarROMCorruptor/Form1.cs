@@ -55,7 +55,7 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "LunarROMCorruptor - " + vernumber;// + " - UNSTABLE BUILD";
+            Text = "LunarROMCorruptor - " + vernumber;
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\"))
             {
