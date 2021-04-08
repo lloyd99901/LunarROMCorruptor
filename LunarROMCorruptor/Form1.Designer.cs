@@ -78,6 +78,7 @@
             this.RefreshStash = new System.Windows.Forms.Button();
             this.RenameStash = new System.Windows.Forms.Button();
             this.TransferStash = new System.Windows.Forms.Button();
+            this.DragandDropICON = new System.Windows.Forms.PictureBox();
             this.TabControl2 = new System.Windows.Forms.TabControl();
             this.TabPage4 = new System.Windows.Forms.TabPage();
             this.ManualEnginePanel = new System.Windows.Forms.Panel();
@@ -115,6 +116,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AboutVerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.MultipleFilesChbx = new System.Windows.Forms.CheckBox();
             this.Restorefilebtn = new System.Windows.Forms.Button();
@@ -131,8 +133,6 @@
             this.MainSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.MainOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CorruptButtonColorChanger = new System.Windows.Forms.Timer(this.components);
-            this.DragandDropICON = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,6 +149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).BeginInit();
             this.TabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
             this.TabControl2.SuspendLayout();
             this.TabPage4.SuspendLayout();
             this.ManualEnginePanel.SuspendLayout();
@@ -167,11 +168,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown2)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextStripStash.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,7 +237,7 @@
             this.TabPage2.Location = new System.Drawing.Point(4, 22);
             this.TabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabPage2.Name = "TabPage2";
-            this.TabPage2.Size = new System.Drawing.Size(744, 273);
+            this.TabPage2.Size = new System.Drawing.Size(744, 265);
             this.TabPage2.TabIndex = 4;
             this.TabPage2.Text = "File Saves";
             // 
@@ -287,7 +287,7 @@
             this.FilesaveList.Location = new System.Drawing.Point(12, 27);
             this.FilesaveList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveList.Name = "FilesaveList";
-            this.FilesaveList.Size = new System.Drawing.Size(581, 212);
+            this.FilesaveList.Size = new System.Drawing.Size(581, 227);
             this.FilesaveList.TabIndex = 155;
             // 
             // FilesaveEnableAutoSaves
@@ -943,6 +943,18 @@
             this.TransferStash.UseVisualStyleBackColor = false;
             this.TransferStash.Click += new System.EventHandler(this.TransferStash_Click);
             // 
+            // DragandDropICON
+            // 
+            this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
+            this.DragandDropICON.Location = new System.Drawing.Point(2, 3);
+            this.DragandDropICON.Name = "DragandDropICON";
+            this.DragandDropICON.Size = new System.Drawing.Size(740, 259);
+            this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.DragandDropICON.TabIndex = 164;
+            this.DragandDropICON.TabStop = false;
+            this.DragandDropICON.Visible = false;
+            // 
             // TabControl2
             // 
             this.TabControl2.Controls.Add(this.TabPage3);
@@ -965,7 +977,7 @@
             this.TabPage4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabPage4.Name = "TabPage4";
             this.TabPage4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage4.Size = new System.Drawing.Size(744, 273);
+            this.TabPage4.Size = new System.Drawing.Size(744, 265);
             this.TabPage4.TabIndex = 1;
             this.TabPage4.Text = "Corruption Engine Options";
             // 
@@ -985,7 +997,7 @@
             this.ManualEnginePanel.Location = new System.Drawing.Point(6, 6);
             this.ManualEnginePanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManualEnginePanel.Name = "ManualEnginePanel";
-            this.ManualEnginePanel.Size = new System.Drawing.Size(731, 240);
+            this.ManualEnginePanel.Size = new System.Drawing.Size(731, 253);
             this.ManualEnginePanel.TabIndex = 137;
             this.ManualEnginePanel.Tag = "color:normal";
             // 
@@ -1455,7 +1467,7 @@
             this.panel5.Location = new System.Drawing.Point(7, 6);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(730, 232);
+            this.panel5.Size = new System.Drawing.Size(730, 253);
             this.panel5.TabIndex = 136;
             this.panel5.Tag = "color:normal";
             // 
@@ -1467,7 +1479,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(153, 74);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(568, 150);
+            this.richTextBox1.Size = new System.Drawing.Size(568, 171);
             this.richTextBox1.TabIndex = 159;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -1494,6 +1506,16 @@
             this.label1.Size = new System.Drawing.Size(269, 37);
             this.label1.TabIndex = 158;
             this.label1.Text = "LunarROMCorruptor";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 112);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Panel3
             // 
@@ -1690,28 +1712,6 @@
             this.CorruptButtonColorChanger.Interval = 3000;
             this.CorruptButtonColorChanger.Tick += new System.EventHandler(this.CorruptButtonColorChanger_Tick);
             // 
-            // DragandDropICON
-            // 
-            this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
-            this.DragandDropICON.Location = new System.Drawing.Point(2, 3);
-            this.DragandDropICON.Name = "DragandDropICON";
-            this.DragandDropICON.Size = new System.Drawing.Size(740, 259);
-            this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.DragandDropICON.TabIndex = 164;
-            this.DragandDropICON.TabStop = false;
-            this.DragandDropICON.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 112);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // contextStripStash
             // 
             this.contextStripStash.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1770,6 +1770,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).EndInit();
             this.TabPage3.ResumeLayout(false);
             this.TabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
             this.TabControl2.ResumeLayout(false);
             this.TabPage4.ResumeLayout(false);
             this.ManualEnginePanel.ResumeLayout(false);
@@ -1796,13 +1797,12 @@
             this.tabPage5.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextStripStash.ResumeLayout(false);
             this.ResumeLayout(false);
 
