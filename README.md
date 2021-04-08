@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="static/images/icon.png" alt="LunarROMCorruptor Icon" />
+</p>
+
 # LunarROMCorruptor
 
 [![CodeFactor](https://www.codefactor.io/repository/github/lloyd99901/lunarromcorruptor/badge)](https://www.codefactor.io/repository/github/lloyd99901/lunarromcorruptor)
@@ -27,6 +31,19 @@ Here are the following engines that come with LunarROMCorruptor
  - Nightmare Engine:
  
    A simple, yet effective way of corrupting files, with three corruption modes: RANDOM, RANDOMTILT and TILT.
+   
+    -RANDOM
+    
+     The selected byte gets set with a random value of 0 to 255
+     
+    -RANDOMTILT
+    
+     The selected byte gets set with a random value of 0 to 255 or a user specified value gets added/subtracted from the byte.
+     
+    -TILT
+    
+     The selected byte will have its value added or subtracted by a user specified value. (e.g. 255 - 3, 242 + 1)
+   
  - Merge Engine
  
    An engine that copies bytes from one file to the other to create corruption (For example, 'merging' Super Mario Bros. with Donkey Kong).
@@ -71,3 +88,9 @@ Active development is in the unstable branch of this repo. The master branch is 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Corruption Warning
+- This program can irreversibly corrupt personal or critical system data if you're not careful.
+- This program comes with no warranty of ANY kind and is provided 'AS IS'.
+- You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.
+- Anti-cheat software may be triggered if corruption is used on multiplayer games.
