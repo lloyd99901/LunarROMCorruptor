@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v0.3";
+        private readonly string vernumber = "v0.4";
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -378,7 +378,7 @@ namespace LunarROMCorruptor
                     Intensity.Value = 1;
                     int randomIndex = rnd.Next(1, CorruptionEngineComboBox.Items.Count - 1);
                     CorruptionEngineComboBox.SelectedIndex = randomIndex;
-                    if (CorruptionEngineComboBox.Text == "Merge Engine" && string.IsNullOrEmpty(objForm2.TextBox5.Text))
+                    if (CorruptionEngineComboBox.Text == "Merge Engine" && string.IsNullOrEmpty(objForm2.MergeFileLocationTxt.Text))
                     {
                         CorruptionEngineComboBox.Text = "Nightmare Engine";
                     }
@@ -394,7 +394,7 @@ namespace LunarROMCorruptor
 
             if (FinROM == null)
             {
-                MessageBox.Show("FinROM returned NULL! Corruption Failed!");
+                MessageBox.Show("Corruption returned nothing! Please try corrupting again. If problems persist, please report this issue.");
                 return;
             }
 
@@ -474,7 +474,7 @@ namespace LunarROMCorruptor
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            Enum.TryParse(objForm2.ComboBox1.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             NightmareEngine.CorruptByte(ROM, corruptiontype, i1);
                             i1 += (int)EveryNthByte.Value;
                         }
@@ -483,7 +483,7 @@ namespace LunarROMCorruptor
                     {
                         for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
                         {
-                            Enum.TryParse(objForm2.ComboBox1.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
                             NightmareEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
@@ -517,7 +517,7 @@ namespace LunarROMCorruptor
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            byte[] ROMmerge = File.ReadAllBytes(objForm2.TextBox5.Text);
+                            byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
                             Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, i1);
                         }
@@ -526,7 +526,7 @@ namespace LunarROMCorruptor
                     {
                         for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
                         {
-                            byte[] ROMmerge = File.ReadAllBytes(objForm2.TextBox5.Text);
+                            byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
                             Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
@@ -675,9 +675,9 @@ namespace LunarROMCorruptor
                 Text = "Rename to?"
             };
             input.ShowDialog();
-            if (string.IsNullOrEmpty(input.textBox1.Text)) { return; }
+            if (string.IsNullOrEmpty(input.InputBoxTxtBox.Text)) { return; }
             var exc = Path.GetExtension(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
-            File.Move(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem), Application.StartupPath + "\\CorruptionStashList\\" + input.textBox1.Text + exc);
+            File.Move(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem), Application.StartupPath + "\\CorruptionStashList\\" + input.InputBoxTxtBox.Text + exc);
             StashList.Items.Clear();
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
             FileInfo[] diar1 = di.GetFiles();
@@ -753,9 +753,9 @@ namespace LunarROMCorruptor
                 Text = "Rename to?"
             };
             input.ShowDialog();
-            if (string.IsNullOrEmpty(input.textBox1.Text)) { return; }
+            if (string.IsNullOrEmpty(input.InputBoxTxtBox.Text)) { return; }
             var exc = Path.GetExtension(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
-            File.Move(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), Application.StartupPath + "\\Saves\\" + input.textBox1.Text + exc);
+            File.Move(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), Application.StartupPath + "\\Saves\\" + input.InputBoxTxtBox.Text + exc);
             FilesaveList.Items.Clear();
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
             FileInfo[] diar1 = di.GetFiles();
@@ -849,7 +849,15 @@ namespace LunarROMCorruptor
                     //MessageBox.Show(i.ToString());
                     //MessageBox.Show(result.ToString());
                     //ROM[(int)i] = (byte)result;
-                    ROM[int.Parse(i.ToString())] = (byte)int.Parse(result.ToString());
+                    try
+                    {
+                        ROM[int.Parse(i.ToString())] = (byte)int.Parse(result.ToString());
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("ROM byte stash corruption failed! Corruption cannot continue. \n More details:" + ex.ToString());
+                        return;
+                    }
                 }
                 File.WriteAllBytes(SaveasTxt.Text, ROM);
                 CorruptButton.BackColor = Color.Green;

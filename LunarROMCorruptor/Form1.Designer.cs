@@ -84,33 +84,33 @@
             this.ManualEnginePanel = new System.Windows.Forms.Panel();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
             this.PasterandombitCHECK = new System.Windows.Forms.CheckBox();
-            this.NumericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.ByteEqualNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MakeBitEqualCHECK = new System.Windows.Forms.CheckBox();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
             this.DoubleCheck = new System.Windows.Forms.RadioButton();
             this.DivideRadio = new System.Windows.Forms.RadioButton();
             this.MultiRadio = new System.Windows.Forms.RadioButton();
-            this.MULTIORDIVIDENUMBER = new System.Windows.Forms.NumericUpDown();
+            this.MathOperationNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MULTIORDIVIDECHeck = new System.Windows.Forms.CheckBox();
             this.Label25 = new System.Windows.Forms.Label();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.ReplaceCHECK = new System.Windows.Forms.CheckBox();
-            this.NumericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.NumericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.ReplaceNumericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.ReplaceNumericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.Label22 = new System.Windows.Forms.Label();
             this.Label16 = new System.Windows.Forms.Label();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
             this.SHIFTBYTECHECK = new System.Windows.Forms.CheckBox();
             this.Label12 = new System.Windows.Forms.Label();
-            this.NumericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.ShiftNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RepeatRandomBitCHECK = new System.Windows.Forms.CheckBox();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
             this.IncrementCHECK = new System.Windows.Forms.CheckBox();
             this.Label14 = new System.Windows.Forms.Label();
-            this.NumericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.IncrementNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.Label8 = new System.Windows.Forms.Label();
-            this.NumericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.RepeatNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -154,18 +154,18 @@
             this.TabPage4.SuspendLayout();
             this.ManualEnginePanel.SuspendLayout();
             this.GroupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ByteEqualNumericUpDown)).BeginInit();
             this.GroupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MULTIORDIVIDENUMBER)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MathOperationNumericUpDown)).BeginInit();
             this.GroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReplaceNumericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReplaceNumericUpDown2)).BeginInit();
             this.GroupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShiftNumericUpDown)).BeginInit();
             this.GroupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncrementNumericUpDown)).BeginInit();
             this.GroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1004,7 +1004,7 @@
             // GroupBox8
             // 
             this.GroupBox8.Controls.Add(this.PasterandombitCHECK);
-            this.GroupBox8.Controls.Add(this.NumericUpDown8);
+            this.GroupBox8.Controls.Add(this.ByteEqualNumericUpDown);
             this.GroupBox8.Controls.Add(this.MakeBitEqualCHECK);
             this.GroupBox8.ForeColor = System.Drawing.Color.White;
             this.GroupBox8.Location = new System.Drawing.Point(323, 71);
@@ -1028,27 +1028,27 @@
             this.PasterandombitCHECK.Text = "Paste byte to Random Place";
             this.PasterandombitCHECK.UseVisualStyleBackColor = true;
             // 
-            // NumericUpDown8
+            // ByteEqualNumericUpDown
             // 
-            this.NumericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown8.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown8.Location = new System.Drawing.Point(116, 33);
-            this.NumericUpDown8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown8.Maximum = new decimal(new int[] {
+            this.ByteEqualNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.ByteEqualNumericUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ByteEqualNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.ByteEqualNumericUpDown.Location = new System.Drawing.Point(116, 33);
+            this.ByteEqualNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ByteEqualNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.NumericUpDown8.Minimum = new decimal(new int[] {
+            this.ByteEqualNumericUpDown.Minimum = new decimal(new int[] {
             99999,
             0,
             0,
             -2147483648});
-            this.NumericUpDown8.Name = "NumericUpDown8";
-            this.NumericUpDown8.Size = new System.Drawing.Size(68, 22);
-            this.NumericUpDown8.TabIndex = 63;
-            this.NumericUpDown8.Value = new decimal(new int[] {
+            this.ByteEqualNumericUpDown.Name = "ByteEqualNumericUpDown";
+            this.ByteEqualNumericUpDown.Size = new System.Drawing.Size(68, 22);
+            this.ByteEqualNumericUpDown.TabIndex = 63;
+            this.ByteEqualNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1071,7 +1071,7 @@
             this.GroupBox7.Controls.Add(this.DoubleCheck);
             this.GroupBox7.Controls.Add(this.DivideRadio);
             this.GroupBox7.Controls.Add(this.MultiRadio);
-            this.GroupBox7.Controls.Add(this.MULTIORDIVIDENUMBER);
+            this.GroupBox7.Controls.Add(this.MathOperationNumericUpDown);
             this.GroupBox7.Controls.Add(this.MULTIORDIVIDECHeck);
             this.GroupBox7.Controls.Add(this.Label25);
             this.GroupBox7.ForeColor = System.Drawing.Color.White;
@@ -1119,27 +1119,27 @@
             this.MultiRadio.Text = "*";
             this.MultiRadio.UseVisualStyleBackColor = true;
             // 
-            // MULTIORDIVIDENUMBER
+            // MathOperationNumericUpDown
             // 
-            this.MULTIORDIVIDENUMBER.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.MULTIORDIVIDENUMBER.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MULTIORDIVIDENUMBER.ForeColor = System.Drawing.Color.White;
-            this.MULTIORDIVIDENUMBER.Location = new System.Drawing.Point(142, 14);
-            this.MULTIORDIVIDENUMBER.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MULTIORDIVIDENUMBER.Maximum = new decimal(new int[] {
+            this.MathOperationNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.MathOperationNumericUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MathOperationNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.MathOperationNumericUpDown.Location = new System.Drawing.Point(142, 14);
+            this.MathOperationNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MathOperationNumericUpDown.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
-            this.MULTIORDIVIDENUMBER.Minimum = new decimal(new int[] {
+            this.MathOperationNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.MULTIORDIVIDENUMBER.Name = "MULTIORDIVIDENUMBER";
-            this.MULTIORDIVIDENUMBER.Size = new System.Drawing.Size(80, 22);
-            this.MULTIORDIVIDENUMBER.TabIndex = 63;
-            this.MULTIORDIVIDENUMBER.Value = new decimal(new int[] {
+            this.MathOperationNumericUpDown.Name = "MathOperationNumericUpDown";
+            this.MathOperationNumericUpDown.Size = new System.Drawing.Size(80, 22);
+            this.MathOperationNumericUpDown.TabIndex = 63;
+            this.MathOperationNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1171,8 +1171,8 @@
             // GroupBox3
             // 
             this.GroupBox3.Controls.Add(this.ReplaceCHECK);
-            this.GroupBox3.Controls.Add(this.NumericUpDown9);
-            this.GroupBox3.Controls.Add(this.NumericUpDown10);
+            this.GroupBox3.Controls.Add(this.ReplaceNumericUpDown1);
+            this.GroupBox3.Controls.Add(this.ReplaceNumericUpDown2);
             this.GroupBox3.Controls.Add(this.Label22);
             this.GroupBox3.Controls.Add(this.Label16);
             this.GroupBox3.ForeColor = System.Drawing.Color.White;
@@ -1196,43 +1196,43 @@
             this.ReplaceCHECK.Text = "Replace";
             this.ReplaceCHECK.UseVisualStyleBackColor = true;
             // 
-            // NumericUpDown9
+            // ReplaceNumericUpDown1
             // 
-            this.NumericUpDown9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown9.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown9.Location = new System.Drawing.Point(60, 19);
-            this.NumericUpDown9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown9.Maximum = new decimal(new int[] {
+            this.ReplaceNumericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.ReplaceNumericUpDown1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceNumericUpDown1.ForeColor = System.Drawing.Color.White;
+            this.ReplaceNumericUpDown1.Location = new System.Drawing.Point(60, 19);
+            this.ReplaceNumericUpDown1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ReplaceNumericUpDown1.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.NumericUpDown9.Name = "NumericUpDown9";
-            this.NumericUpDown9.Size = new System.Drawing.Size(80, 22);
-            this.NumericUpDown9.TabIndex = 63;
-            this.NumericUpDown9.Value = new decimal(new int[] {
+            this.ReplaceNumericUpDown1.Name = "ReplaceNumericUpDown1";
+            this.ReplaceNumericUpDown1.Size = new System.Drawing.Size(80, 22);
+            this.ReplaceNumericUpDown1.TabIndex = 63;
+            this.ReplaceNumericUpDown1.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // NumericUpDown10
+            // ReplaceNumericUpDown2
             // 
-            this.NumericUpDown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown10.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown10.Location = new System.Drawing.Point(179, 19);
-            this.NumericUpDown10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown10.Maximum = new decimal(new int[] {
+            this.ReplaceNumericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.ReplaceNumericUpDown2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceNumericUpDown2.ForeColor = System.Drawing.Color.White;
+            this.ReplaceNumericUpDown2.Location = new System.Drawing.Point(179, 19);
+            this.ReplaceNumericUpDown2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ReplaceNumericUpDown2.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.NumericUpDown10.Name = "NumericUpDown10";
-            this.NumericUpDown10.Size = new System.Drawing.Size(80, 22);
-            this.NumericUpDown10.TabIndex = 63;
-            this.NumericUpDown10.Value = new decimal(new int[] {
+            this.ReplaceNumericUpDown2.Name = "ReplaceNumericUpDown2";
+            this.ReplaceNumericUpDown2.Size = new System.Drawing.Size(80, 22);
+            this.ReplaceNumericUpDown2.TabIndex = 63;
+            this.ReplaceNumericUpDown2.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1264,7 +1264,7 @@
             // 
             this.GroupBox4.Controls.Add(this.SHIFTBYTECHECK);
             this.GroupBox4.Controls.Add(this.Label12);
-            this.GroupBox4.Controls.Add(this.NumericUpDown7);
+            this.GroupBox4.Controls.Add(this.ShiftNumericUpDown);
             this.GroupBox4.Location = new System.Drawing.Point(170, 72);
             this.GroupBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GroupBox4.Name = "GroupBox4";
@@ -1297,27 +1297,27 @@
             this.Label12.TabIndex = 16;
             this.Label12.Text = "Shift int:";
             // 
-            // NumericUpDown7
+            // ShiftNumericUpDown
             // 
-            this.NumericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown7.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown7.Location = new System.Drawing.Point(64, 23);
-            this.NumericUpDown7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown7.Maximum = new decimal(new int[] {
+            this.ShiftNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.ShiftNumericUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShiftNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.ShiftNumericUpDown.Location = new System.Drawing.Point(64, 23);
+            this.ShiftNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ShiftNumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NumericUpDown7.Minimum = new decimal(new int[] {
+            this.ShiftNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.NumericUpDown7.Name = "NumericUpDown7";
-            this.NumericUpDown7.Size = new System.Drawing.Size(60, 22);
-            this.NumericUpDown7.TabIndex = 63;
-            this.NumericUpDown7.Value = new decimal(new int[] {
+            this.ShiftNumericUpDown.Name = "ShiftNumericUpDown";
+            this.ShiftNumericUpDown.Size = new System.Drawing.Size(60, 22);
+            this.ShiftNumericUpDown.TabIndex = 63;
+            this.ShiftNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1339,7 +1339,7 @@
             // 
             this.GroupBox5.Controls.Add(this.IncrementCHECK);
             this.GroupBox5.Controls.Add(this.Label14);
-            this.GroupBox5.Controls.Add(this.NumericUpDown4);
+            this.GroupBox5.Controls.Add(this.IncrementNumericUpDown);
             this.GroupBox5.Location = new System.Drawing.Point(6, 3);
             this.GroupBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GroupBox5.Name = "GroupBox5";
@@ -1372,27 +1372,27 @@
             this.Label14.TabIndex = 16;
             this.Label14.Text = "Increment Int :";
             // 
-            // NumericUpDown4
+            // IncrementNumericUpDown
             // 
-            this.NumericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown4.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown4.Location = new System.Drawing.Point(101, 20);
-            this.NumericUpDown4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown4.Maximum = new decimal(new int[] {
+            this.IncrementNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.IncrementNumericUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IncrementNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.IncrementNumericUpDown.Location = new System.Drawing.Point(101, 20);
+            this.IncrementNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.IncrementNumericUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.NumericUpDown4.Minimum = new decimal(new int[] {
+            this.IncrementNumericUpDown.Minimum = new decimal(new int[] {
             99999,
             0,
             0,
             -2147483648});
-            this.NumericUpDown4.Name = "NumericUpDown4";
-            this.NumericUpDown4.Size = new System.Drawing.Size(49, 22);
-            this.NumericUpDown4.TabIndex = 63;
-            this.NumericUpDown4.Value = new decimal(new int[] {
+            this.IncrementNumericUpDown.Name = "IncrementNumericUpDown";
+            this.IncrementNumericUpDown.Size = new System.Drawing.Size(49, 22);
+            this.IncrementNumericUpDown.TabIndex = 63;
+            this.IncrementNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1401,7 +1401,7 @@
             // GroupBox2
             // 
             this.GroupBox2.Controls.Add(this.Label8);
-            this.GroupBox2.Controls.Add(this.NumericUpDown2);
+            this.GroupBox2.Controls.Add(this.RepeatNumericUpDown);
             this.GroupBox2.Location = new System.Drawing.Point(6, 71);
             this.GroupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GroupBox2.Name = "GroupBox2";
@@ -1422,22 +1422,22 @@
             this.Label8.TabIndex = 16;
             this.Label8.Text = "Selection Length:";
             // 
-            // NumericUpDown2
+            // RepeatNumericUpDown
             // 
-            this.NumericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.NumericUpDown2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumericUpDown2.ForeColor = System.Drawing.Color.White;
-            this.NumericUpDown2.Location = new System.Drawing.Point(112, 20);
-            this.NumericUpDown2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NumericUpDown2.Minimum = new decimal(new int[] {
+            this.RepeatNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.RepeatNumericUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RepeatNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.RepeatNumericUpDown.Location = new System.Drawing.Point(112, 20);
+            this.RepeatNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RepeatNumericUpDown.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.NumericUpDown2.Name = "NumericUpDown2";
-            this.NumericUpDown2.Size = new System.Drawing.Size(41, 22);
-            this.NumericUpDown2.TabIndex = 63;
-            this.NumericUpDown2.Value = new decimal(new int[] {
+            this.RepeatNumericUpDown.Name = "RepeatNumericUpDown";
+            this.RepeatNumericUpDown.Size = new System.Drawing.Size(41, 22);
+            this.RepeatNumericUpDown.TabIndex = 63;
+            this.RepeatNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1777,23 +1777,23 @@
             this.ManualEnginePanel.PerformLayout();
             this.GroupBox8.ResumeLayout(false);
             this.GroupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ByteEqualNumericUpDown)).EndInit();
             this.GroupBox7.ResumeLayout(false);
             this.GroupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MULTIORDIVIDENUMBER)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MathOperationNumericUpDown)).EndInit();
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReplaceNumericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReplaceNumericUpDown2)).EndInit();
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShiftNumericUpDown)).EndInit();
             this.GroupBox5.ResumeLayout(false);
             this.GroupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncrementNumericUpDown)).EndInit();
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -1875,33 +1875,33 @@
         internal System.Windows.Forms.OpenFileDialog MainOpenFileDialog;
         internal System.Windows.Forms.GroupBox GroupBox8;
         internal System.Windows.Forms.CheckBox PasterandombitCHECK;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown8;
+        internal System.Windows.Forms.NumericUpDown ByteEqualNumericUpDown;
         internal System.Windows.Forms.CheckBox MakeBitEqualCHECK;
         internal System.Windows.Forms.GroupBox GroupBox7;
         internal System.Windows.Forms.RadioButton DoubleCheck;
         internal System.Windows.Forms.RadioButton DivideRadio;
         internal System.Windows.Forms.RadioButton MultiRadio;
-        internal System.Windows.Forms.NumericUpDown MULTIORDIVIDENUMBER;
+        internal System.Windows.Forms.NumericUpDown MathOperationNumericUpDown;
         internal System.Windows.Forms.CheckBox MULTIORDIVIDECHeck;
         internal System.Windows.Forms.Label Label25;
         internal System.Windows.Forms.GroupBox GroupBox3;
         internal System.Windows.Forms.CheckBox ReplaceCHECK;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown9;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown10;
+        internal System.Windows.Forms.NumericUpDown ReplaceNumericUpDown1;
+        internal System.Windows.Forms.NumericUpDown ReplaceNumericUpDown2;
         internal System.Windows.Forms.Label Label22;
         internal System.Windows.Forms.Label Label16;
         internal System.Windows.Forms.GroupBox GroupBox4;
         internal System.Windows.Forms.CheckBox SHIFTBYTECHECK;
         private System.Windows.Forms.Label Label12;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown7;
+        internal System.Windows.Forms.NumericUpDown ShiftNumericUpDown;
         internal System.Windows.Forms.CheckBox RepeatRandomBitCHECK;
         internal System.Windows.Forms.GroupBox GroupBox5;
         internal System.Windows.Forms.CheckBox IncrementCHECK;
         private System.Windows.Forms.Label Label14;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown4;
+        internal System.Windows.Forms.NumericUpDown IncrementNumericUpDown;
         internal System.Windows.Forms.GroupBox GroupBox2;
         private System.Windows.Forms.Label Label8;
-        internal System.Windows.Forms.NumericUpDown NumericUpDown2;
+        internal System.Windows.Forms.NumericUpDown RepeatNumericUpDown;
         public System.Windows.Forms.ListBox StashList;
         private System.Windows.Forms.Timer CorruptButtonColorChanger;
         internal System.Windows.Forms.CheckBox EnableStashSavesChkbox;

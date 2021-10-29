@@ -128,6 +128,11 @@ A year later, I decided to remake it in C#, mainly because I want to teach mysel
 
 CHANGELOG:
 
+v0.4:
+Forgot to add code for the "Restore" button in the stash editor. It is now added.
+Renamed controls to make them easier to read.
+Support for Windows XP has ended (Using .Net Framework 4.7.2)
+
 v0.3:
 Changing the Number of the Start Byte and End Byte will now change the trackbar value as well.
 Fixed StartByte and EndByte checker.

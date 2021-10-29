@@ -30,9 +30,9 @@ namespace LunarROMCorruptor
 
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
-            if (OpenFileDialog1.ShowDialog() != DialogResult.Cancel)
+            if (OpenFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                AttemptStashLoad(OpenFileDialog1.FileName);
+                AttemptStashLoad(OpenFileDialog.FileName);
             }
         }
 
@@ -105,6 +105,23 @@ namespace LunarROMCorruptor
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void Restorebtn_Click(object sender, EventArgs e)
+        {
+            stashListbox.Items.Clear();
+            try
+            {
+                foreach (var line in File.ReadLines(Application.StartupPath + @"\CorruptionStashList\" + Program.Form.StashList.GetItemText(Program.Form.StashList.SelectedItem)))
+                {
+                    stashListbox.Items.Add(line);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Can't restore stash items.", "Info - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
