@@ -61,7 +61,11 @@ namespace LunarROMCorruptor.CorruptionEngines
                     break;
 
                 default:
-                    MessageBox.Show("Nightmare Engine returned default. This should not happen.");
+                    if(MessageBox.Show("The Nightmare Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    };
+
                     break;
             }
             return ROM;

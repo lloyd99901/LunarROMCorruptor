@@ -26,7 +26,10 @@ namespace LunarROMCorruptor.CorruptionEngines
                             break;
 
                         default:
-                            MessageBox.Show("Merge Engine returned default. This should not happen.");
+                            if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Application.Exit();
+                            };
                             break;
                     }
                 }
@@ -45,7 +48,10 @@ namespace LunarROMCorruptor.CorruptionEngines
                             break;
 
                         default:
-                            MessageBox.Show("Merge Engine returned default. This should not happen.");
+                            if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Application.Exit();
+                            };
                             break;
                     }
                 }
@@ -67,7 +73,10 @@ namespace LunarROMCorruptor.CorruptionEngines
                             break;
 
                         default:
-                            MessageBox.Show("Merge Engine returned default. This should not happen.");
+                            if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Application.Exit();
+                            };
                             break;
                     }
                 }
@@ -86,7 +95,10 @@ namespace LunarROMCorruptor.CorruptionEngines
                             break;
 
                         default:
-                            MessageBox.Show("Merge Engine returned default. This should not happen.");
+                            if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Application.Exit();
+                            };
                             break;
                     }
                 }

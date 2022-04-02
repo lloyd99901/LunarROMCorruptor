@@ -11,7 +11,27 @@ namespace LunarROMCorruptor.CorruptionEngines
 
         public static byte[] CorruptByte(byte[] ROM, long i)
         {
-            ROM[i] = (byte)LinearInterpolationCalculation(ROM[i - 1], ROM[i + 1], Convert.ToDouble(Program.Form.objForm2.LerpValueTxt.Text));
+            byte byteminus;
+            byte byteplus;
+            //Check if the Bytes selected in i are in range.
+
+            try
+            {
+                byteminus = ROM[i+1];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                byteminus = ROM[i];
+            }
+            try
+            {
+                byteplus = ROM[i-1];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                byteplus = ROM[i];
+            }
+            ROM[i] = (byte)LinearInterpolationCalculation(byteminus, byteplus, Convert.ToDouble(Program.Form.objForm2.LerpValueTxt.Text));
             Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             return ROM;
         }

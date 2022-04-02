@@ -324,6 +324,14 @@ namespace LunarROMCorruptor
                 MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            //Check if file is a valid ROM
+            if (!File.Exists(FileSelectiontxt.Text))
+            {
+                MessageBox.Show("File doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (StartByteNumb.Value > EndByteNumb.Value)
             {
                 MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -332,11 +340,6 @@ namespace LunarROMCorruptor
             try
             {
                 File.WriteAllBytes(SaveasTxt.Text, backupROM);
-            }
-            catch (ArgumentNullException)
-            {
-                MessageBox.Show("You haven't got a file open! Error code: 3x013");
-                return;
             }
             catch (Exception ex)
             {
@@ -398,7 +401,16 @@ namespace LunarROMCorruptor
                 return;
             }
 
-            File.WriteAllBytes(SaveasTxt.Text, FinROM);
+            //Check if the FinROM can be saved
+            try
+            {
+                File.WriteAllBytes(SaveasTxt.Text, FinROM);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
 
             if (FilesaveEnableAutoSaves.Checked)
             {
@@ -554,7 +566,10 @@ namespace LunarROMCorruptor
                     break;
 
                 default:
-                    MessageBox.Show("Default case was hit in the StartCorruption function!");
+                    if (MessageBox.Show("The Start Corruption function returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    };
                     break;
             }
             return ROM;
@@ -567,7 +582,16 @@ namespace LunarROMCorruptor
             foreach (var path1 in files)
             {
                 MainOpenFileDialog.FileName = path1;
-                ROM = File.ReadAllBytes(path1);
+                //Check if file can be read
+                try
+                {
+                    ROM = File.ReadAllBytes(path1);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error when reading file: " + ex.ToString());
+                    return;
+                }
                 MaxByte = ROM.Length - 1;
                 StartByteNumb.Maximum = MaxByte;
                 StartByteTrackBar.Maximum = MaxByte;
@@ -677,6 +701,13 @@ namespace LunarROMCorruptor
             input.ShowDialog();
             if (string.IsNullOrEmpty(input.InputBoxTxtBox.Text)) { return; }
             var exc = Path.GetExtension(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem));
+            //Check if file doesnt exist
+            if (!File.Exists(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem)))
+            {
+                MessageBox.Show("File doesn't exist!");
+                return;
+            }
+
             File.Move(Application.StartupPath + @"\CorruptionStashList\" + StashList.GetItemText(StashList.SelectedItem), Application.StartupPath + "\\CorruptionStashList\\" + input.InputBoxTxtBox.Text + exc);
             StashList.Items.Clear();
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
@@ -755,6 +786,12 @@ namespace LunarROMCorruptor
             input.ShowDialog();
             if (string.IsNullOrEmpty(input.InputBoxTxtBox.Text)) { return; }
             var exc = Path.GetExtension(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem));
+            //Check if file doesnt exist
+            if (!File.Exists(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem)))
+            {
+                MessageBox.Show("File doesn't exist!");
+                return;
+            }
             File.Move(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), Application.StartupPath + "\\Saves\\" + input.InputBoxTxtBox.Text + exc);
             FilesaveList.Items.Clear();
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Saves\");
