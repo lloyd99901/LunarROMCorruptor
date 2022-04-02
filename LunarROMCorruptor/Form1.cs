@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 //MIT License
 
-//Copyright (c) 2020 LunarHunter
+//Copyright (c) 2022 LunarHunter
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v0.4";
+        private readonly string vernumber = "v0.4 Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -670,6 +670,11 @@ namespace LunarROMCorruptor
                     builder.Append(listitem);
                     builder.AppendLine();
                 }
+            }
+            //Check if Application.StartupPath + @"\CorruptionStashList\" directory is valid
+            if (!Directory.Exists(Application.StartupPath + @"\CorruptionStashList\"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\CorruptionStashList\");
             }
 
             File.WriteAllText(Application.StartupPath + @"\CorruptionStashList\" + rnd.Next(1000, 999999999) + ".stash", builder.ToString());

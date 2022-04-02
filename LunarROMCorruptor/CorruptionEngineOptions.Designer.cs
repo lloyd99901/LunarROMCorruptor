@@ -82,6 +82,8 @@
             // 
             // CorrTypeMerge
             // 
+            this.CorrTypeMerge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CorrTypeMerge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
             this.CorrTypeMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CorrTypeMerge.ForeColor = System.Drawing.Color.White;
@@ -89,7 +91,7 @@
             this.CorrTypeMerge.Items.AddRange(new object[] {
             "NONE",
             "RANGE"});
-            this.CorrTypeMerge.Location = new System.Drawing.Point(8, 105);
+            this.CorrTypeMerge.Location = new System.Drawing.Point(588, 18);
             this.CorrTypeMerge.Name = "CorrTypeMerge";
             this.CorrTypeMerge.Size = new System.Drawing.Size(120, 21);
             this.CorrTypeMerge.TabIndex = 99;
@@ -101,7 +103,7 @@
             this.Mod256MergeEnginechkbox.BackColor = System.Drawing.Color.Transparent;
             this.Mod256MergeEnginechkbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Mod256MergeEnginechkbox.ForeColor = System.Drawing.Color.White;
-            this.Mod256MergeEnginechkbox.Location = new System.Drawing.Point(403, 65);
+            this.Mod256MergeEnginechkbox.Location = new System.Drawing.Point(403, 69);
             this.Mod256MergeEnginechkbox.Name = "Mod256MergeEnginechkbox";
             this.Mod256MergeEnginechkbox.Size = new System.Drawing.Size(71, 17);
             this.Mod256MergeEnginechkbox.TabIndex = 98;
@@ -116,7 +118,7 @@
             this.ReplaceByteWithSamePos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ReplaceByteWithSamePos.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReplaceByteWithSamePos.ForeColor = System.Drawing.Color.White;
-            this.ReplaceByteWithSamePos.Location = new System.Drawing.Point(127, 65);
+            this.ReplaceByteWithSamePos.Location = new System.Drawing.Point(127, 69);
             this.ReplaceByteWithSamePos.Name = "ReplaceByteWithSamePos";
             this.ReplaceByteWithSamePos.Size = new System.Drawing.Size(270, 17);
             this.ReplaceByteWithSamePos.TabIndex = 98;
@@ -231,21 +233,20 @@
             // Label11
             // 
             this.Label11.AutoSize = true;
-            this.Label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label11.ForeColor = System.Drawing.Color.White;
+            this.Label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label11.Location = new System.Drawing.Point(3, 2);
             this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(86, 17);
+            this.Label11.Size = new System.Drawing.Size(151, 17);
             this.Label11.TabIndex = 93;
-            this.Label11.Text = "Logic Engine";
+            this.Label11.Text = "-Logic Engine Settings-";
             // 
             // Label15
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label15.Location = new System.Drawing.Point(4, 85);
+            this.Label15.Location = new System.Drawing.Point(458, 18);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(124, 20);
             this.Label15.TabIndex = 97;
@@ -268,27 +269,26 @@
             // Label16
             // 
             this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
+            this.Label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline);
             this.Label16.ForeColor = System.Drawing.Color.White;
-            this.Label16.Location = new System.Drawing.Point(5, 45);
+            this.Label16.Location = new System.Drawing.Point(9, 32);
             this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(617, 34);
+            this.Label16.Size = new System.Drawing.Size(584, 68);
             this.Label16.TabIndex = 93;
-            this.Label16.Text = "Uses random engines for each corrupted byte.\r\nDoes not support random variables, " +
-    "you must set the variables of each corruption engine yourself.";
+            this.Label16.Text = "There are no settings to adjust.\r\n\r\nUses random engines for each corrupted byte.\r" +
+    "\nDoes not support random variables, you must set the variables of each corruptio" +
+    "n engine yourself.";
             // 
             // Label18
             // 
             this.Label18.AutoSize = true;
-            this.Label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label18.ForeColor = System.Drawing.Color.White;
+            this.Label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label18.Location = new System.Drawing.Point(3, 2);
             this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(79, 17);
+            this.Label18.Size = new System.Drawing.Size(143, 17);
             this.Label18.TabIndex = 93;
-            this.Label18.Text = "Hell Engine";
+            this.Label18.Text = "-Hell Engine Settings-";
             // 
             // LerpEnginePanel
             // 
@@ -307,7 +307,7 @@
             // 
             // LerpValueTxt
             // 
-            this.LerpValueTxt.Location = new System.Drawing.Point(77, 37);
+            this.LerpValueTxt.Location = new System.Drawing.Point(78, 25);
             this.LerpValueTxt.Name = "LerpValueTxt";
             this.LerpValueTxt.Size = new System.Drawing.Size(100, 22);
             this.LerpValueTxt.TabIndex = 97;
@@ -318,7 +318,7 @@
             this.Label17.AutoSize = true;
             this.Label17.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Label17.ForeColor = System.Drawing.Color.White;
-            this.Label17.Location = new System.Drawing.Point(8, 38);
+            this.Label17.Location = new System.Drawing.Point(9, 26);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(71, 17);
             this.Label17.TabIndex = 96;
@@ -327,14 +327,13 @@
             // Label20
             // 
             this.Label20.AutoSize = true;
-            this.Label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label20.ForeColor = System.Drawing.Color.White;
+            this.Label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label20.Location = new System.Drawing.Point(3, 2);
             this.Label20.Name = "Label20";
-            this.Label20.Size = new System.Drawing.Size(81, 17);
+            this.Label20.Size = new System.Drawing.Size(145, 17);
             this.Label20.TabIndex = 93;
-            this.Label20.Text = "Lerp Engine";
+            this.Label20.Text = "-Lerp Engine Settings-";
             // 
             // Vector2EnginePanel
             // 
@@ -403,21 +402,20 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
-            this.Label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label21.ForeColor = System.Drawing.Color.White;
+            this.Label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label21.Location = new System.Drawing.Point(3, 2);
             this.Label21.Name = "Label21";
-            this.Label21.Size = new System.Drawing.Size(100, 17);
+            this.Label21.Size = new System.Drawing.Size(164, 17);
             this.Label21.TabIndex = 93;
-            this.Label21.Text = "Vector2 Engine";
+            this.Label21.Text = "-Vector2 Engine Settings-";
             // 
             // Label13
             // 
             this.Label13.AutoSize = true;
             this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label13.Location = new System.Drawing.Point(123, 15);
+            this.Label13.Location = new System.Drawing.Point(123, 19);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(103, 20);
             this.Label13.TabIndex = 97;
@@ -443,14 +441,13 @@
             // Label23
             // 
             this.Label23.AutoSize = true;
-            this.Label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label23.ForeColor = System.Drawing.Color.White;
+            this.Label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label23.Location = new System.Drawing.Point(3, 2);
             this.Label23.Name = "Label23";
-            this.Label23.Size = new System.Drawing.Size(121, 17);
+            this.Label23.Size = new System.Drawing.Size(184, 17);
             this.Label23.TabIndex = 93;
-            this.Label23.Text = "Nightmare Engine";
+            this.Label23.Text = "-Nightmare Engine Settings-";
             // 
             // IncreDecrenumbnightmare
             // 
@@ -521,7 +518,9 @@
             this.MergeOpenFilebtn.FlatAppearance.BorderSize = 0;
             this.MergeOpenFilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MergeOpenFilebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.MergeOpenFilebtn.Location = new System.Drawing.Point(5, 37);
+            this.MergeOpenFilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
+            this.MergeOpenFilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MergeOpenFilebtn.Location = new System.Drawing.Point(5, 41);
             this.MergeOpenFilebtn.Name = "MergeOpenFilebtn";
             this.MergeOpenFilebtn.Size = new System.Drawing.Size(116, 23);
             this.MergeOpenFilebtn.TabIndex = 96;
@@ -556,7 +555,7 @@
             this.MergeFileLocationTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
             this.MergeFileLocationTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MergeFileLocationTxt.ForeColor = System.Drawing.Color.White;
-            this.MergeFileLocationTxt.Location = new System.Drawing.Point(127, 38);
+            this.MergeFileLocationTxt.Location = new System.Drawing.Point(127, 42);
             this.MergeFileLocationTxt.Name = "MergeFileLocationTxt";
             this.MergeFileLocationTxt.ReadOnly = true;
             this.MergeFileLocationTxt.Size = new System.Drawing.Size(581, 22);
@@ -565,14 +564,13 @@
             // Label9
             // 
             this.Label9.AutoSize = true;
-            this.Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label9.ForeColor = System.Drawing.Color.White;
+            this.Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label9.Location = new System.Drawing.Point(3, 2);
             this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(92, 17);
+            this.Label9.Size = new System.Drawing.Size(157, 17);
             this.Label9.TabIndex = 93;
-            this.Label9.Text = "Merge Engine";
+            this.Label9.Text = "-Merge Engine Settings-";
             // 
             // CorruptionEngineOptions
             // 

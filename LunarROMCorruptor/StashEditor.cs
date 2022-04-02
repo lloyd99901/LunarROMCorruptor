@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,10 +18,32 @@ namespace LunarROMCorruptor
             try
             {
                 stashListbox.Items.Clear();
-                foreach (var line in File.ReadLines(fileloc))
+                //Check if the file being loaded contains only text
+                if (File.ReadAllBytes(fileloc).All(b => b < 128))
                 {
-                    stashListbox.Items.Add(line);
+                    //If it does, load it as a text file
+                    foreach (var line in File.ReadLines(fileloc))
+                    {
+                        //If the line doesn't start with "[x] File" it's not a valid line
+                        if (!line.StartsWith("[x] File"))
+                        {
+                            MessageBox.Show("This file is not a valid stash file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else //pased checks
+                        {
+                            stashListbox.Items.Add(line);
+                        }
+                        
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("This file is not a valid stash file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -30,6 +53,13 @@ namespace LunarROMCorruptor
 
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
+            //Check if CorruptionStashList folder exists
+            if (!Directory.Exists(@"CorruptionStashList"))
+            {
+                //If it doesn't, create it
+                Directory.CreateDirectory(@"CorruptionStashList");
+            }
+            OpenFileDialog.InitialDirectory = Path.GetDirectoryName(Application.ExecutablePath + "/CorruptionStashList/");
             if (OpenFileDialog.ShowDialog() != DialogResult.Cancel)
             {
                 AttemptStashLoad(OpenFileDialog.FileName);

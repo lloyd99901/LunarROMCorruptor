@@ -156,6 +156,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Joystick.png" />
+    <None Include="Resources\Send4.png" />
+    <None Include="Resources\SendSmall1.png" />
+    <None Include="Resources\SendSmall.png" />
+    <None Include="Resources\Send3.png" />
+    <None Include="Resources\Send2.png" />
+    <None Include="Resources\Send1.png" />
+    <None Include="Resources\Restore2.png" />
+    <None Include="Resources\Open1.png" />
+    <None Include="Resources\Restore1.png" />
+    <None Include="Resources\Send.png" />
+    <None Include="Resources\Edit.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Restore.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Open.png" />
+    <None Include="Resources\icons8-open-file-under-cursor-20.png" />
+    <None Include="Resources\icons8-open-file-under-cursor-25.png" />
+    <None Include="Resources\icons8-open-file-under-cursor-50.png" />
     <None Include="Resources\dragicon.png" />
     <None Include="Resources\icon %282%29.png" />
     <None Include="Resources\success2.wav" />
