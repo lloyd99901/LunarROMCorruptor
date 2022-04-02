@@ -17,7 +17,7 @@ namespace LunarROMCorruptor.CorruptionEngines
 
             try
             {
-                byteminus = ROM[i+1];
+                byteminus = ROM[i + 1];
             }
             catch (IndexOutOfRangeException)
             {
@@ -25,7 +25,7 @@ namespace LunarROMCorruptor.CorruptionEngines
             }
             try
             {
-                byteplus = ROM[i-1];
+                byteplus = ROM[i - 1];
             }
             catch (IndexOutOfRangeException)
             {

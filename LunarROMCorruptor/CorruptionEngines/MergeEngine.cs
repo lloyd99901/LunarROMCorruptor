@@ -29,7 +29,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                             if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 Application.Exit();
-                            };
+                            }
                             break;
                     }
                 }
@@ -51,7 +51,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                             if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 Application.Exit();
-                            };
+                            }
                             break;
                     }
                 }
@@ -76,7 +76,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                             if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 Application.Exit();
-                            };
+                            }
                             break;
                     }
                 }
@@ -98,12 +98,11 @@ namespace LunarROMCorruptor.CorruptionEngines
                             if (MessageBox.Show("The Merge Engine returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 Application.Exit();
-                            };
+                            }
                             break;
                     }
                 }
             }
-
             return ROM;
         }
     }

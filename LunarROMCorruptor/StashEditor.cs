@@ -34,16 +34,12 @@ namespace LunarROMCorruptor
                         {
                             stashListbox.Items.Add(line);
                         }
-                        
                     }
                 }
                 else
                 {
                     MessageBox.Show("This file is not a valid stash file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -146,7 +142,6 @@ namespace LunarROMCorruptor
                 {
                     stashListbox.Items.Add(line);
                 }
-
             }
             catch
             {

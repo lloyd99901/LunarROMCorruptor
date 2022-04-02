@@ -569,7 +569,7 @@ namespace LunarROMCorruptor
                     if (MessageBox.Show("The Start Corruption function returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         Application.Exit();
-                    };
+                    }
                     break;
             }
             return ROM;
@@ -895,7 +895,7 @@ namespace LunarROMCorruptor
                     {
                         ROM[int.Parse(i.ToString())] = (byte)int.Parse(result.ToString());
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("ROM byte stash corruption failed! Corruption cannot continue. \n More details:" + ex.ToString());
                         return;
