@@ -34,7 +34,7 @@
             this.Mod256MergeEnginechkbox = new System.Windows.Forms.CheckBox();
             this.ReplaceByteWithSamePos = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel = new System.Windows.Forms.Panel();
-            this.BitwiseThing = new System.Windows.Forms.ComboBox();
+            this.BitwiseComboBox = new System.Windows.Forms.ComboBox();
             this.CheckBox2 = new System.Windows.Forms.CheckBox();
             this.ValueBitwise = new System.Windows.Forms.NumericUpDown();
             this.Label14 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             this.Label16 = new System.Windows.Forms.Label();
             this.Label18 = new System.Windows.Forms.Label();
             this.LerpEnginePanel = new System.Windows.Forms.Panel();
-            this.TextBox1 = new System.Windows.Forms.TextBox();
+            this.LerpValueTxt = new System.Windows.Forms.TextBox();
             this.Label17 = new System.Windows.Forms.Label();
             this.Label20 = new System.Windows.Forms.Label();
             this.Vector2EnginePanel = new System.Windows.Forms.Panel();
@@ -59,12 +59,12 @@
             this.NightmareEnginePanel = new System.Windows.Forms.Panel();
             this.Label23 = new System.Windows.Forms.Label();
             this.IncreDecrenumbnightmare = new System.Windows.Forms.NumericUpDown();
-            this.ComboBox1 = new System.Windows.Forms.ComboBox();
+            this.NightmareComboBox = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Button1 = new System.Windows.Forms.Button();
+            this.MergeOpenFilebtn = new System.Windows.Forms.Button();
             this.MergeEnginePanel = new System.Windows.Forms.Panel();
-            this.TextBox5 = new System.Windows.Forms.TextBox();
+            this.MergeFileLocationTxt = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
@@ -82,6 +82,8 @@
             // 
             // CorrTypeMerge
             // 
+            this.CorrTypeMerge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CorrTypeMerge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
             this.CorrTypeMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CorrTypeMerge.ForeColor = System.Drawing.Color.White;
@@ -89,7 +91,7 @@
             this.CorrTypeMerge.Items.AddRange(new object[] {
             "NONE",
             "RANGE"});
-            this.CorrTypeMerge.Location = new System.Drawing.Point(8, 105);
+            this.CorrTypeMerge.Location = new System.Drawing.Point(588, 18);
             this.CorrTypeMerge.Name = "CorrTypeMerge";
             this.CorrTypeMerge.Size = new System.Drawing.Size(120, 21);
             this.CorrTypeMerge.TabIndex = 99;
@@ -101,7 +103,7 @@
             this.Mod256MergeEnginechkbox.BackColor = System.Drawing.Color.Transparent;
             this.Mod256MergeEnginechkbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Mod256MergeEnginechkbox.ForeColor = System.Drawing.Color.White;
-            this.Mod256MergeEnginechkbox.Location = new System.Drawing.Point(403, 65);
+            this.Mod256MergeEnginechkbox.Location = new System.Drawing.Point(403, 69);
             this.Mod256MergeEnginechkbox.Name = "Mod256MergeEnginechkbox";
             this.Mod256MergeEnginechkbox.Size = new System.Drawing.Size(71, 17);
             this.Mod256MergeEnginechkbox.TabIndex = 98;
@@ -116,7 +118,7 @@
             this.ReplaceByteWithSamePos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ReplaceByteWithSamePos.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReplaceByteWithSamePos.ForeColor = System.Drawing.Color.White;
-            this.ReplaceByteWithSamePos.Location = new System.Drawing.Point(127, 65);
+            this.ReplaceByteWithSamePos.Location = new System.Drawing.Point(127, 69);
             this.ReplaceByteWithSamePos.Name = "ReplaceByteWithSamePos";
             this.ReplaceByteWithSamePos.Size = new System.Drawing.Size(270, 17);
             this.ReplaceByteWithSamePos.TabIndex = 98;
@@ -129,7 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogicEnginePanel.BackColor = System.Drawing.Color.Indigo;
-            this.LogicEnginePanel.Controls.Add(this.BitwiseThing);
+            this.LogicEnginePanel.Controls.Add(this.BitwiseComboBox);
             this.LogicEnginePanel.Controls.Add(this.CheckBox2);
             this.LogicEnginePanel.Controls.Add(this.ValueBitwise);
             this.LogicEnginePanel.Controls.Add(this.Label14);
@@ -142,13 +144,13 @@
             this.LogicEnginePanel.TabIndex = 159;
             this.LogicEnginePanel.Tag = "color:normal";
             // 
-            // BitwiseThing
+            // BitwiseComboBox
             // 
-            this.BitwiseThing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
-            this.BitwiseThing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BitwiseThing.ForeColor = System.Drawing.Color.White;
-            this.BitwiseThing.FormattingEnabled = true;
-            this.BitwiseThing.Items.AddRange(new object[] {
+            this.BitwiseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
+            this.BitwiseComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BitwiseComboBox.ForeColor = System.Drawing.Color.White;
+            this.BitwiseComboBox.FormattingEnabled = true;
+            this.BitwiseComboBox.Items.AddRange(new object[] {
             "AND",
             "OR",
             "XOR",
@@ -158,11 +160,11 @@
             "XNOR",
             "SWAP",
             "SHIFT"});
-            this.BitwiseThing.Location = new System.Drawing.Point(118, 27);
-            this.BitwiseThing.Name = "BitwiseThing";
-            this.BitwiseThing.Size = new System.Drawing.Size(111, 21);
-            this.BitwiseThing.TabIndex = 167;
-            this.BitwiseThing.Text = "AND";
+            this.BitwiseComboBox.Location = new System.Drawing.Point(118, 27);
+            this.BitwiseComboBox.Name = "BitwiseComboBox";
+            this.BitwiseComboBox.Size = new System.Drawing.Size(111, 21);
+            this.BitwiseComboBox.TabIndex = 167;
+            this.BitwiseComboBox.Text = "AND";
             // 
             // CheckBox2
             // 
@@ -231,21 +233,20 @@
             // Label11
             // 
             this.Label11.AutoSize = true;
-            this.Label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label11.ForeColor = System.Drawing.Color.White;
+            this.Label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label11.Location = new System.Drawing.Point(3, 2);
             this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(86, 17);
+            this.Label11.Size = new System.Drawing.Size(151, 17);
             this.Label11.TabIndex = 93;
-            this.Label11.Text = "Logic Engine";
+            this.Label11.Text = "-Logic Engine Settings-";
             // 
             // Label15
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label15.Location = new System.Drawing.Point(4, 85);
+            this.Label15.Location = new System.Drawing.Point(458, 18);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(124, 20);
             this.Label15.TabIndex = 97;
@@ -268,27 +269,26 @@
             // Label16
             // 
             this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
+            this.Label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline);
             this.Label16.ForeColor = System.Drawing.Color.White;
-            this.Label16.Location = new System.Drawing.Point(5, 45);
+            this.Label16.Location = new System.Drawing.Point(9, 32);
             this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(617, 34);
+            this.Label16.Size = new System.Drawing.Size(584, 68);
             this.Label16.TabIndex = 93;
-            this.Label16.Text = "Uses random engines for each corrupted byte.\r\nDoes not support random variables, " +
-    "you must set the variables of each corruption engine yourself.";
+            this.Label16.Text = "There are no settings to adjust.\r\n\r\nUses random engines for each corrupted byte.\r" +
+    "\nDoes not support random variables, you must set the variables of each corruptio" +
+    "n engine yourself.";
             // 
             // Label18
             // 
             this.Label18.AutoSize = true;
-            this.Label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label18.ForeColor = System.Drawing.Color.White;
+            this.Label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label18.Location = new System.Drawing.Point(3, 2);
             this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(79, 17);
+            this.Label18.Size = new System.Drawing.Size(143, 17);
             this.Label18.TabIndex = 93;
-            this.Label18.Text = "Hell Engine";
+            this.Label18.Text = "-Hell Engine Settings-";
             // 
             // LerpEnginePanel
             // 
@@ -296,7 +296,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LerpEnginePanel.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.LerpEnginePanel.Controls.Add(this.TextBox1);
+            this.LerpEnginePanel.Controls.Add(this.LerpValueTxt);
             this.LerpEnginePanel.Controls.Add(this.Label17);
             this.LerpEnginePanel.Controls.Add(this.Label20);
             this.LerpEnginePanel.Location = new System.Drawing.Point(12, 14);
@@ -305,20 +305,20 @@
             this.LerpEnginePanel.TabIndex = 161;
             this.LerpEnginePanel.Tag = "color:normal";
             // 
-            // TextBox1
+            // LerpValueTxt
             // 
-            this.TextBox1.Location = new System.Drawing.Point(77, 37);
-            this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(100, 22);
-            this.TextBox1.TabIndex = 97;
-            this.TextBox1.Text = "0.5";
+            this.LerpValueTxt.Location = new System.Drawing.Point(78, 25);
+            this.LerpValueTxt.Name = "LerpValueTxt";
+            this.LerpValueTxt.Size = new System.Drawing.Size(100, 22);
+            this.LerpValueTxt.TabIndex = 97;
+            this.LerpValueTxt.Text = "0.5";
             // 
             // Label17
             // 
             this.Label17.AutoSize = true;
             this.Label17.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Label17.ForeColor = System.Drawing.Color.White;
-            this.Label17.Location = new System.Drawing.Point(8, 38);
+            this.Label17.Location = new System.Drawing.Point(9, 26);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(71, 17);
             this.Label17.TabIndex = 96;
@@ -327,14 +327,13 @@
             // Label20
             // 
             this.Label20.AutoSize = true;
-            this.Label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label20.ForeColor = System.Drawing.Color.White;
+            this.Label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label20.Location = new System.Drawing.Point(3, 2);
             this.Label20.Name = "Label20";
-            this.Label20.Size = new System.Drawing.Size(81, 17);
+            this.Label20.Size = new System.Drawing.Size(145, 17);
             this.Label20.TabIndex = 93;
-            this.Label20.Text = "Lerp Engine";
+            this.Label20.Text = "-Lerp Engine Settings-";
             // 
             // Vector2EnginePanel
             // 
@@ -403,21 +402,20 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
-            this.Label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label21.ForeColor = System.Drawing.Color.White;
+            this.Label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label21.Location = new System.Drawing.Point(3, 2);
             this.Label21.Name = "Label21";
-            this.Label21.Size = new System.Drawing.Size(100, 17);
+            this.Label21.Size = new System.Drawing.Size(164, 17);
             this.Label21.TabIndex = 93;
-            this.Label21.Text = "Vector2 Engine";
+            this.Label21.Text = "-Vector2 Engine Settings-";
             // 
             // Label13
             // 
             this.Label13.AutoSize = true;
             this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label13.Location = new System.Drawing.Point(123, 15);
+            this.Label13.Location = new System.Drawing.Point(123, 19);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(103, 20);
             this.Label13.TabIndex = 97;
@@ -431,7 +429,7 @@
             this.NightmareEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.NightmareEnginePanel.Controls.Add(this.Label23);
             this.NightmareEnginePanel.Controls.Add(this.IncreDecrenumbnightmare);
-            this.NightmareEnginePanel.Controls.Add(this.ComboBox1);
+            this.NightmareEnginePanel.Controls.Add(this.NightmareComboBox);
             this.NightmareEnginePanel.Controls.Add(this.Label1);
             this.NightmareEnginePanel.Controls.Add(this.label5);
             this.NightmareEnginePanel.Location = new System.Drawing.Point(12, 12);
@@ -443,14 +441,13 @@
             // Label23
             // 
             this.Label23.AutoSize = true;
-            this.Label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label23.ForeColor = System.Drawing.Color.White;
+            this.Label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label23.Location = new System.Drawing.Point(3, 2);
             this.Label23.Name = "Label23";
-            this.Label23.Size = new System.Drawing.Size(121, 17);
+            this.Label23.Size = new System.Drawing.Size(184, 17);
             this.Label23.TabIndex = 93;
-            this.Label23.Text = "Nightmare Engine";
+            this.Label23.Text = "-Nightmare Engine Settings-";
             // 
             // IncreDecrenumbnightmare
             // 
@@ -477,21 +474,21 @@
             0,
             0});
             // 
-            // ComboBox1
+            // NightmareComboBox
             // 
-            this.ComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
-            this.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ComboBox1.ForeColor = System.Drawing.Color.White;
-            this.ComboBox1.FormattingEnabled = true;
-            this.ComboBox1.Items.AddRange(new object[] {
+            this.NightmareComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
+            this.NightmareComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NightmareComboBox.ForeColor = System.Drawing.Color.White;
+            this.NightmareComboBox.FormattingEnabled = true;
+            this.NightmareComboBox.Items.AddRange(new object[] {
             "RANDOM",
             "RANDOMTILT",
             "TILT"});
-            this.ComboBox1.Location = new System.Drawing.Point(212, 19);
-            this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(191, 21);
-            this.ComboBox1.TabIndex = 90;
-            this.ComboBox1.Text = "RANDOM";
+            this.NightmareComboBox.Location = new System.Drawing.Point(212, 19);
+            this.NightmareComboBox.Name = "NightmareComboBox";
+            this.NightmareComboBox.Size = new System.Drawing.Size(191, 21);
+            this.NightmareComboBox.TabIndex = 90;
+            this.NightmareComboBox.Text = "RANDOM";
             // 
             // Label1
             // 
@@ -515,19 +512,21 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Corruption Type:";
             // 
-            // Button1
+            // MergeOpenFilebtn
             // 
-            this.Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.Button1.FlatAppearance.BorderSize = 0;
-            this.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button1.ForeColor = System.Drawing.Color.Aqua;
-            this.Button1.Location = new System.Drawing.Point(5, 37);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(116, 23);
-            this.Button1.TabIndex = 96;
-            this.Button1.Text = "Open File";
-            this.Button1.UseVisualStyleBackColor = false;
-            this.Button1.Click += new System.EventHandler(this.Button1_Click);
+            this.MergeOpenFilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.MergeOpenFilebtn.FlatAppearance.BorderSize = 0;
+            this.MergeOpenFilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MergeOpenFilebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.MergeOpenFilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
+            this.MergeOpenFilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MergeOpenFilebtn.Location = new System.Drawing.Point(5, 41);
+            this.MergeOpenFilebtn.Name = "MergeOpenFilebtn";
+            this.MergeOpenFilebtn.Size = new System.Drawing.Size(116, 23);
+            this.MergeOpenFilebtn.TabIndex = 96;
+            this.MergeOpenFilebtn.Text = "Open File";
+            this.MergeOpenFilebtn.UseVisualStyleBackColor = false;
+            this.MergeOpenFilebtn.Click += new System.EventHandler(this.Button1_Click);
             // 
             // MergeEnginePanel
             // 
@@ -540,8 +539,8 @@
             this.MergeEnginePanel.Controls.Add(this.ReplaceByteWithSamePos);
             this.MergeEnginePanel.Controls.Add(this.Label15);
             this.MergeEnginePanel.Controls.Add(this.Label13);
-            this.MergeEnginePanel.Controls.Add(this.Button1);
-            this.MergeEnginePanel.Controls.Add(this.TextBox5);
+            this.MergeEnginePanel.Controls.Add(this.MergeOpenFilebtn);
+            this.MergeEnginePanel.Controls.Add(this.MergeFileLocationTxt);
             this.MergeEnginePanel.Controls.Add(this.Label9);
             this.MergeEnginePanel.Location = new System.Drawing.Point(13, 14);
             this.MergeEnginePanel.Name = "MergeEnginePanel";
@@ -549,30 +548,29 @@
             this.MergeEnginePanel.TabIndex = 158;
             this.MergeEnginePanel.Tag = "color:normal";
             // 
-            // TextBox5
+            // MergeFileLocationTxt
             // 
-            this.TextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MergeFileLocationTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
-            this.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TextBox5.ForeColor = System.Drawing.Color.White;
-            this.TextBox5.Location = new System.Drawing.Point(127, 38);
-            this.TextBox5.Name = "TextBox5";
-            this.TextBox5.ReadOnly = true;
-            this.TextBox5.Size = new System.Drawing.Size(581, 22);
-            this.TextBox5.TabIndex = 94;
+            this.MergeFileLocationTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
+            this.MergeFileLocationTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MergeFileLocationTxt.ForeColor = System.Drawing.Color.White;
+            this.MergeFileLocationTxt.Location = new System.Drawing.Point(127, 42);
+            this.MergeFileLocationTxt.Name = "MergeFileLocationTxt";
+            this.MergeFileLocationTxt.ReadOnly = true;
+            this.MergeFileLocationTxt.Size = new System.Drawing.Size(581, 22);
+            this.MergeFileLocationTxt.TabIndex = 94;
             // 
             // Label9
             // 
             this.Label9.AutoSize = true;
-            this.Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))));
-            this.Label9.ForeColor = System.Drawing.Color.White;
+            this.Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Label9.Location = new System.Drawing.Point(3, 2);
             this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(92, 17);
+            this.Label9.Size = new System.Drawing.Size(157, 17);
             this.Label9.TabIndex = 93;
-            this.Label9.Text = "Merge Engine";
+            this.Label9.Text = "-Merge Engine Settings-";
             // 
             // CorruptionEngineOptions
             // 
@@ -615,7 +613,7 @@
         public System.Windows.Forms.CheckBox Mod256MergeEnginechkbox;
         public System.Windows.Forms.CheckBox ReplaceByteWithSamePos;
         public System.Windows.Forms.Panel LogicEnginePanel;
-        internal System.Windows.Forms.ComboBox BitwiseThing;
+        internal System.Windows.Forms.ComboBox BitwiseComboBox;
         internal System.Windows.Forms.CheckBox CheckBox2;
         internal System.Windows.Forms.NumericUpDown ValueBitwise;
         private System.Windows.Forms.Label Label14;
@@ -627,7 +625,7 @@
         private System.Windows.Forms.Label Label16;
         private System.Windows.Forms.Label Label18;
         public System.Windows.Forms.Panel LerpEnginePanel;
-        internal System.Windows.Forms.TextBox TextBox1;
+        internal System.Windows.Forms.TextBox LerpValueTxt;
         private System.Windows.Forms.Label Label17;
         private System.Windows.Forms.Label Label20;
         public System.Windows.Forms.Panel Vector2EnginePanel;
@@ -640,12 +638,12 @@
         public System.Windows.Forms.Panel NightmareEnginePanel;
         private System.Windows.Forms.Label Label23;
         internal System.Windows.Forms.NumericUpDown IncreDecrenumbnightmare;
-        internal System.Windows.Forms.ComboBox ComboBox1;
+        internal System.Windows.Forms.ComboBox NightmareComboBox;
         private System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.Button Button1;
+        internal System.Windows.Forms.Button MergeOpenFilebtn;
         public System.Windows.Forms.Panel MergeEnginePanel;
-        public System.Windows.Forms.TextBox TextBox5;
+        public System.Windows.Forms.TextBox MergeFileLocationTxt;
         private System.Windows.Forms.Label Label9;
     }
 }

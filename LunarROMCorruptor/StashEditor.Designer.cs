@@ -35,7 +35,7 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label4 = new System.Windows.Forms.Label();
-            this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.Label1 = new System.Windows.Forms.Label();
             this.restorebtn = new System.Windows.Forms.Button();
             this.newfilestashbtn = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.remove50btn = new System.Windows.Forms.Button();
             this.removeselbtn = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.SaveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.valueStashnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocationStash)).BeginInit();
             this.Panel1.SuspendLayout();
@@ -87,7 +87,7 @@
             // 
             this.valueStashnum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
             this.valueStashnum.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueStashnum.ForeColor = System.Drawing.Color.White;
+            this.valueStashnum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.valueStashnum.Location = new System.Drawing.Point(70, 172);
             this.valueStashnum.Maximum = new decimal(new int[] {
             255,
@@ -107,7 +107,7 @@
             // 
             this.LocationStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
             this.LocationStash.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationStash.ForeColor = System.Drawing.Color.White;
+            this.LocationStash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.LocationStash.Location = new System.Drawing.Point(70, 146);
             this.LocationStash.Maximum = new decimal(new int[] {
             99999999,
@@ -132,7 +132,7 @@
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label3.ForeColor = System.Drawing.Color.White;
+            this.Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.Label3.Location = new System.Drawing.Point(22, 173);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(42, 17);
@@ -143,7 +143,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label2.ForeColor = System.Drawing.Color.White;
+            this.Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.Label2.Location = new System.Drawing.Point(9, 146);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(60, 17);
@@ -154,22 +154,22 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label4.ForeColor = System.Drawing.Color.White;
+            this.Label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.Label4.Location = new System.Drawing.Point(12, 225);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(101, 17);
             this.Label4.TabIndex = 95;
             this.Label4.Text = "Removed items:";
             // 
-            // OpenFileDialog1
+            // OpenFileDialog
             // 
-            this.OpenFileDialog1.Filter = "All files (*.*)|*.*";
+            this.OpenFileDialog.Filter = "All files (*.*)|*.*";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Label1.ForeColor = System.Drawing.Color.White;
+            this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.Label1.Location = new System.Drawing.Point(9, 125);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(139, 17);
@@ -189,6 +189,7 @@
             this.restorebtn.TabIndex = 2;
             this.restorebtn.Text = "Restore";
             this.restorebtn.UseVisualStyleBackColor = false;
+            this.restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
             // 
             // newfilestashbtn
             // 
@@ -316,9 +317,9 @@
             this.Panel1.Size = new System.Drawing.Size(160, 503);
             this.Panel1.TabIndex = 160;
             // 
-            // SaveFileDialog1
+            // SaveFileDialog
             // 
-            this.SaveFileDialog1.Filter = "All Files *.*|*.*";
+            this.SaveFileDialog.Filter = "All Files *.*|*.*";
             // 
             // StashEditor
             // 
@@ -352,7 +353,7 @@
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label2;
         private System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;
+        internal System.Windows.Forms.OpenFileDialog OpenFileDialog;
         private System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button restorebtn;
         internal System.Windows.Forms.Button newfilestashbtn;
@@ -363,6 +364,6 @@
         internal System.Windows.Forms.Button remove50btn;
         internal System.Windows.Forms.Button removeselbtn;
         internal System.Windows.Forms.Panel Panel1;
-        internal System.Windows.Forms.SaveFileDialog SaveFileDialog1;
+        internal System.Windows.Forms.SaveFileDialog SaveFileDialog;
     }
 }

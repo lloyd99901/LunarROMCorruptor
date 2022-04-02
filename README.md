@@ -79,7 +79,7 @@ LunarROMCorruptor uses engines to corrupt files, each engine has its usage and i
 I've included the Nightmare Engine, which is an engine from the Windows Glitch Harvester, into the project so that people that are most familiar with that engine can use it.
 
 ### Requirements
-.NET Framework 4 is required to run the program.
+.NET Framework 4.7.2 is required to run the program.
 For development, Microsoft Visual Studio Community 2019 is recommended.
 ## Contributing
 Pull requests are welcome. Major and minor.

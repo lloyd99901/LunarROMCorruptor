@@ -17,15 +17,15 @@ namespace LunarROMCorruptor
             {
                 try
                 {
-                    TextBox5.Text = OpenFileDialog1.FileName;
+                    MergeFileLocationTxt.Text = OpenFileDialog1.FileName;
                     FileInfo myFile = new FileInfo(Program.Form.FileSelectiontxt.Text);
                     long sizeInBytes = myFile.Length;
-                    FileInfo myFile2 = new FileInfo(TextBox5.Text);
+                    FileInfo myFile2 = new FileInfo(MergeFileLocationTxt.Text);
                     long sizeInBytes2 = myFile2.Length;
                     if (sizeInBytes2 < sizeInBytes)
                     {
                         MessageBox.Show("This file must be the same/bigger size in order for this engine to work.");
-                        TextBox5.Text = "";
+                        MergeFileLocationTxt.Text = "";
                         return;
                     }
                 }
