@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v0.4 Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = "v1.0 Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -63,6 +63,7 @@ namespace LunarROMCorruptor
             }
             Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
             Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
+            CorruptionEngineComboBox.Text = "Nightmare Engine";
             //Directory.CreateDirectory(Application.StartupPath + "\\RestoreMultipleFiles\\");
             AllowDrop = true;
             BrowseEmulatorbutton.Enabled = false;
@@ -132,7 +133,7 @@ namespace LunarROMCorruptor
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("SaveCorruptedFile Argument Exception: Is there a file loaded?");
+                MessageBox.Show("SaveCorruptedFile Argument Error: Is there a file loaded?");
             }
         }
 
@@ -148,7 +149,16 @@ namespace LunarROMCorruptor
                 }
                 else
                 {
-                    ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+                    //Check if file is less than 2GB
+                    if (new FileInfo(MainOpenFileDialog.FileName).Length < 2147483648)
+                    {
+                        ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("File is too large to load.\n\nFile must be less than 2GB in size.", "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     FileSelectiontxt.Text = MainOpenFileDialog.FileName;
                     SaveasTxt.Text = MainOpenFileDialog.FileName;
                     MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
@@ -319,9 +329,9 @@ namespace LunarROMCorruptor
             ROM = backupROM;
             //Here is where the multiple files check should occurr
             //Checks if the file is fit for corruption
-            if (string.IsNullOrEmpty(FileSelectiontxt.Text))
+            if (string.IsNullOrEmpty(FileSelectiontxt.Text) || FileSelectiontxt.Text == "No file selected.")
             {
-                MessageBox.Show("File hasn't been selected.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a file to corrupt.", "No File Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -335,15 +345,6 @@ namespace LunarROMCorruptor
             if (StartByteNumb.Value > EndByteNumb.Value)
             {
                 MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                File.WriteAllBytes(SaveasTxt.Text, backupROM);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
                 return;
             }
             if (StartByteNumb.Value > MaxByte)
@@ -368,8 +369,6 @@ namespace LunarROMCorruptor
                 MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //The file will now be read.
-            ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
             //Hell engine goes here.
             byte[] FinROM = null;
 
@@ -397,7 +396,7 @@ namespace LunarROMCorruptor
 
             if (FinROM == null)
             {
-                MessageBox.Show("Corruption returned nothing! Please try corrupting again. If problems persist, please report this issue.");
+                MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developer with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -442,6 +441,8 @@ namespace LunarROMCorruptor
                     }
                 }
             }
+            //Reset FinROM to save memory
+            FinROM = null;
         }
 
         private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
@@ -523,13 +524,20 @@ namespace LunarROMCorruptor
                     break;
 
                 case "Merge Engine":
+                    //Check if the merge file exists, if not throw an error
+                    if (string.IsNullOrEmpty(objForm2.MergeFileLocationTxt.Text))
+                    {
+                        MessageBox.Show("Merge file location is empty. Please select a file.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+
+                    byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
                     if (CorruptnthbyteCheckbox.Checked)
                     {
                         //CorruptNTH selected
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
                             Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, i1);
                         }
@@ -538,7 +546,6 @@ namespace LunarROMCorruptor
                     {
                         for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
                         {
-                            byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
                             Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
@@ -768,7 +775,7 @@ namespace LunarROMCorruptor
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Argument Exception (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Argument error (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -841,6 +848,11 @@ namespace LunarROMCorruptor
                 try
                 {
                     ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Argument error. Either the ROM isn't loaded or you didn't select a stash.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 catch (Exception ex)
                 {

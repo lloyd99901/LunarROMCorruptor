@@ -118,57 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>The LunarROMCorruptor is a program that allows you to corrupt any ROMs/files using the LunarROMCorruptor just by tweaking a few settings.
+    <value>MIT License
 
-LunarROMCorruptor uses engines to corrupt files, each engine has its usage and its own settings that can be changed. I've included the Nightmare Engine, which is an engine from the Windows Glitch Harvester, into the project so that people that are most familiar with that engine can use it.
+Copyright (c) 2022 LunarHunter
 
-This project started around 2019 and was originally made in VB.NET. I was fascinated by other corruptors and wanted to make my own. The project was finished in the same year, but since the code was very messy, I decided not to release it.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-A year later, I decided to remake it in C#, mainly because I want to teach myself more C#, but also to do some code refactoring to make it more optimized.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-CHANGELOG:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-v0.4:
-Forgot to add code for the "Restore" button in the stash editor. It is now added.
-Renamed controls to make them easier to read.
-Support for Windows XP has ended (Using .Net Framework 4.7.2)
-
-v0.3:
-Changing the Number of the Start Byte and End Byte will now change the trackbar value as well.
-Fixed StartByte and EndByte checker.
-Hidden Multiple Files checkbox.
-Updated First Time Message.
-Changed stash file type from .lunarstash to .stash
-Added Drag Icon when dragging in a file.
-Added Context Menu on Stash Listbox
-
-v0.2:
-Fixed typos
-Fixed issue where "close if running and re-open" option for the emulation option doesn't kill the program properly.
-Fixed issue where selecting multiple items from the Stash List &amp; File Save List and clicking delete only deletes one item(file).
-Fixed issue on Stash Editor where the default stash name after adding new file to stash was incorrect.
-
-v0.1:
-No changes</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CorruptButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAsVJREFUWEfd
-        mL1uE0EUhd0iBCloKRARLREE8ggIKWBkG//JssIbUCAFiYo2AR4HFP4KiijQEARKlYJHiAx1Aucsx3h/
-        7q5nZsdI5EifvNqZe+/xzOx4x41Tr263uwTWwH3wgPR6vU6/37/JNnX7t0Lx6+AFjHwFJ+BXCWxjn2eD
-        weCawhcnmLqHYp9U3BuM6Ed83lW6eOp0OleQ+H26WB1g9DW+7LLS1xMSDsGPdIFITGCyqzJhwjd9iERV
-        a6wuzP1U5fyEwCepRItmU2XdhABOa8jITYTVVsWJ83TrgQhZc4ftdvsi4XWuzYUJal+WjXJh3b0zgufx
-        HfvcJaVo1DD5RilsaZ+zAqtIRg5f7Eyr1bpAeB1qErHrslMUOvhuwn/N4fotPleJrkNN7slOVkpsBZSR
-        TOvUHO+lDLL9w3g8PhtiEjO5Ilsz4SZ/W80Ag8zITe/nDJKgkYSXbdmaCQ3f8h1LKIzcFMMgCRnJfdn6
-        IyRdwk2Xfc8cuSklBonvSB43m81zspcYXDM6FUC/JgvhumCO0Byx2kBikjmMtgKYpRuyl6y/ttXJ4ACU
-        LoU5BgljmcNqy4A8LdlLRpBvwWZHHxwM+rAhe/+BQY8priSmQeTJTLHTQzKPyAZXZc9rm6kkosHsNkPh
-        Jk9fVmdnYhlEjs+yNRManuc7+hJxBLdkayaeW42OXsQyOBwOr8pWVkjOc6sZ5EIMg4jflZ2isN3csYJc
-        iWTwtuzYQodXVqALEQzuyEa5MIrL6BhyMuN73C1itTlwlD7XVApFuggI2Rd/CqutCh472yrvJgRt5pIs
-        kkcq6yesJ/71cZxLFhPO0mOVC5OmO2hNzuHIe1rLxBM/Eu7kCtThpfMD4SNM+TqS7+WKOYP4XVC9z8UQ
-        pmYFbKPoF1D1tHP97oOt0p+vRWs0Gp3nAYfrCUY2CK+5YRdemU6fGo3fbotGEky2C/EAAAAASUVORK5C
-        YII=
-</value>
+Corruption Warnings:
+You may get banned if this corruptor is used in online games or games with anti-cheat software.
+Don't use this on system32 or any other system files...</value>
   </data>
   <metadata name="EmulatorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>29, 13</value>
@@ -185,6 +159,7 @@ No changes</value>
   <metadata name="contextStripStash.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>710, 13</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIABJcQAAZgAAAICAAAABACAAKAgBAK9xAABAQAAAAQAgAChCAADXeQEAMDAAAAEA

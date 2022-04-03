@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\SendSmallGray.png" />
     <None Include="Resources\Joystick.png" />
     <None Include="Resources\Send4.png" />
     <None Include="Resources\SendSmall1.png" />
