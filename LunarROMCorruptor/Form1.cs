@@ -35,7 +35,7 @@ namespace LunarROMCorruptor
     public partial class Form1 : Form
     {
         private byte[] ROM;
-        private byte[] backupROM;
+        //private byte[] backupROM;
         private int MaxByte;
         private int StartByte;
         private int EndByte;
@@ -175,7 +175,7 @@ namespace LunarROMCorruptor
                     EndByteNumb.Maximum = MaxByte;
                     EndByteNumb.Value = MaxByte;
                     StartByteNumb.Maximum = MaxByte;
-                    backupROM = ROM;
+                    //backupROM = ROM;
                 }
             }
         }
@@ -330,7 +330,7 @@ namespace LunarROMCorruptor
             StashItemList.Items.Clear();
             StashItems.Clear();
             StashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
-            ROM = backupROM;
+            //ROM = backupROM;
 
             //Here is where the multiple files check should occurr
             //Checks if the file is fit for corruption
@@ -375,9 +375,9 @@ namespace LunarROMCorruptor
                 return;
             }
 
-            ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
+            //ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
             //Hell engine goes here.
-            byte[] FinROM = null;
+            byte[] FinROM = ROM.Clone() as byte[];
 
             if (CorruptionEngineComboBox.Text == "Hell Engine")
             {
@@ -398,9 +398,8 @@ namespace LunarROMCorruptor
             }
             else
             {
-                FinROM = StartCorruption(ROM);
+                FinROM = StartCorruption(FinROM);
             }
-
             if (FinROM == null)
             {
                 MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developer with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -637,7 +636,7 @@ namespace LunarROMCorruptor
                 SaveasTxt.Text = path1;
                 var exc = Path.GetExtension(path1);
                 SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(path1), "CorruptedFile" + exc);
-                backupROM = ROM;
+                //backupROM = ROM;
                 MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
             }
         }
@@ -656,7 +655,7 @@ namespace LunarROMCorruptor
         {
             try
             {
-                File.WriteAllBytes(SaveasTxt.Text, backupROM);
+                File.WriteAllBytes(SaveasTxt.Text, ROM);
                 CorruptButton.BackColor = Color.Green;
                 using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
                 {
