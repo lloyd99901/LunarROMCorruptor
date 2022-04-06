@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v1.0 Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = "v1.0-dev - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -124,6 +124,10 @@ namespace LunarROMCorruptor
 
         public void SaveCorruptedFile()
         {
+            if (SaveasTxt.Text == "No save location set.")
+            {
+                return;
+            }
             try
             {
                 int fileCount = Directory.GetFiles(Application.StartupPath + "\\Saves\\", " *.* ", SearchOption.TopDirectoryOnly).Length;
@@ -417,7 +421,7 @@ namespace LunarROMCorruptor
             }
 
             CorruptButton.BackColor = Color.Green;
-            using (var soundPlayer = new SoundPlayer(Properties.Resources.success2))
+            using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
             {
                 soundPlayer.Play();
             }
@@ -631,7 +635,7 @@ namespace LunarROMCorruptor
             {
                 File.WriteAllBytes(SaveasTxt.Text, backupROM);
                 CorruptButton.BackColor = Color.Green;
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success2))
+                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
                 {
                     soundPlayer.Play();
                 }
@@ -769,6 +773,10 @@ namespace LunarROMCorruptor
 
         private void FilesaveCopysavetobtn_Click(object sender, EventArgs e)
         {
+            if (SaveasTxt.Text == "No save location set.")
+            {
+                return;
+            }
             try
             {
                 File.Copy(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), SaveasTxt.Text, true);
@@ -915,7 +923,7 @@ namespace LunarROMCorruptor
                 }
                 File.WriteAllBytes(SaveasTxt.Text, ROM);
                 CorruptButton.BackColor = Color.Green;
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success2))
+                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
                 {
                     soundPlayer.Play();
                 }

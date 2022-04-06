@@ -409,7 +409,7 @@
             // 
             this.UseHexchbox.AutoSize = true;
             this.UseHexchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.UseHexchbox.Location = new System.Drawing.Point(12, 229);
+            this.UseHexchbox.Location = new System.Drawing.Point(139, 211);
             this.UseHexchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UseHexchbox.Name = "UseHexchbox";
             this.UseHexchbox.Size = new System.Drawing.Size(112, 17);
@@ -446,7 +446,7 @@
             this.CorruptionEnginelbl.AutoSize = true;
             this.CorruptionEnginelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline);
             this.CorruptionEnginelbl.ForeColor = System.Drawing.Color.Silver;
-            this.CorruptionEnginelbl.Location = new System.Drawing.Point(373, 49);
+            this.CorruptionEnginelbl.Location = new System.Drawing.Point(378, 49);
             this.CorruptionEnginelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CorruptionEnginelbl.Name = "CorruptionEnginelbl";
             this.CorruptionEnginelbl.Size = new System.Drawing.Size(117, 17);
@@ -515,7 +515,6 @@
             this.Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.Panel4.Controls.Add(this.MultipleFilesChbx);
             this.Panel4.Controls.Add(this.AllowLargeIntensity);
             this.Panel4.Controls.Add(this.UseHexchbox);
             this.Panel4.Controls.Add(this.EndByteNumb);
@@ -530,7 +529,7 @@
             this.Panel4.Location = new System.Drawing.Point(6, 6);
             this.Panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(320, 256);
+            this.Panel4.Size = new System.Drawing.Size(320, 239);
             this.Panel4.TabIndex = 135;
             this.Panel4.Tag = "color:normal";
             // 
@@ -539,7 +538,7 @@
             this.MultipleFilesChbx.AutoSize = true;
             this.MultipleFilesChbx.Enabled = false;
             this.MultipleFilesChbx.ForeColor = System.Drawing.Color.White;
-            this.MultipleFilesChbx.Location = new System.Drawing.Point(12, 243);
+            this.MultipleFilesChbx.Location = new System.Drawing.Point(159, 51);
             this.MultipleFilesChbx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MultipleFilesChbx.Name = "MultipleFilesChbx";
             this.MultipleFilesChbx.Size = new System.Drawing.Size(191, 17);
@@ -779,7 +778,7 @@
             this.TabPage3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabPage3.Name = "TabPage3";
             this.TabPage3.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage3.Size = new System.Drawing.Size(642, 268);
+            this.TabPage3.Size = new System.Drawing.Size(642, 250);
             this.TabPage3.TabIndex = 0;
             this.TabPage3.Text = "File Corruption Menu";
             // 
@@ -811,7 +810,7 @@
             this.StashItemList.Location = new System.Drawing.Point(330, 22);
             this.StashItemList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashItemList.Name = "StashItemList";
-            this.StashItemList.Size = new System.Drawing.Size(115, 241);
+            this.StashItemList.Size = new System.Drawing.Size(115, 223);
             this.StashItemList.TabIndex = 158;
             // 
             // StashList
@@ -829,7 +828,7 @@
             this.StashList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashList.Name = "StashList";
             this.StashList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.StashList.Size = new System.Drawing.Size(172, 166);
+            this.StashList.Size = new System.Drawing.Size(172, 148);
             this.StashList.TabIndex = 158;
             this.StashList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StashList_MouseDown);
             // 
@@ -842,7 +841,7 @@
             this.StashEditorbtn.ForeColor = System.Drawing.Color.SpringGreen;
             this.StashEditorbtn.Image = global::LunarROMCorruptor.Properties.Resources.Edit;
             this.StashEditorbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StashEditorbtn.Location = new System.Drawing.Point(466, 213);
+            this.StashEditorbtn.Location = new System.Drawing.Point(466, 195);
             this.StashEditorbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashEditorbtn.Name = "StashEditorbtn";
             this.StashEditorbtn.Size = new System.Drawing.Size(172, 23);
@@ -859,7 +858,7 @@
             this.DeleteStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteStash.ForeColor = System.Drawing.Color.Turquoise;
             this.DeleteStash.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.DeleteStash.Location = new System.Drawing.Point(580, 237);
+            this.DeleteStash.Location = new System.Drawing.Point(580, 219);
             this.DeleteStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DeleteStash.Name = "DeleteStash";
             this.DeleteStash.Size = new System.Drawing.Size(58, 26);
@@ -878,7 +877,7 @@
             this.Corruptusingstash.ForeColor = System.Drawing.Color.Turquoise;
             this.Corruptusingstash.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
             this.Corruptusingstash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Corruptusingstash.Location = new System.Drawing.Point(466, 189);
+            this.Corruptusingstash.Location = new System.Drawing.Point(466, 171);
             this.Corruptusingstash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Corruptusingstash.Name = "Corruptusingstash";
             this.Corruptusingstash.Size = new System.Drawing.Size(172, 23);
@@ -895,7 +894,7 @@
             this.RefreshStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefreshStash.ForeColor = System.Drawing.Color.Turquoise;
             this.RefreshStash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RefreshStash.Location = new System.Drawing.Point(523, 237);
+            this.RefreshStash.Location = new System.Drawing.Point(523, 219);
             this.RefreshStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.RefreshStash.Name = "RefreshStash";
             this.RefreshStash.Size = new System.Drawing.Size(56, 26);
@@ -912,7 +911,7 @@
             this.RenameStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RenameStash.ForeColor = System.Drawing.Color.Turquoise;
             this.RenameStash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RenameStash.Location = new System.Drawing.Point(466, 237);
+            this.RenameStash.Location = new System.Drawing.Point(466, 219);
             this.RenameStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.RenameStash.Name = "RenameStash";
             this.RenameStash.Size = new System.Drawing.Size(56, 26);
@@ -933,7 +932,7 @@
             this.TransferStash.Location = new System.Drawing.Point(446, 22);
             this.TransferStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TransferStash.Name = "TransferStash";
-            this.TransferStash.Size = new System.Drawing.Size(19, 241);
+            this.TransferStash.Size = new System.Drawing.Size(19, 223);
             this.TransferStash.TabIndex = 0;
             this.TransferStash.Tag = "";
             this.TransferStash.Text = "4";
@@ -947,7 +946,7 @@
             this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
             this.DragandDropICON.Location = new System.Drawing.Point(2, 3);
             this.DragandDropICON.Name = "DragandDropICON";
-            this.DragandDropICON.Size = new System.Drawing.Size(638, 262);
+            this.DragandDropICON.Size = new System.Drawing.Size(638, 244);
             this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DragandDropICON.TabIndex = 164;
             this.DragandDropICON.TabStop = false;
@@ -964,7 +963,7 @@
             this.TabControl2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabControl2.Name = "TabControl2";
             this.TabControl2.SelectedIndex = 0;
-            this.TabControl2.Size = new System.Drawing.Size(650, 294);
+            this.TabControl2.Size = new System.Drawing.Size(650, 276);
             this.TabControl2.TabIndex = 143;
             // 
             // TabPage4
@@ -1545,7 +1544,7 @@
             this.Panel3.Controls.Add(this.EmulatorLocationtxt);
             this.Panel3.Controls.Add(this.BrowseEmulatorbutton);
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel3.Location = new System.Drawing.Point(0, 365);
+            this.Panel3.Location = new System.Drawing.Point(0, 347);
             this.Panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(650, 79);
@@ -1587,7 +1586,7 @@
             this.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Panel2.Controls.Add(this.CorruptButton);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel2.Location = new System.Drawing.Point(0, 444);
+            this.Panel2.Location = new System.Drawing.Point(0, 426);
             this.Panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(650, 52);
@@ -1627,12 +1626,13 @@
             this.SaveasTxt.Name = "SaveasTxt";
             this.SaveasTxt.Size = new System.Drawing.Size(487, 20);
             this.SaveasTxt.TabIndex = 85;
-            this.SaveasTxt.Text = "No save to location selected";
+            this.SaveasTxt.Text = "No save location set.";
             // 
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(70)))));
             this.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Panel1.Controls.Add(this.MultipleFilesChbx);
             this.Panel1.Controls.Add(this.Restorefilebtn);
             this.Panel1.Controls.Add(this.Changesaveasbtn);
             this.Panel1.Controls.Add(this.Openfilebtn);
@@ -1757,13 +1757,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 496);
+            this.ClientSize = new System.Drawing.Size(650, 478);
             this.Controls.Add(this.TabControl2);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(666, 535);
+            this.MinimumSize = new System.Drawing.Size(666, 517);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LunarROMCorruptor - v0.1 - UNSTABLE BUILD";
