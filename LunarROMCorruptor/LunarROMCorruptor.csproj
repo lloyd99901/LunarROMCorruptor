@@ -90,6 +90,7 @@
       <DependentUpon>CorruptionEngineOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="CorruptionEngines\LerpEngine.cs" />
+    <Compile Include="CorruptionEngines\LogicEngine.cs" />
     <Compile Include="CorruptionEngines\ManualEngine.cs" />
     <Compile Include="CorruptionEngines\MergeEngine.cs" />
     <Compile Include="Enums.cs" />

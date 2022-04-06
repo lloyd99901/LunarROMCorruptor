@@ -35,7 +35,6 @@
             this.ReplaceByteWithSamePos = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel = new System.Windows.Forms.Panel();
             this.BitwiseComboBox = new System.Windows.Forms.ComboBox();
-            this.CheckBox2 = new System.Windows.Forms.CheckBox();
             this.ValueBitwise = new System.Windows.Forms.NumericUpDown();
             this.Label14 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.MergeEnginePanel = new System.Windows.Forms.Panel();
             this.MergeFileLocationTxt = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
+            this.LogicRandomizeCheckbox = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
             this.HellEnginePanel.SuspendLayout();
@@ -132,7 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogicEnginePanel.BackColor = System.Drawing.Color.Indigo;
             this.LogicEnginePanel.Controls.Add(this.BitwiseComboBox);
-            this.LogicEnginePanel.Controls.Add(this.CheckBox2);
+            this.LogicEnginePanel.Controls.Add(this.LogicRandomizeCheckbox);
             this.LogicEnginePanel.Controls.Add(this.ValueBitwise);
             this.LogicEnginePanel.Controls.Add(this.Label14);
             this.LogicEnginePanel.Controls.Add(this.Label12);
@@ -166,17 +166,6 @@
             this.BitwiseComboBox.TabIndex = 167;
             this.BitwiseComboBox.Text = "AND";
             // 
-            // CheckBox2
-            // 
-            this.CheckBox2.AutoSize = true;
-            this.CheckBox2.ForeColor = System.Drawing.Color.White;
-            this.CheckBox2.Location = new System.Drawing.Point(21, 77);
-            this.CheckBox2.Name = "CheckBox2";
-            this.CheckBox2.Size = new System.Drawing.Size(65, 17);
-            this.CheckBox2.TabIndex = 96;
-            this.CheckBox2.Text = "Reverse";
-            this.CheckBox2.UseVisualStyleBackColor = true;
-            // 
             // ValueBitwise
             // 
             this.ValueBitwise.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
@@ -202,11 +191,12 @@
             this.Label14.AutoSize = true;
             this.Label14.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label14.Location = new System.Drawing.Point(232, 27);
+            this.Label14.Location = new System.Drawing.Point(109, 107);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(384, 105);
             this.Label14.TabIndex = 94;
             this.Label14.Text = resources.GetString("Label14.Text");
+            this.Label14.Visible = false;
             // 
             // Label12
             // 
@@ -572,18 +562,29 @@
             this.Label9.TabIndex = 93;
             this.Label9.Text = "-Merge Engine Settings-";
             // 
+            // LogicRandomizeCheckbox
+            // 
+            this.LogicRandomizeCheckbox.AutoSize = true;
+            this.LogicRandomizeCheckbox.ForeColor = System.Drawing.Color.White;
+            this.LogicRandomizeCheckbox.Location = new System.Drawing.Point(235, 28);
+            this.LogicRandomizeCheckbox.Name = "LogicRandomizeCheckbox";
+            this.LogicRandomizeCheckbox.Size = new System.Drawing.Size(178, 17);
+            this.LogicRandomizeCheckbox.TabIndex = 96;
+            this.LogicRandomizeCheckbox.Text = "Select random operation type";
+            this.LogicRandomizeCheckbox.UseVisualStyleBackColor = true;
+            // 
             // CorruptionEngineOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(642, 268);
-            this.Controls.Add(this.MergeEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
             this.Controls.Add(this.HellEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
             this.Controls.Add(this.Vector2EnginePanel);
             this.Controls.Add(this.NightmareEnginePanel);
+            this.Controls.Add(this.MergeEnginePanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CorruptionEngineOptions";
@@ -614,7 +615,6 @@
         public System.Windows.Forms.CheckBox ReplaceByteWithSamePos;
         public System.Windows.Forms.Panel LogicEnginePanel;
         internal System.Windows.Forms.ComboBox BitwiseComboBox;
-        internal System.Windows.Forms.CheckBox CheckBox2;
         internal System.Windows.Forms.NumericUpDown ValueBitwise;
         private System.Windows.Forms.Label Label14;
         private System.Windows.Forms.Label Label12;
@@ -645,5 +645,6 @@
         public System.Windows.Forms.Panel MergeEnginePanel;
         public System.Windows.Forms.TextBox MergeFileLocationTxt;
         private System.Windows.Forms.Label Label9;
+        internal System.Windows.Forms.CheckBox LogicRandomizeCheckbox;
     }
 }

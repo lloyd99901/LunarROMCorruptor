@@ -331,6 +331,7 @@ namespace LunarROMCorruptor
             StashItems.Clear();
             StashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
             ROM = backupROM;
+
             //Here is where the multiple files check should occurr
             //Checks if the file is fit for corruption
             if (string.IsNullOrEmpty(FileSelectiontxt.Text) || FileSelectiontxt.Text == "No file selected.")
@@ -373,6 +374,8 @@ namespace LunarROMCorruptor
                 MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
             //Hell engine goes here.
             byte[] FinROM = null;
 
@@ -445,8 +448,6 @@ namespace LunarROMCorruptor
                     }
                 }
             }
-            //Reset FinROM to save memory
-            FinROM = null;
         }
 
         private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
@@ -556,6 +557,28 @@ namespace LunarROMCorruptor
                     }
                     break;
 
+                case "Logic Engine":
+                    if (CorruptnthbyteCheckbox.Checked)
+                    {
+                        //CorruptNTH selected
+                        int i1 = StartByte;
+                        while (i1 <= EndByte)
+                        {
+                            Enum.TryParse(objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
+                            LogicEngine.CorruptByte(ROM, corruptiontype, i1, (int)objForm2.ValueBitwise.Value);
+                            i1 += (int)EveryNthByte.Value;
+                        }
+                    }
+                    else //Intensity Mode
+                    {
+                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
+                        {
+                            Enum.TryParse(objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
+                            //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
+                            LogicEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte), (int)objForm2.ValueBitwise.Value);
+                        }
+                    }
+                    break;
                 case "Manual":
                     if (CorruptnthbyteCheckbox.Checked) //CorruptNTH mode
                     {

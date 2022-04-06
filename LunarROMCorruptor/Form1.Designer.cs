@@ -431,6 +431,7 @@
             "Nightmare Engine",
             "Merge Engine",
             "Lerp Engine",
+            "Logic Engine",
             "Hell Engine"});
             this.CorruptionEngineComboBox.Location = new System.Drawing.Point(494, 48);
             this.CorruptionEngineComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -803,10 +804,12 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.StashItemList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.StashItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StashItemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StashItemList.ForeColor = System.Drawing.Color.Silver;
             this.StashItemList.FormattingEnabled = true;
             this.StashItemList.HorizontalScrollbar = true;
             this.StashItemList.IntegralHeight = false;
+            this.StashItemList.ItemHeight = 9;
             this.StashItemList.Location = new System.Drawing.Point(330, 22);
             this.StashItemList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashItemList.Name = "StashItemList";
