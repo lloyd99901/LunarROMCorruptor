@@ -135,6 +135,7 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SilentCorruptionchbox = new System.Windows.Forms.CheckBox();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -305,6 +306,7 @@
             this.FilesaveEnableAutoSaves.TabIndex = 153;
             this.FilesaveEnableAutoSaves.Text = "Enable Auto Saves";
             this.FilesaveEnableAutoSaves.UseVisualStyleBackColor = true;
+            this.FilesaveEnableAutoSaves.CheckedChanged += new System.EventHandler(this.FilesaveEnableAutoSaves_CheckedChanged);
             // 
             // FileSavestitlelbl
             // 
@@ -333,6 +335,7 @@
             this.ReopenChbox.TabIndex = 75;
             this.ReopenChbox.Text = "Close if running and re-open";
             this.ReopenChbox.UseVisualStyleBackColor = false;
+            this.ReopenChbox.CheckedChanged += new System.EventHandler(this.ReopenChbox_CheckedChanged);
             // 
             // StartEmulatorlbl
             // 
@@ -408,8 +411,9 @@
             // UseHexchbox
             // 
             this.UseHexchbox.AutoSize = true;
+            this.UseHexchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UseHexchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.UseHexchbox.Location = new System.Drawing.Point(139, 211);
+            this.UseHexchbox.Location = new System.Drawing.Point(128, 210);
             this.UseHexchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UseHexchbox.Name = "UseHexchbox";
             this.UseHexchbox.Size = new System.Drawing.Size(112, 17);
@@ -516,6 +520,7 @@
             this.Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.Panel4.Controls.Add(this.SilentCorruptionchbox);
             this.Panel4.Controls.Add(this.AllowLargeIntensity);
             this.Panel4.Controls.Add(this.UseHexchbox);
             this.Panel4.Controls.Add(this.EndByteNumb);
@@ -537,8 +542,9 @@
             // AllowLargeIntensity
             // 
             this.AllowLargeIntensity.AutoSize = true;
+            this.AllowLargeIntensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllowLargeIntensity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.AllowLargeIntensity.Location = new System.Drawing.Point(12, 211);
+            this.AllowLargeIntensity.Location = new System.Drawing.Point(6, 210);
             this.AllowLargeIntensity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AllowLargeIntensity.Name = "AllowLargeIntensity";
             this.AllowLargeIntensity.Size = new System.Drawing.Size(123, 17);
@@ -1497,7 +1503,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(153, 74);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(466, 174);
+            this.richTextBox1.Size = new System.Drawing.Size(466, 164);
             this.richTextBox1.TabIndex = 159;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -1756,6 +1762,20 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
+            // SilentCorruptionchbox
+            // 
+            this.SilentCorruptionchbox.AutoSize = true;
+            this.SilentCorruptionchbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.SilentCorruptionchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SilentCorruptionchbox.Location = new System.Drawing.Point(238, 210);
+            this.SilentCorruptionchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.SilentCorruptionchbox.Name = "SilentCorruptionchbox";
+            this.SilentCorruptionchbox.Size = new System.Drawing.Size(84, 17);
+            this.SilentCorruptionchbox.TabIndex = 167;
+            this.SilentCorruptionchbox.Text = "Mute Sound";
+            this.SilentCorruptionchbox.UseVisualStyleBackColor = false;
+            this.SilentCorruptionchbox.CheckedChanged += new System.EventHandler(this.SilentCorruptionchbox_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1936,6 +1956,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         internal System.Windows.Forms.Label ProgramToRunlbl;
         private System.Windows.Forms.Label Label9;
+        internal System.Windows.Forms.CheckBox SilentCorruptionchbox;
     }
 }
 

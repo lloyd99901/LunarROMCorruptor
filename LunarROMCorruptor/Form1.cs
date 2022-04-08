@@ -40,7 +40,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v1.0-dev - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = "v1.0 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> StashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
 
         public readonly CorruptionEngineOptions objForm2 = new CorruptionEngineOptions()
@@ -64,37 +64,79 @@ namespace LunarROMCorruptor
             Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
             Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
             CorruptionEngineComboBox.Text = "Nightmare Engine";
-            //Directory.CreateDirectory(Application.StartupPath + "\\RestoreMultipleFiles\\");
             AllowDrop = true;
             BrowseEmulatorbutton.Enabled = false;
             EmulatorLocationtxt.BackColor = Color.Gray;
-            try
+            RefreshCorruptionStashList();
+            RefreshFileSaves();
+            objForm2.TopLevel = false;
+            TabPage4.Controls.Add(objForm2);
+            objForm2.Dock = DockStyle.Fill;
+            objForm2.Show();
+            LoadSettings();
+        }
+
+        public void LoadSettings()
+        {
+            //Read & check if the emulator path is valid
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.EmulatorPath) && File.Exists(Properties.Settings.Default.EmulatorPath))
             {
-                EmulatorLocationtxt.Text = File.ReadAllText(Application.StartupPath + "\\executablepath.ini");
-                //check if the emulator path is valid
-                if (!string.IsNullOrEmpty(EmulatorLocationtxt.Text) && File.Exists(EmulatorLocationtxt.Text))
-                {
-                    Runemulatorchbox.Checked = true;
-                    EmulatorLocationtxt.BackColor = Color.White;
-                    BrowseEmulatorbutton.Enabled = true;
-                }
+                EmulatorLocationtxt.Text = Properties.Settings.Default.EmulatorPath;
             }
-            catch (FileNotFoundException)
+            
+            //Read silent corurption setting
+            if (Properties.Settings.Default.SilentCorruption)
             {
-                Console.WriteLine("executablepath.ini not found. Ignoring.");
+                SilentCorruptionchbox.Checked = true;
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Error Loading executablepath.ini: " + ex.Message);
+                SilentCorruptionchbox.Checked = false;
             }
-            finally
+            //Read if stash list is enabled
+            if (Properties.Settings.Default.StashSavesEnabled)
             {
-                RefreshCorruptionStashList();
-                RefreshFileSaves();
-                objForm2.TopLevel = false;
-                TabPage4.Controls.Add(objForm2);
-                objForm2.Dock = DockStyle.Fill;
-                objForm2.Show();
+                EnableStashSavesChkbox.Checked = true;
+            }
+            else
+            {
+                EnableStashSavesChkbox.Checked = false;
+            }
+            //Read if HEX mode is enabled
+            if (Properties.Settings.Default.UseHex)
+            {
+                UseHexchbox.Checked = true;
+            }
+            else
+            {
+                UseHexchbox.Checked = false;
+            }
+            //Read if RunEmulator is enabled
+            if (Properties.Settings.Default.RunEmulator)
+            {
+                Runemulatorchbox.Checked = true;
+            }
+            else
+            {
+                Runemulatorchbox.Checked = false;
+            }
+            //Read if ReopenEmulator is enabled
+            if (Properties.Settings.Default.ReopenEmulator)
+            {
+                ReopenChbox.Checked = true;
+            }
+            else
+            {
+                ReopenChbox.Checked = false;
+            }
+            //Read if AutoFileSave is enabled
+            if (Properties.Settings.Default.AutoFileSaveEnabled)
+            {
+                FilesaveEnableAutoSaves.Checked = true;
+            }
+            else
+            {
+                FilesaveEnableAutoSaves.Checked = false;
             }
         }
 
@@ -242,6 +284,9 @@ namespace LunarROMCorruptor
         {
             StartByteNumb.Hexadecimal = UseHexchbox.Checked;
             EndByteNumb.Hexadecimal = UseHexchbox.Checked;
+            //Save changes to settings
+            Properties.Settings.Default.UseHex = UseHexchbox.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void Changesaveasbtn_Click(object sender, EventArgs e)
@@ -302,7 +347,9 @@ namespace LunarROMCorruptor
             if (EmulatorFileDialog.ShowDialog() != DialogResult.Cancel)
             {
                 EmulatorLocationtxt.Text = EmulatorFileDialog.FileName;
-                File.WriteAllText(Application.StartupPath + "\\executablepath.ini", EmulatorFileDialog.FileName);
+                //Save selected path to settings
+                Properties.Settings.Default.EmulatorPath = EmulatorFileDialog.FileName;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -323,6 +370,9 @@ namespace LunarROMCorruptor
                 EmulatorLocationtxt.BackColor = Color.Gray;
                 BrowseEmulatorbutton.Enabled = false;
             }
+            //Save changes to settings
+            Properties.Settings.Default.RunEmulator = Runemulatorchbox.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void CorruptButton_Click(object sender, EventArgs e)
@@ -421,13 +471,18 @@ namespace LunarROMCorruptor
                 SaveCorruptedFile();
             }
 
+            //check if silent corruption is on. if it is, don't play the sound.
             CorruptButton.BackColor = Color.Green;
-            using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+            if (!SilentCorruptionchbox.Checked)
             {
-                soundPlayer.Play();
+                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                {
+                    soundPlayer.Play();
+                }
             }
+
             CorruptButtonColorChanger.Start();
-            if (Runemulatorchbox.Checked && !string.IsNullOrEmpty(EmulatorLocationtxt.Text))
+            if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text))
             {
                 StartEmulator();
             }
@@ -677,9 +732,12 @@ namespace LunarROMCorruptor
             {
                 File.WriteAllBytes(SaveasTxt.Text, ROM);
                 CorruptButton.BackColor = Color.Green;
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                if (!SilentCorruptionchbox.Checked)
                 {
-                    soundPlayer.Play();
+                    using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                    {
+                        soundPlayer.Play();
+                    }
                 }
                 CorruptButtonColorChanger.Start();
             }
@@ -965,9 +1023,12 @@ namespace LunarROMCorruptor
                 }
                 File.WriteAllBytes(SaveasTxt.Text, ROM);
                 CorruptButton.BackColor = Color.Green;
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                if (!SilentCorruptionchbox.Checked)
                 {
-                    soundPlayer.Play();
+                    using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                    {
+                        soundPlayer.Play();
+                    }
                 }
                 CorruptButtonColorChanger.Start();
                 if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
@@ -981,6 +1042,9 @@ namespace LunarROMCorruptor
         {
             StashItemList.Enabled = EnableStashSavesChkbox.Checked;
             TransferStash.Enabled = EnableStashSavesChkbox.Checked;
+            //Save changes to settings
+            Properties.Settings.Default.StashSavesEnabled = EnableStashSavesChkbox.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void StartByteNumb_ValueChanged(object sender, EventArgs e)
@@ -1005,6 +1069,26 @@ namespace LunarROMCorruptor
                 StashList.SelectedIndex = StashList.IndexFromPoint(e.X, e.Y);
                 contextStripStash.Show(Cursor.Position);
             }
+        }
+
+        private void SilentCorruptionchbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SilentCorruption = SilentCorruptionchbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void ReopenChbox_CheckedChanged(object sender, EventArgs e)
+        {
+            //Save changes to settings
+            Properties.Settings.Default.ReopenEmulator = ReopenChbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void FilesaveEnableAutoSaves_CheckedChanged(object sender, EventArgs e)
+        {
+            //Save changes to settings
+            Properties.Settings.Default.AutoFileSaveEnabled = FilesaveEnableAutoSaves.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }
