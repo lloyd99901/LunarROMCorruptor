@@ -53,7 +53,6 @@
             this.Endbytelbl = new System.Windows.Forms.Label();
             this.StashListlbl = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
-            this.MultipleFilesChbx = new System.Windows.Forms.CheckBox();
             this.AllowLargeIntensity = new System.Windows.Forms.CheckBox();
             this.StartByteNumb = new System.Windows.Forms.NumericUpDown();
             this.StartByteTrackBar = new System.Windows.Forms.TrackBar();
@@ -67,6 +66,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.IntensityTrackbar = new System.Windows.Forms.TrackBar();
+            this.MultipleFilesChbx = new System.Windows.Forms.CheckBox();
             this.TabPage3 = new System.Windows.Forms.TabPage();
             this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
             this.StashItemList = new System.Windows.Forms.ListBox();
@@ -220,7 +220,7 @@
             this.TabPage2.Location = new System.Drawing.Point(4, 22);
             this.TabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabPage2.Name = "TabPage2";
-            this.TabPage2.Size = new System.Drawing.Size(642, 268);
+            this.TabPage2.Size = new System.Drawing.Size(642, 250);
             this.TabPage2.TabIndex = 4;
             this.TabPage2.Text = "File Saves";
             // 
@@ -534,20 +534,6 @@
             this.Panel4.TabIndex = 135;
             this.Panel4.Tag = "color:normal";
             // 
-            // MultipleFilesChbx
-            // 
-            this.MultipleFilesChbx.AutoSize = true;
-            this.MultipleFilesChbx.Enabled = false;
-            this.MultipleFilesChbx.ForeColor = System.Drawing.Color.White;
-            this.MultipleFilesChbx.Location = new System.Drawing.Point(159, 51);
-            this.MultipleFilesChbx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MultipleFilesChbx.Name = "MultipleFilesChbx";
-            this.MultipleFilesChbx.Size = new System.Drawing.Size(191, 17);
-            this.MultipleFilesChbx.TabIndex = 89;
-            this.MultipleFilesChbx.Text = "Multiple Files (Not implemented yet)";
-            this.MultipleFilesChbx.UseVisualStyleBackColor = true;
-            this.MultipleFilesChbx.Visible = false;
-            // 
             // AllowLargeIntensity
             // 
             this.AllowLargeIntensity.AutoSize = true;
@@ -759,6 +745,20 @@
             this.IntensityTrackbar.TickFrequency = 0;
             this.IntensityTrackbar.Value = 1;
             this.IntensityTrackbar.Scroll += new System.EventHandler(this.IntensityTrackbar_Scroll);
+            // 
+            // MultipleFilesChbx
+            // 
+            this.MultipleFilesChbx.AutoSize = true;
+            this.MultipleFilesChbx.Enabled = false;
+            this.MultipleFilesChbx.ForeColor = System.Drawing.Color.White;
+            this.MultipleFilesChbx.Location = new System.Drawing.Point(159, 51);
+            this.MultipleFilesChbx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MultipleFilesChbx.Name = "MultipleFilesChbx";
+            this.MultipleFilesChbx.Size = new System.Drawing.Size(191, 17);
+            this.MultipleFilesChbx.TabIndex = 89;
+            this.MultipleFilesChbx.Text = "Multiple Files (Not implemented yet)";
+            this.MultipleFilesChbx.UseVisualStyleBackColor = true;
+            this.MultipleFilesChbx.Visible = false;
             // 
             // TabPage3
             // 
@@ -977,7 +977,7 @@
             this.TabPage4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabPage4.Name = "TabPage4";
             this.TabPage4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage4.Size = new System.Drawing.Size(642, 268);
+            this.TabPage4.Size = new System.Drawing.Size(642, 250);
             this.TabPage4.TabIndex = 1;
             this.TabPage4.Text = "Corruption Engine Settings";
             // 
@@ -1465,7 +1465,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(642, 268);
+            this.tabPage5.Size = new System.Drawing.Size(642, 250);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "About";
             // 

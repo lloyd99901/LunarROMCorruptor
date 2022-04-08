@@ -16,7 +16,6 @@
         NOT,
         NAND,
         NOR,
-        XNOR,
         SWAP,
         SHIFT
     }

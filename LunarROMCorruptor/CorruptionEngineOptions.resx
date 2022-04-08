@@ -120,13 +120,4 @@
   <metadata name="OpenFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="Label14.Text" xml:space="preserve">
-    <value>The Operation Type: NOT does not use value
-
-Note:
-This engine sometimes can hang this program, making it impossible to 
-close it. To close this program, goto task manager and force end 
-the process if the program has been hanging for at least 
-20 seconds or more.</value>
-  </data>
 </root>

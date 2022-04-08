@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorruptionEngineOptions));
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CorrTypeMerge = new System.Windows.Forms.ComboBox();
             this.Mod256MergeEnginechkbox = new System.Windows.Forms.CheckBox();
             this.ReplaceByteWithSamePos = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel = new System.Windows.Forms.Panel();
             this.BitwiseComboBox = new System.Windows.Forms.ComboBox();
+            this.LogicRandomizeTypeCheckbox = new System.Windows.Forms.CheckBox();
             this.ValueBitwise = new System.Windows.Forms.NumericUpDown();
             this.Label14 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.MergeEnginePanel = new System.Windows.Forms.Panel();
             this.MergeFileLocationTxt = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
-            this.LogicRandomizeCheckbox = new System.Windows.Forms.CheckBox();
+            this.LogicRandomizeValueCheckBox = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
             this.HellEnginePanel.SuspendLayout();
@@ -132,7 +132,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogicEnginePanel.BackColor = System.Drawing.Color.Indigo;
             this.LogicEnginePanel.Controls.Add(this.BitwiseComboBox);
-            this.LogicEnginePanel.Controls.Add(this.LogicRandomizeCheckbox);
+            this.LogicEnginePanel.Controls.Add(this.LogicRandomizeValueCheckBox);
+            this.LogicEnginePanel.Controls.Add(this.LogicRandomizeTypeCheckbox);
             this.LogicEnginePanel.Controls.Add(this.ValueBitwise);
             this.LogicEnginePanel.Controls.Add(this.Label14);
             this.LogicEnginePanel.Controls.Add(this.Label12);
@@ -157,7 +158,6 @@
             "NOT",
             "NAND",
             "NOR",
-            "XNOR",
             "SWAP",
             "SHIFT"});
             this.BitwiseComboBox.Location = new System.Drawing.Point(118, 27);
@@ -166,17 +166,28 @@
             this.BitwiseComboBox.TabIndex = 167;
             this.BitwiseComboBox.Text = "AND";
             // 
+            // LogicRandomizeTypeCheckbox
+            // 
+            this.LogicRandomizeTypeCheckbox.AutoSize = true;
+            this.LogicRandomizeTypeCheckbox.ForeColor = System.Drawing.Color.White;
+            this.LogicRandomizeTypeCheckbox.Location = new System.Drawing.Point(235, 28);
+            this.LogicRandomizeTypeCheckbox.Name = "LogicRandomizeTypeCheckbox";
+            this.LogicRandomizeTypeCheckbox.Size = new System.Drawing.Size(178, 17);
+            this.LogicRandomizeTypeCheckbox.TabIndex = 96;
+            this.LogicRandomizeTypeCheckbox.Text = "Select random operation type";
+            this.LogicRandomizeTypeCheckbox.UseVisualStyleBackColor = true;
+            // 
             // ValueBitwise
             // 
             this.ValueBitwise.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(81)))));
             this.ValueBitwise.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ValueBitwise.ForeColor = System.Drawing.Color.White;
             this.ValueBitwise.Location = new System.Drawing.Point(118, 54);
-            this.ValueBitwise.Minimum = new decimal(new int[] {
-            100,
+            this.ValueBitwise.Maximum = new decimal(new int[] {
+            255,
             0,
             0,
-            -2147483648});
+            0});
             this.ValueBitwise.Name = "ValueBitwise";
             this.ValueBitwise.Size = new System.Drawing.Size(111, 22);
             this.ValueBitwise.TabIndex = 95;
@@ -191,12 +202,11 @@
             this.Label14.AutoSize = true;
             this.Label14.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Label14.Location = new System.Drawing.Point(109, 107);
+            this.Label14.Location = new System.Drawing.Point(18, 85);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(384, 105);
+            this.Label14.Size = new System.Drawing.Size(242, 15);
             this.Label14.TabIndex = 94;
-            this.Label14.Text = resources.GetString("Label14.Text");
-            this.Label14.Visible = false;
+            this.Label14.Text = "The Operation Type: NOT does not use value.";
             // 
             // Label12
             // 
@@ -562,16 +572,16 @@
             this.Label9.TabIndex = 93;
             this.Label9.Text = "-Merge Engine Settings-";
             // 
-            // LogicRandomizeCheckbox
+            // LogicRandomizeValueCheckBox
             // 
-            this.LogicRandomizeCheckbox.AutoSize = true;
-            this.LogicRandomizeCheckbox.ForeColor = System.Drawing.Color.White;
-            this.LogicRandomizeCheckbox.Location = new System.Drawing.Point(235, 28);
-            this.LogicRandomizeCheckbox.Name = "LogicRandomizeCheckbox";
-            this.LogicRandomizeCheckbox.Size = new System.Drawing.Size(178, 17);
-            this.LogicRandomizeCheckbox.TabIndex = 96;
-            this.LogicRandomizeCheckbox.Text = "Select random operation type";
-            this.LogicRandomizeCheckbox.UseVisualStyleBackColor = true;
+            this.LogicRandomizeValueCheckBox.AutoSize = true;
+            this.LogicRandomizeValueCheckBox.ForeColor = System.Drawing.Color.White;
+            this.LogicRandomizeValueCheckBox.Location = new System.Drawing.Point(235, 57);
+            this.LogicRandomizeValueCheckBox.Name = "LogicRandomizeValueCheckBox";
+            this.LogicRandomizeValueCheckBox.Size = new System.Drawing.Size(114, 17);
+            this.LogicRandomizeValueCheckBox.TabIndex = 96;
+            this.LogicRandomizeValueCheckBox.Text = "Randomize Value";
+            this.LogicRandomizeValueCheckBox.UseVisualStyleBackColor = true;
             // 
             // CorruptionEngineOptions
             // 
@@ -645,6 +655,7 @@
         public System.Windows.Forms.Panel MergeEnginePanel;
         public System.Windows.Forms.TextBox MergeFileLocationTxt;
         private System.Windows.Forms.Label Label9;
-        internal System.Windows.Forms.CheckBox LogicRandomizeCheckbox;
+        internal System.Windows.Forms.CheckBox LogicRandomizeTypeCheckbox;
+        internal System.Windows.Forms.CheckBox LogicRandomizeValueCheckBox;
     }
 }
