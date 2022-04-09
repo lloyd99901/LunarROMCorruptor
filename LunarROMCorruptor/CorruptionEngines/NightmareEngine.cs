@@ -7,6 +7,15 @@ namespace LunarROMCorruptor.CorruptionEngines
     {
         private static readonly Random rnd = new Random();
 
+        static byte ClampByte(int x) //This is to prevent the byte from going over 255 or going under 0
+        {
+            if (x < 0)
+                return 0;
+            if (x > 255)
+                return 255;
+            return (byte)x;
+        }
+
         public static byte[] CorruptByte(byte[] ROM, CorruptionOptions CorruptOption, long i)
         {
             switch (CorruptOption)
@@ -25,15 +34,12 @@ namespace LunarROMCorruptor.CorruptionEngines
                             break;
 
                         case 1:
-                            int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
-                            ROM[i] = (byte)Math.Abs(NewValue);
+                            ROM[i] = ClampByte(ROM[i] + (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
                             Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                             break;
 
                         case 2:
-
-                            NewValue = (int)((ROM[i] - Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
-                            ROM[i] = (byte)Math.Abs(NewValue);
+                            ROM[i] = ClampByte(ROM[i] - (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
                             Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                             break;
 
@@ -50,14 +56,12 @@ namespace LunarROMCorruptor.CorruptionEngines
                     switch (rnd.Next(0, 2))
                     {
                         case 0:
-                            int NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
-                            ROM[i] = (byte)Math.Abs(NewValue);
+                            ROM[i] = ClampByte(ROM[i] + (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
                             Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                             break;
 
                         case 1:
-                            NewValue = (int)((ROM[i] + Program.Form.objForm2.IncreDecrenumbnightmare.Value) % (byte.MaxValue + 1));
-                            ROM[i] = (byte)Math.Abs(NewValue);
+                            ROM[i] = ClampByte(ROM[i] - (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
                             Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                             break;
                     }

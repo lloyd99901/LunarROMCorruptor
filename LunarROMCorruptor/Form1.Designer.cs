@@ -53,6 +53,7 @@
             this.Endbytelbl = new System.Windows.Forms.Label();
             this.StashListlbl = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
+            this.SilentCorruptionchbox = new System.Windows.Forms.CheckBox();
             this.AllowLargeIntensity = new System.Windows.Forms.CheckBox();
             this.StartByteNumb = new System.Windows.Forms.NumericUpDown();
             this.StartByteTrackBar = new System.Windows.Forms.TrackBar();
@@ -66,7 +67,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.IntensityTrackbar = new System.Windows.Forms.TrackBar();
-            this.MultipleFilesChbx = new System.Windows.Forms.CheckBox();
+            this.CorruptionQueueChkbox = new System.Windows.Forms.CheckBox();
             this.TabPage3 = new System.Windows.Forms.TabPage();
             this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
             this.StashItemList = new System.Windows.Forms.ListBox();
@@ -135,7 +136,7 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SilentCorruptionchbox = new System.Windows.Forms.CheckBox();
+            this.CorruptionQueueBtn = new System.Windows.Forms.Button();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -539,6 +540,20 @@
             this.Panel4.TabIndex = 135;
             this.Panel4.Tag = "color:normal";
             // 
+            // SilentCorruptionchbox
+            // 
+            this.SilentCorruptionchbox.AutoSize = true;
+            this.SilentCorruptionchbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.SilentCorruptionchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SilentCorruptionchbox.Location = new System.Drawing.Point(238, 210);
+            this.SilentCorruptionchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.SilentCorruptionchbox.Name = "SilentCorruptionchbox";
+            this.SilentCorruptionchbox.Size = new System.Drawing.Size(84, 17);
+            this.SilentCorruptionchbox.TabIndex = 167;
+            this.SilentCorruptionchbox.Text = "Mute Sound";
+            this.SilentCorruptionchbox.UseVisualStyleBackColor = false;
+            this.SilentCorruptionchbox.CheckedChanged += new System.EventHandler(this.SilentCorruptionchbox_CheckedChanged);
+            // 
             // AllowLargeIntensity
             // 
             this.AllowLargeIntensity.AutoSize = true;
@@ -752,19 +767,18 @@
             this.IntensityTrackbar.Value = 1;
             this.IntensityTrackbar.Scroll += new System.EventHandler(this.IntensityTrackbar_Scroll);
             // 
-            // MultipleFilesChbx
+            // CorruptionQueueChkbox
             // 
-            this.MultipleFilesChbx.AutoSize = true;
-            this.MultipleFilesChbx.Enabled = false;
-            this.MultipleFilesChbx.ForeColor = System.Drawing.Color.White;
-            this.MultipleFilesChbx.Location = new System.Drawing.Point(159, 51);
-            this.MultipleFilesChbx.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MultipleFilesChbx.Name = "MultipleFilesChbx";
-            this.MultipleFilesChbx.Size = new System.Drawing.Size(191, 17);
-            this.MultipleFilesChbx.TabIndex = 89;
-            this.MultipleFilesChbx.Text = "Multiple Files (Not implemented yet)";
-            this.MultipleFilesChbx.UseVisualStyleBackColor = true;
-            this.MultipleFilesChbx.Visible = false;
+            this.CorruptionQueueChkbox.AutoSize = true;
+            this.CorruptionQueueChkbox.ForeColor = System.Drawing.Color.White;
+            this.CorruptionQueueChkbox.Location = new System.Drawing.Point(159, 51);
+            this.CorruptionQueueChkbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptionQueueChkbox.Name = "CorruptionQueueChkbox";
+            this.CorruptionQueueChkbox.Size = new System.Drawing.Size(109, 17);
+            this.CorruptionQueueChkbox.TabIndex = 89;
+            this.CorruptionQueueChkbox.Text = "Corruption Queue";
+            this.CorruptionQueueChkbox.UseVisualStyleBackColor = true;
+            this.CorruptionQueueChkbox.CheckedChanged += new System.EventHandler(this.CorruptionQueueChkbox_CheckedChanged);
             // 
             // TabPage3
             // 
@@ -1054,15 +1068,10 @@
             this.ByteEqualNumericUpDown.Location = new System.Drawing.Point(116, 33);
             this.ByteEqualNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ByteEqualNumericUpDown.Maximum = new decimal(new int[] {
-            99999,
+            255,
             0,
             0,
             0});
-            this.ByteEqualNumericUpDown.Minimum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            -2147483648});
             this.ByteEqualNumericUpDown.Name = "ByteEqualNumericUpDown";
             this.ByteEqualNumericUpDown.Size = new System.Drawing.Size(68, 22);
             this.ByteEqualNumericUpDown.TabIndex = 63;
@@ -1630,7 +1639,7 @@
             this.SaveasTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.SaveasTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SaveasTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.SaveasTxt.Location = new System.Drawing.Point(159, 27);
+            this.SaveasTxt.Location = new System.Drawing.Point(159, 28);
             this.SaveasTxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SaveasTxt.Name = "SaveasTxt";
             this.SaveasTxt.Size = new System.Drawing.Size(487, 20);
@@ -1641,7 +1650,8 @@
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(70)))));
             this.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Panel1.Controls.Add(this.MultipleFilesChbx);
+            this.Panel1.Controls.Add(this.CorruptionQueueChkbox);
+            this.Panel1.Controls.Add(this.CorruptionQueueBtn);
             this.Panel1.Controls.Add(this.Restorefilebtn);
             this.Panel1.Controls.Add(this.Changesaveasbtn);
             this.Panel1.Controls.Add(this.Openfilebtn);
@@ -1762,19 +1772,21 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
-            // SilentCorruptionchbox
+            // CorruptionQueueBtn
             // 
-            this.SilentCorruptionchbox.AutoSize = true;
-            this.SilentCorruptionchbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.SilentCorruptionchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.SilentCorruptionchbox.Location = new System.Drawing.Point(238, 210);
-            this.SilentCorruptionchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.SilentCorruptionchbox.Name = "SilentCorruptionchbox";
-            this.SilentCorruptionchbox.Size = new System.Drawing.Size(84, 17);
-            this.SilentCorruptionchbox.TabIndex = 167;
-            this.SilentCorruptionchbox.Text = "Mute Sound";
-            this.SilentCorruptionchbox.UseVisualStyleBackColor = false;
-            this.SilentCorruptionchbox.CheckedChanged += new System.EventHandler(this.SilentCorruptionchbox_CheckedChanged);
+            this.CorruptionQueueBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.CorruptionQueueBtn.FlatAppearance.BorderSize = 0;
+            this.CorruptionQueueBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CorruptionQueueBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.CorruptionQueueBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CorruptionQueueBtn.Location = new System.Drawing.Point(268, 49);
+            this.CorruptionQueueBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptionQueueBtn.Name = "CorruptionQueueBtn";
+            this.CorruptionQueueBtn.Size = new System.Drawing.Size(106, 22);
+            this.CorruptionQueueBtn.TabIndex = 163;
+            this.CorruptionQueueBtn.Text = "Edit Queue...";
+            this.CorruptionQueueBtn.UseVisualStyleBackColor = false;
+            this.CorruptionQueueBtn.Visible = false;
             // 
             // Form1
             // 
@@ -1900,7 +1912,7 @@
         internal System.Windows.Forms.TabPage TabPage4;
         private System.Windows.Forms.Panel ManualEnginePanel;
         internal System.Windows.Forms.Panel Panel3;
-        internal System.Windows.Forms.CheckBox MultipleFilesChbx;
+        internal System.Windows.Forms.CheckBox CorruptionQueueChkbox;
         internal System.Windows.Forms.Button Restorefilebtn;
         internal System.Windows.Forms.Button Changesaveasbtn;
         internal System.Windows.Forms.Panel Panel2;
@@ -1957,6 +1969,7 @@
         internal System.Windows.Forms.Label ProgramToRunlbl;
         private System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.CheckBox SilentCorruptionchbox;
+        internal System.Windows.Forms.Button CorruptionQueueBtn;
     }
 }
 

@@ -34,6 +34,7 @@
             this.ReplaceByteWithSamePos = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel = new System.Windows.Forms.Panel();
             this.BitwiseComboBox = new System.Windows.Forms.ComboBox();
+            this.LogicRandomizeValueCheckBox = new System.Windows.Forms.CheckBox();
             this.LogicRandomizeTypeCheckbox = new System.Windows.Forms.CheckBox();
             this.ValueBitwise = new System.Windows.Forms.NumericUpDown();
             this.Label14 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.MergeEnginePanel = new System.Windows.Forms.Panel();
             this.MergeFileLocationTxt = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
-            this.LogicRandomizeValueCheckBox = new System.Windows.Forms.CheckBox();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
             this.HellEnginePanel.SuspendLayout();
@@ -165,6 +165,17 @@
             this.BitwiseComboBox.Size = new System.Drawing.Size(111, 21);
             this.BitwiseComboBox.TabIndex = 167;
             this.BitwiseComboBox.Text = "AND";
+            // 
+            // LogicRandomizeValueCheckBox
+            // 
+            this.LogicRandomizeValueCheckBox.AutoSize = true;
+            this.LogicRandomizeValueCheckBox.ForeColor = System.Drawing.Color.White;
+            this.LogicRandomizeValueCheckBox.Location = new System.Drawing.Point(235, 57);
+            this.LogicRandomizeValueCheckBox.Name = "LogicRandomizeValueCheckBox";
+            this.LogicRandomizeValueCheckBox.Size = new System.Drawing.Size(114, 17);
+            this.LogicRandomizeValueCheckBox.TabIndex = 96;
+            this.LogicRandomizeValueCheckBox.Text = "Randomize Value";
+            this.LogicRandomizeValueCheckBox.UseVisualStyleBackColor = true;
             // 
             // LogicRandomizeTypeCheckbox
             // 
@@ -456,7 +467,7 @@
             this.IncreDecrenumbnightmare.ForeColor = System.Drawing.Color.White;
             this.IncreDecrenumbnightmare.Location = new System.Drawing.Point(212, 56);
             this.IncreDecrenumbnightmare.Maximum = new decimal(new int[] {
-            9999,
+            255,
             0,
             0,
             0});
@@ -572,29 +583,18 @@
             this.Label9.TabIndex = 93;
             this.Label9.Text = "-Merge Engine Settings-";
             // 
-            // LogicRandomizeValueCheckBox
-            // 
-            this.LogicRandomizeValueCheckBox.AutoSize = true;
-            this.LogicRandomizeValueCheckBox.ForeColor = System.Drawing.Color.White;
-            this.LogicRandomizeValueCheckBox.Location = new System.Drawing.Point(235, 57);
-            this.LogicRandomizeValueCheckBox.Name = "LogicRandomizeValueCheckBox";
-            this.LogicRandomizeValueCheckBox.Size = new System.Drawing.Size(114, 17);
-            this.LogicRandomizeValueCheckBox.TabIndex = 96;
-            this.LogicRandomizeValueCheckBox.Text = "Randomize Value";
-            this.LogicRandomizeValueCheckBox.UseVisualStyleBackColor = true;
-            // 
             // CorruptionEngineOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(642, 268);
+            this.Controls.Add(this.MergeEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
             this.Controls.Add(this.HellEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
             this.Controls.Add(this.Vector2EnginePanel);
             this.Controls.Add(this.NightmareEnginePanel);
-            this.Controls.Add(this.MergeEnginePanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CorruptionEngineOptions";

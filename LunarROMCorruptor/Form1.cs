@@ -69,11 +69,11 @@ namespace LunarROMCorruptor
             EmulatorLocationtxt.BackColor = Color.Gray;
             RefreshCorruptionStashList();
             RefreshFileSaves();
+            LoadSettings();
             objForm2.TopLevel = false;
             TabPage4.Controls.Add(objForm2);
             objForm2.Dock = DockStyle.Fill;
             objForm2.Show();
-            LoadSettings();
         }
 
         public void LoadSettings()
@@ -183,48 +183,38 @@ namespace LunarROMCorruptor
             }
         }
 
-        public void LoadFile()
+        public void LoadFile(string FileLocation)
         {
-            if (MainOpenFileDialog.ShowDialog() != DialogResult.Cancel)
+            //Check if file is less than 2GB
+            if (new FileInfo(FileLocation).Length < 2147483648)
             {
-                if (MultipleFilesChbx.Checked)
-                {
-                    FileSelectiontxt.Text = MainOpenFileDialog.FileName;
-                    SaveasTxt.Text = MainOpenFileDialog.FileName;
-                    //MultipleFileList.Items.Add(FileSelectiontxt.Text);
-                }
-                else
-                {
-                    //Check if file is less than 2GB
-                    if (new FileInfo(MainOpenFileDialog.FileName).Length < 2147483648)
-                    {
-                        ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
-                    }
-                    else
-                    {
-                        MessageBox.Show("File is too large to load.\n\nFile must be less than 2GB in size.", "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    FileSelectiontxt.Text = MainOpenFileDialog.FileName;
-                    SaveasTxt.Text = MainOpenFileDialog.FileName;
-                    MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
-                    string exc = Path.GetExtension(MainOpenFileDialog.FileName);
-                    SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(MainOpenFileDialog.FileName), "CorruptedFile" + exc);
-                    MaxByte = ROM.Length - 1;
-                    StartByteTrackBar.Maximum = MaxByte;
-                    EndByteTrackbar.Maximum = MaxByte;
-                    EndByteTrackbar.Value = MaxByte;
-                    EndByteNumb.Maximum = MaxByte;
-                    EndByteNumb.Value = MaxByte;
-                    StartByteNumb.Maximum = MaxByte;
-                    //backupROM = ROM;
-                }
+                ROM = File.ReadAllBytes(FileLocation);
             }
+            else
+            {
+                MessageBox.Show("File is too large to load.\n\nFile must be less than 2GB in size.", "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            FileSelectiontxt.Text = FileLocation;
+            SaveasTxt.Text = FileLocation;
+            MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+            string exc = Path.GetExtension(FileLocation);
+            SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(FileLocation), "CorruptedFile" + exc);
+            MaxByte = ROM.Length - 1;
+            StartByteTrackBar.Maximum = MaxByte;
+            EndByteTrackbar.Maximum = MaxByte;
+            EndByteTrackbar.Value = MaxByte;
+            EndByteNumb.Maximum = MaxByte;
+            EndByteNumb.Value = MaxByte;
+            StartByteNumb.Maximum = MaxByte;
         }
 
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
-            LoadFile();
+            if (MainOpenFileDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                LoadFile(MainOpenFileDialog.FileName);
+            }
         }
 
         private void StartByteTrackBar_Scroll(object sender, EventArgs e)
@@ -485,6 +475,10 @@ namespace LunarROMCorruptor
             if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text))
             {
                 StartEmulator();
+            }
+            else if (!File.Exists(EmulatorLocationtxt.Text))
+            {
+                MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (EnableStashSavesChkbox.Checked)
@@ -1089,6 +1083,11 @@ namespace LunarROMCorruptor
             //Save changes to settings
             Properties.Settings.Default.AutoFileSaveEnabled = FilesaveEnableAutoSaves.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void CorruptionQueueChkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CorruptionQueueBtn.Visible = CorruptionQueueChkbox.Checked;
         }
     }
 }
