@@ -125,6 +125,7 @@
             this.CorruptButton = new System.Windows.Forms.Button();
             this.SaveasTxt = new System.Windows.Forms.TextBox();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.CorruptionQueueBtn = new System.Windows.Forms.Button();
             this.Restorefilebtn = new System.Windows.Forms.Button();
             this.Changesaveasbtn = new System.Windows.Forms.Button();
             this.Openfilebtn = new System.Windows.Forms.Button();
@@ -136,7 +137,6 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CorruptionQueueBtn = new System.Windows.Forms.Button();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -436,8 +436,7 @@
             "Nightmare Engine",
             "Merge Engine",
             "Lerp Engine",
-            "Logic Engine",
-            "Hell Engine"});
+            "Logic Engine"});
             this.CorruptionEngineComboBox.Location = new System.Drawing.Point(494, 48);
             this.CorruptionEngineComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CorruptionEngineComboBox.Name = "CorruptionEngineComboBox";
@@ -1666,6 +1665,22 @@
             this.Panel1.Size = new System.Drawing.Size(650, 71);
             this.Panel1.TabIndex = 140;
             // 
+            // CorruptionQueueBtn
+            // 
+            this.CorruptionQueueBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.CorruptionQueueBtn.FlatAppearance.BorderSize = 0;
+            this.CorruptionQueueBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CorruptionQueueBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.CorruptionQueueBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CorruptionQueueBtn.Location = new System.Drawing.Point(268, 49);
+            this.CorruptionQueueBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptionQueueBtn.Name = "CorruptionQueueBtn";
+            this.CorruptionQueueBtn.Size = new System.Drawing.Size(106, 22);
+            this.CorruptionQueueBtn.TabIndex = 163;
+            this.CorruptionQueueBtn.Text = "Edit Queue...";
+            this.CorruptionQueueBtn.UseVisualStyleBackColor = false;
+            this.CorruptionQueueBtn.Visible = false;
+            // 
             // Restorefilebtn
             // 
             this.Restorefilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
@@ -1771,22 +1786,6 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
-            // 
-            // CorruptionQueueBtn
-            // 
-            this.CorruptionQueueBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.CorruptionQueueBtn.FlatAppearance.BorderSize = 0;
-            this.CorruptionQueueBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CorruptionQueueBtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.CorruptionQueueBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CorruptionQueueBtn.Location = new System.Drawing.Point(268, 49);
-            this.CorruptionQueueBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptionQueueBtn.Name = "CorruptionQueueBtn";
-            this.CorruptionQueueBtn.Size = new System.Drawing.Size(106, 22);
-            this.CorruptionQueueBtn.TabIndex = 163;
-            this.CorruptionQueueBtn.Text = "Edit Queue...";
-            this.CorruptionQueueBtn.UseVisualStyleBackColor = false;
-            this.CorruptionQueueBtn.Visible = false;
             // 
             // Form1
             // 

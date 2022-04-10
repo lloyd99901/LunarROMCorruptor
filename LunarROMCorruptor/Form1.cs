@@ -1,7 +1,6 @@
-﻿using LunarROMCorruptor.CorruptionEngines;
+﻿using LunarROMCorruptor.CorruptionInternals;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -35,7 +34,6 @@ namespace LunarROMCorruptor
     public partial class Form1 : Form
     {
         private byte[] ROM;
-        //private byte[] backupROM;
         private int MaxByte;
         private int StartByte;
         private int EndByte;
@@ -293,7 +291,6 @@ namespace LunarROMCorruptor
         {
             objForm2.MergeEnginePanel.Visible = false;
             objForm2.LogicEnginePanel.Visible = false;
-            objForm2.HellEnginePanel.Visible = false;
             objForm2.NightmareEnginePanel.Visible = false;
             objForm2.LerpEnginePanel.Visible = false;
             objForm2.Vector2EnginePanel.Visible = false;
@@ -304,27 +301,18 @@ namespace LunarROMCorruptor
                 case "Nightmare Engine":
                     objForm2.NightmareEnginePanel.Visible = true;
                     break;
-
                 case "Merge Engine":
                     objForm2.MergeEnginePanel.Visible = true;
                     break;
-
                 case "Logic Engine":
                     objForm2.LogicEnginePanel.Visible = true;
                     break;
-
-                case "Hell Engine":
-                    objForm2.HellEnginePanel.Visible = true;
-                    break;
-
                 case "Lerp Engine":
                     objForm2.LerpEnginePanel.Visible = true;
                     break;
-
                 case "Vector2 Engine":
                     objForm2.Vector2EnginePanel.Visible = true;
                     break;
-
                 default:
                     objForm2.Hide();
                     ManualEnginePanel.Show();
@@ -370,9 +358,6 @@ namespace LunarROMCorruptor
             StashItemList.Items.Clear();
             StashItems.Clear();
             StashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
-            //ROM = backupROM;
-
-            //Here is where the multiple files check should occurr
             //Checks if the file is fit for corruption
             if (string.IsNullOrEmpty(FileSelectiontxt.Text) || FileSelectiontxt.Text == "No file selected.")
             {
@@ -414,31 +399,22 @@ namespace LunarROMCorruptor
                 return;
             }
 
+            int tmpintensity; //See which corruption type was selected and give the correct intensity value. Used for the CorruptionCore.CorruptROM function
+            if (CorruptnthbyteCheckbox.Checked)
+            {
+                tmpintensity = (int)EveryNthByte.Value;
+            }
+            else
+            {
+                tmpintensity = (int)Intensity.Value;
+            }
+
             //ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
             //Hell engine goes here.
             byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM
 
-            if (CorruptionEngineComboBox.Text == "Hell Engine")
-            {
-                for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                {
-                    int intes = (int)Intensity.Value;
-                    Intensity.Value = 1;
-                    int randomIndex = rnd.Next(1, CorruptionEngineComboBox.Items.Count - 1);
-                    CorruptionEngineComboBox.SelectedIndex = randomIndex;
-                    if (CorruptionEngineComboBox.Text == "Merge Engine" && string.IsNullOrEmpty(objForm2.MergeFileLocationTxt.Text))
-                    {
-                        CorruptionEngineComboBox.Text = "Nightmare Engine";
-                    }
-                    FinROM = StartCorruption(ROM);
-                    Intensity.Value = intes;
-                }
-                CorruptionEngineComboBox.Text = "Hell Engine";
-            }
-            else
-            {
-                FinROM = StartCorruption(FinROM); //Corrupts the ROM and returns the new ROM to the FinROM variable.
-            }
+            FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
+            
             if (FinROM == null) //check if the corruption worked.
             {
                 MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developers with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -474,7 +450,7 @@ namespace LunarROMCorruptor
             CorruptButtonColorChanger.Start();
             if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text))
             {
-                StartEmulator();
+                CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text);
             }
             else if (!File.Exists(EmulatorLocationtxt.Text))
             {
@@ -502,179 +478,6 @@ namespace LunarROMCorruptor
         {
             CorruptButton.BackColor = Color.FromArgb(255, 32, 32, 32);
             CorruptButtonColorChanger.Stop();
-        }
-
-        private void StartEmulator()
-        {
-            try
-            {
-                if (ReopenChbox.Checked == true)
-                {
-                    var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(EmulatorLocationtxt.Text));
-                    if (processes.Length > 0)
-                        processes[0].Kill();
-                }
-                System.Threading.Thread.Sleep(300);
-                Process p = new Process();
-                p.StartInfo.FileName = EmulatorLocationtxt.Text;
-                if (OverrideArgumentschbox.Checked == false)
-                    p.StartInfo.Arguments = "\"" + SaveasTxt.Text + "\"";
-                else
-                    p.StartInfo.Arguments = OverrideArguments.Text;
-                p.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error when starting process/emulator: " + ex.ToString());
-            }
-        }
-
-        public byte[] StartCorruption(byte[] ROM)
-        {
-            switch (CorruptionEngineComboBox.Text)
-            {
-                case "Nightmare Engine":
-                    if (CorruptnthbyteCheckbox.Checked)
-                    {
-                        //CorruptNTH selected
-                        int i1 = StartByte;
-                        while (i1 <= EndByte)
-                        {
-                            Enum.TryParse(objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
-                            NightmareEngine.CorruptByte(ROM, corruptiontype, i1);
-                            i1 += (int)EveryNthByte.Value;
-                        }
-                    }
-                    else //Intensity Mode
-                    {
-                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                        {
-                            Enum.TryParse(objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
-                            //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
-                            NightmareEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte));
-                        }
-                    }
-                    break;
-
-                case "Lerp Engine":
-                    if (CorruptnthbyteCheckbox.Checked)
-                    {
-                        //CorruptNTH selected
-                        int i1 = StartByte;
-                        while (i1 <= EndByte)
-                        {
-                            LerpEngine.CorruptByte(ROM, i1);
-                            i1 += (int)EveryNthByte.Value;
-                        }
-                    }
-                    else //Intensity Mode
-                    {
-                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                        {
-                            LerpEngine.CorruptByte(ROM, rnd.Next(StartByte, EndByte));
-                        }
-                    }
-                    break;
-
-                case "Merge Engine":
-                    //Check if the merge file exists, if not throw an error
-                    if (string.IsNullOrEmpty(objForm2.MergeFileLocationTxt.Text))
-                    {
-                        MessageBox.Show("Merge file location is empty. Please select a file.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return null;
-                    }
-
-                    byte[] ROMmerge = File.ReadAllBytes(objForm2.MergeFileLocationTxt.Text);
-                    if (CorruptnthbyteCheckbox.Checked)
-                    {
-                        //CorruptNTH selected
-                        int i1 = StartByte;
-                        while (i1 <= EndByte)
-                        {
-                            Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
-                            MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, i1);
-                        }
-                    }
-                    else //Intensity Mode
-                    {
-                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                        {
-                            Enum.TryParse(objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
-                            MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, rnd.Next(StartByte, EndByte));
-                        }
-                    }
-                    break;
-
-                case "Logic Engine":
-                    if (CorruptnthbyteCheckbox.Checked)
-                    {
-                        //CorruptNTH selected
-                        int i1 = StartByte;
-                        while (i1 <= EndByte)
-                        {
-                            if (objForm2.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
-                            {
-                                int randomIndex = rnd.Next(1, objForm2.BitwiseComboBox.Items.Count - 1);
-                                objForm2.BitwiseComboBox.SelectedIndex = randomIndex;
-                            }
-                            if (objForm2.LogicRandomizeValueCheckBox.Checked) //Randomize Value
-                            {
-                                int randomValue = rnd.Next((int)objForm2.ValueBitwise.Minimum, (int)objForm2.ValueBitwise.Maximum);
-                                objForm2.ValueBitwise.Value = randomValue;
-                            }
-                            Enum.TryParse(objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
-                            LogicEngine.CorruptByte(ROM, corruptiontype, i1, (int)objForm2.ValueBitwise.Value);
-                            i1 += (int)EveryNthByte.Value;
-                        }
-                    }
-                    else //Intensity Mode
-                    {
-                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                        {
-                            if (objForm2.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
-                            {
-                                int randomIndex = rnd.Next(1, objForm2.BitwiseComboBox.Items.Count - 1);
-                                objForm2.BitwiseComboBox.SelectedIndex = randomIndex;
-                            }
-                            if (objForm2.LogicRandomizeValueCheckBox.Checked) //Randomize Value
-                            {
-                                int randomValue = rnd.Next((int)objForm2.ValueBitwise.Minimum, (int)objForm2.ValueBitwise.Maximum);
-                                objForm2.ValueBitwise.Value = randomValue;
-                            }
-                            Enum.TryParse(objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
-                            //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
-                            LogicEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte), (int)objForm2.ValueBitwise.Value);
-                        }
-                    }
-                    break;
-                case "Manual":
-                    if (CorruptnthbyteCheckbox.Checked) //CorruptNTH mode
-                    {
-                        int i = StartByte;
-                        while (i <= EndByte)
-                        {
-                            ManualEngine.CorruptByte(ROM, i, StartByte, EndByte);
-                            i += (int)EveryNthByte.Value;
-                        }
-                    }
-                    else //Intense mode
-                    {
-                        for (int i1 = 0; i1 <= Intensity.Value - 1; i1++)
-                        {
-                            long i = rnd.Next(StartByte, EndByte);
-                            ManualEngine.CorruptByte(ROM, i, StartByte, EndByte);
-                        }
-                    }
-                    break;
-
-                default:
-                    if (MessageBox.Show("The Start Corruption function returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        Application.Exit();
-                    }
-                    break;
-            }
-            return ROM;
         }
 
         private void Form1_DragDrop(object sender, DragEventArgs e)
@@ -705,7 +508,6 @@ namespace LunarROMCorruptor
                 SaveasTxt.Text = path1;
                 var exc = Path.GetExtension(path1);
                 SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(path1), "CorruptedFile" + exc);
-                //backupROM = ROM;
                 MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
             }
         }
@@ -947,18 +749,10 @@ namespace LunarROMCorruptor
         private void Corruptusingstash_Click(object sender, EventArgs e)
         {
             {
-                try
+                //Check if ROM isn't null before running code
+                if (ROM == null)
                 {
-                    ROM = File.ReadAllBytes(MainOpenFileDialog.FileName);
-                }
-                catch (ArgumentException)
-                {
-                    MessageBox.Show("Argument error. Either the ROM isn't loaded or you didn't select a stash.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("No ROM loaded!" + Environment.NewLine + "Please load a ROM first.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 foreach (var line in File.ReadAllLines(Application.StartupPath + "\\CorruptionStashList\\" + StashList.GetItemText(StashList.SelectedItem)))
@@ -972,7 +766,7 @@ namespace LunarROMCorruptor
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error while splitting important variables: " + ex.Message);
+                        MessageBox.Show("Split error in line: " + line + Environment.NewLine + "Error: " + ex.Message, "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     Object i;
@@ -983,7 +777,7 @@ namespace LunarROMCorruptor
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Invaild Corruption Location: " + ex.ToString());
+                        MessageBox.Show("Location error in line: " + line + Environment.NewLine + "Error: " + ex.Message, "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -993,7 +787,7 @@ namespace LunarROMCorruptor
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Invaild Result Location: " + ex.ToString());
+                        MessageBox.Show("Corruption error in line: " + line + Environment.NewLine + "Error: " + ex.Message, "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -1027,7 +821,7 @@ namespace LunarROMCorruptor
                 CorruptButtonColorChanger.Start();
                 if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
                 {
-                    StartEmulator();
+                    CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text);
                 }
             }
         }

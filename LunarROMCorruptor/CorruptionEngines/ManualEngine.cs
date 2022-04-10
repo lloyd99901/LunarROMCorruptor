@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LunarROMCorruptor.CorruptionInternals;
 
 namespace LunarROMCorruptor.CorruptionEngines
 {
@@ -7,21 +8,11 @@ namespace LunarROMCorruptor.CorruptionEngines
     {
         private static readonly Random rnd = new Random();
         private static readonly List<byte> list = new List<byte>();
-
-        static byte ClampByte(int x) //This is to prevent the byte from going over 255 or going under 0
-        {
-            if (x < 0)
-                return 0;
-            if (x > 255)
-                return 255;
-            return (byte)x;
-        }
-
         public static byte[] CorruptByte(byte[] ROM, long i, int StartByte, int EndByte)
         {
             if (Program.Form.IncrementCHECK.Checked)
             {
-                ROM[i] = ClampByte(ROM[i] + (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
+                ROM[i] = CorruptionCore.ClampByte(ROM[i] + (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
                 Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             }
             if (Program.Form.SHIFTBYTECHECK.Checked)
@@ -69,12 +60,12 @@ namespace LunarROMCorruptor.CorruptionEngines
             {
                 if (Program.Form.MultiRadio.Checked)
                 {
-                    ROM[i] = ClampByte(ROM[i] * (int)Program.Form.MathOperationNumericUpDown.Value);
+                    ROM[i] = CorruptionCore.ClampByte(ROM[i] * (int)Program.Form.MathOperationNumericUpDown.Value);
                     Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DivideRadio.Checked)
                 {
-                    ROM[i] = ClampByte(ROM[i] / (int)Program.Form.MathOperationNumericUpDown.Value);
+                    ROM[i] = CorruptionCore.ClampByte(ROM[i] / (int)Program.Form.MathOperationNumericUpDown.Value);
                     Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DoubleCheck.Checked)

@@ -42,9 +42,6 @@
             this.Label10 = new System.Windows.Forms.Label();
             this.Label11 = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
-            this.HellEnginePanel = new System.Windows.Forms.Panel();
-            this.Label16 = new System.Windows.Forms.Label();
-            this.Label18 = new System.Windows.Forms.Label();
             this.LerpEnginePanel = new System.Windows.Forms.Panel();
             this.LerpValueTxt = new System.Windows.Forms.TextBox();
             this.Label17 = new System.Windows.Forms.Label();
@@ -59,7 +56,9 @@
             this.NightmareEnginePanel = new System.Windows.Forms.Panel();
             this.Label23 = new System.Windows.Forms.Label();
             this.IncreDecrenumbnightmare = new System.Windows.Forms.NumericUpDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.NightmareComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.MergeOpenFilebtn = new System.Windows.Forms.Button();
@@ -68,7 +67,6 @@
             this.Label9 = new System.Windows.Forms.Label();
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
-            this.HellEnginePanel.SuspendLayout();
             this.LerpEnginePanel.SuspendLayout();
             this.Vector2EnginePanel.SuspendLayout();
             this.NightmareEnginePanel.SuspendLayout();
@@ -263,44 +261,6 @@
             this.Label15.TabIndex = 97;
             this.Label15.Text = "Corruption Type:";
             // 
-            // HellEnginePanel
-            // 
-            this.HellEnginePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HellEnginePanel.BackColor = System.Drawing.Color.Olive;
-            this.HellEnginePanel.Controls.Add(this.Label16);
-            this.HellEnginePanel.Controls.Add(this.Label18);
-            this.HellEnginePanel.Location = new System.Drawing.Point(12, 14);
-            this.HellEnginePanel.Name = "HellEnginePanel";
-            this.HellEnginePanel.Size = new System.Drawing.Size(618, 240);
-            this.HellEnginePanel.TabIndex = 160;
-            this.HellEnginePanel.Tag = "color:normal";
-            // 
-            // Label16
-            // 
-            this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline);
-            this.Label16.ForeColor = System.Drawing.Color.White;
-            this.Label16.Location = new System.Drawing.Point(9, 32);
-            this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(584, 68);
-            this.Label16.TabIndex = 93;
-            this.Label16.Text = "There are no settings to adjust.\r\n\r\nUses random engines for each corrupted byte.\r" +
-    "\nDoes not support random variables, you must set the variables of each corruptio" +
-    "n engine yourself.";
-            // 
-            // Label18
-            // 
-            this.Label18.AutoSize = true;
-            this.Label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.Label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Label18.Location = new System.Drawing.Point(3, 2);
-            this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(143, 17);
-            this.Label18.TabIndex = 93;
-            this.Label18.Text = "-Hell Engine Settings-";
-            // 
             // LerpEnginePanel
             // 
             this.LerpEnginePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -440,7 +400,9 @@
             this.NightmareEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.NightmareEnginePanel.Controls.Add(this.Label23);
             this.NightmareEnginePanel.Controls.Add(this.IncreDecrenumbnightmare);
+            this.NightmareEnginePanel.Controls.Add(this.comboBox1);
             this.NightmareEnginePanel.Controls.Add(this.NightmareComboBox);
+            this.NightmareEnginePanel.Controls.Add(this.label2);
             this.NightmareEnginePanel.Controls.Add(this.Label1);
             this.NightmareEnginePanel.Controls.Add(this.label5);
             this.NightmareEnginePanel.Location = new System.Drawing.Point(12, 12);
@@ -485,6 +447,23 @@
             0,
             0});
             // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "8-bit",
+            "16-bit",
+            "32-bit",
+            "64-bit"});
+            this.comboBox1.Location = new System.Drawing.Point(212, 85);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(191, 21);
+            this.comboBox1.TabIndex = 90;
+            this.comboBox1.Text = "8-bit";
+            // 
             // NightmareComboBox
             // 
             this.NightmareComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(64)))));
@@ -501,12 +480,23 @@
             this.NightmareComboBox.TabIndex = 90;
             this.NightmareComboBox.Text = "RANDOM";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(125, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Bit Precision:";
+            // 
             // Label1
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(24, 55);
+            this.Label1.Location = new System.Drawing.Point(24, 58);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(182, 17);
             this.Label1.TabIndex = 20;
@@ -589,12 +579,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(642, 268);
+            this.Controls.Add(this.NightmareEnginePanel);
             this.Controls.Add(this.MergeEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
-            this.Controls.Add(this.HellEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
             this.Controls.Add(this.Vector2EnginePanel);
-            this.Controls.Add(this.NightmareEnginePanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CorruptionEngineOptions";
@@ -602,8 +591,6 @@
             this.LogicEnginePanel.ResumeLayout(false);
             this.LogicEnginePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).EndInit();
-            this.HellEnginePanel.ResumeLayout(false);
-            this.HellEnginePanel.PerformLayout();
             this.LerpEnginePanel.ResumeLayout(false);
             this.LerpEnginePanel.PerformLayout();
             this.Vector2EnginePanel.ResumeLayout(false);
@@ -631,9 +618,6 @@
         private System.Windows.Forms.Label Label10;
         private System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.Label Label15;
-        public System.Windows.Forms.Panel HellEnginePanel;
-        private System.Windows.Forms.Label Label16;
-        private System.Windows.Forms.Label Label18;
         public System.Windows.Forms.Panel LerpEnginePanel;
         internal System.Windows.Forms.TextBox LerpValueTxt;
         private System.Windows.Forms.Label Label17;
@@ -657,5 +641,7 @@
         private System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.CheckBox LogicRandomizeTypeCheckbox;
         internal System.Windows.Forms.CheckBox LogicRandomizeValueCheckBox;
+        internal System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

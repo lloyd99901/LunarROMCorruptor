@@ -93,7 +93,8 @@
     <Compile Include="CorruptionEngines\LogicEngine.cs" />
     <Compile Include="CorruptionEngines\ManualEngine.cs" />
     <Compile Include="CorruptionEngines\MergeEngine.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="CorruptionInternals\Enums.cs" />
+    <Compile Include="CorruptionInternals\CorruptionCore.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

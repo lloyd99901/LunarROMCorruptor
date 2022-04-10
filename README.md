@@ -29,32 +29,31 @@ Also using the stash editor, if you find that a certain corruption changes the c
 ### Engines
 Here are the following engines that come with LunarROMCorruptor
  - Nightmare Engine:
- 
+
    A simple, yet effective way of corrupting files, with three corruption modes: RANDOM, RANDOMTILT and TILT.
-   
+
     -RANDOM
-    
+
      The selected byte gets set with a random value of 0 to 255
-     
+
     -RANDOMTILT
-    
+
      The selected byte gets set with a random value of 0 to 255 or a user specified value gets added/subtracted from the byte.
-     
+
     -TILT
-    
+
      The selected byte will have its value added or subtracted by a user specified value. (e.g. 255 - 3, 242 + 1)
-   
+
  - Merge Engine
- 
+
    An engine that copies bytes from one file to the other to create corruption (For example, 'merging' Super Mario Bros. with Donkey Kong).
  - Logic Engine
- 
+
    An engine that uses bitwise/logical operations on two selected bytes.
  - Lerp Engine
- 
-   An engine that takes the 2 neighbouring bytes where the selected byte is and corrupts the selected byte by using linear interpolation 
+
+   An engine that takes the 2 neighbouring bytes where the selected byte is and corrupts the selected byte by using linear interpolation
    (e.g. 0 21 100 would become 0 50 100 if the Lerp Setting was set to 0.5)
- - Hell Engine (Not really an engine, just picks a random engine to corrupt the selected byte)
  - Vector2 Engine (Not finished)
  - Manual (User manually enables and sets what types of corruption takes place in the file.)
 
@@ -71,7 +70,7 @@ Here are the following engines that come with LunarROMCorruptor
 - [x] Code Refactoring (Optimize the engines, code cleanup, etc)
 
 ## About
-This project started around 2019 and was originally made in VB.NET. I was fascinated by other corruptors and wanted to make my own. The project was finished in the same year, but since the code was very messy, I decided not to release it. 
+This project started around 2019 and was originally made in VB.NET. I was fascinated by other corruptors and wanted to make my own. The project was finished in the same year, but since the code was very messy, I decided not to release it.
 
 A year later, I decided to remake it in C#, mainly because I want to teach myself more C#, but also to do some code refactoring to make it more optimized.
 
