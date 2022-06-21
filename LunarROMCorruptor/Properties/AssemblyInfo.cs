@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LunarROMCorruptor")]
 [assembly: AssemblyDescription("A simple ROM corruptor.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Lunazaki")]
+[assembly: AssemblyCompany("Morikara")]
 [assembly: AssemblyProduct("LunarROMCorruptor")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]

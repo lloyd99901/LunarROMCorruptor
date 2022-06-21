@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.FilesaveReloadbtn = new System.Windows.Forms.Button();
             this.FilesaveRenameBtn = new System.Windows.Forms.Button();
-            this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.FileSaveTab = new System.Windows.Forms.TabPage();
             this.FilesaveSavebtn = new System.Windows.Forms.Button();
             this.FilesaveDelete = new System.Windows.Forms.Button();
             this.FilesaveCopysavetobtn = new System.Windows.Forms.Button();
@@ -68,10 +68,10 @@
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.IntensityTrackbar = new System.Windows.Forms.TrackBar();
             this.CorruptionQueueChkbox = new System.Windows.Forms.CheckBox();
-            this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.FileCorruptionTab = new System.Windows.Forms.TabPage();
             this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
-            this.StashItemList = new System.Windows.Forms.ListBox();
-            this.StashList = new System.Windows.Forms.ListBox();
+            this.StashBytesList = new System.Windows.Forms.ListBox();
+            this.StashFileList = new System.Windows.Forms.ListBox();
             this.StashEditorbtn = new System.Windows.Forms.Button();
             this.DeleteStash = new System.Windows.Forms.Button();
             this.Corruptusingstash = new System.Windows.Forms.Button();
@@ -79,8 +79,8 @@
             this.RenameStash = new System.Windows.Forms.Button();
             this.TransferStash = new System.Windows.Forms.Button();
             this.DragandDropICON = new System.Windows.Forms.PictureBox();
-            this.TabControl2 = new System.Windows.Forms.TabControl();
-            this.TabPage4 = new System.Windows.Forms.TabPage();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.CorruptionEngineTab = new System.Windows.Forms.TabPage();
             this.ManualEnginePanel = new System.Windows.Forms.Panel();
             this.Label9 = new System.Windows.Forms.Label();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
@@ -112,7 +112,7 @@
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.RepeatNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.AboutTab = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AboutVerLabel = new System.Windows.Forms.Label();
@@ -137,7 +137,7 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TabPage2.SuspendLayout();
+            this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
             this.Panel4.SuspendLayout();
@@ -149,10 +149,10 @@
             this.IntensityGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).BeginInit();
-            this.TabPage3.SuspendLayout();
+            this.FileCorruptionTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
-            this.TabControl2.SuspendLayout();
-            this.TabPage4.SuspendLayout();
+            this.MainTabControl.SuspendLayout();
+            this.CorruptionEngineTab.SuspendLayout();
             this.ManualEnginePanel.SuspendLayout();
             this.GroupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ByteEqualNumericUpDown)).BeginInit();
@@ -167,7 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IncrementNumericUpDown)).BeginInit();
             this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.AboutTab.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel3.SuspendLayout();
@@ -208,23 +208,23 @@
             this.FilesaveRenameBtn.UseVisualStyleBackColor = false;
             this.FilesaveRenameBtn.Click += new System.EventHandler(this.FilesaveRenameBtn_Click);
             // 
-            // TabPage2
+            // FileSaveTab
             // 
-            this.TabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.TabPage2.Controls.Add(this.FilesaveSavebtn);
-            this.TabPage2.Controls.Add(this.FilesaveReloadbtn);
-            this.TabPage2.Controls.Add(this.FilesaveRenameBtn);
-            this.TabPage2.Controls.Add(this.FilesaveDelete);
-            this.TabPage2.Controls.Add(this.FilesaveCopysavetobtn);
-            this.TabPage2.Controls.Add(this.FilesaveList);
-            this.TabPage2.Controls.Add(this.FilesaveEnableAutoSaves);
-            this.TabPage2.Controls.Add(this.FileSavestitlelbl);
-            this.TabPage2.Location = new System.Drawing.Point(4, 22);
-            this.TabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage2.Name = "TabPage2";
-            this.TabPage2.Size = new System.Drawing.Size(642, 250);
-            this.TabPage2.TabIndex = 4;
-            this.TabPage2.Text = "File Saves";
+            this.FileSaveTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.FileSaveTab.Controls.Add(this.FilesaveSavebtn);
+            this.FileSaveTab.Controls.Add(this.FilesaveReloadbtn);
+            this.FileSaveTab.Controls.Add(this.FilesaveRenameBtn);
+            this.FileSaveTab.Controls.Add(this.FilesaveDelete);
+            this.FileSaveTab.Controls.Add(this.FilesaveCopysavetobtn);
+            this.FileSaveTab.Controls.Add(this.FilesaveList);
+            this.FileSaveTab.Controls.Add(this.FilesaveEnableAutoSaves);
+            this.FileSaveTab.Controls.Add(this.FileSavestitlelbl);
+            this.FileSaveTab.Location = new System.Drawing.Point(4, 22);
+            this.FileSaveTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileSaveTab.Name = "FileSaveTab";
+            this.FileSaveTab.Size = new System.Drawing.Size(642, 250);
+            this.FileSaveTab.TabIndex = 4;
+            this.FileSaveTab.Text = "File Saves";
             // 
             // FilesaveSavebtn
             // 
@@ -384,7 +384,7 @@
             // 
             this.OverrideArguments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OverrideArguments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.OverrideArguments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(90)))));
             this.OverrideArguments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.OverrideArguments.Enabled = false;
             this.OverrideArguments.ForeColor = System.Drawing.Color.White;
@@ -436,7 +436,8 @@
             "Nightmare Engine",
             "Merge Engine",
             "Lerp Engine",
-            "Logic Engine"});
+            "Logic Engine",
+            "Vector2 Engine"});
             this.CorruptionEngineComboBox.Location = new System.Drawing.Point(494, 48);
             this.CorruptionEngineComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CorruptionEngineComboBox.Name = "CorruptionEngineComboBox";
@@ -482,7 +483,6 @@
             this.EndByteTrackbar.Location = new System.Drawing.Point(10, 172);
             this.EndByteTrackbar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.EndByteTrackbar.Maximum = 1000;
-            this.EndByteTrackbar.Minimum = 1;
             this.EndByteTrackbar.Name = "EndByteTrackbar";
             this.EndByteTrackbar.Size = new System.Drawing.Size(296, 45);
             this.EndByteTrackbar.TabIndex = 17;
@@ -591,7 +591,6 @@
             this.StartByteTrackBar.Location = new System.Drawing.Point(10, 118);
             this.StartByteTrackBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StartByteTrackBar.Maximum = 1000;
-            this.StartByteTrackBar.Minimum = 1;
             this.StartByteTrackBar.Name = "StartByteTrackBar";
             this.StartByteTrackBar.Size = new System.Drawing.Size(296, 45);
             this.StartByteTrackBar.TabIndex = 17;
@@ -779,28 +778,28 @@
             this.CorruptionQueueChkbox.UseVisualStyleBackColor = true;
             this.CorruptionQueueChkbox.CheckedChanged += new System.EventHandler(this.CorruptionQueueChkbox_CheckedChanged);
             // 
-            // TabPage3
+            // FileCorruptionTab
             // 
-            this.TabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.TabPage3.Controls.Add(this.EnableStashSavesChkbox);
-            this.TabPage3.Controls.Add(this.StashListlbl);
-            this.TabPage3.Controls.Add(this.Panel4);
-            this.TabPage3.Controls.Add(this.StashItemList);
-            this.TabPage3.Controls.Add(this.StashList);
-            this.TabPage3.Controls.Add(this.StashEditorbtn);
-            this.TabPage3.Controls.Add(this.DeleteStash);
-            this.TabPage3.Controls.Add(this.Corruptusingstash);
-            this.TabPage3.Controls.Add(this.RefreshStash);
-            this.TabPage3.Controls.Add(this.RenameStash);
-            this.TabPage3.Controls.Add(this.TransferStash);
-            this.TabPage3.Controls.Add(this.DragandDropICON);
-            this.TabPage3.Location = new System.Drawing.Point(4, 22);
-            this.TabPage3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage3.Name = "TabPage3";
-            this.TabPage3.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage3.Size = new System.Drawing.Size(642, 250);
-            this.TabPage3.TabIndex = 0;
-            this.TabPage3.Text = "File Corruption Menu";
+            this.FileCorruptionTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.FileCorruptionTab.Controls.Add(this.EnableStashSavesChkbox);
+            this.FileCorruptionTab.Controls.Add(this.StashListlbl);
+            this.FileCorruptionTab.Controls.Add(this.Panel4);
+            this.FileCorruptionTab.Controls.Add(this.StashBytesList);
+            this.FileCorruptionTab.Controls.Add(this.StashFileList);
+            this.FileCorruptionTab.Controls.Add(this.StashEditorbtn);
+            this.FileCorruptionTab.Controls.Add(this.DeleteStash);
+            this.FileCorruptionTab.Controls.Add(this.Corruptusingstash);
+            this.FileCorruptionTab.Controls.Add(this.RefreshStash);
+            this.FileCorruptionTab.Controls.Add(this.RenameStash);
+            this.FileCorruptionTab.Controls.Add(this.TransferStash);
+            this.FileCorruptionTab.Controls.Add(this.DragandDropICON);
+            this.FileCorruptionTab.Location = new System.Drawing.Point(4, 22);
+            this.FileCorruptionTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileCorruptionTab.Name = "FileCorruptionTab";
+            this.FileCorruptionTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileCorruptionTab.Size = new System.Drawing.Size(642, 250);
+            this.FileCorruptionTab.TabIndex = 0;
+            this.FileCorruptionTab.Text = "File Corruption Menu";
             // 
             // EnableStashSavesChkbox
             // 
@@ -817,42 +816,42 @@
             this.EnableStashSavesChkbox.UseVisualStyleBackColor = true;
             this.EnableStashSavesChkbox.CheckedChanged += new System.EventHandler(this.EnableStashSavesChkbox_CheckedChanged);
             // 
-            // StashItemList
+            // StashBytesList
             // 
-            this.StashItemList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.StashBytesList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.StashItemList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.StashItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StashItemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StashItemList.ForeColor = System.Drawing.Color.Silver;
-            this.StashItemList.FormattingEnabled = true;
-            this.StashItemList.HorizontalScrollbar = true;
-            this.StashItemList.IntegralHeight = false;
-            this.StashItemList.ItemHeight = 9;
-            this.StashItemList.Location = new System.Drawing.Point(330, 22);
-            this.StashItemList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StashItemList.Name = "StashItemList";
-            this.StashItemList.Size = new System.Drawing.Size(115, 223);
-            this.StashItemList.TabIndex = 158;
+            this.StashBytesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.StashBytesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StashBytesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StashBytesList.ForeColor = System.Drawing.Color.Silver;
+            this.StashBytesList.FormattingEnabled = true;
+            this.StashBytesList.HorizontalScrollbar = true;
+            this.StashBytesList.IntegralHeight = false;
+            this.StashBytesList.ItemHeight = 9;
+            this.StashBytesList.Location = new System.Drawing.Point(330, 22);
+            this.StashBytesList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StashBytesList.Name = "StashBytesList";
+            this.StashBytesList.Size = new System.Drawing.Size(115, 223);
+            this.StashBytesList.TabIndex = 158;
             // 
-            // StashList
+            // StashFileList
             // 
-            this.StashList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.StashFileList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StashList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.StashList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StashList.ForeColor = System.Drawing.Color.Silver;
-            this.StashList.FormattingEnabled = true;
-            this.StashList.HorizontalScrollbar = true;
-            this.StashList.IntegralHeight = false;
-            this.StashList.Location = new System.Drawing.Point(466, 22);
-            this.StashList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StashList.Name = "StashList";
-            this.StashList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.StashList.Size = new System.Drawing.Size(172, 148);
-            this.StashList.TabIndex = 158;
-            this.StashList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StashList_MouseDown);
+            this.StashFileList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.StashFileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StashFileList.ForeColor = System.Drawing.Color.Silver;
+            this.StashFileList.FormattingEnabled = true;
+            this.StashFileList.HorizontalScrollbar = true;
+            this.StashFileList.IntegralHeight = false;
+            this.StashFileList.Location = new System.Drawing.Point(466, 22);
+            this.StashFileList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StashFileList.Name = "StashFileList";
+            this.StashFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.StashFileList.Size = new System.Drawing.Size(172, 148);
+            this.StashFileList.TabIndex = 158;
+            this.StashFileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StashList_MouseDown);
             // 
             // StashEditorbtn
             // 
@@ -974,31 +973,31 @@
             this.DragandDropICON.TabStop = false;
             this.DragandDropICON.Visible = false;
             // 
-            // TabControl2
+            // MainTabControl
             // 
-            this.TabControl2.Controls.Add(this.TabPage3);
-            this.TabControl2.Controls.Add(this.TabPage4);
-            this.TabControl2.Controls.Add(this.TabPage2);
-            this.TabControl2.Controls.Add(this.tabPage5);
-            this.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControl2.Location = new System.Drawing.Point(0, 71);
-            this.TabControl2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabControl2.Name = "TabControl2";
-            this.TabControl2.SelectedIndex = 0;
-            this.TabControl2.Size = new System.Drawing.Size(650, 276);
-            this.TabControl2.TabIndex = 143;
+            this.MainTabControl.Controls.Add(this.FileCorruptionTab);
+            this.MainTabControl.Controls.Add(this.CorruptionEngineTab);
+            this.MainTabControl.Controls.Add(this.FileSaveTab);
+            this.MainTabControl.Controls.Add(this.AboutTab);
+            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTabControl.Location = new System.Drawing.Point(0, 71);
+            this.MainTabControl.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(650, 276);
+            this.MainTabControl.TabIndex = 143;
             // 
-            // TabPage4
+            // CorruptionEngineTab
             // 
-            this.TabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.TabPage4.Controls.Add(this.ManualEnginePanel);
-            this.TabPage4.Location = new System.Drawing.Point(4, 22);
-            this.TabPage4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage4.Name = "TabPage4";
-            this.TabPage4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TabPage4.Size = new System.Drawing.Size(642, 250);
-            this.TabPage4.TabIndex = 1;
-            this.TabPage4.Text = "Corruption Engine Settings";
+            this.CorruptionEngineTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.CorruptionEngineTab.Controls.Add(this.ManualEnginePanel);
+            this.CorruptionEngineTab.Location = new System.Drawing.Point(4, 22);
+            this.CorruptionEngineTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptionEngineTab.Name = "CorruptionEngineTab";
+            this.CorruptionEngineTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptionEngineTab.Size = new System.Drawing.Size(642, 250);
+            this.CorruptionEngineTab.TabIndex = 1;
+            this.CorruptionEngineTab.Text = "Corruption Engine Settings";
             // 
             // ManualEnginePanel
             // 
@@ -1472,16 +1471,16 @@
             0,
             0});
             // 
-            // tabPage5
+            // AboutTab
             // 
-            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.tabPage5.Controls.Add(this.panel5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(642, 250);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "About";
+            this.AboutTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.AboutTab.Controls.Add(this.panel5);
+            this.AboutTab.Location = new System.Drawing.Point(4, 22);
+            this.AboutTab.Name = "AboutTab";
+            this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AboutTab.Size = new System.Drawing.Size(642, 250);
+            this.AboutTab.TabIndex = 5;
+            this.AboutTab.Text = "About";
             // 
             // panel5
             // 
@@ -1680,6 +1679,7 @@
             this.CorruptionQueueBtn.Text = "Edit Queue...";
             this.CorruptionQueueBtn.UseVisualStyleBackColor = false;
             this.CorruptionQueueBtn.Visible = false;
+            this.CorruptionQueueBtn.Click += new System.EventHandler(this.CorruptionQueueBtn_Click);
             // 
             // Restorefilebtn
             // 
@@ -1792,7 +1792,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 478);
-            this.Controls.Add(this.TabControl2);
+            this.Controls.Add(this.MainTabControl);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
@@ -1805,8 +1805,8 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.DragLeave += new System.EventHandler(this.Form1_DragLeave);
-            this.TabPage2.ResumeLayout(false);
-            this.TabPage2.PerformLayout();
+            this.FileSaveTab.ResumeLayout(false);
+            this.FileSaveTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).EndInit();
             this.Panel4.ResumeLayout(false);
@@ -1821,11 +1821,11 @@
             this.IntensityGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).EndInit();
-            this.TabPage3.ResumeLayout(false);
-            this.TabPage3.PerformLayout();
+            this.FileCorruptionTab.ResumeLayout(false);
+            this.FileCorruptionTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
-            this.TabControl2.ResumeLayout(false);
-            this.TabPage4.ResumeLayout(false);
+            this.MainTabControl.ResumeLayout(false);
+            this.CorruptionEngineTab.ResumeLayout(false);
             this.ManualEnginePanel.ResumeLayout(false);
             this.ManualEnginePanel.PerformLayout();
             this.GroupBox8.ResumeLayout(false);
@@ -1847,7 +1847,7 @@
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.AboutTab.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1865,7 +1865,7 @@
         internal System.Windows.Forms.Button FilesaveSavebtn;
         internal System.Windows.Forms.Button FilesaveReloadbtn;
         internal System.Windows.Forms.Button FilesaveRenameBtn;
-        internal System.Windows.Forms.TabPage TabPage2;
+        internal System.Windows.Forms.TabPage FileSaveTab;
         internal System.Windows.Forms.Button FilesaveCopysavetobtn;
         internal System.Windows.Forms.Button FilesaveDelete;
         internal System.Windows.Forms.ListBox FilesaveList;
@@ -1899,16 +1899,16 @@
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.NumericUpDown Intensity;
         private System.Windows.Forms.TrackBar IntensityTrackbar;
-        internal System.Windows.Forms.TabPage TabPage3;
-        internal System.Windows.Forms.ListBox StashItemList;
+        internal System.Windows.Forms.TabPage FileCorruptionTab;
+        internal System.Windows.Forms.ListBox StashBytesList;
         internal System.Windows.Forms.Button StashEditorbtn;
         internal System.Windows.Forms.Button DeleteStash;
         internal System.Windows.Forms.Button Corruptusingstash;
         internal System.Windows.Forms.Button RefreshStash;
         internal System.Windows.Forms.Button RenameStash;
         internal System.Windows.Forms.Button TransferStash;
-        internal System.Windows.Forms.TabControl TabControl2;
-        internal System.Windows.Forms.TabPage TabPage4;
+        internal System.Windows.Forms.TabControl MainTabControl;
+        internal System.Windows.Forms.TabPage CorruptionEngineTab;
         private System.Windows.Forms.Panel ManualEnginePanel;
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.CheckBox CorruptionQueueChkbox;
@@ -1952,10 +1952,10 @@
         internal System.Windows.Forms.GroupBox GroupBox2;
         private System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.NumericUpDown RepeatNumericUpDown;
-        public System.Windows.Forms.ListBox StashList;
+        public System.Windows.Forms.ListBox StashFileList;
         private System.Windows.Forms.Timer CorruptButtonColorChanger;
         internal System.Windows.Forms.CheckBox EnableStashSavesChkbox;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage AboutTab;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

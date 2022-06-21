@@ -12,32 +12,32 @@ namespace LunarROMCorruptor.CorruptionEngines
             {
                 case CorruptionOptions.AND:
                     ROM[i] = (byte)(ROM[i] & BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] AND trigger");
                     break;
                 case CorruptionOptions.OR:
                     ROM[i] = (byte)(ROM[i] | BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] OR trigger");
                     break;
                 case CorruptionOptions.XOR:
                     ROM[i] = (byte)(ROM[i] ^ BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] XOR trigger");
                     break;
                 case CorruptionOptions.NOT:
                     ROM[i] = (byte)~(ROM[i]);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] NOT trigger");
                     break;
                 case CorruptionOptions.NAND:
                     ROM[i] = (byte)~(ROM[i] & BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] NAND trigger");
                     break;
                 case CorruptionOptions.NOR:
                     ROM[i] = (byte)~(ROM[i] | BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] NOR trigger");
                     break;
                 case CorruptionOptions.SWAP:
@@ -57,12 +57,12 @@ namespace LunarROMCorruptor.CorruptionEngines
                     ROM[i] = swap2;
                     ROM[i + 1] = swap1;
                     int i1 = (int)(i + BitVal);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + swap2 + ")");
-                    Program.Form.StashItems.Add("[x] File(" + i1 + ").SET(" + swap1 + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + swap2 + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i1 + ").SET(" + swap1 + ")");
                     break;
                 case CorruptionOptions.SHIFT:
                     ROM[i] = ROM[i + BitVal];
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                     //Console.WriteLine("[x] SHIFT trigger");
                     break;
                 default:

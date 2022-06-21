@@ -13,8 +13,8 @@ namespace LunarROMCorruptor.CorruptionEngines
         {
             byte byteminus;
             byte byteplus;
+            double interpolateVal = Convert.ToDouble(Program.Form.CorruptionEngineFrame.LerpValueTxt.Text);
             //Check if the Bytes selected in i are in range.
-
             try
             {
                 byteminus = ROM[i + 1];
@@ -31,8 +31,18 @@ namespace LunarROMCorruptor.CorruptionEngines
             {
                 byteplus = ROM[i];
             }
-            ROM[i] = (byte)LinearInterpolationCalculation(byteminus, byteplus, Convert.ToDouble(Program.Form.objForm2.LerpValueTxt.Text));
-            Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+            //Check if the interpolateVal is in range, cannot be higher than 1.0 and cannot be lower than 0.0
+            if (interpolateVal > 1.0)
+            {
+                interpolateVal = 1.0;
+            }
+            if (interpolateVal < 0.0)
+            {
+                interpolateVal = 0.0;
+            }
+            //Calculate the new value
+            ROM[i] = (byte)LinearInterpolationCalculation(byteminus, byteplus, interpolateVal );
+            Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             return ROM;
         }
     }

@@ -9,6 +9,76 @@ namespace LunarROMCorruptor.CorruptionInternals
     public class CorruptionCore
     {
         private static readonly Random rnd = new Random();
+
+        //Read 4 bytes from the ROM at the specified offset (32bit) and return them as a 32bit hex value
+        public static uint Read32(byte[] rom, uint offset)
+        {
+            try
+            {
+                uint value = 0;
+                value |= rom[offset + 0];
+                value |= (uint)rom[offset + 1] << 8;
+                value |= (uint)rom[offset + 2] << 16;
+                value |= (uint)rom[offset + 3] << 24;
+                return value;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                return 0;
+            }
+
+        }
+
+        //convert value to hex ("0x00000000")
+        public static string ToHex(uint value)
+        {
+            return "0x" + value.ToString("X8");
+        }
+
+        //Read all bytes from the ROM and return them as a 32bit hex array
+
+        //public static uint[] ReadAll32(byte[] rom)
+        //{
+        //    uint[] values = new uint[rom.Length / 4];
+        //    for (int i = 0; i < rom.Length; i += 4)
+        //    {
+        //        //check if we are at the end of the ROM
+        //        if (i + 4 > rom.Length)
+        //        {
+        //            return values;
+        //        }
+        //        try
+        //        {
+        //            values[i / 4] = Read32(rom, (uint)i);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //            return null;
+        //        }
+        //    }
+        //    return values;
+        //}
+
+        //Code from Form1.cs, this is how you use the corruption to hex function.
+        ////Reall all of the ROM data, convert to 32 bit hex and store it in a string array
+        //string[] HexData = new string[ROM.Length / 4];
+        //for (int i = 0; i < ROM.Length / 4; i++)
+        //{
+        //    //check if i doens't exceed the array size of the ROM
+        //    if (i * 4 < ROM.Length)
+        //    {
+        //        HexData[i] = CorruptionCore.ToHex(CorruptionCore.Read32(ROM, (uint)i * 4));
+        //    }
+        //    else
+        //    {
+        //        break;
+        //    }
+        //}
+        //CorruptionEngineFrame.FloatBitOutput.Text = string.Join(Environment.NewLine, HexData);
+        ////print how many lines there are in the textbox in the console
+        //Console.WriteLine(CorruptionEngineFrame.FloatBitOutput.Lines.Length);
         public static byte ClampByte(int x) //This is to prevent the byte from going over 255 or going under 0
         {
             if (x < 0)
@@ -28,7 +98,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            Enum.TryParse(Program.Form.objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             NightmareEngine.CorruptByte(ROM, corruptiontype, i1);
                             i1 += Intensity;
                         }
@@ -37,7 +107,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     {
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
-                            Enum.TryParse(Program.Form.objForm2.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             NightmareEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
                     }
@@ -65,20 +135,20 @@ namespace LunarROMCorruptor.CorruptionInternals
 
                 case "Merge Engine":
                     //Check if the merge file exists, if not throw an error
-                    if (string.IsNullOrEmpty(Program.Form.objForm2.MergeFileLocationTxt.Text))
+                    if (string.IsNullOrEmpty(Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text))
                     {
                         MessageBox.Show("Merge file location is empty. Please select a file.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return null;
                     }
 
-                    byte[] ROMmerge = File.ReadAllBytes(Program.Form.objForm2.MergeFileLocationTxt.Text);
+                    byte[] ROMmerge = File.ReadAllBytes(Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text);
                     if (CorruptNthByte)
                     {
                         //CorruptNTH selected
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            Enum.TryParse(Program.Form.objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, i1);
                             i1 += Intensity;
                         }
@@ -87,7 +157,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     {
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
-                            Enum.TryParse(Program.Form.objForm2.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
                     }
@@ -100,18 +170,18 @@ namespace LunarROMCorruptor.CorruptionInternals
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
-                            if (Program.Form.objForm2.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
+                            if (Program.Form.CorruptionEngineFrame.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
                             {
-                                int randomIndex = rnd.Next(1, Program.Form.objForm2.BitwiseComboBox.Items.Count - 1);
-                                Program.Form.objForm2.BitwiseComboBox.SelectedIndex = randomIndex;
+                                int randomIndex = rnd.Next(1, Program.Form.CorruptionEngineFrame.BitwiseComboBox.Items.Count - 1);
+                                Program.Form.CorruptionEngineFrame.BitwiseComboBox.SelectedIndex = randomIndex;
                             }
-                            if (Program.Form.objForm2.LogicRandomizeValueCheckBox.Checked) //Randomize Value
+                            if (Program.Form.CorruptionEngineFrame.LogicRandomizeValueCheckBox.Checked) //Randomize Value
                             {
-                                int randomValue = rnd.Next((int)Program.Form.objForm2.ValueBitwise.Minimum, (int)Program.Form.objForm2.ValueBitwise.Maximum);
-                                Program.Form.objForm2.ValueBitwise.Value = randomValue;
+                                int randomValue = rnd.Next((int)Program.Form.CorruptionEngineFrame.ValueBitwise.Minimum, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Maximum);
+                                Program.Form.CorruptionEngineFrame.ValueBitwise.Value = randomValue;
                             }
-                            Enum.TryParse(Program.Form.objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
-                            LogicEngine.CorruptByte(ROM, corruptiontype, i1, (int)Program.Form.objForm2.ValueBitwise.Value);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
+                            LogicEngine.CorruptByte(ROM, corruptiontype, i1, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Value);
                             i1 += Intensity;
                         }
                     }
@@ -119,19 +189,19 @@ namespace LunarROMCorruptor.CorruptionInternals
                     {
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
-                            if (Program.Form.objForm2.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
+                            if (Program.Form.CorruptionEngineFrame.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
                             {
-                                int randomIndex = rnd.Next(1, Program.Form.objForm2.BitwiseComboBox.Items.Count - 1);
-                                Program.Form.objForm2.BitwiseComboBox.SelectedIndex = randomIndex;
+                                int randomIndex = rnd.Next(1, Program.Form.CorruptionEngineFrame.BitwiseComboBox.Items.Count - 1);
+                                Program.Form.CorruptionEngineFrame.BitwiseComboBox.SelectedIndex = randomIndex;
                             }
-                            if (Program.Form.objForm2.LogicRandomizeValueCheckBox.Checked) //Randomize Value
+                            if (Program.Form.CorruptionEngineFrame.LogicRandomizeValueCheckBox.Checked) //Randomize Value
                             {
-                                int randomValue = rnd.Next((int)Program.Form.objForm2.ValueBitwise.Minimum, (int)Program.Form.objForm2.ValueBitwise.Maximum);
-                                Program.Form.objForm2.ValueBitwise.Value = randomValue;
+                                int randomValue = rnd.Next((int)Program.Form.CorruptionEngineFrame.ValueBitwise.Minimum, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Maximum);
+                                Program.Form.CorruptionEngineFrame.ValueBitwise.Value = randomValue;
                             }
-                            Enum.TryParse(Program.Form.objForm2.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
+                            Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
                             //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
-                            LogicEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte), (int)Program.Form.objForm2.ValueBitwise.Value);
+                            LogicEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte), (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Value);
                         }
                     }
                     break;
@@ -185,7 +255,7 @@ namespace LunarROMCorruptor.CorruptionInternals
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error when starting process/emulator: " + ex.ToString());
+                MessageBox.Show($"Error when starting process/emulator: {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

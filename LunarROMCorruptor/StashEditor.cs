@@ -114,7 +114,7 @@ namespace LunarROMCorruptor
 
         private void Newfilestashbtn_Click(object sender, EventArgs e)
         {
-            Program.Form.StashList.Items.Clear();
+            Program.Form.StashFileList.Items.Clear();
             StringBuilder builder = new StringBuilder();
             foreach (var listitem in stashListbox.Items)
             {
@@ -138,7 +138,7 @@ namespace LunarROMCorruptor
             stashListbox.Items.Clear();
             try
             {
-                foreach (var line in File.ReadLines(Application.StartupPath + @"\CorruptionStashList\" + Program.Form.StashList.GetItemText(Program.Form.StashList.SelectedItem)))
+                foreach (var line in File.ReadLines(Application.StartupPath + @"\CorruptionStashList\" + Program.Form.StashFileList.GetItemText(Program.Form.StashFileList.SelectedItem)))
                 {
                     stashListbox.Items.Add(line);
                 }

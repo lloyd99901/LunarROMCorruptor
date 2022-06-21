@@ -12,8 +12,8 @@ namespace LunarROMCorruptor.CorruptionEngines
         {
             if (Program.Form.IncrementCHECK.Checked)
             {
-                ROM[i] = CorruptionCore.ClampByte(ROM[i] + (int)Program.Form.objForm2.IncreDecrenumbnightmare.Value);
-                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                ROM[i] = CorruptionCore.ClampByte(ROM[i] + (int)Program.Form.CorruptionEngineFrame.IncreDecrenumbnightmare.Value);
+                Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             }
             if (Program.Form.SHIFTBYTECHECK.Checked)
             {
@@ -21,27 +21,27 @@ namespace LunarROMCorruptor.CorruptionEngines
                 if (j >= StartByte && j <= EndByte)
                 {
                     ROM[j] = ROM[i];
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             if (Program.Form.MakeBitEqualCHECK.Checked)
             {
                 ROM[i] = (byte)Program.Form.ByteEqualNumericUpDown.Value;
-                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             }
             if (Program.Form.ReplaceCHECK.Checked)
             {
                 if (ROM[i] == (byte)Program.Form.ReplaceNumericUpDown1.Value)
                 {
                     ROM[i] = (byte)Program.Form.ReplaceNumericUpDown2.Value;
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             if (Program.Form.PasterandombitCHECK.Checked)
             {
                 byte copy = ROM[rnd.Next(StartByte, EndByte)];
                 ROM[i] = copy;
-                Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + copy + ")");
+                Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + copy + ")");
             }
             if (Program.Form.RepeatRandomBitCHECK.Checked)
             {
@@ -53,7 +53,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                 {
                     long final = rnd.Next(StartByte, EndByte);
                     ROM[final] = itemcon;
-                    Program.Form.StashItems.Add("[x] File(" + final + ").SET(" + itemcon + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + final + ").SET(" + itemcon + ")");
                 }
             }
             if (Program.Form.MULTIORDIVIDECHeck.Checked)
@@ -61,17 +61,17 @@ namespace LunarROMCorruptor.CorruptionEngines
                 if (Program.Form.MultiRadio.Checked)
                 {
                     ROM[i] = CorruptionCore.ClampByte(ROM[i] * (int)Program.Form.MathOperationNumericUpDown.Value);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DivideRadio.Checked)
                 {
                     ROM[i] = CorruptionCore.ClampByte(ROM[i] / (int)Program.Form.MathOperationNumericUpDown.Value);
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DoubleCheck.Checked)
                 { 
                     ROM[i] = (byte)((byte)Math.Pow(ROM[i], (double)Program.Form.MathOperationNumericUpDown.Value) % (byte.MaxValue + 1));
-                    Program.Form.StashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
+                    Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
             }
             return ROM;

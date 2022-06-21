@@ -43,12 +43,15 @@
             this.Label11 = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
             this.LerpEnginePanel = new System.Windows.Forms.Panel();
+            this.LerpSplitValueTrackBar = new System.Windows.Forms.TrackBar();
             this.LerpValueTxt = new System.Windows.Forms.TextBox();
             this.Label17 = new System.Windows.Forms.Label();
             this.Label20 = new System.Windows.Forms.Label();
             this.Vector2EnginePanel = new System.Windows.Forms.Panel();
+            this.FloatBitOutput = new System.Windows.Forms.RichTextBox();
             this.ChunkSearchVector2rb = new System.Windows.Forms.RadioButton();
             this.RandomSearchVector2rb = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.Label19 = new System.Windows.Forms.Label();
             this.Label22 = new System.Windows.Forms.Label();
             this.Label21 = new System.Windows.Forms.Label();
@@ -68,6 +71,7 @@
             this.LogicEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).BeginInit();
             this.LerpEnginePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LerpSplitValueTrackBar)).BeginInit();
             this.Vector2EnginePanel.SuspendLayout();
             this.NightmareEnginePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IncreDecrenumbnightmare)).BeginInit();
@@ -267,6 +271,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LerpEnginePanel.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.LerpEnginePanel.Controls.Add(this.LerpSplitValueTrackBar);
             this.LerpEnginePanel.Controls.Add(this.LerpValueTxt);
             this.LerpEnginePanel.Controls.Add(this.Label17);
             this.LerpEnginePanel.Controls.Add(this.Label20);
@@ -276,6 +281,20 @@
             this.LerpEnginePanel.TabIndex = 161;
             this.LerpEnginePanel.Tag = "color:normal";
             // 
+            // LerpSplitValueTrackBar
+            // 
+            this.LerpSplitValueTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LerpSplitValueTrackBar.Location = new System.Drawing.Point(11, 53);
+            this.LerpSplitValueTrackBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.LerpSplitValueTrackBar.Name = "LerpSplitValueTrackBar";
+            this.LerpSplitValueTrackBar.Size = new System.Drawing.Size(592, 45);
+            this.LerpSplitValueTrackBar.TabIndex = 98;
+            this.LerpSplitValueTrackBar.TabStop = false;
+            this.LerpSplitValueTrackBar.TickFrequency = 0;
+            this.LerpSplitValueTrackBar.Value = 5;
+            this.LerpSplitValueTrackBar.Scroll += new System.EventHandler(this.LerpSplitValueTrackBar_Scroll);
+            // 
             // LerpValueTxt
             // 
             this.LerpValueTxt.Location = new System.Drawing.Point(78, 25);
@@ -283,6 +302,7 @@
             this.LerpValueTxt.Size = new System.Drawing.Size(100, 22);
             this.LerpValueTxt.TabIndex = 97;
             this.LerpValueTxt.Text = "0.5";
+            this.LerpValueTxt.TextChanged += new System.EventHandler(this.LerpValueTxt_TextChanged);
             // 
             // Label17
             // 
@@ -312,8 +332,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Vector2EnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.Vector2EnginePanel.Controls.Add(this.FloatBitOutput);
             this.Vector2EnginePanel.Controls.Add(this.ChunkSearchVector2rb);
             this.Vector2EnginePanel.Controls.Add(this.RandomSearchVector2rb);
+            this.Vector2EnginePanel.Controls.Add(this.label3);
             this.Vector2EnginePanel.Controls.Add(this.Label19);
             this.Vector2EnginePanel.Controls.Add(this.Label22);
             this.Vector2EnginePanel.Controls.Add(this.Label21);
@@ -322,6 +344,17 @@
             this.Vector2EnginePanel.Size = new System.Drawing.Size(618, 240);
             this.Vector2EnginePanel.TabIndex = 162;
             this.Vector2EnginePanel.Tag = "color:normal";
+            // 
+            // FloatBitOutput
+            // 
+            this.FloatBitOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FloatBitOutput.Location = new System.Drawing.Point(16, 92);
+            this.FloatBitOutput.Name = "FloatBitOutput";
+            this.FloatBitOutput.Size = new System.Drawing.Size(577, 135);
+            this.FloatBitOutput.TabIndex = 95;
+            this.FloatBitOutput.Text = "";
             // 
             // ChunkSearchVector2rb
             // 
@@ -347,6 +380,17 @@
             this.RandomSearchVector2rb.Text = "Random Search";
             this.RandomSearchVector2rb.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 17);
+            this.label3.TabIndex = 93;
+            this.label3.Text = "32bit output of file:";
+            // 
             // Label19
             // 
             this.Label19.AutoSize = true;
@@ -364,7 +408,7 @@
             this.Label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))));
             this.Label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Label22.Location = new System.Drawing.Point(18, 73);
+            this.Label22.Location = new System.Drawing.Point(388, 11);
             this.Label22.Name = "Label22";
             this.Label22.Size = new System.Drawing.Size(215, 34);
             this.Label22.TabIndex = 93;
@@ -463,6 +507,7 @@
             this.comboBox1.Size = new System.Drawing.Size(191, 21);
             this.comboBox1.TabIndex = 90;
             this.comboBox1.Text = "8-bit";
+            this.comboBox1.Visible = false;
             // 
             // NightmareComboBox
             // 
@@ -490,6 +535,7 @@
             this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 20;
             this.label2.Text = "Bit Precision:";
+            this.label2.Visible = false;
             // 
             // Label1
             // 
@@ -579,11 +625,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(642, 268);
+            this.Controls.Add(this.Vector2EnginePanel);
             this.Controls.Add(this.NightmareEnginePanel);
             this.Controls.Add(this.MergeEnginePanel);
             this.Controls.Add(this.LogicEnginePanel);
             this.Controls.Add(this.LerpEnginePanel);
-            this.Controls.Add(this.Vector2EnginePanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CorruptionEngineOptions";
@@ -593,6 +639,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ValueBitwise)).EndInit();
             this.LerpEnginePanel.ResumeLayout(false);
             this.LerpEnginePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LerpSplitValueTrackBar)).EndInit();
             this.Vector2EnginePanel.ResumeLayout(false);
             this.Vector2EnginePanel.PerformLayout();
             this.NightmareEnginePanel.ResumeLayout(false);
@@ -643,5 +690,8 @@
         internal System.Windows.Forms.CheckBox LogicRandomizeValueCheckBox;
         internal System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.RichTextBox FloatBitOutput;
+        private System.Windows.Forms.TrackBar LerpSplitValueTrackBar;
     }
 }
