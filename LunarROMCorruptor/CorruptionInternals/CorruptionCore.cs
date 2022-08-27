@@ -226,7 +226,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     break;
 
                 default:
-                    if (MessageBox.Show("The Start Corruption function returned a result that wasn't expected! Click yes to close this program or no to continue anyway.", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("The main corruption core function returned a result that wasn't expected! Click yes to close this program (Recommended) or no to continue anyway. (The corrupted ROM HASN'T been saved to the file yet)", "ERROR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         Application.Exit();
                     }
@@ -255,7 +255,7 @@ namespace LunarROMCorruptor.CorruptionInternals
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error when starting process/emulator: {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when starting process/emulator: {ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

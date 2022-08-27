@@ -50,8 +50,7 @@ namespace LunarROMCorruptor
         {
             try //catch any errors and if there is an error, set the trackbar value to 0
             {
-                float value;
-                if (float.TryParse(LerpValueTxt.Text, out value))
+                if (float.TryParse(LerpValueTxt.Text, out float value))
                 {
                     LerpSplitValueTrackBar.Value = (int)(value * 10); //Convert the textbox text into a float and set the trackbar value to the float value
                 }

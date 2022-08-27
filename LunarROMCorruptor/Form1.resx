@@ -142,7 +142,11 @@ SOFTWARE.
 
 Corruption Warnings:
 You may get banned if this corruptor is used in online games or games with anti-cheat software.
-Don't use this on system32 or any other system files...</value>
+Don't use this on system32 or any other system files...
+This program can irreversibly corrupt personal or critical system data if you're not careful.
+This program comes with no warranty of ANY kind and is provided 'AS IS'.
+You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.
+Anti-cheat software may be triggered if corruption is used on multiplayer games.</value>
   </data>
   <metadata name="EmulatorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>29, 13</value>

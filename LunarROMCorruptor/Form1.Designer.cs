@@ -137,6 +137,7 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileSaveOpenLocationBtn = new System.Windows.Forms.Button();
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -213,6 +214,7 @@
             this.FileSaveTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.FileSaveTab.Controls.Add(this.FilesaveSavebtn);
             this.FileSaveTab.Controls.Add(this.FilesaveReloadbtn);
+            this.FileSaveTab.Controls.Add(this.FileSaveOpenLocationBtn);
             this.FileSaveTab.Controls.Add(this.FilesaveRenameBtn);
             this.FileSaveTab.Controls.Add(this.FilesaveDelete);
             this.FileSaveTab.Controls.Add(this.FilesaveCopysavetobtn);
@@ -436,8 +438,7 @@
             "Nightmare Engine",
             "Merge Engine",
             "Lerp Engine",
-            "Logic Engine",
-            "Vector2 Engine"});
+            "Logic Engine"});
             this.CorruptionEngineComboBox.Location = new System.Drawing.Point(494, 48);
             this.CorruptionEngineComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CorruptionEngineComboBox.Name = "CorruptionEngineComboBox";
@@ -1044,7 +1045,7 @@
             this.GroupBox8.Size = new System.Drawing.Size(191, 63);
             this.GroupBox8.TabIndex = 84;
             this.GroupBox8.TabStop = false;
-            this.GroupBox8.Text = "Experimental";
+            this.GroupBox8.Text = "Other";
             // 
             // PasterandombitCHECK
             // 
@@ -1787,6 +1788,23 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
+            // FileSaveOpenLocationBtn
+            // 
+            this.FileSaveOpenLocationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileSaveOpenLocationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.FileSaveOpenLocationBtn.FlatAppearance.BorderSize = 0;
+            this.FileSaveOpenLocationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileSaveOpenLocationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileSaveOpenLocationBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.FileSaveOpenLocationBtn.Location = new System.Drawing.Point(495, 223);
+            this.FileSaveOpenLocationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileSaveOpenLocationBtn.Name = "FileSaveOpenLocationBtn";
+            this.FileSaveOpenLocationBtn.Size = new System.Drawing.Size(140, 23);
+            this.FileSaveOpenLocationBtn.TabIndex = 157;
+            this.FileSaveOpenLocationBtn.Text = "Open Folder Location";
+            this.FileSaveOpenLocationBtn.UseVisualStyleBackColor = false;
+            this.FileSaveOpenLocationBtn.Click += new System.EventHandler(this.FileSaveOpenLocationBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1969,6 +1987,7 @@
         private System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.CheckBox SilentCorruptionchbox;
         internal System.Windows.Forms.Button CorruptionQueueBtn;
+        internal System.Windows.Forms.Button FileSaveOpenLocationBtn;
     }
 }
 
