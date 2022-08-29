@@ -30,14 +30,17 @@
         {
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.restorebtn = new System.Windows.Forms.Button();
-            this.newfilestashbtn = new System.Windows.Forms.Button();
+            this.AddFolderBTN = new System.Windows.Forms.Button();
+            this.SendFilestoCorruptorBTN = new System.Windows.Forms.Button();
             this.Openfilebtn = new System.Windows.Forms.Button();
-            this.remove50btn = new System.Windows.Forms.Button();
+            this.ClearBtn = new System.Windows.Forms.Button();
             this.removeselbtn = new System.Windows.Forms.Button();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.stashListbox = new System.Windows.Forms.ListBox();
+            this.CorruptionQueueList = new System.Windows.Forms.ListBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.DragandDropICON = new System.Windows.Forms.PictureBox();
             this.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
             this.SuspendLayout();
             // 
             // SaveFileDialog
@@ -47,46 +50,48 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.Panel1.Controls.Add(this.restorebtn);
-            this.Panel1.Controls.Add(this.newfilestashbtn);
+            this.Panel1.Controls.Add(this.AddFolderBTN);
+            this.Panel1.Controls.Add(this.SendFilestoCorruptorBTN);
             this.Panel1.Controls.Add(this.Openfilebtn);
-            this.Panel1.Controls.Add(this.remove50btn);
+            this.Panel1.Controls.Add(this.ClearBtn);
             this.Panel1.Controls.Add(this.removeselbtn);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel1.Location = new System.Drawing.Point(0, 245);
+            this.Panel1.Location = new System.Drawing.Point(0, 247);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(411, 75);
+            this.Panel1.Size = new System.Drawing.Size(475, 75);
             this.Panel1.TabIndex = 162;
             // 
-            // restorebtn
+            // AddFolderBTN
             // 
-            this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.restorebtn.FlatAppearance.BorderSize = 0;
-            this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.restorebtn.Location = new System.Drawing.Point(109, 12);
-            this.restorebtn.Name = "restorebtn";
-            this.restorebtn.Size = new System.Drawing.Size(100, 23);
-            this.restorebtn.TabIndex = 2;
-            this.restorebtn.Text = "Add Folder";
-            this.restorebtn.UseVisualStyleBackColor = false;
+            this.AddFolderBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.AddFolderBTN.FlatAppearance.BorderSize = 0;
+            this.AddFolderBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddFolderBTN.ForeColor = System.Drawing.Color.Aqua;
+            this.AddFolderBTN.Location = new System.Drawing.Point(109, 12);
+            this.AddFolderBTN.Name = "AddFolderBTN";
+            this.AddFolderBTN.Size = new System.Drawing.Size(100, 23);
+            this.AddFolderBTN.TabIndex = 2;
+            this.AddFolderBTN.Text = "Add Folder";
+            this.AddFolderBTN.UseVisualStyleBackColor = false;
+            this.AddFolderBTN.Click += new System.EventHandler(this.AddFolderBTN_Click);
             // 
-            // newfilestashbtn
+            // SendFilestoCorruptorBTN
             // 
-            this.newfilestashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SendFilestoCorruptorBTN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.newfilestashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.newfilestashbtn.FlatAppearance.BorderSize = 0;
-            this.newfilestashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newfilestashbtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newfilestashbtn.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.newfilestashbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newfilestashbtn.Location = new System.Drawing.Point(12, 41);
-            this.newfilestashbtn.Name = "newfilestashbtn";
-            this.newfilestashbtn.Size = new System.Drawing.Size(387, 23);
-            this.newfilestashbtn.TabIndex = 2;
-            this.newfilestashbtn.Text = "Send files to corruptor";
-            this.newfilestashbtn.UseVisualStyleBackColor = false;
+            this.SendFilestoCorruptorBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.SendFilestoCorruptorBTN.FlatAppearance.BorderSize = 0;
+            this.SendFilestoCorruptorBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SendFilestoCorruptorBTN.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendFilestoCorruptorBTN.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.SendFilestoCorruptorBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SendFilestoCorruptorBTN.Location = new System.Drawing.Point(12, 41);
+            this.SendFilestoCorruptorBTN.Name = "SendFilestoCorruptorBTN";
+            this.SendFilestoCorruptorBTN.Size = new System.Drawing.Size(448, 23);
+            this.SendFilestoCorruptorBTN.TabIndex = 2;
+            this.SendFilestoCorruptorBTN.Text = "Send files to corruptor";
+            this.SendFilestoCorruptorBTN.UseVisualStyleBackColor = false;
+            this.SendFilestoCorruptorBTN.Click += new System.EventHandler(this.SendFilestoCorruptorBTN_Click);
             // 
             // Openfilebtn
             // 
@@ -102,18 +107,19 @@
             this.Openfilebtn.UseVisualStyleBackColor = false;
             this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
             // 
-            // remove50btn
+            // ClearBtn
             // 
-            this.remove50btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.remove50btn.FlatAppearance.BorderSize = 0;
-            this.remove50btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.remove50btn.ForeColor = System.Drawing.Color.Aqua;
-            this.remove50btn.Location = new System.Drawing.Point(322, 12);
-            this.remove50btn.Name = "remove50btn";
-            this.remove50btn.Size = new System.Drawing.Size(77, 23);
-            this.remove50btn.TabIndex = 2;
-            this.remove50btn.Text = "Clear All";
-            this.remove50btn.UseVisualStyleBackColor = false;
+            this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.ClearBtn.FlatAppearance.BorderSize = 0;
+            this.ClearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearBtn.ForeColor = System.Drawing.Color.Aqua;
+            this.ClearBtn.Location = new System.Drawing.Point(322, 12);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(77, 23);
+            this.ClearBtn.TabIndex = 2;
+            this.ClearBtn.Text = "Clear All";
+            this.ClearBtn.UseVisualStyleBackColor = false;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // removeselbtn
             // 
@@ -127,43 +133,67 @@
             this.removeselbtn.TabIndex = 2;
             this.removeselbtn.Text = "Remove Selected";
             this.removeselbtn.UseVisualStyleBackColor = false;
+            this.removeselbtn.Click += new System.EventHandler(this.removeselbtn_Click);
             // 
             // OpenFileDialog
             // 
             this.OpenFileDialog.Filter = "All files (*.*)|*.*";
             // 
-            // stashListbox
+            // CorruptionQueueList
             // 
-            this.stashListbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CorruptionQueueList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.stashListbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
-            this.stashListbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.stashListbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.stashListbox.FormattingEnabled = true;
-            this.stashListbox.HorizontalScrollbar = true;
-            this.stashListbox.IntegralHeight = false;
-            this.stashListbox.Location = new System.Drawing.Point(12, 12);
-            this.stashListbox.Name = "stashListbox";
-            this.stashListbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.stashListbox.Size = new System.Drawing.Size(387, 227);
-            this.stashListbox.TabIndex = 163;
+            this.CorruptionQueueList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.CorruptionQueueList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CorruptionQueueList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CorruptionQueueList.FormattingEnabled = true;
+            this.CorruptionQueueList.HorizontalScrollbar = true;
+            this.CorruptionQueueList.IntegralHeight = false;
+            this.CorruptionQueueList.Location = new System.Drawing.Point(12, 12);
+            this.CorruptionQueueList.Name = "CorruptionQueueList";
+            this.CorruptionQueueList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.CorruptionQueueList.Size = new System.Drawing.Size(451, 229);
+            this.CorruptionQueueList.TabIndex = 163;
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.Description = "Select a folder to corrupt the files of.";
+            // 
+            // DragandDropICON
+            // 
+            this.DragandDropICON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
+            this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
+            this.DragandDropICON.Location = new System.Drawing.Point(0, 0);
+            this.DragandDropICON.Name = "DragandDropICON";
+            this.DragandDropICON.Size = new System.Drawing.Size(475, 322);
+            this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.DragandDropICON.TabIndex = 165;
+            this.DragandDropICON.TabStop = false;
+            this.DragandDropICON.Visible = false;
             // 
             // CorruptionQueueForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(411, 320);
+            this.ClientSize = new System.Drawing.Size(475, 322);
             this.Controls.Add(this.Panel1);
-            this.Controls.Add(this.stashListbox);
+            this.Controls.Add(this.CorruptionQueueList);
+            this.Controls.Add(this.DragandDropICON);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(427, 359);
             this.Name = "CorruptionQueueForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Corruption Queue - Edit";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.CorruptionQueueForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.CorruptionQueueForm_DragEnter);
+            this.DragLeave += new System.EventHandler(this.CorruptionQueueForm_DragLeave);
             this.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,12 +202,14 @@
 
         internal System.Windows.Forms.SaveFileDialog SaveFileDialog;
         internal System.Windows.Forms.Panel Panel1;
-        internal System.Windows.Forms.Button restorebtn;
-        internal System.Windows.Forms.Button newfilestashbtn;
+        internal System.Windows.Forms.Button AddFolderBTN;
+        internal System.Windows.Forms.Button SendFilestoCorruptorBTN;
         internal System.Windows.Forms.Button Openfilebtn;
-        internal System.Windows.Forms.Button remove50btn;
+        internal System.Windows.Forms.Button ClearBtn;
         internal System.Windows.Forms.Button removeselbtn;
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog;
-        internal System.Windows.Forms.ListBox stashListbox;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        public System.Windows.Forms.ListBox CorruptionQueueList;
+        private System.Windows.Forms.PictureBox DragandDropICON;
     }
 }

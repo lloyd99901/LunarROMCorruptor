@@ -34,6 +34,7 @@
             this.FilesaveRenameBtn = new System.Windows.Forms.Button();
             this.FileSaveTab = new System.Windows.Forms.TabPage();
             this.FilesaveSavebtn = new System.Windows.Forms.Button();
+            this.FileSaveOpenLocationBtn = new System.Windows.Forms.Button();
             this.FilesaveDelete = new System.Windows.Forms.Button();
             this.FilesaveCopysavetobtn = new System.Windows.Forms.Button();
             this.FilesaveList = new System.Windows.Forms.ListBox();
@@ -74,7 +75,7 @@
             this.StashFileList = new System.Windows.Forms.ListBox();
             this.StashEditorbtn = new System.Windows.Forms.Button();
             this.DeleteStash = new System.Windows.Forms.Button();
-            this.Corruptusingstash = new System.Windows.Forms.Button();
+            this.Corruptusingstashbtn = new System.Windows.Forms.Button();
             this.RefreshStash = new System.Windows.Forms.Button();
             this.RenameStash = new System.Windows.Forms.Button();
             this.TransferStash = new System.Windows.Forms.Button();
@@ -137,7 +138,6 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FileSaveOpenLocationBtn = new System.Windows.Forms.Button();
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -245,6 +245,23 @@
             this.FilesaveSavebtn.Text = "Save";
             this.FilesaveSavebtn.UseVisualStyleBackColor = false;
             this.FilesaveSavebtn.Click += new System.EventHandler(this.FilesaveSavebtn_Click);
+            // 
+            // FileSaveOpenLocationBtn
+            // 
+            this.FileSaveOpenLocationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileSaveOpenLocationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.FileSaveOpenLocationBtn.FlatAppearance.BorderSize = 0;
+            this.FileSaveOpenLocationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileSaveOpenLocationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileSaveOpenLocationBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.FileSaveOpenLocationBtn.Location = new System.Drawing.Point(495, 223);
+            this.FileSaveOpenLocationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileSaveOpenLocationBtn.Name = "FileSaveOpenLocationBtn";
+            this.FileSaveOpenLocationBtn.Size = new System.Drawing.Size(140, 23);
+            this.FileSaveOpenLocationBtn.TabIndex = 157;
+            this.FileSaveOpenLocationBtn.Text = "Open Folder Location";
+            this.FileSaveOpenLocationBtn.UseVisualStyleBackColor = false;
+            this.FileSaveOpenLocationBtn.Click += new System.EventHandler(this.FileSaveOpenLocationBtn_Click);
             // 
             // FilesaveDelete
             // 
@@ -789,7 +806,7 @@
             this.FileCorruptionTab.Controls.Add(this.StashFileList);
             this.FileCorruptionTab.Controls.Add(this.StashEditorbtn);
             this.FileCorruptionTab.Controls.Add(this.DeleteStash);
-            this.FileCorruptionTab.Controls.Add(this.Corruptusingstash);
+            this.FileCorruptionTab.Controls.Add(this.Corruptusingstashbtn);
             this.FileCorruptionTab.Controls.Add(this.RefreshStash);
             this.FileCorruptionTab.Controls.Add(this.RenameStash);
             this.FileCorruptionTab.Controls.Add(this.TransferStash);
@@ -889,24 +906,24 @@
             this.DeleteStash.UseVisualStyleBackColor = false;
             this.DeleteStash.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
-            // Corruptusingstash
+            // Corruptusingstashbtn
             // 
-            this.Corruptusingstash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Corruptusingstash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.Corruptusingstash.FlatAppearance.BorderSize = 0;
-            this.Corruptusingstash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Corruptusingstash.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corruptusingstash.ForeColor = System.Drawing.Color.Turquoise;
-            this.Corruptusingstash.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
-            this.Corruptusingstash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Corruptusingstash.Location = new System.Drawing.Point(466, 171);
-            this.Corruptusingstash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Corruptusingstash.Name = "Corruptusingstash";
-            this.Corruptusingstash.Size = new System.Drawing.Size(172, 23);
-            this.Corruptusingstash.TabIndex = 0;
-            this.Corruptusingstash.Text = "Corrupt using Selected Stash";
-            this.Corruptusingstash.UseVisualStyleBackColor = false;
-            this.Corruptusingstash.Click += new System.EventHandler(this.Corruptusingstash_Click);
+            this.Corruptusingstashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Corruptusingstashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Corruptusingstashbtn.FlatAppearance.BorderSize = 0;
+            this.Corruptusingstashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Corruptusingstashbtn.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corruptusingstashbtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.Corruptusingstashbtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
+            this.Corruptusingstashbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Corruptusingstashbtn.Location = new System.Drawing.Point(466, 171);
+            this.Corruptusingstashbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Corruptusingstashbtn.Name = "Corruptusingstashbtn";
+            this.Corruptusingstashbtn.Size = new System.Drawing.Size(172, 23);
+            this.Corruptusingstashbtn.TabIndex = 0;
+            this.Corruptusingstashbtn.Text = "Corrupt using Selected Stash";
+            this.Corruptusingstashbtn.UseVisualStyleBackColor = false;
+            this.Corruptusingstashbtn.Click += new System.EventHandler(this.Corruptusingstash_Click);
             // 
             // RefreshStash
             // 
@@ -1788,23 +1805,6 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
-            // FileSaveOpenLocationBtn
-            // 
-            this.FileSaveOpenLocationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileSaveOpenLocationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.FileSaveOpenLocationBtn.FlatAppearance.BorderSize = 0;
-            this.FileSaveOpenLocationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileSaveOpenLocationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FileSaveOpenLocationBtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.FileSaveOpenLocationBtn.Location = new System.Drawing.Point(495, 223);
-            this.FileSaveOpenLocationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.FileSaveOpenLocationBtn.Name = "FileSaveOpenLocationBtn";
-            this.FileSaveOpenLocationBtn.Size = new System.Drawing.Size(140, 23);
-            this.FileSaveOpenLocationBtn.TabIndex = 157;
-            this.FileSaveOpenLocationBtn.Text = "Open Folder Location";
-            this.FileSaveOpenLocationBtn.UseVisualStyleBackColor = false;
-            this.FileSaveOpenLocationBtn.Click += new System.EventHandler(this.FileSaveOpenLocationBtn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1818,7 +1818,7 @@
             this.MinimumSize = new System.Drawing.Size(666, 517);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LunarROMCorruptor - v0.1 - UNSTABLE BUILD";
+            this.Text = "LunarROMCorruptor - vx.x - UNSTABLE BUILD";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -1921,7 +1921,7 @@
         internal System.Windows.Forms.ListBox StashBytesList;
         internal System.Windows.Forms.Button StashEditorbtn;
         internal System.Windows.Forms.Button DeleteStash;
-        internal System.Windows.Forms.Button Corruptusingstash;
+        internal System.Windows.Forms.Button Corruptusingstashbtn;
         internal System.Windows.Forms.Button RefreshStash;
         internal System.Windows.Forms.Button RenameStash;
         internal System.Windows.Forms.Button TransferStash;
@@ -1935,9 +1935,7 @@
         internal System.Windows.Forms.Panel Panel2;
         public System.Windows.Forms.Button CorruptButton;
         internal System.Windows.Forms.Button Openfilebtn;
-        internal System.Windows.Forms.TextBox SaveasTxt;
         internal System.Windows.Forms.Panel Panel1;
-        internal System.Windows.Forms.TextBox FileSelectiontxt;
         internal System.Windows.Forms.OpenFileDialog EmulatorFileDialog;
         internal System.Windows.Forms.SaveFileDialog MainSaveFileDialog;
         internal System.Windows.Forms.OpenFileDialog MainOpenFileDialog;
@@ -1988,6 +1986,8 @@
         internal System.Windows.Forms.CheckBox SilentCorruptionchbox;
         internal System.Windows.Forms.Button CorruptionQueueBtn;
         internal System.Windows.Forms.Button FileSaveOpenLocationBtn;
+        public System.Windows.Forms.TextBox FileSelectiontxt;
+        public System.Windows.Forms.TextBox SaveasTxt;
     }
 }
 

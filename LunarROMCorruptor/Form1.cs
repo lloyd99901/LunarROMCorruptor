@@ -48,7 +48,7 @@ namespace LunarROMCorruptor
         private readonly Random rnd = new Random();
         private readonly string vernumber = "v1.0 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
-        CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm();
+        readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm();
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
         {
             TopLevel = false
@@ -205,11 +205,6 @@ namespace LunarROMCorruptor
                 GC.WaitForPendingFinalizers();
                 //Load ROM
                 ROM = File.ReadAllBytes(FileLocation);
-                FileSelectiontxt.Text = FileLocation;
-                SaveasTxt.Text = FileLocation;
-                MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
-                string exc = Path.GetExtension(FileLocation);
-                SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(FileLocation), "CorruptedFile" + exc);
                 MaxByte = ROM.Length - 1;
                 StartByteTrackBar.Value = 0;
                 StartByteTrackBar.Maximum = MaxByte;
@@ -218,6 +213,11 @@ namespace LunarROMCorruptor
                 EndByteNumb.Maximum = MaxByte;
                 EndByteNumb.Value = MaxByte;
                 StartByteNumb.Maximum = MaxByte;
+                FileSelectiontxt.Text = FileLocation;
+                SaveasTxt.Text = FileLocation;
+                MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+                string exc = Path.GetExtension(FileLocation);
+                SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(FileLocation), "CorruptedFile" + exc);
 
                 //Check if the file is bigger than 1 gig or less than 1 gig, on both conditions just return
                 if (ROM.Length > 1073741824 )
@@ -225,6 +225,13 @@ namespace LunarROMCorruptor
                     //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
                     CorruptButton.Text = "Corrupt File (" + (Math.Round((double)new FileInfo(FileLocation).Length / 1073741824, 2)) + " GB)";
                 }
+                //else if the rom is less than 1mb, show the size of the file in KB
+                else if (ROM.Length < 1000000)
+                {
+                    //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in kilobytes
+                    CorruptButton.Text = "Corrupt File (" + (Math.Round((double)new FileInfo(FileLocation).Length / 1000, 2)) + " KB)";
+                }
+                //else if the rom is less than 1gb, show the size of the file in MB
                 else if (ROM.Length < 1073741824)
                 {
                     //Change the CorruptButton to say "Corrupt File " and in bracket put the files size in megabytes
@@ -394,83 +401,225 @@ namespace LunarROMCorruptor
             InternalStashItems.Clear();
             InternalStashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
 
-            //Checks if the file is fit for corruption
-            if (string.IsNullOrEmpty(FileSelectiontxt.Text) || FileSelectiontxt.Text == "No file selected.")
+            //---Check if the corruption queue has been enabled--- If so, use this multi-corruption code.
+            if (CorruptionQueueChkbox.Checked)
             {
-                MessageBox.Show("Please select a file to corrupt.", "No File Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            //Check if file is a valid ROM
-            if (!File.Exists(FileSelectiontxt.Text))
-            {
-                MessageBox.Show("File doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                //Check if the queue is empty
+                if (CorruptionQueueFormSettings.CorruptionQueueList.Items.Count == 0)
+                {
+                    MessageBox.Show("The corruption queue is empty.\n\nPlease add files to the queue.", "Empty Queue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    //Check if the queue is full
+                    if (CorruptionQueueFormSettings.CorruptionQueueList.Items.Count >= 100)
+                    {
+                        MessageBox.Show("The corruption queue is rather full of files.\n\nBe aware that this will impact corruption times.", "Full Queue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                //For each file on the corruptionqueuelist, make sure the file is valid for use
+                for (int i = 0; i < CorruptionQueueFormSettings.CorruptionQueueList.Items.Count; i++)
+                {
+                    if (!File.Exists(CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString()))
+                    {
+                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " does not exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                //For each file that is on the corruptionqueuelist, corrupt it.
+                for (int i = 0; i < CorruptionQueueFormSettings.CorruptionQueueList.Items.Count; i++)
+                {
+                    //Same as the LoadFile code but without the updates on the CorruptButton text -- Discard the previous ROM loaded into memory
+                    ROM = new byte[0];
+                    //GC collection force -Forces garbage collection
+                    GC.Collect();
+                    //GC wait for pending finalizers
+                    GC.WaitForPendingFinalizers();
+                    //Load the file into ROM byte
+                    ROM = File.ReadAllBytes(CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString());
+                    MaxByte = ROM.Length - 1;
+                    StartByteTrackBar.Value = 0;
+                    StartByteTrackBar.Maximum = MaxByte;
+                    EndByteTrackbar.Maximum = MaxByte;
+                    EndByteTrackbar.Value = MaxByte;
+                    EndByteNumb.Maximum = MaxByte;
+                    EndByteNumb.Value = MaxByte;
+                    StartByteNumb.Maximum = MaxByte;
+                    FileSelectiontxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
+                    SaveasTxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
 
-            if (StartByteNumb.Value > EndByteNumb.Value)
-            {
-                MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                    //Standard Checks of the variables that are used in the corruption process.
+                    if (StartByteNumb.Value > EndByteNumb.Value)
+                    {
+                        MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-            if (StartByteNumb.Value > MaxByte)
-            {
-                StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
-            }
+                    if (StartByteNumb.Value > MaxByte)
+                    {
+                        StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
+                    }
 
-            try
-            {
-                StartByte = (int)StartByteNumb.Value;
-            }
-            catch
-            {
-                MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                EndByte = (int)EndByteNumb.Value;
-            }
-            catch
-            {
-                MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                    try
+                    {
+                        StartByte = (int)StartByteNumb.Value;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    try
+                    {
+                        EndByte = (int)EndByteNumb.Value;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-            int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
-            if (CorruptnthbyteCheckbox.Checked)
-            {
-                tmpintensity = (int)EveryNthByte.Value;
-            }
-            else
-            {
-                tmpintensity = (int)Intensity.Value;
-            }
+                    int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
+                    if (CorruptnthbyteCheckbox.Checked)
+                    {
+                        tmpintensity = (int)EveryNthByte.Value;
+                    }
+                    else
+                    {
+                        tmpintensity = (int)Intensity.Value;
+                    }
 
-            byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM. FinROM will contain the corrupted file when its run through the corruption engine.
-
-            FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
-
-            if (FinROM == null) //check if the corruption returned anything.
-            {
-                MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developers with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                    //Start Corruption in CorruptionCore
+                    ROM = CorruptionCore.StartCorruption(ROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text);
+                    //Check if the corruption returned anything
+                    if (ROM != null)
+                    {
+                        //If it did, try to save the file
+                        try
+                        {
+                            File.WriteAllBytes(CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString(), ROM);
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be saved.\n\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        //If it didn't, show an error message
+                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be corrupted. (Corruption returned nothing)", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //Resets the text boxes to show this again.
+                    FileSelectiontxt.Text = "---Multiple files selected---";
+                    SaveasTxt.Text = "---Corruption will be applied on the files selected---";
+                }
             }
+            else //Use normal, one file corruption code.
+            {
+                //Check if the variables are valid
+                if (StartByteNumb.Value > EndByteNumb.Value)
+                {
+                    MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            //Check if the FinROM can be saved
-            try
-            {
-                File.WriteAllBytes(SaveasTxt.Text, FinROM);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to save file.\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                if (StartByteNumb.Value > MaxByte)
+                {
+                    StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
+                }
 
-            if (FilesaveEnableAutoSaves.Checked) // If file saves are enabled, save the full file to the file saves folder.
-            {
-                SaveCorruptedFileCopy();
+                try
+                {
+                    StartByte = (int)StartByteNumb.Value;
+                }
+                catch
+                {
+                    MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    EndByte = (int)EndByteNumb.Value;
+                }
+                catch
+                {
+                    MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
+                if (CorruptnthbyteCheckbox.Checked)
+                {
+                    tmpintensity = (int)EveryNthByte.Value;
+                }
+                else
+                {
+                    tmpintensity = (int)Intensity.Value;
+                }
+
+                //Checks if the file is fit for corruption
+                if (string.IsNullOrEmpty(FileSelectiontxt.Text) || FileSelectiontxt.Text == "No file selected.")
+                {
+                    MessageBox.Show("Please select a file to corrupt.", "No File Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                //Check if file is a valid ROM
+                if (!File.Exists(FileSelectiontxt.Text))
+                {
+                    MessageBox.Show("File doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM. FinROM will contain the corrupted file when its run through the corruption engine.
+
+                FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
+
+                if (FinROM == null) //check if the corruption returned anything.
+                {
+                    MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developers with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //Check if the FinROM can be saved
+                try
+                {
+                    File.WriteAllBytes(SaveasTxt.Text, FinROM);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to save file.\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (FilesaveEnableAutoSaves.Checked) // If file saves are enabled, save the full file to the file saves folder.
+                {
+                    SaveCorruptedFileCopy();
+                }
+
+                if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
+                {
+                    CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
+                }
+                else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
+                {
+                    MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (EnableStashSavesChkbox.Checked)
+                {
+                    if (InternalStashItems.Count > 50000) //This check is for preventing too many GUI rendering updates on the listbox. The items are contained in a variable but are not shown.
+                    {
+                        StashBytesList.Items.Add("LargeStash");
+                    }
+                    else
+                    {
+                        foreach (var item in InternalStashItems)
+                        {
+                            StashBytesList.Items.Add(item); // Add the items to the listbox.
+                        }
+                    }
+                }
             }
 
             CorruptButton.BackColor = Color.Green; //Change colour of the corrupt button
@@ -483,30 +632,7 @@ namespace LunarROMCorruptor
             }
 
             CorruptButtonColorChanger.Start(); //Change the corruption button colour back to normal after the timer ticks.
-            if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
-            {
-                CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
-            }
-            else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
-            {
-                MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (EnableStashSavesChkbox.Checked)
-            {
-                if (InternalStashItems.Count > 50000) //This check is for preventing too many GUI rendering updates on the listbox. The items are contained in a variable but are not shown.
-                {
-                    StashBytesList.Items.Add("LargeStash");
-                }
-                else
-                {
-                    foreach (var item in InternalStashItems)
-                    {
-                        StashBytesList.Items.Add(item); // Add the items to the listbox.
-                    }
-                }
-            }
-            Console.WriteLine("Number of Stash Items: " + InternalStashItems.Count); //Debugging
+            Console.WriteLine("Corruption Complete: Number of Stash Items: " + InternalStashItems.Count); //Debugging
         }
 
         private void CorruptButtonColorChanger_Tick(object sender, EventArgs e)
@@ -816,8 +942,11 @@ namespace LunarROMCorruptor
                 }
                 try
                 {
-                    
                     FinROM[int.Parse(i.ToString())] = (byte)int.Parse(result.ToString());
+                }
+                catch (IndexOutOfRangeException ex1)
+                {
+                    MessageBox.Show($"Stash item location is invalid! {Environment.NewLine} Error: {ex1}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -903,6 +1032,21 @@ namespace LunarROMCorruptor
         private void CorruptionQueueChkbox_CheckedChanged(object sender, EventArgs e)
         {
             CorruptionQueueBtn.Visible = CorruptionQueueChkbox.Checked;
+            //Disable Stash Saves if queue is enabled as well as file saves
+            if (CorruptionQueueChkbox.Checked)
+            {
+                EnableStashSavesChkbox.Checked = false;
+                FilesaveEnableAutoSaves.Checked = false;
+            }
+            //Disable the ability to change the checkboxes
+            EnableStashSavesChkbox.Enabled = !CorruptionQueueChkbox.Checked;
+            FilesaveEnableAutoSaves.Enabled = !CorruptionQueueChkbox.Checked;
+            //Disable restore button
+            Restorefilebtn.Enabled = !CorruptionQueueChkbox.Checked;
+            //Disable corrupt using stash file
+            Corruptusingstashbtn.Enabled = !CorruptionQueueChkbox.Checked;
+            //Disable the save as button
+            Changesaveasbtn.Enabled = !CorruptionQueueChkbox.Checked;
         }
 
         private void CorruptionQueueBtn_Click(object sender, EventArgs e)
