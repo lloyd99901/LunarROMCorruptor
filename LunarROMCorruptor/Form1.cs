@@ -213,6 +213,7 @@ namespace LunarROMCorruptor
                 EndByteNumb.Maximum = MaxByte;
                 EndByteNumb.Value = MaxByte;
                 StartByteNumb.Maximum = MaxByte;
+                StartByteNumb.Value = 0;
                 FileSelectiontxt.Text = FileLocation;
                 SaveasTxt.Text = FileLocation;
                 MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
@@ -488,6 +489,7 @@ namespace LunarROMCorruptor
                     EndByteNumb.Maximum = MaxByte;
                     EndByteNumb.Value = MaxByte;
                     StartByteNumb.Maximum = MaxByte;
+                    StartByteNumb.Value = 0;
                     FileSelectiontxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
                     SaveasTxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
 
@@ -511,17 +513,17 @@ namespace LunarROMCorruptor
                         //If it didn't, show an error message
                         MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be corrupted. (Corruption returned nothing)", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
-                    {
-                        CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, CorruptionQueueFormSettings.SelectedRunFileTXT.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
-                    }
-                    else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
-                    {
-                        MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     //Resets the text boxes to show this again.
                     FileSelectiontxt.Text = "---Multiple files selected---";
                     SaveasTxt.Text = "---Corruption will be applied on the files selected---";
+                }
+                if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
+                {
+                    CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, CorruptionQueueFormSettings.SelectedRunFileTXT.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
+                }
+                else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
+                {
+                    MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else //Use normal, one file corruption code.

@@ -244,7 +244,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     if (processes.Length > 0)
                         processes[0].Kill();
                 }
-                System.Threading.Thread.Sleep(300);
+                //System.Threading.Thread.Sleep(300);
                 Process p = new Process();
                 p.StartInfo.FileName = EmulatorLocation;
                 if (OverrideArgumentsChk == false)

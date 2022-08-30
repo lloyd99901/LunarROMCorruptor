@@ -120,6 +120,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Panel3 = new System.Windows.Forms.Panel();
+            this.ProgramToRunlbl = new System.Windows.Forms.Label();
             this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.CorruptButton = new System.Windows.Forms.Button();
@@ -137,7 +138,6 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProgramToRunlbl = new System.Windows.Forms.Label();
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -1582,6 +1582,19 @@
             this.Panel3.Size = new System.Drawing.Size(650, 79);
             this.Panel3.TabIndex = 142;
             // 
+            // ProgramToRunlbl
+            // 
+            this.ProgramToRunlbl.AutoSize = true;
+            this.ProgramToRunlbl.BackColor = System.Drawing.Color.Transparent;
+            this.ProgramToRunlbl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProgramToRunlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.ProgramToRunlbl.Location = new System.Drawing.Point(162, 10);
+            this.ProgramToRunlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ProgramToRunlbl.Name = "ProgramToRunlbl";
+            this.ProgramToRunlbl.Size = new System.Drawing.Size(138, 13);
+            this.ProgramToRunlbl.TabIndex = 73;
+            this.ProgramToRunlbl.Text = "Emulator/Program to run:";
+            // 
             // BrowseEmulatorbutton
             // 
             this.BrowseEmulatorbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(100)))));
@@ -1692,7 +1705,7 @@
             this.Restorefilebtn.ForeColor = System.Drawing.Color.SpringGreen;
             this.Restorefilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Restore;
             this.Restorefilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Restorefilebtn.Location = new System.Drawing.Point(0, 49);
+            this.Restorefilebtn.Location = new System.Drawing.Point(0, 48);
             this.Restorefilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Restorefilebtn.Name = "Restorefilebtn";
             this.Restorefilebtn.Size = new System.Drawing.Size(155, 22);
@@ -1709,7 +1722,7 @@
             this.Changesaveasbtn.ForeColor = System.Drawing.Color.Turquoise;
             this.Changesaveasbtn.Image = global::LunarROMCorruptor.Properties.Resources.Save;
             this.Changesaveasbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Changesaveasbtn.Location = new System.Drawing.Point(0, 25);
+            this.Changesaveasbtn.Location = new System.Drawing.Point(0, 24);
             this.Changesaveasbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Changesaveasbtn.Name = "Changesaveasbtn";
             this.Changesaveasbtn.Size = new System.Drawing.Size(155, 23);
@@ -1727,7 +1740,7 @@
             this.Openfilebtn.ForeColor = System.Drawing.Color.Turquoise;
             this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
             this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Openfilebtn.Location = new System.Drawing.Point(0, 1);
+            this.Openfilebtn.Location = new System.Drawing.Point(0, 0);
             this.Openfilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Openfilebtn.Name = "Openfilebtn";
             this.Openfilebtn.Size = new System.Drawing.Size(155, 23);
@@ -1789,19 +1802,6 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
-            // 
-            // ProgramToRunlbl
-            // 
-            this.ProgramToRunlbl.AutoSize = true;
-            this.ProgramToRunlbl.BackColor = System.Drawing.Color.Transparent;
-            this.ProgramToRunlbl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProgramToRunlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ProgramToRunlbl.Location = new System.Drawing.Point(162, 10);
-            this.ProgramToRunlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ProgramToRunlbl.Name = "ProgramToRunlbl";
-            this.ProgramToRunlbl.Size = new System.Drawing.Size(138, 13);
-            this.ProgramToRunlbl.TabIndex = 73;
-            this.ProgramToRunlbl.Text = "Emulator/Program to run:";
             // 
             // Form1
             // 
