@@ -234,7 +234,7 @@ namespace LunarROMCorruptor.CorruptionInternals
             }
             return ROM;
         }
-        public static void StartEmulator(bool ReopenProgram, string EmulatorLocation, bool OverrideArgumentsChk, string OverrideArguments)
+        public static void StartEmulator(bool ReopenProgram, string EmulatorLocation, string FileLocation, bool OverrideArgumentsChk, string OverrideArguments)
         {
             try
             {
@@ -248,7 +248,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                 Process p = new Process();
                 p.StartInfo.FileName = EmulatorLocation;
                 if (OverrideArgumentsChk == false)
-                    p.StartInfo.Arguments = "\"" + Program.Form.SaveasTxt.Text + "\"";
+                    p.StartInfo.Arguments = "\"" + FileLocation + "\"";
                 else
                     p.StartInfo.Arguments = OverrideArguments;
                 p.Start();

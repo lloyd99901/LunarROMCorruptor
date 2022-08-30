@@ -510,6 +510,14 @@ namespace LunarROMCorruptor
                         //If it didn't, show an error message
                         MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be corrupted. (Corruption returned nothing)", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
+                    {
+                        CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, CorruptionQueueFormSettings.SelectedRunFileTXT.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
+                    }
+                    else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
+                    {
+                        MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     //Resets the text boxes to show this again.
                     FileSelectiontxt.Text = "---Multiple files selected---";
                     SaveasTxt.Text = "---Corruption will be applied on the files selected---";
@@ -599,7 +607,7 @@ namespace LunarROMCorruptor
 
                 if (Runemulatorchbox.Checked && File.Exists(EmulatorLocationtxt.Text)) // Check if the emulator works before running
                 {
-                    CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
+                    CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, SaveasTxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text); //Run emulator with the new ROM.
                 }
                 else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
                 {
@@ -966,7 +974,7 @@ namespace LunarROMCorruptor
             CorruptButtonColorChanger.Start();
             if (Runemulatorchbox.Checked && string.IsNullOrEmpty(EmulatorLocationtxt.Text))
             {
-                CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text);
+                CorruptionCore.StartEmulator(ReopenChbox.Checked, EmulatorLocationtxt.Text, SaveasTxt.Text, OverrideArgumentschbox.Checked, OverrideArguments.Text);
             }
             //Set StashByteList to the files contents, each line is each item on the list
             StashBytesList.Items.Clear();

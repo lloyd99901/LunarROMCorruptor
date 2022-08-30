@@ -147,6 +147,18 @@ namespace LunarROMCorruptor
         }
         private void SaveToExistingStashFile()
         {
+            //Check if a stash file location is loaded first.
+            if (LoadedStashLocation == null)
+            {
+                MessageBox.Show("No stash file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //Check if corruption queue is enabled on the main form, if it is cancel the operation.
+            if (Program.Form.CorruptionQueueChkbox.Checked)
+            {
+                MessageBox.Show("Corruption queue is enabled. Please disable it and select a single file before corrupting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Program.Form.StashFileList.Items.Clear();
             StringBuilder builder = new StringBuilder();
             foreach (var listitem in stashListbox.Items)

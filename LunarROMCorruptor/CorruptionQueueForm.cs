@@ -99,5 +99,20 @@ namespace LunarROMCorruptor
         {
             DragandDropICON.Hide();
         }
+
+        private void RunSelectedFileInEmuBTN_Click(object sender, EventArgs e)
+        {
+            //Get the selected item text and put it in the run textbox
+            if (CorruptionQueueList.SelectedItems.Count > 0)
+            {
+                SelectedRunFileTXT.Text = CorruptionQueueList.GetItemText(CorruptionQueueList.SelectedItem);
+            }
+        }
+
+        private void ClearSelectedRunFileBTN_Click(object sender, EventArgs e)
+        {
+            //Clear Textbox
+            SelectedRunFileTXT.Text = "";
+        }
     }
 }

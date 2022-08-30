@@ -535,8 +535,6 @@
             // 
             // Panel4
             // 
-            this.Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.Panel4.Controls.Add(this.SilentCorruptionchbox);
             this.Panel4.Controls.Add(this.AllowLargeIntensity);
@@ -1929,7 +1927,6 @@
         internal System.Windows.Forms.TabPage CorruptionEngineTab;
         private System.Windows.Forms.Panel ManualEnginePanel;
         internal System.Windows.Forms.Panel Panel3;
-        internal System.Windows.Forms.CheckBox CorruptionQueueChkbox;
         internal System.Windows.Forms.Button Restorefilebtn;
         internal System.Windows.Forms.Button Changesaveasbtn;
         internal System.Windows.Forms.Panel Panel2;
@@ -1988,6 +1985,7 @@
         internal System.Windows.Forms.Button FileSaveOpenLocationBtn;
         public System.Windows.Forms.TextBox FileSelectiontxt;
         public System.Windows.Forms.TextBox SaveasTxt;
+        public System.Windows.Forms.CheckBox CorruptionQueueChkbox;
     }
 }
 
