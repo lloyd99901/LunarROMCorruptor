@@ -41,7 +41,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                 interpolateVal = 0.0;
             }
             //Calculate the new value
-            ROM[i] = (byte)LinearInterpolationCalculation(byteminus, byteplus, interpolateVal );
+            ROM[i] = (byte)LinearInterpolationCalculation(byteminus, byteplus, interpolateVal);
             Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
             return ROM;
         }

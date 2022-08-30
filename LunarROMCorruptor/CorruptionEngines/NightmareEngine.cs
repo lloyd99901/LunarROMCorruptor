@@ -1,6 +1,6 @@
-﻿using System;
+﻿using LunarROMCorruptor.CorruptionInternals;
+using System;
 using System.Windows.Forms;
-using LunarROMCorruptor.CorruptionInternals;
 
 namespace LunarROMCorruptor.CorruptionEngines
 {
@@ -9,7 +9,7 @@ namespace LunarROMCorruptor.CorruptionEngines
         private static readonly Random rnd = new Random();
 
         public static byte[] CorruptByte(byte[] ROM, CorruptionOptions CorruptOption, long i)
-        {    
+        {
             switch (CorruptOption)
             {
                 case CorruptionOptions.RANDOM:

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using LunarROMCorruptor.CorruptionInternals;
+using System;
 using System.Collections.Generic;
-using LunarROMCorruptor.CorruptionInternals;
 
 namespace LunarROMCorruptor.CorruptionEngines
 {
@@ -69,7 +69,7 @@ namespace LunarROMCorruptor.CorruptionEngines
                     Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }
                 if (Program.Form.DoubleCheck.Checked)
-                { 
+                {
                     ROM[i] = (byte)((byte)Math.Pow(ROM[i], (double)Program.Form.MathOperationNumericUpDown.Value) % (byte.MaxValue + 1));
                     Program.Form.InternalStashItems.Add("[x] File(" + i + ").SET(" + ROM[i] + ")");
                 }

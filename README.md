@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/lloyd99901/LunarROMCorruptor)](https://github.com/lloyd99901/LunarROMCorruptor/stargazers)
 [![GitHub license](https://img.shields.io/github/license/lloyd99901/LunarROMCorruptor)](https://github.com/lloyd99901/LunarROMCorruptor/blob/master/LICENSE)
 
-## Corrupt any file using multiple different ‘Engines’
+## Corrupt any file using multiple different engines
 
 ![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/preview.png)
 
@@ -18,6 +18,9 @@
 ### Corrupt Every Nth Byte and Intensity Mode
 Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1st byte corrupts the entire file)
 Intensity allows for a more randomized corruption by selecting random addresses to corrupt.
+
+### Corrupt the way **you** want to
+This corruptor has countless ways to tune your corruption until it's just right. You control what the corruptor does with all of the options ready to be tinkered with.
 
 ### File Saves and Stash Saves
 When you have found the perfect corruption, you can use both the File Save and the Stash Save features.
@@ -62,6 +65,8 @@ Here are the following engines that come with LunarROMCorruptor
 - Allows drag and drop. No need to search for the file you want to corrupt.
 - Can run an emulator after corruption.
 - Audible feedback when corruption is done.
+- Corrupt multiple files.
+- Saves settings
 
 ## Progress
 - [x] Import GUI from the old project

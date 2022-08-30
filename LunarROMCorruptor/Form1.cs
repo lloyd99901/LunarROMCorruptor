@@ -220,7 +220,7 @@ namespace LunarROMCorruptor
                 SaveasTxt.Text = SaveasTxt.Text.Replace(Path.GetFileName(FileLocation), "CorruptedFile" + exc);
 
                 //Check if the file is bigger than 1 gig or less than 1 gig, on both conditions just return
-                if (ROM.Length > 1073741824 )
+                if (ROM.Length > 1073741824)
                 {
                     //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
                     CorruptButton.Text = "Corrupt File (" + (Math.Round((double)new FileInfo(FileLocation).Length / 1073741824, 2)) + " GB)";
@@ -427,6 +427,48 @@ namespace LunarROMCorruptor
                         return;
                     }
                 }
+
+                //Standard Checks of the variables that are used in the corruption process.
+                if (StartByteNumb.Value > EndByteNumb.Value)
+                {
+                    MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (StartByteNumb.Value > MaxByte)
+                {
+                    StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
+                }
+
+                try
+                {
+                    StartByte = (int)StartByteNumb.Value;
+                }
+                catch
+                {
+                    MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    EndByte = (int)EndByteNumb.Value;
+                }
+                catch
+                {
+                    MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
+                if (CorruptnthbyteCheckbox.Checked)
+                {
+                    tmpintensity = (int)EveryNthByte.Value;
+                }
+                else
+                {
+                    tmpintensity = (int)Intensity.Value;
+                }
+
                 //For each file that is on the corruptionqueuelist, corrupt it.
                 for (int i = 0; i < CorruptionQueueFormSettings.CorruptionQueueList.Items.Count; i++)
                 {
@@ -449,47 +491,6 @@ namespace LunarROMCorruptor
                     FileSelectiontxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
                     SaveasTxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
 
-                    //Standard Checks of the variables that are used in the corruption process.
-                    if (StartByteNumb.Value > EndByteNumb.Value)
-                    {
-                        MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (StartByteNumb.Value > MaxByte)
-                    {
-                        StartByteNumb.Value = Int16.Parse(MaxByte.ToString("X"));
-                    }
-
-                    try
-                    {
-                        StartByte = (int)StartByteNumb.Value;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    try
-                    {
-                        EndByte = (int)EndByteNumb.Value;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
-                    if (CorruptnthbyteCheckbox.Checked)
-                    {
-                        tmpintensity = (int)EveryNthByte.Value;
-                    }
-                    else
-                    {
-                        tmpintensity = (int)Intensity.Value;
-                    }
-
                     //Start Corruption in CorruptionCore
                     ROM = CorruptionCore.StartCorruption(ROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text);
                     //Check if the corruption returned anything
@@ -500,7 +501,7 @@ namespace LunarROMCorruptor
                         {
                             File.WriteAllBytes(CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString(), ROM);
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be saved.\n\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -628,6 +629,10 @@ namespace LunarROMCorruptor
                         }
                     }
                 }
+                //Clear FINROM and clean memory
+                FinROM = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
 
             CorruptButton.BackColor = Color.Green; //Change colour of the corrupt button

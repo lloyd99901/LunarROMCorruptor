@@ -1,8 +1,8 @@
-﻿using System;
+﻿using LunarROMCorruptor.CorruptionEngines;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using LunarROMCorruptor.CorruptionEngines;
 
 namespace LunarROMCorruptor.CorruptionInternals
 {
