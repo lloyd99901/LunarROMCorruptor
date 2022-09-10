@@ -498,6 +498,7 @@
             // 
             this.EndByteTrackbar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EndByteTrackbar.AutoSize = false;
             this.EndByteTrackbar.Location = new System.Drawing.Point(10, 172);
             this.EndByteTrackbar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.EndByteTrackbar.Maximum = 1000;
@@ -604,6 +605,7 @@
             // 
             this.StartByteTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartByteTrackBar.AutoSize = false;
             this.StartByteTrackBar.Location = new System.Drawing.Point(10, 118);
             this.StartByteTrackBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StartByteTrackBar.Maximum = 1000;

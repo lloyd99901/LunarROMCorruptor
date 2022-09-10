@@ -80,6 +80,9 @@ namespace LunarROMCorruptor
             CorruptionEngineTab.Controls.Add(CorruptionEngineFrame); //Adds the CorruptionEngineFrame to the CorruptionEngineTab.
             CorruptionEngineFrame.Dock = DockStyle.Fill;
             CorruptionEngineFrame.Show();
+            //Fixes a .net bug where the trackbar takes a huge amount of memory
+            EndByteTrackbar.TickStyle = TickStyle.None;
+            StartByteTrackBar.TickStyle = TickStyle.None;
         }
 
         public void LoadSettings()
@@ -197,13 +200,19 @@ namespace LunarROMCorruptor
             //Main Function - Preps the file for corruption.
             if (new FileInfo(FileLocation).Length < 2147483648) //Check if file is less than 2GB
             {
+                //Check if the file size is 0
+                if (new FileInfo(FileLocation).Length == 0)
+                {
+                    MessageBox.Show("The file you're trying to load is empty. Please load a valid file.", "LunarROMCorruptor - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //Discard the previous ROM loaded into memory
                 ROM = new byte[0];
                 //GC collection force -Forces garbage collection
                 GC.Collect();
                 //GC wait for pending finalizers
                 GC.WaitForPendingFinalizers();
-                //Load ROM
+                //Load ROM into memory.
                 ROM = File.ReadAllBytes(FileLocation);
                 MaxByte = ROM.Length - 1;
                 StartByteTrackBar.Value = 0;
