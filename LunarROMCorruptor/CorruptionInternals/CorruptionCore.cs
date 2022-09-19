@@ -11,30 +11,30 @@ namespace LunarROMCorruptor.CorruptionInternals
         private static readonly Random rnd = new Random();
 
         //Read 4 bytes from the ROM at the specified offset (32bit) and return them as a 32bit hex value
-        public static uint Read32(byte[] rom, uint offset)
-        {
-            try
-            {
-                uint value = 0;
-                value |= rom[offset + 0];
-                value |= (uint)rom[offset + 1] << 8;
-                value |= (uint)rom[offset + 2] << 16;
-                value |= (uint)rom[offset + 3] << 24;
-                return value;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                return 0;
-            }
+        //public static uint Read32(byte[] rom, uint offset)
+        //{
+        //    try
+        //    {
+        //        uint value = 0;
+        //        value |= rom[offset + 0];
+        //        value |= (uint)rom[offset + 1] << 8;
+        //        value |= (uint)rom[offset + 2] << 16;
+        //        value |= (uint)rom[offset + 3] << 24;
+        //        return value;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error");
+        //        return 0;
+        //    }
 
-        }
+        //}
 
         //convert value to hex ("0x00000000")
-        public static string ToHex(uint value)
-        {
-            return "0x" + value.ToString("X8");
-        }
+        //public static string ToHex(uint value)
+        //{
+        //    return "0x" + value.ToString("X8");
+        //}
 
         //Read all bytes from the ROM and return them as a 32bit hex array
 

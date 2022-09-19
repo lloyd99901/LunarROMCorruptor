@@ -37,6 +37,7 @@
             this.SelectedEmulatorFilelbl = new System.Windows.Forms.Label();
             this.AddFolderBTN = new System.Windows.Forms.Button();
             this.SendFilestoCorruptorBTN = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.Openfilebtn = new System.Windows.Forms.Button();
             this.ClearBtn = new System.Windows.Forms.Button();
             this.removeselbtn = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.CorruptionQueueList = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.DragandDropICON = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
@@ -167,6 +167,20 @@
             this.SendFilestoCorruptorBTN.UseVisualStyleBackColor = false;
             this.SendFilestoCorruptorBTN.Click += new System.EventHandler(this.SendFilestoCorruptorBTN_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.label1.Location = new System.Drawing.Point(11, 275);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 104);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Be aware:\r\nThe restore function is disabled,\r\nmeaning the corrupted file\r\nwon\'t b" +
+    "e restored before\r\nanother corruption.\r\n\r\nReplace each file after each\r\ncorrupti" +
+    "on blast.";
+            // 
             // Openfilebtn
             // 
             this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
@@ -246,20 +260,6 @@
             this.DragandDropICON.TabIndex = 165;
             this.DragandDropICON.TabStop = false;
             this.DragandDropICON.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label1.Location = new System.Drawing.Point(11, 275);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 104);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Be aware:\r\nThe restore function is disabled,\r\nmeaning the corrupted file\r\nwon\'t b" +
-    "e restored before\r\nanother corruption.\r\n\r\nReplace each file after each\r\ncorrupti" +
-    "on blast.";
             // 
             // CorruptionQueueForm
             // 

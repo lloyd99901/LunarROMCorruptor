@@ -46,7 +46,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v1.0 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = "v1.0.2 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
         readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm();
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
@@ -670,6 +670,23 @@ namespace LunarROMCorruptor
             //Get the information from the file dragged.
             DragandDropICON.Hide();
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            //If there are mulitple files, open the corruption queue instead
+            if (files.Length > 1)
+            {
+                //Enable Corruption Queue
+                CorruptionQueueChkbox.Checked = true;
+                //Add files to the listbox in the CorruptionQueue
+                foreach (var item in files)
+                {
+                    CorruptionQueueFormSettings.CorruptionQueueList.Items.Add(item);
+                }
+                //Set TopMost
+                CorruptionQueueFormSettings.TopMost = true;
+                CorruptionQueueFormSettings.ShowDialog();
+                //Revert Topmost
+                CorruptionQueueFormSettings.TopMost = false;
+                return;
+            }
             foreach (var path1 in files)
             {
                 LoadFile(path1); //Loads the ROM.
