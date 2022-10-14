@@ -16,18 +16,18 @@
 ## Features
 
 ### Corrupt Every Nth Byte and Intensity Mode
-Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1st byte corrupts the entire file)
-Intensity allows for a more randomized corruption by selecting random addresses to corrupt.
+Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1st byte corrupts the entire file, corrupt every 2nd byte corrupts every 2nd byte, etc)
+Intensity allows for a more randomized corruption, the corruptor selects random addresses to corrupt.
 
 ### Corrupt the way **you** want to
 This corruptor has countless ways to tune your corruption until it's just right. You control what the corruptor does with all of the options ready to be tinkered with.
 
 ### File Saves and Stash Saves
 When you have found the perfect corruption, you can use both the File Save and the Stash Save features.
-File save copies the corrupted file and stores it in the "Saves" directory.
+File save copies of the corrupted file and stores it in the "Saves" directory.
 
-Stash saves are different. Instead of saving the whole file, instead, it saves the address of the changed byte and what the byte value is now. Which takes up less file size.
-Also using the stash editor, if you find that a certain corruption changes the color of Mario, you can remove bytes one at a time until you find the corrupted byte that causes it, then you can go nuts with that byte. (Similar to how the Stash Saves and Editor works on the Windows Glitch Harvester)
+Stash saves are different. Instead of saving the whole file, it saves the address of the changed byte and what the byte value is now which takes up less file size.
+Along with stash saves is the stash editor, which allows you to tune your corrupted bytes and addresses to be just right. For example, say there is a corruption that changes the colour of Mario in Super Mario Bros but the game crashes when you start it, you can use the stash editor to remove the bytes that crash it and retain the byte that changes the colour. (Similar to how the Stash Saves and Editor works on the Windows Glitch Harvester)
 
 ### Engines
 Here are the following engines that come with LunarROMCorruptor
@@ -37,7 +37,7 @@ Here are the following engines that come with LunarROMCorruptor
 
     -RANDOM
 
-     The selected byte gets set with a random value of 0 to 255
+     The selected byte gets set with a random value of 0 to 255.
 
     -RANDOMTILT
 
@@ -49,10 +49,20 @@ Here are the following engines that come with LunarROMCorruptor
 
  - Merge Engine
 
-   An engine that copies bytes from one file to the other to create corruption (For example, 'merging' Super Mario Bros. with Donkey Kong).
+   An engine that copies bytes from one file to the other to create corruption (For example, 'merging' bytes from Super Mario Bros. with Donkey Kong bytes).
  - Logic Engine
 
    An engine that uses bitwise/logical operations on two selected bytes.
+   
+        AND
+        OR
+        XOR
+        NOT
+        NAND
+        NOR
+        SWAP
+        SHIFT
+   
  - Lerp Engine
 
    An engine that takes the 2 neighbouring bytes where the selected byte is and corrupts the selected byte by using linear interpolation
