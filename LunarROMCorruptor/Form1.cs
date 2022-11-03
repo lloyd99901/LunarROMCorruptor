@@ -981,6 +981,12 @@ namespace LunarROMCorruptor
                     MessageBox.Show($"Corruption error in line: {line} {Environment.NewLine} Error: {ex.Message}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                //Check if the byte within the correct margins. If not, throw an error.
+                if (Convert.ToInt32(i) > FinROM.Length)
+                {
+                    MessageBox.Show($"Byte location is out of bounds! {Environment.NewLine}Byte location: {i}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 try
                 {
                     FinROM[int.Parse(i.ToString())] = (byte)int.Parse(result.ToString());
@@ -988,6 +994,7 @@ namespace LunarROMCorruptor
                 catch (IndexOutOfRangeException ex1)
                 {
                     MessageBox.Show($"Stash item location is invalid! {Environment.NewLine} Error: {ex1}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 catch (Exception ex)
                 {
@@ -1016,7 +1023,7 @@ namespace LunarROMCorruptor
                 StashBytesList.Items.Add(item);
             }
         }
-
+        
         private void EnableStashSavesChkbox_CheckedChanged(object sender, EventArgs e)
         {
             StashBytesList.Enabled = EnableStashSavesChkbox.Checked;
