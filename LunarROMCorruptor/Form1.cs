@@ -1107,5 +1107,132 @@ namespace LunarROMCorruptor
             //Open the folder location for file saves
             System.Diagnostics.Process.Start("explorer.exe", Application.StartupPath + @"\Saves\");
         }
+
+        private void StartAutomationBtn_Click(object sender, EventArgs e)
+        {
+            //If the buttons text is "Start Automation", then start automation and change the text and color to stop and OrangeRed
+            if (StartAutomationBtn.Text == "Start Automation")
+            {
+                StartAutomationBtn.Text = "Stop Automation";
+                StartAutomationBtn.ForeColor = Color.OrangeRed;
+                AutomationTimer.Start();
+            }
+            else
+            {
+                StartAutomationBtn.Text = "Start Automation";
+                StartAutomationBtn.ForeColor = Color.SpringGreen;
+                AutomationTimer.Stop();
+            }
+        }
+
+        private void RemoveTaskBtn_Click(object sender, EventArgs e)
+        {
+            //Removes selected item from the automation list
+            AutomationList.Items.Remove(AutomationList.SelectedItem);
+        }
+
+        private void AddTaskBtn_Click(object sender, EventArgs e)
+        {
+            //Adds automation task from the combo box into the automation list
+            AutomationList.Items.Add(AutomationTaskComboBox.SelectedItem);
+        }
+
+        private void DelayInAutomationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            //Converts the NumericUpDown number from seconds to miliseconds to use on the timer
+            AutomationTimer.Interval = (int)DelayInAutomationNUD.Value * 1000;
+        }
+
+        private void AutomationTimer_Tick(object sender, EventArgs e)
+        {
+            //For each task on the automation list, execute.
+            foreach (var item in AutomationList.Items)
+            {
+                //Switch statement: Corrupt, Randomize Intensity, Randomize Start Byte, Randomize End Byte, Randomize both Start byte and End byte
+                switch (item)
+                {
+                    case "Run Corruption":
+                        //Click Corrupt Button
+                        CorruptButton.PerformClick();
+                        break;
+                    case "Randomize Intensity":
+                        //Check if nth Intensity is enabled
+                        if (CorruptnthbyteCheckbox.Checked)
+                        {
+                            if (AllowLargeIntensity.Checked)
+                            {
+                                CorrupteverynthbyteTrackbar.Value = rnd.Next(1, 99999);
+                                EveryNthByte.Value = rnd.Next(1, 99999);
+                            }
+                            else
+                            {
+                                CorrupteverynthbyteTrackbar.Value = rnd.Next(1, 1000);
+                                EveryNthByte.Value = rnd.Next(1, 1000);
+                            }
+                        }
+                        else
+                        {
+                            //If allow large intensity is checked, make the max random larger
+                            if (AllowLargeIntensity.Checked)
+                            {
+                                IntensityTrackbar.Value = rnd.Next(1, 99999);
+                                Intensity.Value = rnd.Next(1, 99999);
+                            }
+                            else
+                            {
+                                IntensityTrackbar.Value = rnd.Next(1, 1000);
+                                Intensity.Value = rnd.Next(1, 1000);
+                            }
+                        }
+
+                        break;
+                    case "Randomize Start Byte":
+                        //Randomizes Start byte by the maximum value of the trackbar
+                        StartByteTrackBar.Value = rnd.Next(1, StartByteTrackBar.Maximum);
+                        StartByteNumb.Value = rnd.Next(1, StartByteTrackBar.Maximum);
+                        break;
+                    case "Randomize End Byte":
+                        EndByteTrackbar.Value = rnd.Next(1, EndByteTrackbar.Maximum);
+                        EndByteNumb.Value = rnd.Next(1, EndByteTrackbar.Maximum);
+                        break;
+                    case "Randomize both Start byte and End byte":
+                        //Randomizes both start byte and end byte, but making sure that the start byte is not higher than the end byte
+
+                        StartByteTrackBar.Value = rnd.Next(1, StartByteTrackBar.Maximum);
+                        EndByteTrackbar.Value = rnd.Next(StartByteTrackBar.Value, EndByteTrackbar.Maximum);
+
+                        StartByteNumb.Value = rnd.Next(1, StartByteTrackBar.Maximum);
+                        EndByteNumb.Value = rnd.Next(StartByteTrackBar.Value, EndByteTrackbar.Maximum);
+
+                        break;
+                }
+            }
+        }
+
+        private void MoveTaskUpBtn_Click(object sender, EventArgs e)
+        {
+            //Moves selected item on automation list up
+            if (AutomationList.SelectedIndex > 0)
+            {
+                int index = AutomationList.SelectedIndex;
+                object item = AutomationList.SelectedItem;
+                AutomationList.Items.Remove(item);
+                AutomationList.Items.Insert(index - 1, item);
+                AutomationList.SelectedIndex = index - 1;
+            }
+        }
+
+        private void MoveTaskDownBtn_Click(object sender, EventArgs e)
+        {
+            //Moves selected item on automation list down
+            if (AutomationList.SelectedIndex < AutomationList.Items.Count - 1)
+            {
+                int index = AutomationList.SelectedIndex;
+                object item = AutomationList.SelectedItem;
+                AutomationList.Items.Remove(item);
+                AutomationList.Items.Insert(index + 1, item);
+                AutomationList.SelectedIndex = index + 1;
+            }
+        }
     }
 }

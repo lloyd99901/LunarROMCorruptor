@@ -119,13 +119,15 @@
             this.AboutVerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Panel3 = new System.Windows.Forms.Panel();
+            this.AutomationPage = new System.Windows.Forms.TabPage();
+            this.AutoCorruptPanel = new System.Windows.Forms.Panel();
+            this.StartEmulatorPanel = new System.Windows.Forms.Panel();
             this.ProgramToRunlbl = new System.Windows.Forms.Label();
             this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.CorruptButton = new System.Windows.Forms.Button();
             this.SaveasTxt = new System.Windows.Forms.TextBox();
-            this.Panel1 = new System.Windows.Forms.Panel();
+            this.FileSelectPanel = new System.Windows.Forms.Panel();
             this.CorruptionQueueBtn = new System.Windows.Forms.Button();
             this.Restorefilebtn = new System.Windows.Forms.Button();
             this.Changesaveasbtn = new System.Windows.Forms.Button();
@@ -138,6 +140,17 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.StartAutomationBtn = new System.Windows.Forms.Button();
+            this.DelayInAutomationNUD = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.AutomationList = new System.Windows.Forms.ListBox();
+            this.AddTaskBtn = new System.Windows.Forms.Button();
+            this.AutomationTaskComboBox = new System.Windows.Forms.ComboBox();
+            this.RemoveTaskBtn = new System.Windows.Forms.Button();
+            this.MoveTaskUpBtn = new System.Windows.Forms.Button();
+            this.MoveTaskDownBtn = new System.Windows.Forms.Button();
+            this.AutomationTimer = new System.Windows.Forms.Timer(this.components);
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -171,10 +184,13 @@
             this.AboutTab.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.Panel3.SuspendLayout();
+            this.AutomationPage.SuspendLayout();
+            this.AutoCorruptPanel.SuspendLayout();
+            this.StartEmulatorPanel.SuspendLayout();
             this.Panel2.SuspendLayout();
-            this.Panel1.SuspendLayout();
+            this.FileSelectPanel.SuspendLayout();
             this.contextStripStash.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // FilesaveReloadbtn
@@ -303,7 +319,7 @@
             this.FilesaveList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilesaveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.FilesaveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.FilesaveList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FilesaveList.ForeColor = System.Drawing.Color.Silver;
             this.FilesaveList.FormattingEnabled = true;
@@ -410,7 +426,7 @@
             this.OverrideArguments.Location = new System.Drawing.Point(165, 54);
             this.OverrideArguments.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.OverrideArguments.Name = "OverrideArguments";
-            this.OverrideArguments.Size = new System.Drawing.Size(474, 20);
+            this.OverrideArguments.Size = new System.Drawing.Size(481, 20);
             this.OverrideArguments.TabIndex = 74;
             // 
             // EmulatorLocationtxt
@@ -425,7 +441,7 @@
             this.EmulatorLocationtxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.EmulatorLocationtxt.Name = "EmulatorLocationtxt";
             this.EmulatorLocationtxt.ReadOnly = true;
-            this.EmulatorLocationtxt.Size = new System.Drawing.Size(474, 20);
+            this.EmulatorLocationtxt.Size = new System.Drawing.Size(481, 20);
             this.EmulatorLocationtxt.TabIndex = 74;
             // 
             // UseHexchbox
@@ -996,6 +1012,7 @@
             this.MainTabControl.Controls.Add(this.FileCorruptionTab);
             this.MainTabControl.Controls.Add(this.CorruptionEngineTab);
             this.MainTabControl.Controls.Add(this.FileSaveTab);
+            this.MainTabControl.Controls.Add(this.AutomationPage);
             this.MainTabControl.Controls.Add(this.AboutTab);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.Location = new System.Drawing.Point(0, 71);
@@ -1513,7 +1530,7 @@
             this.panel5.Location = new System.Drawing.Point(7, 6);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(628, 257);
+            this.panel5.Size = new System.Drawing.Size(628, 239);
             this.panel5.TabIndex = 136;
             this.panel5.Tag = "color:normal";
             // 
@@ -1528,7 +1545,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(153, 74);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(466, 165);
+            this.richTextBox1.Size = new System.Drawing.Size(466, 150);
             this.richTextBox1.TabIndex = 159;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -1566,23 +1583,56 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Panel3
+            // AutomationPage
             // 
-            this.Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
-            this.Panel3.Controls.Add(this.StartEmulatorlbl);
-            this.Panel3.Controls.Add(this.OverrideArgumentschbox);
-            this.Panel3.Controls.Add(this.ReopenChbox);
-            this.Panel3.Controls.Add(this.Runemulatorchbox);
-            this.Panel3.Controls.Add(this.ProgramToRunlbl);
-            this.Panel3.Controls.Add(this.OverrideArguments);
-            this.Panel3.Controls.Add(this.EmulatorLocationtxt);
-            this.Panel3.Controls.Add(this.BrowseEmulatorbutton);
-            this.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel3.Location = new System.Drawing.Point(0, 348);
-            this.Panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(650, 79);
-            this.Panel3.TabIndex = 142;
+            this.AutomationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
+            this.AutomationPage.Controls.Add(this.label2);
+            this.AutomationPage.Controls.Add(this.AutoCorruptPanel);
+            this.AutomationPage.Location = new System.Drawing.Point(4, 22);
+            this.AutomationPage.Name = "AutomationPage";
+            this.AutomationPage.Size = new System.Drawing.Size(642, 251);
+            this.AutomationPage.TabIndex = 6;
+            this.AutomationPage.Text = "Automation";
+            // 
+            // AutoCorruptPanel
+            // 
+            this.AutoCorruptPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AutoCorruptPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.AutoCorruptPanel.Controls.Add(this.AutomationTaskComboBox);
+            this.AutoCorruptPanel.Controls.Add(this.AutomationList);
+            this.AutoCorruptPanel.Controls.Add(this.label3);
+            this.AutoCorruptPanel.Controls.Add(this.DelayInAutomationNUD);
+            this.AutoCorruptPanel.Controls.Add(this.RemoveTaskBtn);
+            this.AutoCorruptPanel.Controls.Add(this.MoveTaskDownBtn);
+            this.AutoCorruptPanel.Controls.Add(this.MoveTaskUpBtn);
+            this.AutoCorruptPanel.Controls.Add(this.AddTaskBtn);
+            this.AutoCorruptPanel.Controls.Add(this.StartAutomationBtn);
+            this.AutoCorruptPanel.Location = new System.Drawing.Point(7, 27);
+            this.AutoCorruptPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutoCorruptPanel.Name = "AutoCorruptPanel";
+            this.AutoCorruptPanel.Size = new System.Drawing.Size(628, 218);
+            this.AutoCorruptPanel.TabIndex = 137;
+            this.AutoCorruptPanel.Tag = "color:normal";
+            // 
+            // StartEmulatorPanel
+            // 
+            this.StartEmulatorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.StartEmulatorPanel.Controls.Add(this.StartEmulatorlbl);
+            this.StartEmulatorPanel.Controls.Add(this.OverrideArgumentschbox);
+            this.StartEmulatorPanel.Controls.Add(this.ReopenChbox);
+            this.StartEmulatorPanel.Controls.Add(this.Runemulatorchbox);
+            this.StartEmulatorPanel.Controls.Add(this.ProgramToRunlbl);
+            this.StartEmulatorPanel.Controls.Add(this.OverrideArguments);
+            this.StartEmulatorPanel.Controls.Add(this.EmulatorLocationtxt);
+            this.StartEmulatorPanel.Controls.Add(this.BrowseEmulatorbutton);
+            this.StartEmulatorPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.StartEmulatorPanel.Location = new System.Drawing.Point(0, 348);
+            this.StartEmulatorPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StartEmulatorPanel.Name = "StartEmulatorPanel";
+            this.StartEmulatorPanel.Size = new System.Drawing.Size(650, 79);
+            this.StartEmulatorPanel.TabIndex = 142;
             // 
             // ProgramToRunlbl
             // 
@@ -1662,25 +1712,25 @@
             this.SaveasTxt.TabIndex = 85;
             this.SaveasTxt.Text = "No save location set.";
             // 
-            // Panel1
+            // FileSelectPanel
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
-            this.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Panel1.Controls.Add(this.CorruptionQueueChkbox);
-            this.Panel1.Controls.Add(this.CorruptionQueueBtn);
-            this.Panel1.Controls.Add(this.Restorefilebtn);
-            this.Panel1.Controls.Add(this.Changesaveasbtn);
-            this.Panel1.Controls.Add(this.Openfilebtn);
-            this.Panel1.Controls.Add(this.CorruptionEngineComboBox);
-            this.Panel1.Controls.Add(this.SaveasTxt);
-            this.Panel1.Controls.Add(this.CorruptionEnginelbl);
-            this.Panel1.Controls.Add(this.FileSelectiontxt);
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(650, 71);
-            this.Panel1.TabIndex = 140;
+            this.FileSelectPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.FileSelectPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FileSelectPanel.Controls.Add(this.CorruptionQueueChkbox);
+            this.FileSelectPanel.Controls.Add(this.CorruptionQueueBtn);
+            this.FileSelectPanel.Controls.Add(this.Restorefilebtn);
+            this.FileSelectPanel.Controls.Add(this.Changesaveasbtn);
+            this.FileSelectPanel.Controls.Add(this.Openfilebtn);
+            this.FileSelectPanel.Controls.Add(this.CorruptionEngineComboBox);
+            this.FileSelectPanel.Controls.Add(this.SaveasTxt);
+            this.FileSelectPanel.Controls.Add(this.CorruptionEnginelbl);
+            this.FileSelectPanel.Controls.Add(this.FileSelectiontxt);
+            this.FileSelectPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FileSelectPanel.Location = new System.Drawing.Point(0, 0);
+            this.FileSelectPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FileSelectPanel.Name = "FileSelectPanel";
+            this.FileSelectPanel.Size = new System.Drawing.Size(650, 71);
+            this.FileSelectPanel.TabIndex = 140;
             // 
             // CorruptionQueueBtn
             // 
@@ -1805,15 +1855,190 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Silver;
+            this.label2.Location = new System.Drawing.Point(7, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.TabIndex = 155;
+            this.label2.Text = "Automation Task List";
+            // 
+            // StartAutomationBtn
+            // 
+            this.StartAutomationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartAutomationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.StartAutomationBtn.FlatAppearance.BorderSize = 0;
+            this.StartAutomationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartAutomationBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.StartAutomationBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StartAutomationBtn.Location = new System.Drawing.Point(474, 172);
+            this.StartAutomationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StartAutomationBtn.Name = "StartAutomationBtn";
+            this.StartAutomationBtn.Size = new System.Drawing.Size(152, 44);
+            this.StartAutomationBtn.TabIndex = 164;
+            this.StartAutomationBtn.Text = "Start Automation";
+            this.StartAutomationBtn.UseVisualStyleBackColor = false;
+            this.StartAutomationBtn.Click += new System.EventHandler(this.StartAutomationBtn_Click);
+            // 
+            // DelayInAutomationNUD
+            // 
+            this.DelayInAutomationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.DelayInAutomationNUD.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayInAutomationNUD.ForeColor = System.Drawing.Color.White;
+            this.DelayInAutomationNUD.Location = new System.Drawing.Point(474, 147);
+            this.DelayInAutomationNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DelayInAutomationNUD.Name = "DelayInAutomationNUD";
+            this.DelayInAutomationNUD.Size = new System.Drawing.Size(154, 22);
+            this.DelayInAutomationNUD.TabIndex = 165;
+            this.DelayInAutomationNUD.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.DelayInAutomationNUD.ValueChanged += new System.EventHandler(this.DelayInAutomationNUD_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.label3.Location = new System.Drawing.Point(469, 131);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 13);
+            this.label3.TabIndex = 166;
+            this.label3.Text = "Delay in seconds (tick speed):";
+            // 
+            // AutomationList
+            // 
+            this.AutomationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.AutomationList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AutomationList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AutomationList.ForeColor = System.Drawing.Color.Silver;
+            this.AutomationList.FormattingEnabled = true;
+            this.AutomationList.HorizontalScrollbar = true;
+            this.AutomationList.IntegralHeight = false;
+            this.AutomationList.Items.AddRange(new object[] {
+            "Run Corruption"});
+            this.AutomationList.Location = new System.Drawing.Point(0, 0);
+            this.AutomationList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutomationList.Name = "AutomationList";
+            this.AutomationList.Size = new System.Drawing.Size(470, 218);
+            this.AutomationList.TabIndex = 167;
+            // 
+            // AddTaskBtn
+            // 
+            this.AddTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.AddTaskBtn.FlatAppearance.BorderSize = 0;
+            this.AddTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTaskBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.AddTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddTaskBtn.Location = new System.Drawing.Point(474, 82);
+            this.AddTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AddTaskBtn.Name = "AddTaskBtn";
+            this.AddTaskBtn.Size = new System.Drawing.Size(152, 22);
+            this.AddTaskBtn.TabIndex = 164;
+            this.AddTaskBtn.Text = "Add action";
+            this.AddTaskBtn.UseVisualStyleBackColor = false;
+            this.AddTaskBtn.Click += new System.EventHandler(this.AddTaskBtn_Click);
+            // 
+            // AutomationTaskComboBox
+            // 
+            this.AutomationTaskComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AutomationTaskComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.AutomationTaskComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AutomationTaskComboBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutomationTaskComboBox.ForeColor = System.Drawing.Color.Silver;
+            this.AutomationTaskComboBox.FormattingEnabled = true;
+            this.AutomationTaskComboBox.Items.AddRange(new object[] {
+            "Randomize Intensity",
+            "Randomize Start Byte",
+            "Randomize End Byte",
+            "Randomize both Start byte and End byte",
+            "Run Corruption"});
+            this.AutomationTaskComboBox.Location = new System.Drawing.Point(474, 35);
+            this.AutomationTaskComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutomationTaskComboBox.Name = "AutomationTaskComboBox";
+            this.AutomationTaskComboBox.Size = new System.Drawing.Size(154, 21);
+            this.AutomationTaskComboBox.TabIndex = 168;
+            this.AutomationTaskComboBox.Text = "Randomize Intensity";
+            // 
+            // RemoveTaskBtn
+            // 
+            this.RemoveTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.RemoveTaskBtn.FlatAppearance.BorderSize = 0;
+            this.RemoveTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveTaskBtn.ForeColor = System.Drawing.Color.OrangeRed;
+            this.RemoveTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RemoveTaskBtn.Location = new System.Drawing.Point(474, 59);
+            this.RemoveTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RemoveTaskBtn.Name = "RemoveTaskBtn";
+            this.RemoveTaskBtn.Size = new System.Drawing.Size(152, 22);
+            this.RemoveTaskBtn.TabIndex = 164;
+            this.RemoveTaskBtn.Text = "Remove Selected Task";
+            this.RemoveTaskBtn.UseVisualStyleBackColor = false;
+            this.RemoveTaskBtn.Click += new System.EventHandler(this.RemoveTaskBtn_Click);
+            // 
+            // MoveTaskUpBtn
+            // 
+            this.MoveTaskUpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoveTaskUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.MoveTaskUpBtn.FlatAppearance.BorderSize = 0;
+            this.MoveTaskUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveTaskUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveTaskUpBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.MoveTaskUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MoveTaskUpBtn.Location = new System.Drawing.Point(474, 2);
+            this.MoveTaskUpBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MoveTaskUpBtn.Name = "MoveTaskUpBtn";
+            this.MoveTaskUpBtn.Size = new System.Drawing.Size(76, 29);
+            this.MoveTaskUpBtn.TabIndex = 164;
+            this.MoveTaskUpBtn.Text = "Move Task Up";
+            this.MoveTaskUpBtn.UseVisualStyleBackColor = false;
+            this.MoveTaskUpBtn.Click += new System.EventHandler(this.MoveTaskUpBtn_Click);
+            // 
+            // MoveTaskDownBtn
+            // 
+            this.MoveTaskDownBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoveTaskDownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.MoveTaskDownBtn.FlatAppearance.BorderSize = 0;
+            this.MoveTaskDownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveTaskDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveTaskDownBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.MoveTaskDownBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MoveTaskDownBtn.Location = new System.Drawing.Point(551, 2);
+            this.MoveTaskDownBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MoveTaskDownBtn.Name = "MoveTaskDownBtn";
+            this.MoveTaskDownBtn.Size = new System.Drawing.Size(76, 29);
+            this.MoveTaskDownBtn.TabIndex = 164;
+            this.MoveTaskDownBtn.Text = "Move Task Down";
+            this.MoveTaskDownBtn.UseVisualStyleBackColor = false;
+            this.MoveTaskDownBtn.Click += new System.EventHandler(this.MoveTaskDownBtn_Click);
+            // 
+            // AutomationTimer
+            // 
+            this.AutomationTimer.Interval = 5000;
+            this.AutomationTimer.Tick += new System.EventHandler(this.AutomationTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 479);
             this.Controls.Add(this.MainTabControl);
-            this.Controls.Add(this.Panel3);
+            this.Controls.Add(this.StartEmulatorPanel);
             this.Controls.Add(this.Panel2);
-            this.Controls.Add(this.Panel1);
+            this.Controls.Add(this.FileSelectPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(666, 518);
             this.Name = "Form1";
@@ -1869,12 +2094,17 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.Panel3.ResumeLayout(false);
-            this.Panel3.PerformLayout();
+            this.AutomationPage.ResumeLayout(false);
+            this.AutomationPage.PerformLayout();
+            this.AutoCorruptPanel.ResumeLayout(false);
+            this.AutoCorruptPanel.PerformLayout();
+            this.StartEmulatorPanel.ResumeLayout(false);
+            this.StartEmulatorPanel.PerformLayout();
             this.Panel2.ResumeLayout(false);
-            this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
+            this.FileSelectPanel.ResumeLayout(false);
+            this.FileSelectPanel.PerformLayout();
             this.contextStripStash.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1928,13 +2158,13 @@
         internal System.Windows.Forms.TabControl MainTabControl;
         internal System.Windows.Forms.TabPage CorruptionEngineTab;
         private System.Windows.Forms.Panel ManualEnginePanel;
-        internal System.Windows.Forms.Panel Panel3;
+        internal System.Windows.Forms.Panel StartEmulatorPanel;
         internal System.Windows.Forms.Button Restorefilebtn;
         internal System.Windows.Forms.Button Changesaveasbtn;
         internal System.Windows.Forms.Panel Panel2;
         public System.Windows.Forms.Button CorruptButton;
         internal System.Windows.Forms.Button Openfilebtn;
-        internal System.Windows.Forms.Panel Panel1;
+        internal System.Windows.Forms.Panel FileSelectPanel;
         internal System.Windows.Forms.OpenFileDialog EmulatorFileDialog;
         internal System.Windows.Forms.SaveFileDialog MainSaveFileDialog;
         internal System.Windows.Forms.OpenFileDialog MainOpenFileDialog;
@@ -1988,6 +2218,19 @@
         public System.Windows.Forms.TextBox SaveasTxt;
         public System.Windows.Forms.CheckBox CorruptionQueueChkbox;
         internal System.Windows.Forms.Label ProgramToRunlbl;
+        private System.Windows.Forms.TabPage AutomationPage;
+        private System.Windows.Forms.Panel AutoCorruptPanel;
+        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Button StartAutomationBtn;
+        private System.Windows.Forms.NumericUpDown DelayInAutomationNUD;
+        private System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.ListBox AutomationList;
+        internal System.Windows.Forms.Button AddTaskBtn;
+        internal System.Windows.Forms.ComboBox AutomationTaskComboBox;
+        internal System.Windows.Forms.Button RemoveTaskBtn;
+        internal System.Windows.Forms.Button MoveTaskUpBtn;
+        internal System.Windows.Forms.Button MoveTaskDownBtn;
+        private System.Windows.Forms.Timer AutomationTimer;
     }
 }
 
