@@ -46,7 +46,7 @@ namespace LunarROMCorruptor
         private int StartByte;
         private int EndByte;
         private readonly Random rnd = new Random();
-        private readonly string vernumber = "v1.0.2 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = "v1.0.3 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
         readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm();
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
@@ -178,8 +178,14 @@ namespace LunarROMCorruptor
         public void SaveCorruptedFileCopy()
         {
             //File Saves Tab - Save the corrupted file to the Saves directory.
-            if (SaveasTxt.Text == "No save location set.")
+            if (SaveasTxt.Text == "No save location set.") 
             {
+                return;
+            }
+            //Check if the file exists, if not DONT run
+            if (!File.Exists(SaveasTxt.Text))
+            {
+                MessageBox.Show("The file you're trying to save doesn't exist. Please load a file first.", "LunarROMCorruptor - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -800,7 +806,18 @@ namespace LunarROMCorruptor
                 MessageBox.Show("File doesn't exist!");
                 return;
             }
-
+            //Check if the file rename is vaild, e.g do not allow CON
+            if (input.InputBoxTxtBox.Text.Contains("CON") || input.InputBoxTxtBox.Text.Contains("PRN") || input.InputBoxTxtBox.Text.Contains("AUX") || input.InputBoxTxtBox.Text.Contains("NUL") || input.InputBoxTxtBox.Text.Contains("COM1") || input.InputBoxTxtBox.Text.Contains("COM2") || input.InputBoxTxtBox.Text.Contains("COM3") || input.InputBoxTxtBox.Text.Contains("COM4") || input.InputBoxTxtBox.Text.Contains("COM5") || input.InputBoxTxtBox.Text.Contains("COM6") || input.InputBoxTxtBox.Text.Contains("COM7") || input.InputBoxTxtBox.Text.Contains("COM8") || input.InputBoxTxtBox.Text.Contains("COM9") || input.InputBoxTxtBox.Text.Contains("LPT1") || input.InputBoxTxtBox.Text.Contains("LPT2") || input.InputBoxTxtBox.Text.Contains("LPT3") || input.InputBoxTxtBox.Text.Contains("LPT4") || input.InputBoxTxtBox.Text.Contains("LPT5") || input.InputBoxTxtBox.Text.Contains("LPT6") || input.InputBoxTxtBox.Text.Contains("LPT7") || input.InputBoxTxtBox.Text.Contains("LPT8") || input.InputBoxTxtBox.Text.Contains("LPT9"))
+            {
+                MessageBox.Show("Handle Error: Invalid File Name!");
+                return;
+            }
+            //Check if the file rename is vaild, check normal things.
+            if (input.InputBoxTxtBox.Text.Contains("\\") || input.InputBoxTxtBox.Text.Contains("/") || input.InputBoxTxtBox.Text.Contains(":") || input.InputBoxTxtBox.Text.Contains("*") || input.InputBoxTxtBox.Text.Contains("?") || input.InputBoxTxtBox.Text.Contains("\"") || input.InputBoxTxtBox.Text.Contains("<") || input.InputBoxTxtBox.Text.Contains(">") || input.InputBoxTxtBox.Text.Contains("|"))
+            {
+                MessageBox.Show("Invalid File Name!");
+                return;
+            }
             File.Move(Application.StartupPath + @"\CorruptionStashList\" + StashFileList.GetItemText(StashFileList.SelectedItem), Application.StartupPath + "\\CorruptionStashList\\" + input.InputBoxTxtBox.Text + exc);
             StashFileList.Items.Clear();
             DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\CorruptionStashList\");
@@ -862,6 +879,11 @@ namespace LunarROMCorruptor
             {
                 MessageBox.Show("Argument error (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (DirectoryNotFoundException)
+            {
+                //Show error message
+                MessageBox.Show("File not found (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FilesaveReloadbtn_Click(object sender, EventArgs e)
@@ -887,6 +909,18 @@ namespace LunarROMCorruptor
             if (!File.Exists(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem)))
             {
                 MessageBox.Show("File doesn't exist!");
+                return;
+            }
+            //Check if the file rename is vaild, e.g do not allow CON
+            if (input.InputBoxTxtBox.Text.Contains("CON") || input.InputBoxTxtBox.Text.Contains("PRN") || input.InputBoxTxtBox.Text.Contains("AUX") || input.InputBoxTxtBox.Text.Contains("NUL") || input.InputBoxTxtBox.Text.Contains("COM1") || input.InputBoxTxtBox.Text.Contains("COM2") || input.InputBoxTxtBox.Text.Contains("COM3") || input.InputBoxTxtBox.Text.Contains("COM4") || input.InputBoxTxtBox.Text.Contains("COM5") || input.InputBoxTxtBox.Text.Contains("COM6") || input.InputBoxTxtBox.Text.Contains("COM7") || input.InputBoxTxtBox.Text.Contains("COM8") || input.InputBoxTxtBox.Text.Contains("COM9") || input.InputBoxTxtBox.Text.Contains("LPT1") || input.InputBoxTxtBox.Text.Contains("LPT2") || input.InputBoxTxtBox.Text.Contains("LPT3") || input.InputBoxTxtBox.Text.Contains("LPT4") || input.InputBoxTxtBox.Text.Contains("LPT5") || input.InputBoxTxtBox.Text.Contains("LPT6") || input.InputBoxTxtBox.Text.Contains("LPT7") || input.InputBoxTxtBox.Text.Contains("LPT8") || input.InputBoxTxtBox.Text.Contains("LPT9"))
+            {
+                MessageBox.Show("Handle Error: Invalid File Name!");
+                return;
+            }
+            //Check if the file rename is vaild, check normal things.
+            if (input.InputBoxTxtBox.Text.Contains("\\") || input.InputBoxTxtBox.Text.Contains("/") || input.InputBoxTxtBox.Text.Contains(":") || input.InputBoxTxtBox.Text.Contains("*") || input.InputBoxTxtBox.Text.Contains("?") || input.InputBoxTxtBox.Text.Contains("\"") || input.InputBoxTxtBox.Text.Contains("<") || input.InputBoxTxtBox.Text.Contains(">") || input.InputBoxTxtBox.Text.Contains("|"))
+            {
+                MessageBox.Show("Invalid File Name!");
                 return;
             }
             File.Move(Application.StartupPath + @"\Saves\" + FilesaveList.GetItemText(FilesaveList.SelectedItem), Application.StartupPath + "\\Saves\\" + input.InputBoxTxtBox.Text + exc);
