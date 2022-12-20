@@ -58,7 +58,6 @@
             this.AllowLargeIntensity = new System.Windows.Forms.CheckBox();
             this.StartByteNumb = new System.Windows.Forms.NumericUpDown();
             this.StartByteTrackBar = new System.Windows.Forms.TrackBar();
-            this.CorruptnthbyteCheckbox = new System.Windows.Forms.CheckBox();
             this.StartBytelbl = new System.Windows.Forms.Label();
             this.EverynthbyteGroupbox = new System.Windows.Forms.GroupBox();
             this.EveryNthByte = new System.Windows.Forms.NumericUpDown();
@@ -113,14 +112,24 @@
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.RepeatNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AutomationPage = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.AutoCorruptPanel = new System.Windows.Forms.Panel();
+            this.AutomationTaskComboBox = new System.Windows.Forms.ComboBox();
+            this.AutomationList = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DelayInAutomationNUD = new System.Windows.Forms.NumericUpDown();
+            this.RemoveTaskBtn = new System.Windows.Forms.Button();
+            this.MoveTaskDownBtn = new System.Windows.Forms.Button();
+            this.MoveTaskUpBtn = new System.Windows.Forms.Button();
+            this.AddTaskBtn = new System.Windows.Forms.Button();
+            this.StartAutomationBtn = new System.Windows.Forms.Button();
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AboutVerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.AutomationPage = new System.Windows.Forms.TabPage();
-            this.AutoCorruptPanel = new System.Windows.Forms.Panel();
             this.StartEmulatorPanel = new System.Windows.Forms.Panel();
             this.ProgramToRunlbl = new System.Windows.Forms.Label();
             this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
@@ -140,17 +149,9 @@
             this.contextStripStash = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.StartAutomationBtn = new System.Windows.Forms.Button();
-            this.DelayInAutomationNUD = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.AutomationList = new System.Windows.Forms.ListBox();
-            this.AddTaskBtn = new System.Windows.Forms.Button();
-            this.AutomationTaskComboBox = new System.Windows.Forms.ComboBox();
-            this.RemoveTaskBtn = new System.Windows.Forms.Button();
-            this.MoveTaskUpBtn = new System.Windows.Forms.Button();
-            this.MoveTaskDownBtn = new System.Windows.Forms.Button();
             this.AutomationTimer = new System.Windows.Forms.Timer(this.components);
+            this.RandomByteCorruptRadioBtn = new System.Windows.Forms.RadioButton();
+            this.CorruptEverynthByteRadioBtn = new System.Windows.Forms.RadioButton();
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -181,16 +182,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.IncrementNumericUpDown)).BeginInit();
             this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).BeginInit();
+            this.AutomationPage.SuspendLayout();
+            this.AutoCorruptPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).BeginInit();
             this.AboutTab.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.AutomationPage.SuspendLayout();
-            this.AutoCorruptPanel.SuspendLayout();
             this.StartEmulatorPanel.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.FileSelectPanel.SuspendLayout();
             this.contextStripStash.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // FilesaveReloadbtn
@@ -561,7 +562,6 @@
             this.Panel4.Controls.Add(this.Endbytelbl);
             this.Panel4.Controls.Add(this.StartByteNumb);
             this.Panel4.Controls.Add(this.StartByteTrackBar);
-            this.Panel4.Controls.Add(this.CorruptnthbyteCheckbox);
             this.Panel4.Controls.Add(this.StartBytelbl);
             this.Panel4.Controls.Add(this.EverynthbyteGroupbox);
             this.Panel4.Controls.Add(this.IntensityGroup);
@@ -632,19 +632,6 @@
             this.StartByteTrackBar.TickFrequency = 0;
             this.StartByteTrackBar.Value = 1;
             this.StartByteTrackBar.Scroll += new System.EventHandler(this.StartByteTrackBar_Scroll);
-            // 
-            // CorruptnthbyteCheckbox
-            // 
-            this.CorruptnthbyteCheckbox.AutoSize = true;
-            this.CorruptnthbyteCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.CorruptnthbyteCheckbox.Location = new System.Drawing.Point(14, 0);
-            this.CorruptnthbyteCheckbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptnthbyteCheckbox.Name = "CorruptnthbyteCheckbox";
-            this.CorruptnthbyteCheckbox.Size = new System.Drawing.Size(130, 17);
-            this.CorruptnthbyteCheckbox.TabIndex = 88;
-            this.CorruptnthbyteCheckbox.Text = "Corrupt every nth byte";
-            this.CorruptnthbyteCheckbox.UseVisualStyleBackColor = true;
-            this.CorruptnthbyteCheckbox.CheckedChanged += new System.EventHandler(this.CorruptnthbyteCheckbox_CheckedChanged);
             // 
             // StartBytelbl
             // 
@@ -815,6 +802,8 @@
             // FileCorruptionTab
             // 
             this.FileCorruptionTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.FileCorruptionTab.Controls.Add(this.CorruptEverynthByteRadioBtn);
+            this.FileCorruptionTab.Controls.Add(this.RandomByteCorruptRadioBtn);
             this.FileCorruptionTab.Controls.Add(this.EnableStashSavesChkbox);
             this.FileCorruptionTab.Controls.Add(this.StashListlbl);
             this.FileCorruptionTab.Controls.Add(this.Panel4);
@@ -1506,6 +1495,209 @@
             0,
             0});
             // 
+            // AutomationPage
+            // 
+            this.AutomationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
+            this.AutomationPage.Controls.Add(this.label2);
+            this.AutomationPage.Controls.Add(this.AutoCorruptPanel);
+            this.AutomationPage.Location = new System.Drawing.Point(4, 22);
+            this.AutomationPage.Name = "AutomationPage";
+            this.AutomationPage.Size = new System.Drawing.Size(642, 251);
+            this.AutomationPage.TabIndex = 6;
+            this.AutomationPage.Text = "Automation";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Silver;
+            this.label2.Location = new System.Drawing.Point(7, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.TabIndex = 155;
+            this.label2.Text = "Automation Task List";
+            // 
+            // AutoCorruptPanel
+            // 
+            this.AutoCorruptPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AutoCorruptPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.AutoCorruptPanel.Controls.Add(this.AutomationTaskComboBox);
+            this.AutoCorruptPanel.Controls.Add(this.AutomationList);
+            this.AutoCorruptPanel.Controls.Add(this.label3);
+            this.AutoCorruptPanel.Controls.Add(this.DelayInAutomationNUD);
+            this.AutoCorruptPanel.Controls.Add(this.RemoveTaskBtn);
+            this.AutoCorruptPanel.Controls.Add(this.MoveTaskDownBtn);
+            this.AutoCorruptPanel.Controls.Add(this.MoveTaskUpBtn);
+            this.AutoCorruptPanel.Controls.Add(this.AddTaskBtn);
+            this.AutoCorruptPanel.Controls.Add(this.StartAutomationBtn);
+            this.AutoCorruptPanel.Location = new System.Drawing.Point(7, 27);
+            this.AutoCorruptPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutoCorruptPanel.Name = "AutoCorruptPanel";
+            this.AutoCorruptPanel.Size = new System.Drawing.Size(628, 218);
+            this.AutoCorruptPanel.TabIndex = 137;
+            this.AutoCorruptPanel.Tag = "color:normal";
+            // 
+            // AutomationTaskComboBox
+            // 
+            this.AutomationTaskComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AutomationTaskComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.AutomationTaskComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AutomationTaskComboBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutomationTaskComboBox.ForeColor = System.Drawing.Color.Silver;
+            this.AutomationTaskComboBox.FormattingEnabled = true;
+            this.AutomationTaskComboBox.Items.AddRange(new object[] {
+            "Randomize Intensity",
+            "Randomize Start Byte",
+            "Randomize End Byte",
+            "Randomize both Start byte and End byte",
+            "Run Corruption"});
+            this.AutomationTaskComboBox.Location = new System.Drawing.Point(474, 35);
+            this.AutomationTaskComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutomationTaskComboBox.Name = "AutomationTaskComboBox";
+            this.AutomationTaskComboBox.Size = new System.Drawing.Size(154, 21);
+            this.AutomationTaskComboBox.TabIndex = 168;
+            this.AutomationTaskComboBox.Text = "Randomize Intensity";
+            // 
+            // AutomationList
+            // 
+            this.AutomationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.AutomationList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AutomationList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AutomationList.ForeColor = System.Drawing.Color.Silver;
+            this.AutomationList.FormattingEnabled = true;
+            this.AutomationList.HorizontalScrollbar = true;
+            this.AutomationList.IntegralHeight = false;
+            this.AutomationList.Items.AddRange(new object[] {
+            "Run Corruption"});
+            this.AutomationList.Location = new System.Drawing.Point(0, 0);
+            this.AutomationList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutomationList.Name = "AutomationList";
+            this.AutomationList.Size = new System.Drawing.Size(470, 218);
+            this.AutomationList.TabIndex = 167;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.label3.Location = new System.Drawing.Point(469, 131);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 13);
+            this.label3.TabIndex = 166;
+            this.label3.Text = "Delay in seconds (tick speed):";
+            // 
+            // DelayInAutomationNUD
+            // 
+            this.DelayInAutomationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.DelayInAutomationNUD.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayInAutomationNUD.ForeColor = System.Drawing.Color.White;
+            this.DelayInAutomationNUD.Location = new System.Drawing.Point(474, 147);
+            this.DelayInAutomationNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DelayInAutomationNUD.Name = "DelayInAutomationNUD";
+            this.DelayInAutomationNUD.Size = new System.Drawing.Size(154, 22);
+            this.DelayInAutomationNUD.TabIndex = 165;
+            this.DelayInAutomationNUD.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.DelayInAutomationNUD.ValueChanged += new System.EventHandler(this.DelayInAutomationNUD_ValueChanged);
+            // 
+            // RemoveTaskBtn
+            // 
+            this.RemoveTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.RemoveTaskBtn.FlatAppearance.BorderSize = 0;
+            this.RemoveTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveTaskBtn.ForeColor = System.Drawing.Color.OrangeRed;
+            this.RemoveTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RemoveTaskBtn.Location = new System.Drawing.Point(474, 59);
+            this.RemoveTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RemoveTaskBtn.Name = "RemoveTaskBtn";
+            this.RemoveTaskBtn.Size = new System.Drawing.Size(152, 22);
+            this.RemoveTaskBtn.TabIndex = 164;
+            this.RemoveTaskBtn.Text = "Remove Selected Task";
+            this.RemoveTaskBtn.UseVisualStyleBackColor = false;
+            this.RemoveTaskBtn.Click += new System.EventHandler(this.RemoveTaskBtn_Click);
+            // 
+            // MoveTaskDownBtn
+            // 
+            this.MoveTaskDownBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoveTaskDownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.MoveTaskDownBtn.FlatAppearance.BorderSize = 0;
+            this.MoveTaskDownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveTaskDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveTaskDownBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.MoveTaskDownBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MoveTaskDownBtn.Location = new System.Drawing.Point(551, 2);
+            this.MoveTaskDownBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MoveTaskDownBtn.Name = "MoveTaskDownBtn";
+            this.MoveTaskDownBtn.Size = new System.Drawing.Size(76, 29);
+            this.MoveTaskDownBtn.TabIndex = 164;
+            this.MoveTaskDownBtn.Text = "Move Task Down";
+            this.MoveTaskDownBtn.UseVisualStyleBackColor = false;
+            this.MoveTaskDownBtn.Click += new System.EventHandler(this.MoveTaskDownBtn_Click);
+            // 
+            // MoveTaskUpBtn
+            // 
+            this.MoveTaskUpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoveTaskUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.MoveTaskUpBtn.FlatAppearance.BorderSize = 0;
+            this.MoveTaskUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveTaskUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveTaskUpBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.MoveTaskUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MoveTaskUpBtn.Location = new System.Drawing.Point(474, 2);
+            this.MoveTaskUpBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MoveTaskUpBtn.Name = "MoveTaskUpBtn";
+            this.MoveTaskUpBtn.Size = new System.Drawing.Size(76, 29);
+            this.MoveTaskUpBtn.TabIndex = 164;
+            this.MoveTaskUpBtn.Text = "Move Task Up";
+            this.MoveTaskUpBtn.UseVisualStyleBackColor = false;
+            this.MoveTaskUpBtn.Click += new System.EventHandler(this.MoveTaskUpBtn_Click);
+            // 
+            // AddTaskBtn
+            // 
+            this.AddTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.AddTaskBtn.FlatAppearance.BorderSize = 0;
+            this.AddTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTaskBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.AddTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddTaskBtn.Location = new System.Drawing.Point(474, 82);
+            this.AddTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AddTaskBtn.Name = "AddTaskBtn";
+            this.AddTaskBtn.Size = new System.Drawing.Size(152, 22);
+            this.AddTaskBtn.TabIndex = 164;
+            this.AddTaskBtn.Text = "Add action";
+            this.AddTaskBtn.UseVisualStyleBackColor = false;
+            this.AddTaskBtn.Click += new System.EventHandler(this.AddTaskBtn_Click);
+            // 
+            // StartAutomationBtn
+            // 
+            this.StartAutomationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartAutomationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.StartAutomationBtn.FlatAppearance.BorderSize = 0;
+            this.StartAutomationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartAutomationBtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.StartAutomationBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StartAutomationBtn.Location = new System.Drawing.Point(474, 172);
+            this.StartAutomationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StartAutomationBtn.Name = "StartAutomationBtn";
+            this.StartAutomationBtn.Size = new System.Drawing.Size(152, 44);
+            this.StartAutomationBtn.TabIndex = 164;
+            this.StartAutomationBtn.Text = "Start Automation";
+            this.StartAutomationBtn.UseVisualStyleBackColor = false;
+            this.StartAutomationBtn.Click += new System.EventHandler(this.StartAutomationBtn_Click);
+            // 
             // AboutTab
             // 
             this.AboutTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
@@ -1582,39 +1774,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // AutomationPage
-            // 
-            this.AutomationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
-            this.AutomationPage.Controls.Add(this.label2);
-            this.AutomationPage.Controls.Add(this.AutoCorruptPanel);
-            this.AutomationPage.Location = new System.Drawing.Point(4, 22);
-            this.AutomationPage.Name = "AutomationPage";
-            this.AutomationPage.Size = new System.Drawing.Size(642, 251);
-            this.AutomationPage.TabIndex = 6;
-            this.AutomationPage.Text = "Automation";
-            // 
-            // AutoCorruptPanel
-            // 
-            this.AutoCorruptPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AutoCorruptPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
-            this.AutoCorruptPanel.Controls.Add(this.AutomationTaskComboBox);
-            this.AutoCorruptPanel.Controls.Add(this.AutomationList);
-            this.AutoCorruptPanel.Controls.Add(this.label3);
-            this.AutoCorruptPanel.Controls.Add(this.DelayInAutomationNUD);
-            this.AutoCorruptPanel.Controls.Add(this.RemoveTaskBtn);
-            this.AutoCorruptPanel.Controls.Add(this.MoveTaskDownBtn);
-            this.AutoCorruptPanel.Controls.Add(this.MoveTaskUpBtn);
-            this.AutoCorruptPanel.Controls.Add(this.AddTaskBtn);
-            this.AutoCorruptPanel.Controls.Add(this.StartAutomationBtn);
-            this.AutoCorruptPanel.Location = new System.Drawing.Point(7, 27);
-            this.AutoCorruptPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.AutoCorruptPanel.Name = "AutoCorruptPanel";
-            this.AutoCorruptPanel.Size = new System.Drawing.Size(628, 218);
-            this.AutoCorruptPanel.TabIndex = 137;
-            this.AutoCorruptPanel.Tag = "color:normal";
             // 
             // StartEmulatorPanel
             // 
@@ -1855,180 +2014,38 @@
             this.deleteToolStripMenuItem.Text = "&Delete Stash Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteStash_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(7, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 19);
-            this.label2.TabIndex = 155;
-            this.label2.Text = "Automation Task List";
-            // 
-            // StartAutomationBtn
-            // 
-            this.StartAutomationBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartAutomationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.StartAutomationBtn.FlatAppearance.BorderSize = 0;
-            this.StartAutomationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StartAutomationBtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.StartAutomationBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StartAutomationBtn.Location = new System.Drawing.Point(474, 172);
-            this.StartAutomationBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StartAutomationBtn.Name = "StartAutomationBtn";
-            this.StartAutomationBtn.Size = new System.Drawing.Size(152, 44);
-            this.StartAutomationBtn.TabIndex = 164;
-            this.StartAutomationBtn.Text = "Start Automation";
-            this.StartAutomationBtn.UseVisualStyleBackColor = false;
-            this.StartAutomationBtn.Click += new System.EventHandler(this.StartAutomationBtn_Click);
-            // 
-            // DelayInAutomationNUD
-            // 
-            this.DelayInAutomationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.DelayInAutomationNUD.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelayInAutomationNUD.ForeColor = System.Drawing.Color.White;
-            this.DelayInAutomationNUD.Location = new System.Drawing.Point(474, 147);
-            this.DelayInAutomationNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.DelayInAutomationNUD.Name = "DelayInAutomationNUD";
-            this.DelayInAutomationNUD.Size = new System.Drawing.Size(154, 22);
-            this.DelayInAutomationNUD.TabIndex = 165;
-            this.DelayInAutomationNUD.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.DelayInAutomationNUD.ValueChanged += new System.EventHandler(this.DelayInAutomationNUD_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.label3.Location = new System.Drawing.Point(469, 131);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 13);
-            this.label3.TabIndex = 166;
-            this.label3.Text = "Delay in seconds (tick speed):";
-            // 
-            // AutomationList
-            // 
-            this.AutomationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.AutomationList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AutomationList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.AutomationList.ForeColor = System.Drawing.Color.Silver;
-            this.AutomationList.FormattingEnabled = true;
-            this.AutomationList.HorizontalScrollbar = true;
-            this.AutomationList.IntegralHeight = false;
-            this.AutomationList.Items.AddRange(new object[] {
-            "Run Corruption"});
-            this.AutomationList.Location = new System.Drawing.Point(0, 0);
-            this.AutomationList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.AutomationList.Name = "AutomationList";
-            this.AutomationList.Size = new System.Drawing.Size(470, 218);
-            this.AutomationList.TabIndex = 167;
-            // 
-            // AddTaskBtn
-            // 
-            this.AddTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.AddTaskBtn.FlatAppearance.BorderSize = 0;
-            this.AddTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTaskBtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.AddTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AddTaskBtn.Location = new System.Drawing.Point(474, 82);
-            this.AddTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.AddTaskBtn.Name = "AddTaskBtn";
-            this.AddTaskBtn.Size = new System.Drawing.Size(152, 22);
-            this.AddTaskBtn.TabIndex = 164;
-            this.AddTaskBtn.Text = "Add action";
-            this.AddTaskBtn.UseVisualStyleBackColor = false;
-            this.AddTaskBtn.Click += new System.EventHandler(this.AddTaskBtn_Click);
-            // 
-            // AutomationTaskComboBox
-            // 
-            this.AutomationTaskComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AutomationTaskComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
-            this.AutomationTaskComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AutomationTaskComboBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutomationTaskComboBox.ForeColor = System.Drawing.Color.Silver;
-            this.AutomationTaskComboBox.FormattingEnabled = true;
-            this.AutomationTaskComboBox.Items.AddRange(new object[] {
-            "Randomize Intensity",
-            "Randomize Start Byte",
-            "Randomize End Byte",
-            "Randomize both Start byte and End byte",
-            "Run Corruption"});
-            this.AutomationTaskComboBox.Location = new System.Drawing.Point(474, 35);
-            this.AutomationTaskComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.AutomationTaskComboBox.Name = "AutomationTaskComboBox";
-            this.AutomationTaskComboBox.Size = new System.Drawing.Size(154, 21);
-            this.AutomationTaskComboBox.TabIndex = 168;
-            this.AutomationTaskComboBox.Text = "Randomize Intensity";
-            // 
-            // RemoveTaskBtn
-            // 
-            this.RemoveTaskBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.RemoveTaskBtn.FlatAppearance.BorderSize = 0;
-            this.RemoveTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveTaskBtn.ForeColor = System.Drawing.Color.OrangeRed;
-            this.RemoveTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RemoveTaskBtn.Location = new System.Drawing.Point(474, 59);
-            this.RemoveTaskBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.RemoveTaskBtn.Name = "RemoveTaskBtn";
-            this.RemoveTaskBtn.Size = new System.Drawing.Size(152, 22);
-            this.RemoveTaskBtn.TabIndex = 164;
-            this.RemoveTaskBtn.Text = "Remove Selected Task";
-            this.RemoveTaskBtn.UseVisualStyleBackColor = false;
-            this.RemoveTaskBtn.Click += new System.EventHandler(this.RemoveTaskBtn_Click);
-            // 
-            // MoveTaskUpBtn
-            // 
-            this.MoveTaskUpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoveTaskUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.MoveTaskUpBtn.FlatAppearance.BorderSize = 0;
-            this.MoveTaskUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MoveTaskUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoveTaskUpBtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.MoveTaskUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MoveTaskUpBtn.Location = new System.Drawing.Point(474, 2);
-            this.MoveTaskUpBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MoveTaskUpBtn.Name = "MoveTaskUpBtn";
-            this.MoveTaskUpBtn.Size = new System.Drawing.Size(76, 29);
-            this.MoveTaskUpBtn.TabIndex = 164;
-            this.MoveTaskUpBtn.Text = "Move Task Up";
-            this.MoveTaskUpBtn.UseVisualStyleBackColor = false;
-            this.MoveTaskUpBtn.Click += new System.EventHandler(this.MoveTaskUpBtn_Click);
-            // 
-            // MoveTaskDownBtn
-            // 
-            this.MoveTaskDownBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoveTaskDownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.MoveTaskDownBtn.FlatAppearance.BorderSize = 0;
-            this.MoveTaskDownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MoveTaskDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoveTaskDownBtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.MoveTaskDownBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MoveTaskDownBtn.Location = new System.Drawing.Point(551, 2);
-            this.MoveTaskDownBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.MoveTaskDownBtn.Name = "MoveTaskDownBtn";
-            this.MoveTaskDownBtn.Size = new System.Drawing.Size(76, 29);
-            this.MoveTaskDownBtn.TabIndex = 164;
-            this.MoveTaskDownBtn.Text = "Move Task Down";
-            this.MoveTaskDownBtn.UseVisualStyleBackColor = false;
-            this.MoveTaskDownBtn.Click += new System.EventHandler(this.MoveTaskDownBtn_Click);
-            // 
             // AutomationTimer
             // 
             this.AutomationTimer.Interval = 5000;
             this.AutomationTimer.Tick += new System.EventHandler(this.AutomationTimer_Tick);
+            // 
+            // RandomByteCorruptRadioBtn
+            // 
+            this.RandomByteCorruptRadioBtn.AutoSize = true;
+            this.RandomByteCorruptRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.RandomByteCorruptRadioBtn.Checked = true;
+            this.RandomByteCorruptRadioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.RandomByteCorruptRadioBtn.Location = new System.Drawing.Point(14, 3);
+            this.RandomByteCorruptRadioBtn.Name = "RandomByteCorruptRadioBtn";
+            this.RandomByteCorruptRadioBtn.Size = new System.Drawing.Size(117, 17);
+            this.RandomByteCorruptRadioBtn.TabIndex = 169;
+            this.RandomByteCorruptRadioBtn.TabStop = true;
+            this.RandomByteCorruptRadioBtn.Text = "Random byte mode";
+            this.RandomByteCorruptRadioBtn.UseVisualStyleBackColor = false;
+            this.RandomByteCorruptRadioBtn.CheckedChanged += new System.EventHandler(this.RandomByteCorruptRadioBtn_CheckedChanged);
+            // 
+            // CorruptEverynthByteRadioBtn
+            // 
+            this.CorruptEverynthByteRadioBtn.AutoSize = true;
+            this.CorruptEverynthByteRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.CorruptEverynthByteRadioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.CorruptEverynthByteRadioBtn.Location = new System.Drawing.Point(131, 3);
+            this.CorruptEverynthByteRadioBtn.Name = "CorruptEverynthByteRadioBtn";
+            this.CorruptEverynthByteRadioBtn.Size = new System.Drawing.Size(158, 17);
+            this.CorruptEverynthByteRadioBtn.TabIndex = 170;
+            this.CorruptEverynthByteRadioBtn.Text = "Corrupt every nth byte mode";
+            this.CorruptEverynthByteRadioBtn.UseVisualStyleBackColor = false;
+            this.CorruptEverynthByteRadioBtn.CheckedChanged += new System.EventHandler(this.CorruptEverynthByteRadioBtn_CheckedChanged);
             // 
             // Form1
             // 
@@ -2090,21 +2107,21 @@
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).EndInit();
-            this.AboutTab.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.AutomationPage.ResumeLayout(false);
             this.AutomationPage.PerformLayout();
             this.AutoCorruptPanel.ResumeLayout(false);
             this.AutoCorruptPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).EndInit();
+            this.AboutTab.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.StartEmulatorPanel.ResumeLayout(false);
             this.StartEmulatorPanel.PerformLayout();
             this.Panel2.ResumeLayout(false);
             this.FileSelectPanel.ResumeLayout(false);
             this.FileSelectPanel.PerformLayout();
             this.contextStripStash.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2136,7 +2153,6 @@
         private System.Windows.Forms.Panel Panel4;
         internal System.Windows.Forms.NumericUpDown StartByteNumb;
         private System.Windows.Forms.TrackBar StartByteTrackBar;
-        internal System.Windows.Forms.CheckBox CorruptnthbyteCheckbox;
         internal System.Windows.Forms.CheckBox AllowLargeIntensity;
         private System.Windows.Forms.Label StartBytelbl;
         internal System.Windows.Forms.GroupBox EverynthbyteGroupbox;
@@ -2231,6 +2247,8 @@
         internal System.Windows.Forms.Button MoveTaskUpBtn;
         internal System.Windows.Forms.Button MoveTaskDownBtn;
         private System.Windows.Forms.Timer AutomationTimer;
+        private System.Windows.Forms.RadioButton CorruptEverynthByteRadioBtn;
+        private System.Windows.Forms.RadioButton RandomByteCorruptRadioBtn;
     }
 }
 

@@ -284,11 +284,6 @@ namespace LunarROMCorruptor
             EveryNthByte.Value = CorrupteverynthbyteTrackbar.Value;
         }
 
-        private void CorruptnthbyteCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            EverynthbyteGroupbox.Visible = CorruptnthbyteCheckbox.Checked;
-        }
-
         private void IntensityTrackbar_Scroll(object sender, EventArgs e)
         {
             Intensity.Value = IntensityTrackbar.Value;
@@ -476,7 +471,7 @@ namespace LunarROMCorruptor
                 }
 
                 int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
-                if (CorruptnthbyteCheckbox.Checked)
+                if (CorruptEverynthByteRadioBtn.Checked)
                 {
                     tmpintensity = (int)EveryNthByte.Value;
                 }
@@ -509,7 +504,7 @@ namespace LunarROMCorruptor
                     SaveasTxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
 
                     //Start Corruption in CorruptionCore
-                    ROM = CorruptionCore.StartCorruption(ROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text);
+                    ROM = CorruptionCore.StartCorruption(ROM, StartByte, EndByte, CorruptEverynthByteRadioBtn.Checked, tmpintensity, CorruptionEngineComboBox.Text);
                     //Check if the corruption returned anything
                     if (ROM != null)
                     {
@@ -575,7 +570,7 @@ namespace LunarROMCorruptor
                 }
 
                 int tmpintensity; //See which corruption intensity type was selected and give the correct intensity value. Used for the FinROm = CorruptionCore.CorruptROM function
-                if (CorruptnthbyteCheckbox.Checked)
+                if (CorruptEverynthByteRadioBtn.Checked)
                 {
                     tmpintensity = (int)EveryNthByte.Value;
                 }
@@ -599,7 +594,7 @@ namespace LunarROMCorruptor
 
                 byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM. FinROM will contain the corrupted file when its run through the corruption engine.
 
-                FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptnthbyteCheckbox.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
+                FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptEverynthByteRadioBtn.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
 
                 if (FinROM == null) //check if the corruption returned anything.
                 {
@@ -1191,7 +1186,7 @@ namespace LunarROMCorruptor
                         break;
                     case "Randomize Intensity":
                         //Check if nth Intensity is enabled
-                        if (CorruptnthbyteCheckbox.Checked)
+                        if (CorruptEverynthByteRadioBtn.Checked)
                         {
                             if (AllowLargeIntensity.Checked)
                             {
@@ -1245,28 +1240,53 @@ namespace LunarROMCorruptor
 
         private void MoveTaskUpBtn_Click(object sender, EventArgs e)
         {
-            //Moves selected item on automation list up
-            if (AutomationList.SelectedIndex > 0)
+            try
             {
-                int index = AutomationList.SelectedIndex;
-                object item = AutomationList.SelectedItem;
-                AutomationList.Items.Remove(item);
-                AutomationList.Items.Insert(index - 1, item);
-                AutomationList.SelectedIndex = index - 1;
+                //Moves selected item on automation list up
+                if (AutomationList.SelectedIndex > 0)
+                {
+                    int index = AutomationList.SelectedIndex;
+                    object item = AutomationList.SelectedItem;
+                    AutomationList.Items.Remove(item);
+                    AutomationList.Items.Insert(index - 1, item);
+                    AutomationList.SelectedIndex = index - 1;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("LRC Move Task Up - Insert cannot be null");
             }
         }
 
         private void MoveTaskDownBtn_Click(object sender, EventArgs e)
         {
-            //Moves selected item on automation list down
-            if (AutomationList.SelectedIndex < AutomationList.Items.Count - 1)
+            try
             {
-                int index = AutomationList.SelectedIndex;
-                object item = AutomationList.SelectedItem;
-                AutomationList.Items.Remove(item);
-                AutomationList.Items.Insert(index + 1, item);
-                AutomationList.SelectedIndex = index + 1;
+                //Moves selected item on automation list down
+                if (AutomationList.SelectedIndex < AutomationList.Items.Count - 1)
+                {
+
+                    int index = AutomationList.SelectedIndex;
+                    object item = AutomationList.SelectedItem;
+                    AutomationList.Items.Remove(item);
+                    AutomationList.Items.Insert(index + 1, item);
+                    AutomationList.SelectedIndex = index + 1;
+                }
             }
+            catch(ArgumentNullException)
+            {
+                Console.WriteLine("LRC Move Task Down - Insert cannot be null");
+            }
+        }
+
+        private void RandomByteCorruptRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            EverynthbyteGroupbox.Visible = false;
+        }
+
+        private void CorruptEverynthByteRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            EverynthbyteGroupbox.Visible = true;
         }
     }
 }
