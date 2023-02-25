@@ -16,18 +16,17 @@
 ## Features
 
 ### Corrupt Every Nth Byte and Intensity Mode
-Corrupt Every Nth Byte allows for a more "regular" corruption. (e.g. corrupt every 1st byte corrupts the entire file, corrupt every 2nd byte corrupts every 2nd byte, etc)
-Intensity allows for a more randomized corruption, the corruptor selects random addresses to corrupt.
+With Corrupt Every Nth Byte, you can apply regular corruptions to your file by specifying the interval to corrupt (e.g., every 1st byte, every 2nd byte, etc.). On the other hand, Intensity allows for randomized corruptions, where the corruptor selects random addresses to modify.
 
 ### Corrupt the way **you** want to
-This corruptor has countless ways to tune your corruption until it's just right. You control what the corruptor does with all of the options ready to be tinkered with.
+Tailor your corruption to perfection with this versatile corruptor. With countless customization options, you have complete control over how the corruptor operates, allowing you to achieve the perfect level of corruption every time.
 
 ### File Saves and Stash Saves
-When you have found the perfect corruption, you can use both the File Save and the Stash Save features.
-File save copies of the corrupted file and stores it in the "Saves" directory.
+After you've found the perfect corruption, you can choose to save your progress using either the File Save or the Stash Save features. The File Save option makes a copy of the entire corrupted file and stores it in the 'Saves' directory.
 
-Stash saves are different. Instead of saving the whole file, it saves the address of the changed byte and what the byte value is now which takes up less file size.
-Along with stash saves is the stash editor, which allows you to tune your corrupted bytes and addresses to be just right. For example, say there is a corruption that changes the colour of Mario in Super Mario Bros but the game crashes when you start it, you can use the stash editor to remove the bytes that crash it and retain the byte that changes the colour. (Similar to how the Stash Saves and Editor works on the Windows Glitch Harvester)
+On the other hand, the Stash Save feature saves only the addresses of the changed bytes and their new values, which takes up less space. In addition to the Stash Save, there's a stash editor that allows you to fine-tune the corrupted bytes and addresses to achieve the desired effect.
+
+For instance, let's say there's a corruption that alters the color of Mario in Super Mario Bros but crashes the game when you try to start it. You can use the stash editor to remove the bytes that cause the crash and retain the byte responsible for changing the color. This functionality is similar to how the Stash Saves and Editor work on the Windows Glitch Harvester.
 
 ### Engines
 Here are the following engines that come with LunarROMCorruptor
