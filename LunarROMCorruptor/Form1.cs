@@ -216,8 +216,6 @@ namespace LunarROMCorruptor
                 ROM = new byte[0];
                 //GC collection force -Forces garbage collection
                 GC.Collect();
-                //GC wait for pending finalizers
-                GC.WaitForPendingFinalizers();
                 //Load ROM into memory.
                 ROM = File.ReadAllBytes(FileLocation);
                 MaxByte = ROM.Length - 1;
@@ -644,7 +642,6 @@ namespace LunarROMCorruptor
                 //Clear FINROM and clean memory
                 FinROM = null;
                 GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
 
             CorruptButton.BackColor = Color.Green; //Change colour of the corrupt button

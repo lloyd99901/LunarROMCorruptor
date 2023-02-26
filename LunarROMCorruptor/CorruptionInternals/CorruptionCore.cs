@@ -249,6 +249,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                 //System.Threading.Thread.Sleep(300);
                 Process p = new Process();
                 p.StartInfo.FileName = EmulatorLocation;
+                p.StartInfo.UseShellExecute = false; //Start process directly without going to windows shell
                 if (OverrideArgumentsChk == false)
                     p.StartInfo.Arguments = "\"" + FileLocation + "\"";
                 else
