@@ -206,6 +206,26 @@ namespace LunarROMCorruptor.CorruptionInternals
                         }
                     }
                     break;
+
+                case "Fractal Engine":
+                    if (CorruptNthByte)
+                    {
+                        //CorruptNTH selected
+                        int i1 = StartByte;
+                        while (i1 <= EndByte)
+                        {
+                            FractalEngine.CorruptByte(ROM, i1);
+                            i1 += Intensity;
+                        }
+                    }
+                    else //Intensity Mode
+                    {
+                        for (int i1 = 0; i1 <= Intensity - 1; i1++)
+                        {
+                            FractalEngine.CorruptByte(ROM, rnd.Next(StartByte, EndByte));
+                        }
+                    }
+                    break;
                 case "Manual":
                     if (CorruptNthByte) //CorruptNTH mode
                     {

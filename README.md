@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/lloyd99901/LunarROMCorruptor)](https://github.com/lloyd99901/LunarROMCorruptor/stargazers)
 [![GitHub license](https://img.shields.io/github/license/lloyd99901/LunarROMCorruptor)](https://github.com/lloyd99901/LunarROMCorruptor/blob/master/LICENSE)
 
-## Corrupt any file using multiple different engines
+## Corrupt any file(s) (not just ROMs!) using multiple different engines
 
 ![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/preview.png)
 

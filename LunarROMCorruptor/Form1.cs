@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Media;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -53,7 +54,7 @@ namespace LunarROMCorruptor
         {
             TopLevel = false
         };
-
+        public int MainSelectedProcessID = 999999;
         public Form1()
         {
             InitializeComponent();
@@ -260,6 +261,17 @@ namespace LunarROMCorruptor
 
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
+            if (EnableProcessMemCorruptChkBox.Checked)
+            {
+                SelectProcess SelectProcessForm = new SelectProcess();
+
+                SelectProcessForm.ShowDialog();
+                MainSelectedProcessID= SelectProcessForm.SelectedProcessID; //Transfer ids
+                SelectProcessForm.Dispose();
+
+                ProcessCorruptionCore.CorruptSelectedProcess(MainSelectedProcessID);
+                return;
+            }
             //Main Function - If the user didn't cancel, load file.
             if (MainOpenFileDialog.ShowDialog() != DialogResult.Cancel)
             {
@@ -1284,6 +1296,52 @@ namespace LunarROMCorruptor
         private void CorruptEverynthByteRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             EverynthbyteGroupbox.Visible = true;
+        }
+
+        private void EnableProcessMemCorruptChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EnableProcessMemCorruptChkBox.Checked)
+            {
+                //Unload ROMS
+                UnloadROMFromMemory();
+                StartEmulatorPanel.Visible= false;
+                EngineSelectPanel.Visible= false;
+                CorruptButton.Text = "Start";
+                Openfilebtn.Text = "Load Process";
+                Changesaveasbtn.Visible = false;
+                Restorefilebtn.Visible = false;
+            }
+            else
+            {
+                StartEmulatorPanel.Visible = true;
+                EngineSelectPanel.Visible = true;
+                CorruptButton.Text = "Corrupt File";
+                Openfilebtn.Text = "Open File";
+                Changesaveasbtn.Visible = true;
+                Restorefilebtn.Visible = true;
+            }
+        }
+
+        private void UnloadROMFromMemory()
+        {
+            ROM = new byte[0];
+            //GC collection force -Forces garbage collection
+            GC.Collect();
+            //Load ROM into memory.
+            MaxByte = 1000; //Set back to default values
+            StartByteTrackBar.Value = 0;
+            StartByteTrackBar.Maximum = MaxByte;
+            EndByteTrackbar.Maximum = MaxByte;
+            EndByteTrackbar.Value = 0;
+            EndByteNumb.Maximum = MaxByte;
+            EndByteNumb.Value = 0;
+            StartByteNumb.Maximum = MaxByte;
+            StartByteNumb.Value = 0;
+            FileSelectiontxt.Text = "No file selected.";
+            SaveasTxt.Text = "No save location set.";
+            MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+            //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
+            CorruptButton.Text = "Corrupt File";
         }
     }
 }
