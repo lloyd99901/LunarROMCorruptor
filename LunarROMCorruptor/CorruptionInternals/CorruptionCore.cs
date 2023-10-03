@@ -138,7 +138,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     //Check if the merge file exists, if not throw an error
                     if (string.IsNullOrEmpty(Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text))
                     {
-                        MessageBox.Show("Merge file location is empty. Please select a file.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Merge file location is empty. Please select a file.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return null;
                     }
 

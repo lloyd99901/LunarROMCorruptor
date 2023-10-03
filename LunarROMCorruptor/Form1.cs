@@ -1,4 +1,5 @@
-﻿using LunarROMCorruptor.CorruptionInternals;
+﻿using LunarROMCorruptor.CorruptionEngines;
+using LunarROMCorruptor.CorruptionInternals;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -62,11 +63,11 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "LunarROMCorruptor - " + vernumber;
+            Text = $"{nameof(LunarROMCorruptor)} - " + vernumber;
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\")) //If file doesn't exist, assume it's the first time the program has been run and create the directory.
             {
-                MessageBox.Show("Welcome to LunarROMCorruptor!\n\nDisclaimer:\nLunarROMCorruptor is distributed under an MIT license.\n\nBy clicking OK, you agree to that license and also understand the risks and disclaimers provided.\n\nThis program can irreversibly corrupt personal or critical system data if you're not careful.\nThis program comes with no warranty of ANY kind and is provided 'AS IS'.\nYou're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.\n\nThis message will not show up again but you can read the license again by going to the 'About' tab.\n\nEnjoy!", "LunarROMCorruptor - INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Welcome to {nameof(LunarROMCorruptor)}!{Environment.NewLine}{Environment.NewLine}Disclaimer:{Environment.NewLine}{nameof(LunarROMCorruptor)} is distributed under an MIT license.{Environment.NewLine}{Environment.NewLine}By clicking OK, you agree to that license and also understand the risks and disclaimers provided.{Environment.NewLine}{Environment.NewLine}This program can irreversibly corrupt personal or critical system data if you're not careful.{Environment.NewLine}This program comes with no warranty of ANY kind and is provided 'AS IS'.{Environment.NewLine}You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.{Environment.NewLine}{Environment.NewLine}This message will not show up again but you can read the license again by going to the 'About' tab.{Environment.NewLine}{Environment.NewLine}Enjoy!", $"{nameof(LunarROMCorruptor)} - INFO", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             }
             Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
             Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
@@ -186,7 +187,7 @@ namespace LunarROMCorruptor
             //Check if the file exists, if not DONT run
             if (!File.Exists(SaveasTxt.Text))
             {
-                MessageBox.Show("The file you're trying to save doesn't exist. Please load a file first.", "LunarROMCorruptor - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The file you're trying to save doesn't exist. Please load a file first.", $"{nameof(LunarROMCorruptor)} - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -210,7 +211,7 @@ namespace LunarROMCorruptor
                 //Check if the file size is 0
                 if (new FileInfo(FileLocation).Length == 0)
                 {
-                    MessageBox.Show("The file you're trying to load is empty. Please load a valid file.", "LunarROMCorruptor - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The file you're trying to load is empty. Please load a valid file.", $"{nameof(LunarROMCorruptor)} - ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 //Discard the previous ROM loaded into memory
@@ -438,13 +439,18 @@ namespace LunarROMCorruptor
                     {
                         MessageBox.Show("The corruption queue is rather full of files.\n\nBe aware that this will impact corruption times.", "Full Queue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    if (FileSelectiontxt.Text != "---Multiple files selected---") //If this doesn't pass, that means that corrupt multiple files is checked, there are files in the queue, but the user hasn't clicked "send files to the corruptor". So this will stop accidental corruption.
+                    {
+                        MessageBox.Show("There are files waiting in the corruption queue, but they have not been sent to the corruptor.\n\nYou need to open the corruption queue and click 'Send files to the corruptor' before you can corrupt them.", "Corruption Queue Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 //For each file on the corruptionqueuelist, make sure the file is valid for use
                 for (int i = 0; i < CorruptionQueueFormSettings.CorruptionQueueList.Items.Count; i++)
                 {
                     if (!File.Exists(CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString()))
                     {
-                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " does not exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " does not exist.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -452,7 +458,7 @@ namespace LunarROMCorruptor
                 //Standard Checks of the variables that are used in the corruption process.
                 if (StartByteNumb.Value > EndByteNumb.Value)
                 {
-                    MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Start Byte cannot be greater than End Byte!", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -467,7 +473,7 @@ namespace LunarROMCorruptor
                 }
                 catch
                 {
-                    MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Start byte is incorrect or invaild.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
@@ -476,7 +482,7 @@ namespace LunarROMCorruptor
                 }
                 catch
                 {
-                    MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("End byte is incorrect or invaild.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -525,13 +531,13 @@ namespace LunarROMCorruptor
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be saved.\n\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be saved.\n\n" + ex.ToString(), $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
                         //If it didn't, show an error message
-                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be corrupted. (Corruption returned nothing)", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The file " + CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString() + " could not be corrupted. (Corruption returned nothing)", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     //Resets the text boxes to show this again.
                     FileSelectiontxt.Text = "---Multiple files selected---";
@@ -543,7 +549,7 @@ namespace LunarROMCorruptor
                 }
                 else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
                 {
-                    MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Emulator doesn't exist.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else //Use normal, one file corruption code.
@@ -551,7 +557,7 @@ namespace LunarROMCorruptor
                 //Check if the variables are valid
                 if (StartByteNumb.Value > EndByteNumb.Value)
                 {
-                    MessageBox.Show("Start Byte cannot be greater than End Byte!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Start Byte cannot be greater than End Byte!", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -566,7 +572,7 @@ namespace LunarROMCorruptor
                 }
                 catch
                 {
-                    MessageBox.Show("Start byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Start byte is incorrect or invaild.", $"Error - {nameof(LunarROMCorruptor)} ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
@@ -575,7 +581,7 @@ namespace LunarROMCorruptor
                 }
                 catch
                 {
-                    MessageBox.Show("End byte is incorrect or invaild.", "Error - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("End byte is incorrect or invaild.", $"Error - {nameof(LunarROMCorruptor)} ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -598,7 +604,7 @@ namespace LunarROMCorruptor
                 //Check if file is a valid ROM
                 if (!File.Exists(FileSelectiontxt.Text))
                 {
-                    MessageBox.Show("File doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("File doesn't exist.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -608,7 +614,7 @@ namespace LunarROMCorruptor
 
                 if (FinROM == null) //check if the corruption returned anything.
                 {
-                    MessageBox.Show("Corrupted ROM is null. If you haven't got an error explaining what went wrong, please report this to the developers with details of what you did.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The corruption engine returned nothing, this should not happen. Please contact the developers with details of your actions for troubleshooting this issue. Your ROM hasn't been saved to.", $"Fatal Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -619,7 +625,7 @@ namespace LunarROMCorruptor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Unable to save file.\n" + ex.ToString(), "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Unable to save file.\n" + ex.ToString(), $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -634,7 +640,7 @@ namespace LunarROMCorruptor
                 }
                 else if (Runemulatorchbox.Checked && !File.Exists(EmulatorLocationtxt.Text))
                 {
-                    MessageBox.Show("Emulator doesn't exist.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Emulator doesn't exist.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 if (EnableStashSavesChkbox.Checked)
@@ -750,9 +756,9 @@ namespace LunarROMCorruptor
 
             if (StashBytesList.Items[0].ToString() == "LargeStash")
             {
-                if (MessageBox.Show("This is a large stash which may take awhile to load in the future. Are you sure you want to save anyway?", "",
+                if (MessageBox.Show("This is a large stash which may take awhile to load in the future. Are you sure you want to save anyway?", $"Warning - {nameof(LunarROMCorruptor)}",
  MessageBoxButtons.YesNo,
- MessageBoxIcon.Question) == DialogResult.Yes)
+ MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
                     foreach (var listitem in InternalStashItems)
                     {
@@ -861,7 +867,7 @@ namespace LunarROMCorruptor
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or you have authorization to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or you have authorization to that directory.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -881,12 +887,12 @@ namespace LunarROMCorruptor
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Argument error (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Argument error (FileSave). Did you select an item?", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (DirectoryNotFoundException)
             {
                 //Show error message
-                MessageBox.Show("File not found (FileSave). Did you select an item?", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("File not found (FileSave). Did you select an item?", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -961,7 +967,7 @@ namespace LunarROMCorruptor
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or have authorization to that directory.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Access Denied or nothing was selected for deletion. Check if you can write or have authorization to that directory.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -970,7 +976,7 @@ namespace LunarROMCorruptor
             //Check if a StashFile is selected before running code
             if (StashFileList.SelectedItems.Count == 0)
             {
-                MessageBox.Show("No StashFile selected!", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No StashFile selected!", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             CorruptUsingStashFile(Application.StartupPath + "\\CorruptionStashList\\" + StashFileList.GetItemText(StashFileList.SelectedItem));
@@ -981,7 +987,7 @@ namespace LunarROMCorruptor
             //Check if ROM isn't null before running code
             if (ROM == null)
             {
-                MessageBox.Show("No ROM loaded!" + Environment.NewLine + "Please load a ROM first.", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No ROM loaded!" + Environment.NewLine + "Please load a ROM first.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             byte[] FinROM = ROM.Clone() as byte[];
@@ -996,7 +1002,7 @@ namespace LunarROMCorruptor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Split error in line: {line} {Environment.NewLine} Error: {ex.Message}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Split error in line: {line} {Environment.NewLine} Error: {ex.Message}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Object i;
@@ -1007,7 +1013,7 @@ namespace LunarROMCorruptor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Location error in line: {line} {Environment.NewLine} Error: {ex.Message}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Location error in line: {line} {Environment.NewLine} Error: {ex.Message}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
@@ -1016,13 +1022,13 @@ namespace LunarROMCorruptor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Corruption error in line: {line} {Environment.NewLine} Error: {ex.Message}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Corruption error in line: {line} {Environment.NewLine} Error: {ex.Message}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 //Check if the byte within the correct margins. If not, throw an error.
                 if (Convert.ToInt32(i) > FinROM.Length)
                 {
-                    MessageBox.Show($"Byte location is out of bounds! {Environment.NewLine}Byte location: {i}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Byte location is out of bounds! {Environment.NewLine}Byte location: {i}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
@@ -1031,12 +1037,12 @@ namespace LunarROMCorruptor
                 }
                 catch (IndexOutOfRangeException ex1)
                 {
-                    MessageBox.Show($"Stash item location is invalid! {Environment.NewLine} Error: {ex1}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Stash item location is invalid! {Environment.NewLine} Error: {ex1}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"ROM byte stash corruption failed! Corruption cannot continue. {Environment.NewLine} Error: {ex}", "Error - LunarROMCorruptor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"ROM byte stash corruption failed! Corruption cannot continue. {Environment.NewLine} Error: {ex}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -1243,6 +1249,14 @@ namespace LunarROMCorruptor
                         EndByteNumb.Value = rnd.Next(StartByteTrackBar.Value, EndByteTrackbar.Maximum);
 
                         break;
+                    case "Randomize Corruption Engine":
+                        //Select a random item in the CorruptionEngineComboBox
+                        CorruptionEngineComboBox.Text = CorruptionEngineComboBox.Items[rnd.Next(0,CorruptionEngineComboBox.Items.Count)].ToString();
+                        if(CorruptionEngineComboBox.Text == "Merge Engine" && Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text == null) // Prevents corruption from halting if there is no file in the Merge Engine while in Automation mode.
+                        {
+                            CorruptionEngineComboBox.Text = "Nightmare Engine";
+                        }
+                        break;
                 }
             }
         }
@@ -1342,6 +1356,11 @@ namespace LunarROMCorruptor
             MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
             //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
             CorruptButton.Text = "Corrupt File";
+        }
+
+        private void StashAndAutoSaveHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show($"Auto Saves and Stash Files are two different ways of saving your corruptions.{Environment.NewLine}{Environment.NewLine}Auto Saves save the entire file after corruption in the Auto Saves folder in the {nameof(LunarROMCorruptor)} directory.{Environment.NewLine}{Environment.NewLine}Stash files only save the bytes that are changed, so it takes up less storage space and allow the user to also edit each byte that was affected by using the Stash Editor. (e.g. changing a characters colour)", $"{nameof(LunarROMCorruptor)} - Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

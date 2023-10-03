@@ -33,8 +33,11 @@
             this.FilesaveReloadbtn = new System.Windows.Forms.Button();
             this.FilesaveRenameBtn = new System.Windows.Forms.Button();
             this.FileSaveTab = new System.Windows.Forms.TabPage();
+            this.StashAndAutoSaveHelp = new System.Windows.Forms.LinkLabel();
+            this.FilesaveSavebtn = new System.Windows.Forms.Button();
             this.FileSaveOpenLocationBtn = new System.Windows.Forms.Button();
             this.FilesaveDelete = new System.Windows.Forms.Button();
+            this.FilesaveCopysavetobtn = new System.Windows.Forms.Button();
             this.FilesaveList = new System.Windows.Forms.ListBox();
             this.FilesaveEnableAutoSaves = new System.Windows.Forms.CheckBox();
             this.FileSavestitlelbl = new System.Windows.Forms.Label();
@@ -72,10 +75,13 @@
             this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
             this.StashBytesList = new System.Windows.Forms.ListBox();
             this.StashFileList = new System.Windows.Forms.ListBox();
+            this.StashEditorbtn = new System.Windows.Forms.Button();
             this.DeleteStash = new System.Windows.Forms.Button();
+            this.Corruptusingstashbtn = new System.Windows.Forms.Button();
             this.RefreshStash = new System.Windows.Forms.Button();
             this.RenameStash = new System.Windows.Forms.Button();
             this.TransferStash = new System.Windows.Forms.Button();
+            this.DragandDropICON = new System.Windows.Forms.PictureBox();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.CorruptionEngineTab = new System.Windows.Forms.TabPage();
             this.ManualEnginePanel = new System.Windows.Forms.Panel();
@@ -131,13 +137,19 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AboutVerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.StartEmulatorPanel = new System.Windows.Forms.Panel();
             this.ProgramToRunlbl = new System.Windows.Forms.Label();
+            this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.CorruptButton = new System.Windows.Forms.Button();
             this.SaveasTxt = new System.Windows.Forms.TextBox();
             this.FileSelectPanel = new System.Windows.Forms.Panel();
             this.EngineSelectPanel = new System.Windows.Forms.Panel();
             this.CorruptionQueueBtn = new System.Windows.Forms.Button();
+            this.Restorefilebtn = new System.Windows.Forms.Button();
+            this.Changesaveasbtn = new System.Windows.Forms.Button();
+            this.Openfilebtn = new System.Windows.Forms.Button();
             this.FileSelectiontxt = new System.Windows.Forms.TextBox();
             this.EmulatorFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -147,17 +159,6 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutomationTimer = new System.Windows.Forms.Timer(this.components);
-            this.StashEditorbtn = new System.Windows.Forms.Button();
-            this.Corruptusingstashbtn = new System.Windows.Forms.Button();
-            this.DragandDropICON = new System.Windows.Forms.PictureBox();
-            this.FilesaveSavebtn = new System.Windows.Forms.Button();
-            this.FilesaveCopysavetobtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BrowseEmulatorbutton = new System.Windows.Forms.Button();
-            this.CorruptButton = new System.Windows.Forms.Button();
-            this.Restorefilebtn = new System.Windows.Forms.Button();
-            this.Changesaveasbtn = new System.Windows.Forms.Button();
-            this.Openfilebtn = new System.Windows.Forms.Button();
             this.FileSaveTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteNumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndByteTrackbar)).BeginInit();
@@ -171,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Intensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).BeginInit();
             this.FileCorruptionTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
             this.MainTabControl.SuspendLayout();
             this.CorruptionEngineTab.SuspendLayout();
             this.ManualEnginePanel.SuspendLayout();
@@ -194,13 +196,12 @@
             this.panel1.SuspendLayout();
             this.AboutTab.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StartEmulatorPanel.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.FileSelectPanel.SuspendLayout();
             this.EngineSelectPanel.SuspendLayout();
             this.contextStripStash.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // FilesaveReloadbtn
@@ -238,6 +239,7 @@
             // FileSaveTab
             // 
             this.FileSaveTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.FileSaveTab.Controls.Add(this.StashAndAutoSaveHelp);
             this.FileSaveTab.Controls.Add(this.FilesaveSavebtn);
             this.FileSaveTab.Controls.Add(this.FilesaveReloadbtn);
             this.FileSaveTab.Controls.Add(this.FileSaveOpenLocationBtn);
@@ -253,6 +255,36 @@
             this.FileSaveTab.Size = new System.Drawing.Size(642, 251);
             this.FileSaveTab.TabIndex = 4;
             this.FileSaveTab.Text = "File Saves";
+            // 
+            // StashAndAutoSaveHelp
+            // 
+            this.StashAndAutoSaveHelp.AutoSize = true;
+            this.StashAndAutoSaveHelp.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.StashAndAutoSaveHelp.Location = new System.Drawing.Point(352, 7);
+            this.StashAndAutoSaveHelp.Name = "StashAndAutoSaveHelp";
+            this.StashAndAutoSaveHelp.Size = new System.Drawing.Size(283, 13);
+            this.StashAndAutoSaveHelp.TabIndex = 161;
+            this.StashAndAutoSaveHelp.TabStop = true;
+            this.StashAndAutoSaveHelp.Text = "What\'s the difference between stash files and auto saves?";
+            this.StashAndAutoSaveHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StashAndAutoSaveHelp_LinkClicked);
+            // 
+            // FilesaveSavebtn
+            // 
+            this.FilesaveSavebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilesaveSavebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.FilesaveSavebtn.FlatAppearance.BorderSize = 0;
+            this.FilesaveSavebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilesaveSavebtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.FilesaveSavebtn.Image = global::LunarROMCorruptor.Properties.Resources.Save;
+            this.FilesaveSavebtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.FilesaveSavebtn.Location = new System.Drawing.Point(495, 27);
+            this.FilesaveSavebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FilesaveSavebtn.Name = "FilesaveSavebtn";
+            this.FilesaveSavebtn.Size = new System.Drawing.Size(140, 88);
+            this.FilesaveSavebtn.TabIndex = 160;
+            this.FilesaveSavebtn.Text = "Save";
+            this.FilesaveSavebtn.UseVisualStyleBackColor = false;
+            this.FilesaveSavebtn.Click += new System.EventHandler(this.FilesaveSavebtn_Click);
             // 
             // FileSaveOpenLocationBtn
             // 
@@ -287,6 +319,25 @@
             this.FilesaveDelete.UseVisualStyleBackColor = false;
             this.FilesaveDelete.Click += new System.EventHandler(this.FilesaveDelete_Click);
             // 
+            // FilesaveCopysavetobtn
+            // 
+            this.FilesaveCopysavetobtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilesaveCopysavetobtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.FilesaveCopysavetobtn.FlatAppearance.BorderSize = 0;
+            this.FilesaveCopysavetobtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilesaveCopysavetobtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.FilesaveCopysavetobtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
+            this.FilesaveCopysavetobtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.FilesaveCopysavetobtn.Location = new System.Drawing.Point(495, 116);
+            this.FilesaveCopysavetobtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FilesaveCopysavetobtn.Name = "FilesaveCopysavetobtn";
+            this.FilesaveCopysavetobtn.Size = new System.Drawing.Size(140, 58);
+            this.FilesaveCopysavetobtn.TabIndex = 158;
+            this.FilesaveCopysavetobtn.Text = "Copy Save to Corrupted File";
+            this.FilesaveCopysavetobtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.FilesaveCopysavetobtn.UseVisualStyleBackColor = false;
+            this.FilesaveCopysavetobtn.Click += new System.EventHandler(this.FilesaveCopysavetobtn_Click);
+            // 
             // FilesaveList
             // 
             this.FilesaveList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -301,7 +352,7 @@
             this.FilesaveList.Location = new System.Drawing.Point(12, 27);
             this.FilesaveList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FilesaveList.Name = "FilesaveList";
-            this.FilesaveList.Size = new System.Drawing.Size(479, 231);
+            this.FilesaveList.Size = new System.Drawing.Size(479, 219);
             this.FilesaveList.TabIndex = 155;
             // 
             // FilesaveEnableAutoSaves
@@ -877,6 +928,24 @@
             this.StashFileList.TabIndex = 158;
             this.StashFileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StashList_MouseDown);
             // 
+            // StashEditorbtn
+            // 
+            this.StashEditorbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StashEditorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.StashEditorbtn.FlatAppearance.BorderSize = 0;
+            this.StashEditorbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StashEditorbtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.StashEditorbtn.Image = global::LunarROMCorruptor.Properties.Resources.Edit;
+            this.StashEditorbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StashEditorbtn.Location = new System.Drawing.Point(466, 195);
+            this.StashEditorbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.StashEditorbtn.Name = "StashEditorbtn";
+            this.StashEditorbtn.Size = new System.Drawing.Size(172, 23);
+            this.StashEditorbtn.TabIndex = 0;
+            this.StashEditorbtn.Text = "Stash Editor";
+            this.StashEditorbtn.UseVisualStyleBackColor = false;
+            this.StashEditorbtn.Click += new System.EventHandler(this.StashEditorbtn_Click);
+            // 
             // DeleteStash
             // 
             this.DeleteStash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -893,6 +962,25 @@
             this.DeleteStash.Text = "Delete";
             this.DeleteStash.UseVisualStyleBackColor = false;
             this.DeleteStash.Click += new System.EventHandler(this.DeleteStash_Click);
+            // 
+            // Corruptusingstashbtn
+            // 
+            this.Corruptusingstashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Corruptusingstashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Corruptusingstashbtn.FlatAppearance.BorderSize = 0;
+            this.Corruptusingstashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Corruptusingstashbtn.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corruptusingstashbtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.Corruptusingstashbtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
+            this.Corruptusingstashbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Corruptusingstashbtn.Location = new System.Drawing.Point(466, 171);
+            this.Corruptusingstashbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Corruptusingstashbtn.Name = "Corruptusingstashbtn";
+            this.Corruptusingstashbtn.Size = new System.Drawing.Size(172, 23);
+            this.Corruptusingstashbtn.TabIndex = 0;
+            this.Corruptusingstashbtn.Text = "Corrupt using Selected Stash";
+            this.Corruptusingstashbtn.UseVisualStyleBackColor = false;
+            this.Corruptusingstashbtn.Click += new System.EventHandler(this.Corruptusingstash_Click);
             // 
             // RefreshStash
             // 
@@ -947,6 +1035,19 @@
             this.TransferStash.UseVisualStyleBackColor = false;
             this.TransferStash.Click += new System.EventHandler(this.TransferStash_Click);
             // 
+            // DragandDropICON
+            // 
+            this.DragandDropICON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
+            this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
+            this.DragandDropICON.Location = new System.Drawing.Point(2, 3);
+            this.DragandDropICON.Name = "DragandDropICON";
+            this.DragandDropICON.Size = new System.Drawing.Size(638, 245);
+            this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.DragandDropICON.TabIndex = 164;
+            this.DragandDropICON.TabStop = false;
+            this.DragandDropICON.Visible = false;
+            // 
             // MainTabControl
             // 
             this.MainTabControl.Controls.Add(this.FileCorruptionTab);
@@ -992,7 +1093,7 @@
             this.ManualEnginePanel.Location = new System.Drawing.Point(6, 6);
             this.ManualEnginePanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManualEnginePanel.Name = "ManualEnginePanel";
-            this.ManualEnginePanel.Size = new System.Drawing.Size(629, 257);
+            this.ManualEnginePanel.Size = new System.Drawing.Size(629, 239);
             this.ManualEnginePanel.TabIndex = 137;
             this.ManualEnginePanel.Tag = "color:normal";
             // 
@@ -1505,6 +1606,7 @@
             "Randomize Start Byte",
             "Randomize End Byte",
             "Randomize both Start byte and End byte",
+            "Randomize Corruption Engine",
             "Run Corruption"});
             this.AutomationTaskComboBox.Location = new System.Drawing.Point(474, 35);
             this.AutomationTaskComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1781,6 +1883,16 @@
             this.label1.TabIndex = 158;
             this.label1.Text = "LunarROMCorruptor";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 112);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // StartEmulatorPanel
             // 
             this.StartEmulatorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
@@ -1812,6 +1924,23 @@
             this.ProgramToRunlbl.TabIndex = 73;
             this.ProgramToRunlbl.Text = "Emulator/Program to run:";
             // 
+            // BrowseEmulatorbutton
+            // 
+            this.BrowseEmulatorbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(100)))));
+            this.BrowseEmulatorbutton.FlatAppearance.BorderSize = 0;
+            this.BrowseEmulatorbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BrowseEmulatorbutton.ForeColor = System.Drawing.Color.Turquoise;
+            this.BrowseEmulatorbutton.Image = global::LunarROMCorruptor.Properties.Resources.Joystick;
+            this.BrowseEmulatorbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BrowseEmulatorbutton.Location = new System.Drawing.Point(10, 29);
+            this.BrowseEmulatorbutton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BrowseEmulatorbutton.Name = "BrowseEmulatorbutton";
+            this.BrowseEmulatorbutton.Size = new System.Drawing.Size(151, 22);
+            this.BrowseEmulatorbutton.TabIndex = 80;
+            this.BrowseEmulatorbutton.Text = "Select Program";
+            this.BrowseEmulatorbutton.UseVisualStyleBackColor = false;
+            this.BrowseEmulatorbutton.Click += new System.EventHandler(this.BrowseEmulatorbutton_Click);
+            // 
             // Panel2
             // 
             this.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(120)))));
@@ -1823,6 +1952,28 @@
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(650, 52);
             this.Panel2.TabIndex = 141;
+            // 
+            // CorruptButton
+            // 
+            this.CorruptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.CorruptButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CorruptButton.FlatAppearance.BorderSize = 0;
+            this.CorruptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CorruptButton.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.CorruptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.CorruptButton.Image = global::LunarROMCorruptor.Properties.Resources.SendSmallGray;
+            this.CorruptButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CorruptButton.Location = new System.Drawing.Point(0, 0);
+            this.CorruptButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CorruptButton.Name = "CorruptButton";
+            this.CorruptButton.Size = new System.Drawing.Size(648, 50);
+            this.CorruptButton.TabIndex = 1;
+            this.CorruptButton.TabStop = false;
+            this.CorruptButton.Tag = "";
+            this.CorruptButton.Text = "Corrupt File";
+            this.CorruptButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CorruptButton.UseVisualStyleBackColor = false;
+            this.CorruptButton.Click += new System.EventHandler(this.CorruptButton_Click);
             // 
             // SaveasTxt
             // 
@@ -1883,6 +2034,58 @@
             this.CorruptionQueueBtn.Visible = false;
             this.CorruptionQueueBtn.Click += new System.EventHandler(this.CorruptionQueueBtn_Click);
             // 
+            // Restorefilebtn
+            // 
+            this.Restorefilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Restorefilebtn.FlatAppearance.BorderSize = 0;
+            this.Restorefilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Restorefilebtn.ForeColor = System.Drawing.Color.SpringGreen;
+            this.Restorefilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Restore;
+            this.Restorefilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Restorefilebtn.Location = new System.Drawing.Point(0, 48);
+            this.Restorefilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Restorefilebtn.Name = "Restorefilebtn";
+            this.Restorefilebtn.Size = new System.Drawing.Size(155, 22);
+            this.Restorefilebtn.TabIndex = 163;
+            this.Restorefilebtn.Text = "Restore";
+            this.Restorefilebtn.UseVisualStyleBackColor = false;
+            this.Restorefilebtn.Click += new System.EventHandler(this.Restorefilebtn_Click);
+            // 
+            // Changesaveasbtn
+            // 
+            this.Changesaveasbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Changesaveasbtn.FlatAppearance.BorderSize = 0;
+            this.Changesaveasbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Changesaveasbtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.Changesaveasbtn.Image = global::LunarROMCorruptor.Properties.Resources.Save;
+            this.Changesaveasbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Changesaveasbtn.Location = new System.Drawing.Point(0, 24);
+            this.Changesaveasbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Changesaveasbtn.Name = "Changesaveasbtn";
+            this.Changesaveasbtn.Size = new System.Drawing.Size(155, 23);
+            this.Changesaveasbtn.TabIndex = 1;
+            this.Changesaveasbtn.Text = "Change Save to";
+            this.Changesaveasbtn.UseVisualStyleBackColor = false;
+            this.Changesaveasbtn.Click += new System.EventHandler(this.Changesaveasbtn_Click);
+            // 
+            // Openfilebtn
+            // 
+            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Openfilebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Openfilebtn.FlatAppearance.BorderSize = 0;
+            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Openfilebtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
+            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Openfilebtn.Location = new System.Drawing.Point(0, 0);
+            this.Openfilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Openfilebtn.Name = "Openfilebtn";
+            this.Openfilebtn.Size = new System.Drawing.Size(155, 23);
+            this.Openfilebtn.TabIndex = 0;
+            this.Openfilebtn.Text = "Open File";
+            this.Openfilebtn.UseVisualStyleBackColor = false;
+            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
+            // 
             // FileSelectiontxt
             // 
             this.FileSelectiontxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1942,194 +2145,6 @@
             this.AutomationTimer.Interval = 5000;
             this.AutomationTimer.Tick += new System.EventHandler(this.AutomationTimer_Tick);
             // 
-            // StashEditorbtn
-            // 
-            this.StashEditorbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StashEditorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.StashEditorbtn.FlatAppearance.BorderSize = 0;
-            this.StashEditorbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StashEditorbtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.StashEditorbtn.Image = global::LunarROMCorruptor.Properties.Resources.Edit;
-            this.StashEditorbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StashEditorbtn.Location = new System.Drawing.Point(466, 195);
-            this.StashEditorbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.StashEditorbtn.Name = "StashEditorbtn";
-            this.StashEditorbtn.Size = new System.Drawing.Size(172, 23);
-            this.StashEditorbtn.TabIndex = 0;
-            this.StashEditorbtn.Text = "Stash Editor";
-            this.StashEditorbtn.UseVisualStyleBackColor = false;
-            this.StashEditorbtn.Click += new System.EventHandler(this.StashEditorbtn_Click);
-            // 
-            // Corruptusingstashbtn
-            // 
-            this.Corruptusingstashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Corruptusingstashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.Corruptusingstashbtn.FlatAppearance.BorderSize = 0;
-            this.Corruptusingstashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Corruptusingstashbtn.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corruptusingstashbtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.Corruptusingstashbtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
-            this.Corruptusingstashbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Corruptusingstashbtn.Location = new System.Drawing.Point(466, 171);
-            this.Corruptusingstashbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Corruptusingstashbtn.Name = "Corruptusingstashbtn";
-            this.Corruptusingstashbtn.Size = new System.Drawing.Size(172, 23);
-            this.Corruptusingstashbtn.TabIndex = 0;
-            this.Corruptusingstashbtn.Text = "Corrupt using Selected Stash";
-            this.Corruptusingstashbtn.UseVisualStyleBackColor = false;
-            this.Corruptusingstashbtn.Click += new System.EventHandler(this.Corruptusingstash_Click);
-            // 
-            // DragandDropICON
-            // 
-            this.DragandDropICON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
-            this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
-            this.DragandDropICON.Location = new System.Drawing.Point(2, 3);
-            this.DragandDropICON.Name = "DragandDropICON";
-            this.DragandDropICON.Size = new System.Drawing.Size(638, 245);
-            this.DragandDropICON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.DragandDropICON.TabIndex = 164;
-            this.DragandDropICON.TabStop = false;
-            this.DragandDropICON.Visible = false;
-            // 
-            // FilesaveSavebtn
-            // 
-            this.FilesaveSavebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilesaveSavebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.FilesaveSavebtn.FlatAppearance.BorderSize = 0;
-            this.FilesaveSavebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilesaveSavebtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.FilesaveSavebtn.Image = global::LunarROMCorruptor.Properties.Resources.Save;
-            this.FilesaveSavebtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.FilesaveSavebtn.Location = new System.Drawing.Point(495, 27);
-            this.FilesaveSavebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.FilesaveSavebtn.Name = "FilesaveSavebtn";
-            this.FilesaveSavebtn.Size = new System.Drawing.Size(140, 88);
-            this.FilesaveSavebtn.TabIndex = 160;
-            this.FilesaveSavebtn.Text = "Save";
-            this.FilesaveSavebtn.UseVisualStyleBackColor = false;
-            this.FilesaveSavebtn.Click += new System.EventHandler(this.FilesaveSavebtn_Click);
-            // 
-            // FilesaveCopysavetobtn
-            // 
-            this.FilesaveCopysavetobtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilesaveCopysavetobtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.FilesaveCopysavetobtn.FlatAppearance.BorderSize = 0;
-            this.FilesaveCopysavetobtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilesaveCopysavetobtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.FilesaveCopysavetobtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
-            this.FilesaveCopysavetobtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.FilesaveCopysavetobtn.Location = new System.Drawing.Point(495, 116);
-            this.FilesaveCopysavetobtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.FilesaveCopysavetobtn.Name = "FilesaveCopysavetobtn";
-            this.FilesaveCopysavetobtn.Size = new System.Drawing.Size(140, 58);
-            this.FilesaveCopysavetobtn.TabIndex = 158;
-            this.FilesaveCopysavetobtn.Text = "Copy Save to Corrupted File";
-            this.FilesaveCopysavetobtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.FilesaveCopysavetobtn.UseVisualStyleBackColor = false;
-            this.FilesaveCopysavetobtn.Click += new System.EventHandler(this.FilesaveCopysavetobtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 112);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // BrowseEmulatorbutton
-            // 
-            this.BrowseEmulatorbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(100)))));
-            this.BrowseEmulatorbutton.FlatAppearance.BorderSize = 0;
-            this.BrowseEmulatorbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BrowseEmulatorbutton.ForeColor = System.Drawing.Color.Turquoise;
-            this.BrowseEmulatorbutton.Image = global::LunarROMCorruptor.Properties.Resources.Joystick;
-            this.BrowseEmulatorbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BrowseEmulatorbutton.Location = new System.Drawing.Point(10, 29);
-            this.BrowseEmulatorbutton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.BrowseEmulatorbutton.Name = "BrowseEmulatorbutton";
-            this.BrowseEmulatorbutton.Size = new System.Drawing.Size(151, 22);
-            this.BrowseEmulatorbutton.TabIndex = 80;
-            this.BrowseEmulatorbutton.Text = "Select Program";
-            this.BrowseEmulatorbutton.UseVisualStyleBackColor = false;
-            this.BrowseEmulatorbutton.Click += new System.EventHandler(this.BrowseEmulatorbutton_Click);
-            // 
-            // CorruptButton
-            // 
-            this.CorruptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.CorruptButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CorruptButton.FlatAppearance.BorderSize = 0;
-            this.CorruptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CorruptButton.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.CorruptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.CorruptButton.Image = global::LunarROMCorruptor.Properties.Resources.SendSmallGray;
-            this.CorruptButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CorruptButton.Location = new System.Drawing.Point(0, 0);
-            this.CorruptButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptButton.Name = "CorruptButton";
-            this.CorruptButton.Size = new System.Drawing.Size(648, 50);
-            this.CorruptButton.TabIndex = 1;
-            this.CorruptButton.TabStop = false;
-            this.CorruptButton.Tag = "";
-            this.CorruptButton.Text = "Corrupt File";
-            this.CorruptButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.CorruptButton.UseVisualStyleBackColor = false;
-            this.CorruptButton.Click += new System.EventHandler(this.CorruptButton_Click);
-            // 
-            // Restorefilebtn
-            // 
-            this.Restorefilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.Restorefilebtn.FlatAppearance.BorderSize = 0;
-            this.Restorefilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Restorefilebtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.Restorefilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Restore;
-            this.Restorefilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Restorefilebtn.Location = new System.Drawing.Point(0, 48);
-            this.Restorefilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Restorefilebtn.Name = "Restorefilebtn";
-            this.Restorefilebtn.Size = new System.Drawing.Size(155, 22);
-            this.Restorefilebtn.TabIndex = 163;
-            this.Restorefilebtn.Text = "Restore";
-            this.Restorefilebtn.UseVisualStyleBackColor = false;
-            this.Restorefilebtn.Click += new System.EventHandler(this.Restorefilebtn_Click);
-            // 
-            // Changesaveasbtn
-            // 
-            this.Changesaveasbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.Changesaveasbtn.FlatAppearance.BorderSize = 0;
-            this.Changesaveasbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Changesaveasbtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.Changesaveasbtn.Image = global::LunarROMCorruptor.Properties.Resources.Save;
-            this.Changesaveasbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Changesaveasbtn.Location = new System.Drawing.Point(0, 24);
-            this.Changesaveasbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Changesaveasbtn.Name = "Changesaveasbtn";
-            this.Changesaveasbtn.Size = new System.Drawing.Size(155, 23);
-            this.Changesaveasbtn.TabIndex = 1;
-            this.Changesaveasbtn.Text = "Change Save to";
-            this.Changesaveasbtn.UseVisualStyleBackColor = false;
-            this.Changesaveasbtn.Click += new System.EventHandler(this.Changesaveasbtn_Click);
-            // 
-            // Openfilebtn
-            // 
-            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.Openfilebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Openfilebtn.FlatAppearance.BorderSize = 0;
-            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Openfilebtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
-            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Openfilebtn.Location = new System.Drawing.Point(0, 0);
-            this.Openfilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Openfilebtn.Name = "Openfilebtn";
-            this.Openfilebtn.Size = new System.Drawing.Size(155, 23);
-            this.Openfilebtn.TabIndex = 0;
-            this.Openfilebtn.Text = "Open File";
-            this.Openfilebtn.UseVisualStyleBackColor = false;
-            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2166,6 +2181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntensityTrackbar)).EndInit();
             this.FileCorruptionTab.ResumeLayout(false);
             this.FileCorruptionTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
             this.MainTabControl.ResumeLayout(false);
             this.CorruptionEngineTab.ResumeLayout(false);
             this.ManualEnginePanel.ResumeLayout(false);
@@ -2200,6 +2216,7 @@
             this.AboutTab.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.StartEmulatorPanel.ResumeLayout(false);
             this.StartEmulatorPanel.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -2208,8 +2225,6 @@
             this.EngineSelectPanel.ResumeLayout(false);
             this.EngineSelectPanel.PerformLayout();
             this.contextStripStash.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DragandDropICON)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2343,6 +2358,7 @@
         public System.Windows.Forms.CheckBox EnableProcessMemCorruptChkBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel ProcessMemPanel;
+        private System.Windows.Forms.LinkLabel StashAndAutoSaveHelp;
     }
 }
 

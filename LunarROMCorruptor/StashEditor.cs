@@ -188,7 +188,7 @@ namespace LunarROMCorruptor
             }
             catch
             {
-                MessageBox.Show("Can't restore stash items.", "Info - LunarROMCorruptor ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Can't restore stash items.", $"Info - {nameof(LunarROMCorruptor)} ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

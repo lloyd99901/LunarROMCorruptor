@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LunarROMCorruptor.CorruptionInternals
 {
@@ -19,7 +20,17 @@ namespace LunarROMCorruptor.CorruptionInternals
         public static bool CorruptSelectedProcess(int processID)
         {
             // Get the process by ID
-            Process process = Process.GetProcessById(processID);
+            Process process = null;
+            try
+            {
+                process = Process.GetProcessById(processID);
+
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Invaild Operation", "LRC");
+                return false;
+            }
 
             ProcessModule module = process.MainModule;
 

@@ -57,7 +57,7 @@ namespace LunarROMCorruptor
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error has occured: {Environment.NewLine + ex.Message}", "Error parsing text - LunarROMCorruptor");
+                MessageBox.Show($"An error has occured: {Environment.NewLine + ex.Message}", $"Error parsing text - {nameof(LunarROMCorruptor)}");
                 LerpSplitValueTrackBar.Value = 0;
                 LerpValueTxt.Text = "0";
             }
