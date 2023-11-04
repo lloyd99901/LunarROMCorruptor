@@ -15,11 +15,11 @@
 
 ## Features
 
-### Corrupt Every Nth Byte and Intensity Mode
-With Corrupt Every Nth Byte, you can apply regular corruptions to your file by specifying the interval to corrupt (e.g., every 1st byte, every 2nd byte, etc.). On the other hand, Intensity allows for randomized corruptions, where the corruptor selects random addresses to modify.
-
 ### Corrupt the way **you** want to
 Tailor your corruption to perfection with this versatile corruptor. With countless customization options, you have complete control over how the corruptor operates, allowing you to achieve the perfect level of corruption every time.
+
+### Corrupt Every Nth Byte and Intensity Mode
+With Corrupt Every Nth Byte, you can apply regular corruptions to your file by specifying the interval to corrupt (e.g., every 1st byte, every 2nd byte, etc.). On the other hand, Intensity allows for randomized corruptions, where the corruptor selects random addresses to modify.
 
 ### File Saves and Stash Saves
 After you've found the perfect corruption, you can choose to save your progress using either the File Save or the Stash Save features. The File Save option makes a copy of the entire corrupted file and stores it in the 'Saves' directory.
