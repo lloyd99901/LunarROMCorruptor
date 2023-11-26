@@ -1,6 +1,3 @@
-C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.exe.config
-C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.exe
-C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.pdb
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.csproj.AssemblyReference.cache
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.CorruptionEngineOptions.resources
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.CorruptionQueueForm.resources
@@ -10,6 +7,9 @@ C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\Lunar
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.StashEditor.resources
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.csproj.GenerateResource.cache
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.csproj.CoreCompileInputs.cache
+C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.SelectProcess.resources
+C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.exe.config
+C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.exe
+C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\bin\Debug\LunarROMCorruptor.pdb
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.exe
 C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.pdb
-C:\Users\LloydChr\Desktop\rb\LunarROMCorruptor\LunarROMCorruptor\obj\Debug\LunarROMCorruptor.SelectProcess.resources

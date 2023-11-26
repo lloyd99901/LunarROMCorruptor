@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StashEditor));
             this.stashListbox = new System.Windows.Forms.ListBox();
             this.RemovedItemslstbx = new System.Windows.Forms.ListBox();
             this.valueStashnum = new System.Windows.Forms.NumericUpDown();
@@ -37,18 +38,18 @@
             this.Label4 = new System.Windows.Forms.Label();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.Label1 = new System.Windows.Forms.Label();
-            this.restorebtn = new System.Windows.Forms.Button();
             this.newfilestashbtn = new System.Windows.Forms.Button();
             this.removeitembtn = new System.Windows.Forms.Button();
             this.additemsbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
-            this.Openfilebtn = new System.Windows.Forms.Button();
             this.remove50btn = new System.Windows.Forms.Button();
             this.removeselbtn = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.RemoveAllbtn = new System.Windows.Forms.Button();
             this.SaveAndCorruptbtn = new System.Windows.Forms.Button();
+            this.RemoveAllbtn = new System.Windows.Forms.Button();
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.restorebtn = new System.Windows.Forms.Button();
+            this.Openfilebtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.valueStashnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocationStash)).BeginInit();
             this.Panel1.SuspendLayout();
@@ -180,22 +181,6 @@
             this.Label1.TabIndex = 95;
             this.Label1.Text = "Create new stash item:";
             // 
-            // restorebtn
-            // 
-            this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.restorebtn.FlatAppearance.BorderSize = 0;
-            this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.restorebtn.Image = global::LunarROMCorruptor.Properties.Resources.Restore;
-            this.restorebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.restorebtn.Location = new System.Drawing.Point(12, 41);
-            this.restorebtn.Name = "restorebtn";
-            this.restorebtn.Size = new System.Drawing.Size(136, 23);
-            this.restorebtn.TabIndex = 2;
-            this.restorebtn.Text = "Restore";
-            this.restorebtn.UseVisualStyleBackColor = false;
-            this.restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
-            // 
             // newfilestashbtn
             // 
             this.newfilestashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -256,22 +241,6 @@
             this.addbtn.UseVisualStyleBackColor = false;
             this.addbtn.Click += new System.EventHandler(this.Addbtn_Click);
             // 
-            // Openfilebtn
-            // 
-            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.Openfilebtn.FlatAppearance.BorderSize = 0;
-            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
-            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
-            this.Openfilebtn.Name = "Openfilebtn";
-            this.Openfilebtn.Size = new System.Drawing.Size(136, 23);
-            this.Openfilebtn.TabIndex = 2;
-            this.Openfilebtn.Text = "Open File";
-            this.Openfilebtn.UseVisualStyleBackColor = false;
-            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
-            // 
             // remove50btn
             // 
             this.remove50btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
@@ -326,25 +295,6 @@
             this.Panel1.Size = new System.Drawing.Size(160, 529);
             this.Panel1.TabIndex = 160;
             // 
-            // SaveFileDialog
-            // 
-            this.SaveFileDialog.Filter = "All Files *.*|*.*";
-            // 
-            // RemoveAllbtn
-            // 
-            this.RemoveAllbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.RemoveAllbtn.FlatAppearance.BorderSize = 0;
-            this.RemoveAllbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveAllbtn.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveAllbtn.ForeColor = System.Drawing.Color.Aqua;
-            this.RemoveAllbtn.Location = new System.Drawing.Point(12, 128);
-            this.RemoveAllbtn.Name = "RemoveAllbtn";
-            this.RemoveAllbtn.Size = new System.Drawing.Size(136, 23);
-            this.RemoveAllbtn.TabIndex = 2;
-            this.RemoveAllbtn.Text = "Permanently Remove ALL from list";
-            this.RemoveAllbtn.UseVisualStyleBackColor = false;
-            this.RemoveAllbtn.Click += new System.EventHandler(this.RemoveAllbtn_Click);
-            // 
             // SaveAndCorruptbtn
             // 
             this.SaveAndCorruptbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -361,6 +311,57 @@
             this.SaveAndCorruptbtn.UseVisualStyleBackColor = false;
             this.SaveAndCorruptbtn.Click += new System.EventHandler(this.SaveAndCorruptbtn_Click);
             // 
+            // RemoveAllbtn
+            // 
+            this.RemoveAllbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.RemoveAllbtn.FlatAppearance.BorderSize = 0;
+            this.RemoveAllbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveAllbtn.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveAllbtn.ForeColor = System.Drawing.Color.Aqua;
+            this.RemoveAllbtn.Location = new System.Drawing.Point(12, 128);
+            this.RemoveAllbtn.Name = "RemoveAllbtn";
+            this.RemoveAllbtn.Size = new System.Drawing.Size(136, 23);
+            this.RemoveAllbtn.TabIndex = 2;
+            this.RemoveAllbtn.Text = "Permanently Remove ALL from list";
+            this.RemoveAllbtn.UseVisualStyleBackColor = false;
+            this.RemoveAllbtn.Click += new System.EventHandler(this.RemoveAllbtn_Click);
+            // 
+            // SaveFileDialog
+            // 
+            this.SaveFileDialog.Filter = "All Files *.*|*.*";
+            // 
+            // restorebtn
+            // 
+            this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.restorebtn.FlatAppearance.BorderSize = 0;
+            this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.restorebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53531;
+            this.restorebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.restorebtn.Location = new System.Drawing.Point(12, 41);
+            this.restorebtn.Name = "restorebtn";
+            this.restorebtn.Size = new System.Drawing.Size(136, 23);
+            this.restorebtn.TabIndex = 2;
+            this.restorebtn.Text = "Restore";
+            this.restorebtn.UseVisualStyleBackColor = false;
+            this.restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
+            // 
+            // Openfilebtn
+            // 
+            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.Openfilebtn.FlatAppearance.BorderSize = 0;
+            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
+            this.Openfilebtn.Name = "Openfilebtn";
+            this.Openfilebtn.Size = new System.Drawing.Size(136, 23);
+            this.Openfilebtn.TabIndex = 2;
+            this.Openfilebtn.Text = "Open File";
+            this.Openfilebtn.UseVisualStyleBackColor = false;
+            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
+            // 
             // StashEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,11 +371,11 @@
             this.Controls.Add(this.stashListbox);
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(368, 509);
             this.Name = "StashEditor";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StashEditor";
+            this.Text = "Stash Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StashEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.valueStashnum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocationStash)).EndInit();

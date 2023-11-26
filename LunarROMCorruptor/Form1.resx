@@ -148,6 +148,78 @@ This program comes with no warranty of ANY kind and is provided 'AS IS'.
 You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.
 Anti-cheat software may be triggered if corruption is used on multiplayer games.</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Restorefilebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAABIBJREFUOE+N1GlMm3UcB/BJvWbiPKLrYjxi9sKYBTsXX+gbY/SVLvpicS+Mkqgh
+        MhwiBFlmoZVrLC6ITATmyuU4yjHxyASB0pb2oZTSAqVQVgqUq+XpTY+no7R9vv5bGjvitV/yT57+8/99
+        8v31OQ7cXgDu8k7lp7k0WRzfTC4nMJvPCRkLOeFFPllFnJillAO6ikPOpSVb/r3IobsBFdepLThGj3/C
+        807l8AKzeTwC8gjI2zUX86KWUh67XpkOUM+Q8/cnW/9e8WTA5kOwiU4xpsoGWp0jdk6cEfv1n4tDxi/E
+        u2a+OLIkEEctJWJ2raIV1ku5gDaO/nPSBLjz62G4O78E3bwcMFYECcq4Jj9lgoZ8Jmw6z+wuFjGRZSET
+        tZQ5sXGxDZ7vXiB9nCSxvxJgsI8LT5cQvl4bPJ3srqUanukCeHQ5ICkRWSoiSwB2rZyJrZb3wFF9/L9B
+        /3Uu7O1CeHtsCPSx8IkRMpXDNXkWzHwBQQsRWS5GzFLCYL2iB85v/h9k6WtCuMQkYTcLrxi3Fivh0GQj
+        aMhDaH4v5e6SgGFXS3tAX7pD0N1JwC4Wnnb450vgmDgDvz4X4ZvnEDHzScKvSMKyHrjvaOQ2IRztNrg6
+        WLivIWgshY3KRICAOwuFYFcE5GEoD4H+uhfOupcA573x3iSTqgQYIKCDgM42kpCAzmb454SwKj8GQ0aG
+        pRjsRgm8ZsHO2uwFqUHXnUFNTKQzURwm/fvhBOjr4WKrRQh7qw3OVjJyK/yGYmyNZZJxC8Gs8iGTf4DO
+        G2ejco2YNq0YFebV9Vatfv4zlU7Po73Bg3+hCdDfTUYmIN1sg6OZhasRvlk+ucvZCCyfQ5/kHRT8eBLU
+        qgQxRGPhaCTsCzDby5b1WaV68uKNIVn6gGzsnhS43ckF3SQkb4sN9kYCisAYBfAbC6A3ZCJD9DyuTNWS
+        o6nybPtYvWEuPDQin+kflmUNSKnHUqC3jQvbVZKQgE4CukUILAiwNJ2F+pHX8XL9Ufzu6Ic95MSc0Qjd
+        1DTkowr8MTjMSuVKt5xS10sU6udSoL+Dy242kIRXCChiYa+DVZfH/jZ0kn235Qj78IWDKFOWQ72kQdf1
+        Xnxbcxn9A4PQTOpAqdRBiZwSy1STJ1IgjI+Dvnoem3VrsDfEYK3ZcUzlOSZV728U9r649WbLa8GfTL/E
+        tvx23DSboaRUMMwZMT0zyyrHxrelyvFGiXLiWAKMF0EfhLflNKzfD8Na6yagObRQJNqcyuZ3DGZUNikb
+        hldca14rTbOL5mXM6A1k7BnIFVRkZJQySZXqAqlKeyTJJUDyPTQ9ja26j2C93Ad77c8INp3yG/lPDMqq
+        npXpqA91hrlh3bTepRrXhGWjVIRgIYlMYSHpfhhV616htIb938g9VMfFZvVbZGXB33QC1ob74vubru0n
+        h+TUe0NShWhYqpAPDEnV5LpfMqqqkKu0r3pvxQ7F/7o96bYim2nYqjmEjaqn4BU9Ev+d3OcMyKhHB6TK
+        44My6m2JYvy0lNK8IR3THh3TGR7Yww4c+BOZJOB5Xx9bwAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Changesaveasbtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAABIZJREFUOE+NlHtMW1Ucx++mbD0KQwJlhMwIA7cCVxCcLRuRuQdEnSM3LCbGRI36
+        h9GYGBIT40zcH0icr7lNHhPGuGyUZymUR3lb3oXLowXKOy1QoLRQCqXAGHT8POcOUOMf+E1+9/zOOb/z
+        Ob9fzjmX2tW3SSlPeRwL86DQ84GhktiQ6Jh4OjzyIv2y+Py/LFxygRa/9iYdHXOFdjsqooX+r9Bn335f
+        FCS55EOh4y48DACeVjaoj2Xcl7375VfXbtQ3qrMmjGa2f3CM7e0b+o8NDuvZccMM+/OtdDY5M5/VjE6n
+        pt0v+SAwItaH+jQh8WC+vOboqGH2wyXHo5rS8hrLlhNW8CaO/YzrHXBoRwwk1sTp9Kni8/EiSugX4ZIl
+        LTmz4YQCPGFr7+h6jNv/pYGhURgzmraxu6IzmFjxOYamXH1oAZtbchlT1Hhiq7yyBuYXrPyC/dSq7gS1
+        RkdcR7t2hA2RxNKUwEuE7uUUM6sbTg5POOWKcpgzW0jQvmpsboO23n7iOlo1wxgY8wT4R1YBs7L2iAcW
+        FpeC2TJPgvaVCgObu7TEdTR161jRqQs0hYRBKJ0tZOw7wBJFJdhXVknQvuro1kDbTsnNvUOs6NWLNPWM
+        dzBKzy5i7OubPDC3UA56wxQJ2lfKOhU0dvUR11Hf2c+eJMDDniKUmpnHLCyv8UBZmRKu/3ILiuRlUCgv
+        hZx8GZBN8opKQEpaWQnkFyvgQYEcvvvhV+gZm+CBDdwAG0QOBQmDUQoGzlntPHALf6bmFmDWuoRtGaYX
+        sOF2wrwIBrMVxmfnYXTGAkPGOdBNzcEGjsf3xlHbocUl40M57BWE0vChTFtsPBAbL9v6JkxZFmHGage9
+        aQF0eiNoRg2gxRlpsNlwJLmARGsYWNnS86Rk5B2Cku/mMZOmhT2gY2sb2DwZpLO5UCCvAJlCCaoWNdSr
+        WqC6vhESf7oJ8rom/rmQipbxEmVbL3tSzF+bYJSMS54yL+4BVza3IR+DqhtaIK+4AiprVWR4T20d3SAt
+        VYINv4ZN3LdjYHlzN3viFM5QIAxBtzNyGf3s3xnaMVCmqOKh9W3dkCsr2yuPSDswxAOXsE8yxK2jsrWH
+        fZEAXX3D0J1sGWOyre4Bya7lOKvi8hr4s70XpBj4Tw2OjIO8thEe7vRxvKOO07Fh0XE05RVwWpAuLY2z
+        rjvJWyaHRqDOuuZO58CIwVnf0ulsVvfwY7s2OWN2VjSqd/t8kk1945kR566EUM/5RR765vvfo1Sd/XcX
+        1x+rlzeB6xs3cjdSs7i+IT03ODrJDY9NcmvrW9xD/N5x6ZxC2cD9mJLFjZiXOePKJtdvtKoyCquunhC/
+        5Uedjf/i4DuffC28mpQclS5VxGUXVTFJNzOZN+I/Zm7fyWFkijrmQX4Zk8ObgimQVzOfJVxjLr/3OfPb
+        vSImJUfBXE/LvfRRQmKot+j1Z/k/NoF6+J8+5Hk8UuAVEImQTxiiDvgiN99w5BMgQe6+ocgVX68jPi8h
+        b38xolwDEHXoBeTuJ0GegVGCI36RAje/My6Ue8iBvwAUvX8dnBMj+AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Openfilebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA4FJREFUOE+V1F1oU2cYB/BTbf2Arko1DdX5UfxodZrdTEHZhkUvHRsyRb1wgiiy
+        Gy+8aGCS2tqStGnS5OSjSYtaU2VBROvaainoYLsRUfBCqLVTk3NyPmMTbdqpmb5/n1OVWJrIPPDnfc8J
+        55fnvO9zDvfhAFAMzWt6LbiqszHnhuyTPDGuU/6LG+ctNG+thsKbjHvfM7mDLpZhLPwjZL8HWrAbar4E
+        uun3bigUiT9LmBeqfxdweyHdX/SemsKKgDsmaB1WJDtHoYXHoXZkZkQLZaAEaU6RfeOEPqacRDK0ZCY4
+        FjLTv9ugd8pQOhgF06KGKDTKARr9NPIMklen2KEFls4Ek4F3oBYuAHaASQQpFMkLJrYT6tGZ4HJA8X0m
+        mA+TKAm3TnFA/RywECa6wOKtOos7HdD4/wkWwJjQRtVRRKdOoQq9ecCnwemb8ilMchHoNKJDaHFAducB
+        Nb+ZGWCySyaMFcRkN6B7gSQl7dfxlHfgeSgPqNMjKwEbtYdMrUGPXABLUdtMhKAnGiEL9TqyXQ6g78s8
+        oN/8JsHTGhKoBo0em4mlg8Cr05CSTWi6vg2NN7enhuLHgoOxYzUyBnOv3xSY9NMaEqgEqEIfy1vZyy6o
+        KTvabu3EV+fLsfri4hdbB1b9XXVh0cH1NzdUBnB6dg7UefMbsZ0qDMqEUYUfbYDmIZDHyKM6nBjYguqz
+        pZj/+zyUD5iYuc+UXnK1YmDFYNXeZdfXmHOg0m6G5LFRlTKNbAozWsPYTbkN0gMrOntrcTi6FrV/LEf5
+        5S9Qec2E3Xe/yf567/vh2hs19tLIgs05UPOYmeiy0drJ1LRsChNa3kVqxWSsAWNiPcazLpyP/4KqS2VY
+        3bsQF9QDEwJOXT03sudnro5bmQNVN1Xopgo9VKGbGRCL2QmkyAZKmzlB64huDCWOYkVPCVZF56I/cTAN
+        8PQWXK7Z8RtXkgPxZwUtvpWwfyC1ZSA4MhDtGcSbad5EcxpT7Rmw8OS1+KHssp5ZrCpawq7E9unZZ/X0
+        HvIrgdC01imD6voJYosPoiOCWFMEQnMETxoiiDfS+ckIUq4eIHjl3MPd9yujs9JLLxWnw6M/3EqlrUeA
+        XuPLPQ0spkoqXo3a1r18eGLjv8NWy4sHlOE6y+T945bsSJ0FaefXf93dv/3bM/ObuTNcf1EP1/9dtLTB
+        N7TJQvfP4TiOewshqjoP/ofe6gAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="EmulatorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 17</value>
   </metadata>
@@ -166,7 +238,6 @@ Anti-cheat software may be triggered if corruption is used on multiplayer games.
   <metadata name="AutomationTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIABJcQAAZgAAAICAAAABACAAKAgBAK9xAABAQAAAAQAgAChCAADXeQEAMDAAAAEA

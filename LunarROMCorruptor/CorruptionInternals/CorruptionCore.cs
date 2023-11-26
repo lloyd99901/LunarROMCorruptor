@@ -9,74 +9,9 @@ namespace LunarROMCorruptor.CorruptionInternals
     public class CorruptionCore
     {
         private static readonly Random rnd = new Random();
-
-        //Read 4 bytes from the ROM at the specified offset (32bit) and return them as a 32bit hex value
-        //public static uint Read32(byte[] rom, uint offset)
-        //{
-        //    try
-        //    {
-        //        uint value = 0;
-        //        value |= rom[offset + 0];
-        //        value |= (uint)rom[offset + 1] << 8;
-        //        value |= (uint)rom[offset + 2] << 16;
-        //        value |= (uint)rom[offset + 3] << 24;
-        //        return value;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error");
-        //        return 0;
-        //    }
-
-        //}
-        //public static string ToHex(uint value)
-        //{
-        //    return "0x" + value.ToString("X8");
-        //}
-
-                            //Read all bytes from the ROM and return them as a 32bit hex array
-
-                            //public static uint[] ReadAll32(byte[] rom)
-                            //{
-                            //    uint[] values = new uint[rom.Length / 4];
-                            //    for (int i = 0; i < rom.Length; i += 4)
-                            //    {
-                            //        //check if we are at the end of the ROM
-                            //        if (i + 4 > rom.Length)
-                            //        {
-                            //            return values;
-                            //        }
-                            //        try
-                            //        {
-                            //            values[i / 4] = Read32(rom, (uint)i);
-                            //        }
-                            //        catch (Exception ex)
-                            //        {
-                            //            MessageBox.Show(ex.Message);
-                            //            return null;
-                            //        }
-                            //    }
-                            //    return values;
-                            //}
-
-                            //Code from Form1.cs, this is how you use the corruption to hex function.
-                            ////Reall all of the ROM data, convert to 32 bit hex and store it in a string array
-                            //string[] HexData = new string[ROM.Length / 4];
-                            //for (int i = 0; i < ROM.Length / 4; i++)
-                            //{
-                            //    //check if i doens't exceed the array size of the ROM
-                            //    if (i * 4 < ROM.Length)
-                            //    {
-                            //        HexData[i] = CorruptionCore.ToHex(CorruptionCore.Read32(ROM, (uint)i * 4));
-                            //    }
-                            //    else
-                            //    {
-                            //        break;
-                            //    }
-                            //}
-                            //CorruptionEngineFrame.FloatBitOutput.Text = string.Join(Environment.NewLine, HexData);
-                            ////print how many lines there are in the textbox in the console
-                            //Console.WriteLine(CorruptionEngineFrame.FloatBitOutput.Lines.Length);
+        //Main Corruption Core:
+        //This is where the corruption happens, this function below corrupts bytes by going to their respective corruption engines (E.g. NightmareEngine.cs) and using the output of that engine to corrupt the ROM.
+        //Inside the engine is where the code that manipulates the byte happens. Once it has set the byte, it writes a new item to the internal stash list which is used to store the changes made to the ROM.
         public static byte ClampByte(int x) //This is to prevent the byte from going over 255 or going under 0
         {
             if (x < 0)
@@ -85,9 +20,6 @@ namespace LunarROMCorruptor.CorruptionInternals
                 return 255;
             return (byte)x;
         }
-        //Main Corruption Core:
-        //This is where the corruption happens, this function below corrupts bytes by going to their respective corruption engines (E.g. NightmareEngine.cs) and using the output of that engine to corrupt the ROM.
-        //Inside the engine is where the code that manipulates the byte happens. Once it has set the byte, it writes a new item to the internal stash list which is used to store the changes made to the ROM.
         public static byte[] StartCorruption(byte[] ROM, int StartByte, int EndByte, bool CorruptNthByte, int Intensity, string CorruptionEngine)
         {
             switch (CorruptionEngine)
@@ -266,14 +198,19 @@ namespace LunarROMCorruptor.CorruptionInternals
                     if (processes.Length > 0)
                         processes[0].Kill();
                 }
-                //System.Threading.Thread.Sleep(300);
-                Process p = new Process();
-                p.StartInfo.FileName = EmulatorLocation;
-                p.StartInfo.UseShellExecute = false; //Start process directly without going to windows shell
-                if (OverrideArgumentsChk == false)
-                    p.StartInfo.Arguments = "\"" + FileLocation + "\"";
-                else
-                    p.StartInfo.Arguments = OverrideArguments;
+
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = EmulatorLocation,
+                    UseShellExecute = false, // Start process directly without going to windows shell
+                    Arguments = OverrideArgumentsChk ? OverrideArguments : $"\"{FileLocation}\""
+                };
+
+                Process p = new Process
+                {
+                    StartInfo = startInfo
+                };
+
                 p.Start();
             }
             catch (Exception ex)
@@ -283,3 +220,71 @@ namespace LunarROMCorruptor.CorruptionInternals
         }
     }
 }
+//Beta Code here:
+//Read 4 bytes from the ROM at the specified offset (32bit) and return them as a 32bit hex value
+//public static uint Read32(byte[] rom, uint offset)
+//{
+//    try
+//    {
+//        uint value = 0;
+//        value |= rom[offset + 0];
+//        value |= (uint)rom[offset + 1] << 8;
+//        value |= (uint)rom[offset + 2] << 16;
+//        value |= (uint)rom[offset + 3] << 24;
+//        return value;
+//    }
+//    catch (Exception ex)
+//    {
+//        MessageBox.Show(ex.Message, "Error");
+//        return 0;
+//    }
+
+//}
+//public static string ToHex(uint value)
+//{
+//    return "0x" + value.ToString("X8");
+//}
+
+//Read all bytes from the ROM and return them as a 32bit hex array
+
+//public static uint[] ReadAll32(byte[] rom)
+//{
+//    uint[] values = new uint[rom.Length / 4];
+//    for (int i = 0; i < rom.Length; i += 4)
+//    {
+//        //check if we are at the end of the ROM
+//        if (i + 4 > rom.Length)
+//        {
+//            return values;
+//        }
+//        try
+//        {
+//            values[i / 4] = Read32(rom, (uint)i);
+//        }
+//        catch (Exception ex)
+//        {
+//            MessageBox.Show(ex.Message);
+//            return null;
+//        }
+//    }
+//    return values;
+//}
+
+//Code from Form1.cs, this is how you use the corruption to hex function.
+////Reall all of the ROM data, convert to 32 bit hex and store it in a string array
+//string[] HexData = new string[ROM.Length / 4];
+//for (int i = 0; i < ROM.Length / 4; i++)
+//{
+//    //check if i doens't exceed the array size of the ROM
+//    if (i * 4 < ROM.Length)
+//    {
+//        HexData[i] = CorruptionCore.ToHex(CorruptionCore.Read32(ROM, (uint)i * 4));
+//    }
+//    else
+//    {
+//        break;
+//    }
+//}
+//CorruptionEngineFrame.FloatBitOutput.Text = string.Join(Environment.NewLine, HexData);
+////print how many lines there are in the textbox in the console
+//Console.WriteLine(CorruptionEngineFrame.FloatBitOutput.Lines.Length);

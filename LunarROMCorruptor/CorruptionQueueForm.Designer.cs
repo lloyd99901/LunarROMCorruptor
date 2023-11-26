@@ -219,7 +219,7 @@
             this.removeselbtn.Name = "removeselbtn";
             this.removeselbtn.Size = new System.Drawing.Size(170, 23);
             this.removeselbtn.TabIndex = 2;
-            this.removeselbtn.Text = "Remove Selected File";
+            this.removeselbtn.Text = "Remove Selected File(s)";
             this.removeselbtn.UseVisualStyleBackColor = false;
             this.removeselbtn.Click += new System.EventHandler(this.removeselbtn_Click);
             // 

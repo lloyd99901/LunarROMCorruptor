@@ -179,6 +179,19 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="Guide.txt" />
+    <None Include="Resources\imageres_53532.png" />
+    <None Include="Resources\imageres_53394.png" />
+    <None Include="Resources\psr_205.png" />
+    <None Include="Resources\pen.png" />
+    <None Include="Resources\gameux_218.png" />
+    <None Include="Resources\imageres_53531.png" />
+    <None Include="Resources\mspaint_501371.png" />
+    <None Include="Resources\imageres_53393.png" />
+    <None Include="Resources\imageres_5353.png" />
+    <None Include="Resources\mspaint_50137.png" />
+    <None Include="Resources\imageres_53392.png" />
+    <None Include="Resources\imageres_53391.png" />
+    <None Include="Resources\imageres_5339.png" />
     <None Include="Resources\success3.wav" />
     <None Include="Resources\SendSmallGray.png" />
     <None Include="Resources\Joystick.png" />
