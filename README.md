@@ -11,7 +11,7 @@
 
 ## Corrupt any file(s) (not just ROMs!) using multiple different engines
 
-![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/preview.png)
+![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/MainInterface.png)
 
 ## Features
 
@@ -25,6 +25,8 @@ With Corrupt Every Nth Byte, you can apply regular corruptions to your file by s
 After you've found the perfect corruption, you can choose to save your progress using either the File Save or the Stash Save features. The File Save option makes a copy of the entire corrupted file and stores it in the 'Saves' directory.
 
 On the other hand, the Stash Save feature saves only the addresses of the changed bytes and their new values, which takes up less space. In addition to the Stash Save, there's a stash editor that allows you to fine-tune the corrupted bytes and addresses to achieve the desired effect.
+
+![StashEdit](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/StashEdit.png)
 
 For instance, let's say there's a corruption that alters the color of Mario in Super Mario Bros but crashes the game when you try to start it. You can use the stash editor to remove the bytes that cause the crash and retain the byte responsible for changing the color. This functionality is similar to how the Stash Saves and Editor work on the Windows Glitch Harvester.
 
@@ -66,7 +68,6 @@ Here are the following engines that come with LunarROMCorruptor
 
    An engine that takes the 2 neighbouring bytes where the selected byte is and corrupts the selected byte by using linear interpolation
    (e.g. 0 21 100 would become 0 50 100 if the Lerp Setting was set to 0.5)
- - Vector2 Engine (Not finished)
  - Manual (User manually enables and sets what types of corruption takes place in the file.)
 
 ### Misc

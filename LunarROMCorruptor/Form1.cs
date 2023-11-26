@@ -62,6 +62,7 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MainTabControl.TabPages.Remove(MemCorruptPage); // For now, remove process memory corruption tab
             Text = $"{nameof(LunarROMCorruptor)} - " + vernumber;
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\")) //If file doesn't exist, assume it's the first time the program has been run and create the directory.
