@@ -74,6 +74,7 @@
             this.Intensity = new System.Windows.Forms.NumericUpDown();
             this.IntensityTrackbar = new System.Windows.Forms.TrackBar();
             this.StashBytesList = new System.Windows.Forms.ListBox();
+            this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
             this.StashFileList = new System.Windows.Forms.ListBox();
             this.StashEditorbtn = new System.Windows.Forms.Button();
             this.DeleteStash = new System.Windows.Forms.Button();
@@ -145,7 +146,6 @@
             this.SaveasTxt = new System.Windows.Forms.TextBox();
             this.FileSelectPanel = new System.Windows.Forms.Panel();
             this.EngineSelectPanel = new System.Windows.Forms.Panel();
-            this.CorruptionQueueBtn = new System.Windows.Forms.Button();
             this.Restorefilebtn = new System.Windows.Forms.Button();
             this.Changesaveasbtn = new System.Windows.Forms.Button();
             this.Openfilebtn = new System.Windows.Forms.Button();
@@ -158,7 +158,6 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutomationTimer = new System.Windows.Forms.Timer(this.components);
-            this.EnableStashSavesChkbox = new System.Windows.Forms.CheckBox();
             this.FileSaveTab.SuspendLayout();
             this.FileCorruptionTab.SuspendLayout();
             this.Panel4.SuspendLayout();
@@ -389,7 +388,7 @@
             this.ReopenChbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ReopenChbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReopenChbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ReopenChbox.Location = new System.Drawing.Point(348, 7);
+            this.ReopenChbox.Location = new System.Drawing.Point(383, 7);
             this.ReopenChbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ReopenChbox.Name = "ReopenChbox";
             this.ReopenChbox.Size = new System.Drawing.Size(121, 17);
@@ -434,9 +433,9 @@
             this.Runemulatorchbox.Location = new System.Drawing.Point(165, 7);
             this.Runemulatorchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Runemulatorchbox.Name = "Runemulatorchbox";
-            this.Runemulatorchbox.Size = new System.Drawing.Size(179, 17);
+            this.Runemulatorchbox.Size = new System.Drawing.Size(214, 17);
             this.Runemulatorchbox.TabIndex = 75;
-            this.Runemulatorchbox.Text = "Run program after corruption";
+            this.Runemulatorchbox.Text = "Enable run program after corruption";
             this.Runemulatorchbox.UseVisualStyleBackColor = false;
             this.Runemulatorchbox.CheckedChanged += new System.EventHandler(this.Runemulatorchbox_CheckedChanged);
             // 
@@ -908,6 +907,21 @@
             this.StashBytesList.Name = "StashBytesList";
             this.StashBytesList.Size = new System.Drawing.Size(115, 223);
             this.StashBytesList.TabIndex = 158;
+            // 
+            // EnableStashSavesChkbox
+            // 
+            this.EnableStashSavesChkbox.AutoSize = true;
+            this.EnableStashSavesChkbox.Checked = true;
+            this.EnableStashSavesChkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EnableStashSavesChkbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.EnableStashSavesChkbox.Location = new System.Drawing.Point(415, 4);
+            this.EnableStashSavesChkbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.EnableStashSavesChkbox.Name = "EnableStashSavesChkbox";
+            this.EnableStashSavesChkbox.Size = new System.Drawing.Size(122, 17);
+            this.EnableStashSavesChkbox.TabIndex = 168;
+            this.EnableStashSavesChkbox.Text = "Enable Stash Saves";
+            this.EnableStashSavesChkbox.UseVisualStyleBackColor = true;
+            this.EnableStashSavesChkbox.CheckedChanged += new System.EventHandler(this.EnableStashSavesChkbox_CheckedChanged);
             // 
             // StashFileList
             // 
@@ -2001,31 +2015,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EngineSelectPanel.Controls.Add(this.CorruptionQueueChkbox);
             this.EngineSelectPanel.Controls.Add(this.CorruptionEnginelbl);
-            this.EngineSelectPanel.Controls.Add(this.CorruptionQueueBtn);
             this.EngineSelectPanel.Controls.Add(this.CorruptionEngineComboBox);
             this.EngineSelectPanel.Location = new System.Drawing.Point(159, 47);
             this.EngineSelectPanel.Name = "EngineSelectPanel";
             this.EngineSelectPanel.Size = new System.Drawing.Size(491, 23);
             this.EngineSelectPanel.TabIndex = 167;
-            // 
-            // CorruptionQueueBtn
-            // 
-            this.CorruptionQueueBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
-            this.CorruptionQueueBtn.FlatAppearance.BorderSize = 0;
-            this.CorruptionQueueBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CorruptionQueueBtn.ForeColor = System.Drawing.Color.SpringGreen;
-            this.CorruptionQueueBtn.Image = global::LunarROMCorruptor.Properties.Resources.gameux_218;
-            this.CorruptionQueueBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CorruptionQueueBtn.Location = new System.Drawing.Point(109, 1);
-            this.CorruptionQueueBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptionQueueBtn.Name = "CorruptionQueueBtn";
-            this.CorruptionQueueBtn.Size = new System.Drawing.Size(106, 22);
-            this.CorruptionQueueBtn.TabIndex = 163;
-            this.CorruptionQueueBtn.Text = "Edit Queue...";
-            this.CorruptionQueueBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CorruptionQueueBtn.UseVisualStyleBackColor = false;
-            this.CorruptionQueueBtn.Visible = false;
-            this.CorruptionQueueBtn.Click += new System.EventHandler(this.CorruptionQueueBtn_Click);
             // 
             // Restorefilebtn
             // 
@@ -2068,7 +2062,7 @@
             this.Openfilebtn.FlatAppearance.BorderSize = 0;
             this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Openfilebtn.ForeColor = System.Drawing.Color.Turquoise;
-            this.Openfilebtn.Image = ((System.Drawing.Image)(resources.GetObject("Openfilebtn.Image")));
+            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
             this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Openfilebtn.Location = new System.Drawing.Point(0, 0);
             this.Openfilebtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -2137,21 +2131,6 @@
             // 
             this.AutomationTimer.Interval = 5000;
             this.AutomationTimer.Tick += new System.EventHandler(this.AutomationTimer_Tick);
-            // 
-            // EnableStashSavesChkbox
-            // 
-            this.EnableStashSavesChkbox.AutoSize = true;
-            this.EnableStashSavesChkbox.Checked = true;
-            this.EnableStashSavesChkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.EnableStashSavesChkbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.EnableStashSavesChkbox.Location = new System.Drawing.Point(415, 4);
-            this.EnableStashSavesChkbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.EnableStashSavesChkbox.Name = "EnableStashSavesChkbox";
-            this.EnableStashSavesChkbox.Size = new System.Drawing.Size(122, 17);
-            this.EnableStashSavesChkbox.TabIndex = 168;
-            this.EnableStashSavesChkbox.Text = "Enable Stash Saves";
-            this.EnableStashSavesChkbox.UseVisualStyleBackColor = true;
-            this.EnableStashSavesChkbox.CheckedChanged += new System.EventHandler(this.EnableStashSavesChkbox_CheckedChanged);
             // 
             // Form1
             // 
@@ -2320,7 +2299,6 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Label Label9;
-        internal System.Windows.Forms.Button CorruptionQueueBtn;
         internal System.Windows.Forms.Button FileSaveOpenLocationBtn;
         public System.Windows.Forms.TextBox FileSelectiontxt;
         public System.Windows.Forms.TextBox SaveasTxt;

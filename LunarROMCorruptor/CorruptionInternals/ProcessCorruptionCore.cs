@@ -7,53 +7,53 @@ namespace LunarROMCorruptor.CorruptionInternals
 {
     public class ProcessCorruptionCore
     {
-        [DllImport("kernel32.dll")]
-        static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead); //For the Process Memory Corruption
+        //[DllImport("kernel32.dll")]
+        //static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead); //For the Process Memory Corruption
 
-        [DllImport("kernel32.dll")]
-        static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesWritten); //For the Process Memory Corruption
+        //[DllImport("kernel32.dll")]
+        //static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesWritten); //For the Process Memory Corruption
 
-        public static bool CorruptSelectedProcess(int processID)
-        {
-            // Get the process by ID
-            Process process = null;
-            try
-            {
-                process = Process.GetProcessById(processID);
+        //public static bool CorruptSelectedProcess(int processID)
+        //{
+        //    // Get the process by ID
+        //    Process process = null;
+        //    try
+        //    {
+        //        process = Process.GetProcessById(processID);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Invaild Operation", "LRC");
-                return false;
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Invaild Operation", "LRC");
+        //        return false;
+        //    }
 
-            ProcessModule module = process.MainModule;
+        //    ProcessModule module = process.MainModule;
 
-            // Get the base address of the module
-            var baseAddress = module.BaseAddress;
+        //    // Get the base address of the module
+        //    var baseAddress = module.BaseAddress;
 
-            // Allocate a buffer to hold the memory we want to read
-            byte[] buffer = new byte[512];
+        //    // Allocate a buffer to hold the memory we want to read
+        //    byte[] buffer = new byte[512];
 
-            // Read the memory
-            ReadProcessMemory(process.Handle, baseAddress, buffer, buffer.Length, out IntPtr bytesRead);
+        //    // Read the memory
+        //    ReadProcessMemory(process.Handle, baseAddress, buffer, buffer.Length, out IntPtr bytesRead);
 
-            // Display the memory contents
-            Console.WriteLine("Memory contents:");
-            for (int i = 0; i < bytesRead.ToInt64(); i++)
-            {
-                Console.Write(buffer[i].ToString("X2") + " ");
-            }
-            Console.WriteLine();
+        //    // Display the memory contents
+        //    Console.WriteLine("Memory contents:");
+        //    for (int i = 0; i < bytesRead.ToInt64(); i++)
+        //    {
+        //        Console.Write(buffer[i].ToString("X2") + " ");
+        //    }
+        //    Console.WriteLine();
 
-            IntPtr dataAddress = module.BaseAddress + 0x0;
+        //    IntPtr dataAddress = module.BaseAddress + 0x0;
 
-            IntPtr byteValue;
-            int bytesWritten = 0;
-            //WriteProcessMemory(process.Handle, dataAddress, ref byteValue, 1, out bytesWritten);
+        //    IntPtr byteValue;
+        //    int bytesWritten = 0;
+        //    //WriteProcessMemory(process.Handle, dataAddress, ref byteValue, 1, out bytesWritten);
 
-            return false;
-        }
+        //    return false;
+        //}
     }
 }

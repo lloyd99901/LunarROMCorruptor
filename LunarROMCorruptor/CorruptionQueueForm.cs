@@ -10,7 +10,6 @@ namespace LunarROMCorruptor
         {
             InitializeComponent();
         }
-
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
             //Main Function - If the user didn't cancel, load file.

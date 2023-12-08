@@ -143,7 +143,7 @@ SOFTWARE.
 Corruption Warnings:
 If you have epilepsy, it's advisable to refrain from participating in corruption activities, due to the flashing imagery that may occur with corruptions.
 
-When corrupting specific games on particular platforms, there's a remote possibility of encountering a Blue Screen of Death (BSOD). Although BSOD occurrences are infrequent and generally don't cause major harm to your computer, they will prompt an automatic restart. Always ensure you save any ongoing work before engaging in corruption to avoid data loss.
+When corrupting specific games, there's a remote possibility of encountering a Blue Screen of Death (BSOD). Although BSOD occurrences are infrequent and generally don't cause major harm to your computer, they will prompt an automatic restart. Always ensure you save any ongoing work before engaging in corruption to avoid data loss.
 
 Using this corruptor in online games or those protected by anti-cheat software may result in account bans. Additionally, refrain from corrupting essential system files, such as system32, as it can lead to irreversible damage to personal or critical system data. If you really want to, do it in a virutal machine to minimize potential risks.
 
@@ -198,27 +198,6 @@ It's essential to recognize that this program comes with no warranties of any ki
         5Uedjf/i4DuffC28mpQclS5VxGUXVTFJNzOZN+I/Zm7fyWFkijrmQX4Zk8ObgimQVzOfJVxjLr/3OfPb
         vSImJUfBXE/LvfRRQmKot+j1Z/k/NoF6+J8+5Hk8UuAVEImQTxiiDvgiN99w5BMgQe6+ocgVX68jPi8h
         b38xolwDEHXoBeTuJ0GegVGCI36RAje/My6Ue8iBvwAUvX8dnBMj+AAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="Openfilebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAA4FJREFUOE+V1F1oU2cYB/BTbf2Arko1DdX5UfxodZrdTEHZhkUvHRsyRb1wgiiy
-        Gy+8aGCS2tqStGnS5OSjSYtaU2VBROvaainoYLsRUfBCqLVTk3NyPmMTbdqpmb5/n1OVWJrIPPDnfc8J
-        55fnvO9zDvfhAFAMzWt6LbiqszHnhuyTPDGuU/6LG+ctNG+thsKbjHvfM7mDLpZhLPwjZL8HWrAbar4E
-        uun3bigUiT9LmBeqfxdweyHdX/SemsKKgDsmaB1WJDtHoYXHoXZkZkQLZaAEaU6RfeOEPqacRDK0ZCY4
-        FjLTv9ugd8pQOhgF06KGKDTKARr9NPIMklen2KEFls4Ek4F3oBYuAHaASQQpFMkLJrYT6tGZ4HJA8X0m
-        mA+TKAm3TnFA/RywECa6wOKtOos7HdD4/wkWwJjQRtVRRKdOoQq9ecCnwemb8ilMchHoNKJDaHFAducB
-        Nb+ZGWCySyaMFcRkN6B7gSQl7dfxlHfgeSgPqNMjKwEbtYdMrUGPXABLUdtMhKAnGiEL9TqyXQ6g78s8
-        oN/8JsHTGhKoBo0em4mlg8Cr05CSTWi6vg2NN7enhuLHgoOxYzUyBnOv3xSY9NMaEqgEqEIfy1vZyy6o
-        KTvabu3EV+fLsfri4hdbB1b9XXVh0cH1NzdUBnB6dg7UefMbsZ0qDMqEUYUfbYDmIZDHyKM6nBjYguqz
-        pZj/+zyUD5iYuc+UXnK1YmDFYNXeZdfXmHOg0m6G5LFRlTKNbAozWsPYTbkN0gMrOntrcTi6FrV/LEf5
-        5S9Qec2E3Xe/yf567/vh2hs19tLIgs05UPOYmeiy0drJ1LRsChNa3kVqxWSsAWNiPcazLpyP/4KqS2VY
-        3bsQF9QDEwJOXT03sudnro5bmQNVN1Xopgo9VKGbGRCL2QmkyAZKmzlB64huDCWOYkVPCVZF56I/cTAN
-        8PQWXK7Z8RtXkgPxZwUtvpWwfyC1ZSA4MhDtGcSbad5EcxpT7Rmw8OS1+KHssp5ZrCpawq7E9unZZ/X0
-        HvIrgdC01imD6voJYosPoiOCWFMEQnMETxoiiDfS+ckIUq4eIHjl3MPd9yujs9JLLxWnw6M/3EqlrUeA
-        XuPLPQ0spkoqXo3a1r18eGLjv8NWy4sHlOE6y+T945bsSJ0FaefXf93dv/3bM/ObuTNcf1EP1/9dtLTB
-        N7TJQvfP4TiOewshqjoP/ofe6gAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="EmulatorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

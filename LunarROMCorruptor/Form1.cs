@@ -221,15 +221,20 @@ namespace LunarROMCorruptor
 
         private void Openfilebtn_Click(object sender, EventArgs e)
         {
-            if (EnableProcessMemCorruptChkBox.Checked)
+            //if (EnableProcessMemCorruptChkBox.Checked)
+            //{
+            //    SelectProcess SelectProcessForm = new SelectProcess();
+
+            //    SelectProcessForm.ShowDialog();
+            //    MainSelectedProcessID = SelectProcessForm.SelectedProcessID; //Transfer ids
+            //    SelectProcessForm.Dispose();
+
+            //    ProcessCorruptionCore.CorruptSelectedProcess(MainSelectedProcessID);
+            //    return;
+            //}
+            if (CorruptionQueueChkbox.Checked)
             {
-                SelectProcess SelectProcessForm = new SelectProcess();
-
-                SelectProcessForm.ShowDialog();
-                MainSelectedProcessID = SelectProcessForm.SelectedProcessID; //Transfer ids
-                SelectProcessForm.Dispose();
-
-                ProcessCorruptionCore.CorruptSelectedProcess(MainSelectedProcessID);
+                CorruptionQueueFormSettings.ShowDialog();
                 return;
             }
             //Main Function - If the user didn't cancel, load file.
@@ -994,8 +999,7 @@ namespace LunarROMCorruptor
                     return;
                 }
                 //Check if byte value is out of bounds
-                byte output;
-                bool isByteValid = byte.TryParse(result.ToString(), out output);
+                bool isByteValid = byte.TryParse(result.ToString(), out byte output);
                 if (isByteValid == false)
                 {
                     MessageBox.Show($"Byte value is out of bounds! {Environment.NewLine}Invalid byte value: {result}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1093,12 +1097,19 @@ namespace LunarROMCorruptor
 
         private void CorruptionQueueChkbox_CheckedChanged(object sender, EventArgs e)
         {
-            CorruptionQueueBtn.Visible = CorruptionQueueChkbox.Checked;
+
             //Disable Stash Saves if queue is enabled as well as file saves
             if (CorruptionQueueChkbox.Checked)
             {
+                Openfilebtn.Image = Resources.gameux_218;
+                Openfilebtn.Text = "Edit Queue...";
                 EnableStashSavesChkbox.Checked = false;
                 FilesaveEnableAutoSaves.Checked = false;
+            }
+            else
+            {
+                Openfilebtn.Text = "Open File";
+                Openfilebtn.Image = Resources.imageres_53391;
             }
             //Disable the ability to change the checkboxes
             EnableStashSavesChkbox.Enabled = !CorruptionQueueChkbox.Checked;
@@ -1109,11 +1120,13 @@ namespace LunarROMCorruptor
             Corruptusingstashbtn.Enabled = !CorruptionQueueChkbox.Checked;
             //Disable the save as button
             Changesaveasbtn.Enabled = !CorruptionQueueChkbox.Checked;
+            //Disable stash editor button
+            StashEditorbtn.Enabled = !CorruptionQueueChkbox.Checked;
         }
 
         private void CorruptionQueueBtn_Click(object sender, EventArgs e)
         {
-            CorruptionQueueFormSettings.ShowDialog();
+            
         }
 
         private void FileSaveOpenLocationBtn_Click(object sender, EventArgs e)
@@ -1282,26 +1295,26 @@ namespace LunarROMCorruptor
 
         private void EnableProcessMemCorruptChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (EnableProcessMemCorruptChkBox.Checked)
-            {
-                //Unload ROMS
-                UnloadROMFromMemory();
-                StartEmulatorPanel.Visible = false;
-                EngineSelectPanel.Visible = false;
-                CorruptButton.Text = "Start";
-                Openfilebtn.Text = "Load Process";
-                Changesaveasbtn.Visible = false;
-                Restorefilebtn.Visible = false;
-            }
-            else
-            {
-                StartEmulatorPanel.Visible = true;
-                EngineSelectPanel.Visible = true;
-                CorruptButton.Text = "Corrupt File";
-                Openfilebtn.Text = "Open File";
-                Changesaveasbtn.Visible = true;
-                Restorefilebtn.Visible = true;
-            }
+            //if (EnableProcessMemCorruptChkBox.Checked)
+            //{
+            //    //Unload ROMS
+            //    UnloadROMFromMemory();
+            //    StartEmulatorPanel.Visible = false;
+            //    EngineSelectPanel.Visible = false;
+            //    CorruptButton.Text = "Start";
+            //    Openfilebtn.Text = "Load Process";
+            //    Changesaveasbtn.Visible = false;
+            //    Restorefilebtn.Visible = false;
+            //}
+            //else
+            //{
+            //    StartEmulatorPanel.Visible = true;
+            //    EngineSelectPanel.Visible = true;
+            //    CorruptButton.Text = "Corrupt File";
+            //    Openfilebtn.Text = "Open File";
+            //    Changesaveasbtn.Visible = true;
+            //    Restorefilebtn.Visible = true;
+            //}
         }
 
         private void UnloadROMFromMemory()
