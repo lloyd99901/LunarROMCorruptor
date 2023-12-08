@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LunarROMCorruptor.CorruptionInternals
@@ -26,7 +22,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                 process = Process.GetProcessById(processID);
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Invaild Operation", "LRC");
                 return false;

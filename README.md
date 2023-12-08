@@ -104,7 +104,7 @@ Active development is in the unstable branch of this repo. The master branch is 
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Corruption Warning
-- This program can irreversibly corrupt personal or critical system data if you're not careful.
-- This program comes with no warranty of ANY kind and is provided 'AS IS'.
-- You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.
-- Anti-cheat software may be triggered if corruption is used on multiplayer games.
+- If you have epilepsy, it is advisable to refrain from participating in corruption activities, due to the flashing imagery that may occur with corruptions.
+- When corrupting specific games, there's a remote possibility of encountering a Blue Screen of Death (BSOD). Although BSOD occurrences are infrequent and generally don't cause major harm to your computer, they - will prompt an automatic restart. Always ensure you save any ongoing work before engaging in corruption to avoid data loss.
+- Using this corruptor in online games or those protected by anti-cheat software may result in account bans. Additionally, refrain from corrupting essential system files, such as system32, as it can lead to irreversible damage to - personal or critical system data. If you really want to, do it in a virutal machine to minimize potential risks.
+- It is essential to recognize that this program comes with no warranties of any kind and is provided "AS IS." Users are personally responsible for backing up their data before use and for any consequences arising from the appropriate - or inappropriate use of the program. Refrain from corrupting multiplayer game files, as anti-cheat software may be triggered.

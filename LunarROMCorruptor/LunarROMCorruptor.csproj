@@ -179,6 +179,8 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="Guide.txt" />
+    <None Include="Resources\Loading.png" />
+    <None Include="Resources\Loading.jpg" />
     <None Include="Resources\imageres_53532.png" />
     <None Include="Resources\imageres_53394.png" />
     <None Include="Resources\psr_205.png" />

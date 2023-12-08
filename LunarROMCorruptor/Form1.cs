@@ -1,10 +1,12 @@
 ﻿using LunarROMCorruptor.CorruptionInternals;
+using LunarROMCorruptor.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net.Mime;
 using System.Text;
 using System.Windows.Forms;
 
@@ -82,6 +84,7 @@ namespace LunarROMCorruptor
             CorruptionEngineTab.Controls.Add(CorruptionEngineFrame); //Adds the CorruptionEngineFrame to the CorruptionEngineTab.
             CorruptionEngineFrame.Dock = DockStyle.Fill;
             CorruptionEngineFrame.Show();
+            AttentionPictureBox.BringToFront();
             //This code under this comment fixes a .net bug where the trackbar allocates a huge amount of memory if the trackbar maximum value is set to a large amount.
             EndByteTrackbar.TickStyle = TickStyle.None;
             StartByteTrackBar.TickStyle = TickStyle.None;
@@ -164,6 +167,10 @@ namespace LunarROMCorruptor
                 ROM = new byte[0];
                 //GC collection force -Forces garbage collection
                 GC.Collect();
+                //Show loading screen
+                AttentionPictureBox.Image = Resources.Loading;
+                AttentionPictureBox.Show();
+                Refresh();
                 //Load ROM into memory.
                 ROM = File.ReadAllBytes(FileLocation);
                 MaxByte = ROM.Length - 1;
@@ -203,6 +210,8 @@ namespace LunarROMCorruptor
 
                 // Change the CorruptButton text based on the calculated size and unit
                 CorruptButton.Text = $"Corrupt File ({size} {unit})";
+                AttentionPictureBox.Hide();
+                AttentionPictureBox.Image = Resources.dragicon;
             }
             else
             {
@@ -217,7 +226,7 @@ namespace LunarROMCorruptor
                 SelectProcess SelectProcessForm = new SelectProcess();
 
                 SelectProcessForm.ShowDialog();
-                MainSelectedProcessID= SelectProcessForm.SelectedProcessID; //Transfer ids
+                MainSelectedProcessID = SelectProcessForm.SelectedProcessID; //Transfer ids
                 SelectProcessForm.Dispose();
 
                 ProcessCorruptionCore.CorruptSelectedProcess(MainSelectedProcessID);
@@ -626,7 +635,7 @@ namespace LunarROMCorruptor
 
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
-            DragandDropICON.Hide();
+            AttentionPictureBox.Hide();
 
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
@@ -661,8 +670,7 @@ namespace LunarROMCorruptor
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                DragandDropICON.BringToFront();
-                DragandDropICON.Show();
+                AttentionPictureBox.Show();
                 e.Effect = DragDropEffects.Copy;
             }
         }
@@ -959,8 +967,8 @@ namespace LunarROMCorruptor
                     MessageBox.Show($"Split error in line: {line} {Environment.NewLine} Error: {ex.Message}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                Object i;
-                Object result;
+                Object i; //Location of byte to be changed
+                Object result; //The value that the byte needs to be set to
                 try
                 {
                     i = splitStrings[1];
@@ -979,10 +987,18 @@ namespace LunarROMCorruptor
                     MessageBox.Show($"Corruption error in line: {line} {Environment.NewLine} Error: {ex.Message}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //Check if the byte within the correct margins. If not, throw an error.
+                //Check if the byte location is within the correct margins. If not, throw an error.
                 if (Convert.ToInt32(i) > FinROM.Length)
                 {
-                    MessageBox.Show($"Byte location is out of bounds! {Environment.NewLine}Byte location: {i}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Byte location is out of bounds! {Environment.NewLine}Byte location that is invalid: {i}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                //Check if byte value is out of bounds
+                byte output;
+                bool isByteValid = byte.TryParse(result.ToString(), out output);
+                if (isByteValid == false)
+                {
+                    MessageBox.Show($"Byte value is out of bounds! {Environment.NewLine}Invalid byte value: {result}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 try
@@ -991,7 +1007,7 @@ namespace LunarROMCorruptor
                 }
                 catch (IndexOutOfRangeException ex1)
                 {
-                    MessageBox.Show($"Stash item location is invalid! {Environment.NewLine} Error: {ex1}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Stash item location index is invalid! {Environment.NewLine} Error: {ex1}", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 catch (Exception ex)
@@ -1021,7 +1037,7 @@ namespace LunarROMCorruptor
                 StashBytesList.Items.Add(item);
             }
         }
-        
+
         private void EnableStashSavesChkbox_CheckedChanged(object sender, EventArgs e)
         {
             StashBytesList.Enabled = EnableStashSavesChkbox.Checked;
@@ -1043,7 +1059,7 @@ namespace LunarROMCorruptor
 
         private void Form1_DragLeave(object sender, EventArgs e)
         {
-            DragandDropICON.Hide();
+            AttentionPictureBox.Hide();
         }
 
         private void StashList_MouseDown(object sender, MouseEventArgs e)
@@ -1205,8 +1221,8 @@ namespace LunarROMCorruptor
                         break;
                     case "Randomize Corruption Engine":
                         //Select a random item in the CorruptionEngineComboBox
-                        CorruptionEngineComboBox.Text = CorruptionEngineComboBox.Items[rnd.Next(0,CorruptionEngineComboBox.Items.Count)].ToString();
-                        if(CorruptionEngineComboBox.Text == "Merge Engine" && Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text == null) // Prevents corruption from halting if there is no file in the Merge Engine while in Automation mode.
+                        CorruptionEngineComboBox.Text = CorruptionEngineComboBox.Items[rnd.Next(0, CorruptionEngineComboBox.Items.Count)].ToString();
+                        if (CorruptionEngineComboBox.Text == "Merge Engine" && Program.Form.CorruptionEngineFrame.MergeFileLocationTxt.Text == null) // Prevents corruption from halting if there is no file in the Merge Engine while in Automation mode.
                         {
                             CorruptionEngineComboBox.Text = "Nightmare Engine";
                         }
@@ -1248,7 +1264,7 @@ namespace LunarROMCorruptor
                     AutomationList.SelectedIndex = index + 1;
                 }
             }
-            catch(ArgumentNullException)
+            catch (ArgumentNullException)
             {
                 Console.WriteLine("LRC Move Task Down - Insert cannot be null");
             }
@@ -1270,8 +1286,8 @@ namespace LunarROMCorruptor
             {
                 //Unload ROMS
                 UnloadROMFromMemory();
-                StartEmulatorPanel.Visible= false;
-                EngineSelectPanel.Visible= false;
+                StartEmulatorPanel.Visible = false;
+                EngineSelectPanel.Visible = false;
                 CorruptButton.Text = "Start";
                 Openfilebtn.Text = "Load Process";
                 Changesaveasbtn.Visible = false;
@@ -1313,6 +1329,11 @@ namespace LunarROMCorruptor
         private void StashAndAutoSaveHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show($"Auto Saves and Stash Files are two different ways of saving your corruptions.{Environment.NewLine}{Environment.NewLine}Auto Saves save the entire file after corruption in the Auto Saves folder in the {nameof(LunarROMCorruptor)} directory.{Environment.NewLine}{Environment.NewLine}Stash files only save the bytes that are changed, so it takes up less storage space and allow the user to also edit each byte that was affected by using the Stash Editor. (e.g. changing a characters colour)", $"{nameof(LunarROMCorruptor)} - Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void ByteModeHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show($"With Corrupt Every Nth Byte, you can apply regular corruptions to your file by specifying the interval to corrupt (e.g., every 1st byte, every 2nd byte, etc.).{Environment.NewLine}{Environment.NewLine}On the other hand, Intensity allows for randomized corruptions, where the corruptor selects random addresses to modify.", $"{nameof(LunarROMCorruptor)} - Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

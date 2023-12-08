@@ -142,6 +142,8 @@
             this.AddFolderBTN.FlatAppearance.BorderSize = 0;
             this.AddFolderBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddFolderBTN.ForeColor = System.Drawing.Color.Aqua;
+            this.AddFolderBTN.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.AddFolderBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AddFolderBTN.Location = new System.Drawing.Point(12, 41);
             this.AddFolderBTN.Name = "AddFolderBTN";
             this.AddFolderBTN.Size = new System.Drawing.Size(170, 23);
@@ -158,6 +160,7 @@
             this.SendFilestoCorruptorBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendFilestoCorruptorBTN.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SendFilestoCorruptorBTN.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.SendFilestoCorruptorBTN.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
             this.SendFilestoCorruptorBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SendFilestoCorruptorBTN.Location = new System.Drawing.Point(12, 386);
             this.SendFilestoCorruptorBTN.Name = "SendFilestoCorruptorBTN";
@@ -187,6 +190,8 @@
             this.Openfilebtn.FlatAppearance.BorderSize = 0;
             this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
             this.Openfilebtn.Name = "Openfilebtn";
             this.Openfilebtn.Size = new System.Drawing.Size(170, 23);
