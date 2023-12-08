@@ -1901,7 +1901,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon__2_;
+            this.pictureBox1.Image = global::LunarROMCorruptor.Properties.Resources.icon;
             this.pictureBox1.Location = new System.Drawing.Point(24, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(116, 112);

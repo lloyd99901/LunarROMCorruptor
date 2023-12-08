@@ -30,6 +30,10 @@ On the other hand, the Stash Save feature saves only the addresses of the change
 
 For instance, let's say there's a corruption that alters the color of Mario in Super Mario Bros but crashes the game when you try to start it. You can use the stash editor to remove the bytes that cause the crash and retain the byte responsible for changing the color. This functionality is similar to how the Stash Saves and Editor work on the Windows Glitch Harvester.
 
+### Corrupt multiple files
+Not only can you corrupt just a ROM or a singular program, you can use this corruptor to corrupt several files or even select an entire folder of files to corrupt.
+![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/CorruptionQueue.png)
+
 ### Engines
 Here are the following engines that come with LunarROMCorruptor
  - Nightmare Engine:
