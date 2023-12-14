@@ -49,7 +49,7 @@ namespace LunarROMCorruptor
         private int StartByte; //This stores the start byte that the user sets
         private int EndByte; //This stores the end byte that the user sets
         private readonly Random rnd = new Random(); //Used for random number generation
-        private readonly string vernumber = "v1.0.3 - Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string vernumber = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; //"v1.0.4 - Build Number: " + 
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
         readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm(); //Creates the corruption queue form and then it will be read later by the main form.
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
@@ -69,9 +69,16 @@ namespace LunarROMCorruptor
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\")) //If file doesn't exist, assume it's the first time the program has been run and create the directory.
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
-                Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
-                MessageBox.Show($"Welcome to {nameof(LunarROMCorruptor)}!{Environment.NewLine}{Environment.NewLine}Disclaimer:{Environment.NewLine}{nameof(LunarROMCorruptor)} is distributed under an MIT license.{Environment.NewLine}{Environment.NewLine}By clicking OK, you agree to that license and also understand the risks and disclaimers provided.{Environment.NewLine}{Environment.NewLine}This program can irreversibly corrupt personal or critical system data if you're not careful.{Environment.NewLine}This program comes with no warranty of ANY kind and is provided 'AS IS'.{Environment.NewLine}You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.{Environment.NewLine}{Environment.NewLine}This message will not show up again but you can read the license again by going to the 'About' tab.{Environment.NewLine}{Environment.NewLine}Enjoy!", $"{nameof(LunarROMCorruptor)} - INFO", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                try
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "\\Saves\\");
+                    Directory.CreateDirectory(Application.StartupPath + "\\CorruptionStashList\\");
+                    MessageBox.Show($"Welcome to {nameof(LunarROMCorruptor)}!{Environment.NewLine}{Environment.NewLine}Disclaimer:{Environment.NewLine}{nameof(LunarROMCorruptor)} is distributed under an MIT license.{Environment.NewLine}{Environment.NewLine}By clicking OK, you agree to that license and also understand the risks and disclaimers provided.{Environment.NewLine}{Environment.NewLine}This program can irreversibly corrupt personal or critical system data if you're not careful.{Environment.NewLine}This program comes with no warranty of ANY kind and is provided 'AS IS'.{Environment.NewLine}You're responsible for backing up your data before use and for any damage that comes with the use or misuse of this program.{Environment.NewLine}{Environment.NewLine}This message will not show up again but you can read the license again by going to the 'About' tab.{Environment.NewLine}{Environment.NewLine}Enjoy!", $"{nameof(LunarROMCorruptor)} - INFO", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error trying to create directory folders. Your anti-virus or ransomware protection may be enabled and is blocking LRC from creating these directories.", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             CorruptionEngineComboBox.Text = "Nightmare Engine";
             AllowDrop = true;
@@ -109,18 +116,32 @@ namespace LunarROMCorruptor
 
         public void RefreshCorruptionStashList()
         {
-            // Enumerate through the CorruptionStashList directory and add all files to the Stash list.
-            string stashListPath = Path.Combine(Application.StartupPath, "CorruptionStashList");
-            StashFileList.Items.Clear();
-            StashFileList.Items.AddRange(Directory.GetFiles(stashListPath).Select(Path.GetFileName).ToArray());
+            try
+            {
+                // Enumerate through the CorruptionStashList directory and add all files to the Stash list.
+                string stashListPath = Path.Combine(Application.StartupPath, "CorruptionStashList");
+                StashFileList.Items.Clear();
+                StashFileList.Items.AddRange(Directory.GetFiles(stashListPath).Select(Path.GetFileName).ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error enumerating corruption stash list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories.", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void RefreshFileSaves()
         {
-            // Enumerate through the Saves directory and add all files to the File Saves list.
-            string savesPath = Path.Combine(Application.StartupPath, "Saves");
-            FilesaveList.Items.Clear();
-            FilesaveList.Items.AddRange(Directory.GetFiles(savesPath).Select(Path.GetFileName).ToArray());
+            try
+            {
+                // Enumerate through the Saves directory and add all files to the File Saves list.
+                string savesPath = Path.Combine(Application.StartupPath, "Saves");
+                FilesaveList.Items.Clear();
+                FilesaveList.Items.AddRange(Directory.GetFiles(savesPath).Select(Path.GetFileName).ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error enumerating file saves list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories.", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void SaveCorruptedFileCopy()
@@ -684,14 +705,14 @@ namespace LunarROMCorruptor
         {
             try
             {
-                if (SaveasTxt.Text == "No save location set.")
-                {
-                    MessageBox.Show("No save location set! Cannot restore.", "Restore File", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 if (ROM == null)
                 {
                     MessageBox.Show("Error: Cannot restore file. No ROM loaded.", "Restore File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (SaveasTxt.Text == "No save location set.")
+                {
+                    MessageBox.Show("No save location set! Cannot restore.", "Restore File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 File.WriteAllBytes(SaveasTxt.Text, ROM);// Try to write the ROM that is in memory into the save as file.
@@ -806,7 +827,6 @@ namespace LunarROMCorruptor
             StashFileList.Items.AddRange(Directory.GetFiles(Path.Combine(Application.StartupPath, "CorruptionStashList")).Select(Path.GetFileName).ToArray());
 
             input.Dispose();
-
         }
 
         private void RefreshStash_Click(object sender, EventArgs e)
@@ -1097,7 +1117,6 @@ namespace LunarROMCorruptor
 
         private void CorruptionQueueChkbox_CheckedChanged(object sender, EventArgs e)
         {
-
             //Disable Stash Saves if queue is enabled as well as file saves
             if (CorruptionQueueChkbox.Checked)
             {
@@ -1122,11 +1141,6 @@ namespace LunarROMCorruptor
             Changesaveasbtn.Enabled = !CorruptionQueueChkbox.Checked;
             //Disable stash editor button
             StashEditorbtn.Enabled = !CorruptionQueueChkbox.Checked;
-        }
-
-        private void CorruptionQueueBtn_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void FileSaveOpenLocationBtn_Click(object sender, EventArgs e)
