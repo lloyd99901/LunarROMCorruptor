@@ -35,8 +35,8 @@ Not only can you corrupt just a ROM or a singular program, you can use this corr
 
 ![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/CorruptionQueue.png)
 
-### Engines
-Here are the following engines that come with LunarROMCorruptor
+### Corruption Engines
+Here are the following corruption engines that come with LunarROMCorruptor
  - Nightmare Engine:
 
    A simple, yet effective way of corrupting files, with three corruption modes: RANDOM, RANDOMTILT and TILT.
@@ -91,7 +91,7 @@ ByteView is a utility designed to provide users with a visual representation of 
 - Audible feedback when corruption is done.
 - Corrupt multiple files.
 - Saves settings.
-- Automation of corruption and automatic selection of engines.
+- Automation. (Randomize the intensity, start & end byte, randomize the corruption engine and even corrupt the file automatically using automation)
 
 ## Progress
 - [x] Import GUI from the old project
