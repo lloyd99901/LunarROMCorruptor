@@ -31,7 +31,7 @@ On the other hand, the Stash Save feature saves only the addresses of the change
 For instance, let's say there's a corruption that alters the color of Mario in Super Mario Bros but crashes the game when you try to start it. You can use the stash editor to remove the bytes that cause the crash and retain the byte responsible for changing the color. This functionality is similar to how the Stash Saves and Editor work on the Windows Glitch Harvester.
 
 ### Corrupt multiple files
-Not only can you corrupt just a ROM or a singular program, you can use this corruptor to corrupt several files or even select an entire folder of files to corrupt.
+Not only can you corrupt just a ROM or a singular file, you can use this corruptor to corrupt several files or even select an entire folder of files to corrupt.
 
 ![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/CorruptionQueue.png)
 
@@ -80,7 +80,7 @@ Here are the following corruption engines that come with LunarROMCorruptor
    (User manually enables and sets what types of corruption takes place in the file.)
 
 ### ByteView
-ByteView is a utility designed to provide users with a visual representation of binary content, offering users a visual representation via RGB or grayscale pixels. This tool provides a structured interface for the observation and analysis of byte values. ByteView is particularly useful for those seeking a non-intrusive approach to examining the underlying byte information within files.
+ByteView is a utility designed to provide users with a visual representation of binary content, offering users a visual representation via RGB or grayscale pixels. This tool provides a structured interface for the observation and analysis of byte values. ByteView is particularly useful for those seeking a non-intrusive approach to examining the underlying byte information within files. It also updates the ByteView when you corrupt the file, allowing the user to see the changes to the file with visuals.
 
 ![ByteView](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/ByteView.png)
 
