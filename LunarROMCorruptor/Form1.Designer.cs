@@ -116,6 +116,17 @@
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.RepeatNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ByteViewTab = new System.Windows.Forms.TabPage();
+            this.ByteViewContainer = new System.Windows.Forms.SplitContainer();
+            this.ByteViewSaveBtn = new System.Windows.Forms.Button();
+            this.ByteViewRefreshBtn = new System.Windows.Forms.Button();
+            this.flipVerticalChkbox = new System.Windows.Forms.CheckBox();
+            this.flipHorizontalChkbox = new System.Windows.Forms.CheckBox();
+            this.ByteViewupdateWhenCorruptedChkBox = new System.Windows.Forms.CheckBox();
+            this.ByteViewHelp = new System.Windows.Forms.LinkLabel();
+            this.byteViewColourChkbox = new System.Windows.Forms.CheckBox();
+            this.ByteViewLbl = new System.Windows.Forms.Label();
+            this.ByteViewPictureBox = new System.Windows.Forms.PictureBox();
             this.AutomationPage = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.AutoCorruptPanel = new System.Windows.Forms.Panel();
@@ -188,6 +199,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.IncrementNumericUpDown)).BeginInit();
             this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).BeginInit();
+            this.ByteViewTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ByteViewContainer)).BeginInit();
+            this.ByteViewContainer.Panel1.SuspendLayout();
+            this.ByteViewContainer.Panel2.SuspendLayout();
+            this.ByteViewContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ByteViewPictureBox)).BeginInit();
             this.AutomationPage.SuspendLayout();
             this.AutoCorruptPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DelayInAutomationNUD)).BeginInit();
@@ -251,7 +268,7 @@
             this.FileSaveTab.Location = new System.Drawing.Point(4, 22);
             this.FileSaveTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FileSaveTab.Name = "FileSaveTab";
-            this.FileSaveTab.Size = new System.Drawing.Size(642, 251);
+            this.FileSaveTab.Size = new System.Drawing.Size(642, 252);
             this.FileSaveTab.TabIndex = 4;
             this.FileSaveTab.Text = "File Saves";
             // 
@@ -343,7 +360,7 @@
             this.FilesaveList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilesaveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.FilesaveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.FilesaveList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FilesaveList.ForeColor = System.Drawing.Color.Silver;
             this.FilesaveList.FormattingEnabled = true;
@@ -551,12 +568,12 @@
             this.FileCorruptionTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FileCorruptionTab.Size = new System.Drawing.Size(642, 251);
             this.FileCorruptionTab.TabIndex = 0;
-            this.FileCorruptionTab.Text = "Corruption Parameters";
+            this.FileCorruptionTab.Text = "Target Parameters";
             // 
             // CorruptEverynthByteRadioBtn
             // 
             this.CorruptEverynthByteRadioBtn.AutoSize = true;
-            this.CorruptEverynthByteRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.CorruptEverynthByteRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.CorruptEverynthByteRadioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.CorruptEverynthByteRadioBtn.Location = new System.Drawing.Point(131, 3);
             this.CorruptEverynthByteRadioBtn.Name = "CorruptEverynthByteRadioBtn";
@@ -569,7 +586,7 @@
             // RandomByteCorruptRadioBtn
             // 
             this.RandomByteCorruptRadioBtn.AutoSize = true;
-            this.RandomByteCorruptRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.RandomByteCorruptRadioBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.RandomByteCorruptRadioBtn.Checked = true;
             this.RandomByteCorruptRadioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.RandomByteCorruptRadioBtn.Location = new System.Drawing.Point(14, 3);
@@ -585,7 +602,7 @@
             // 
             this.Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.Panel4.Controls.Add(this.ByteModeHelp);
             this.Panel4.Controls.Add(this.AllowLargeIntensity);
             this.Panel4.Controls.Add(this.SilentCorruptionchbox);
@@ -623,7 +640,7 @@
             this.AllowLargeIntensity.BackColor = System.Drawing.Color.Transparent;
             this.AllowLargeIntensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllowLargeIntensity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.AllowLargeIntensity.Location = new System.Drawing.Point(192, 68);
+            this.AllowLargeIntensity.Location = new System.Drawing.Point(7, 68);
             this.AllowLargeIntensity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AllowLargeIntensity.Name = "AllowLargeIntensity";
             this.AllowLargeIntensity.Size = new System.Drawing.Size(123, 17);
@@ -644,6 +661,7 @@
             this.SilentCorruptionchbox.TabIndex = 172;
             this.SilentCorruptionchbox.Text = "Mute Sound";
             this.SilentCorruptionchbox.UseVisualStyleBackColor = false;
+            this.SilentCorruptionchbox.CheckedChanged += new System.EventHandler(this.SilentCorruptionchbox_CheckedChanged);
             // 
             // UseHexchbox
             // 
@@ -658,6 +676,7 @@
             this.UseHexchbox.TabIndex = 173;
             this.UseHexchbox.Text = "Show HEX values";
             this.UseHexchbox.UseVisualStyleBackColor = false;
+            this.UseHexchbox.CheckedChanged += new System.EventHandler(this.UseHexchbox_CheckedChanged);
             // 
             // EndByteNumb
             // 
@@ -894,7 +913,7 @@
             // 
             this.StashBytesList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.StashBytesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.StashBytesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.StashBytesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StashBytesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StashBytesList.ForeColor = System.Drawing.Color.Silver;
@@ -905,7 +924,7 @@
             this.StashBytesList.Location = new System.Drawing.Point(330, 22);
             this.StashBytesList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashBytesList.Name = "StashBytesList";
-            this.StashBytesList.Size = new System.Drawing.Size(115, 223);
+            this.StashBytesList.Size = new System.Drawing.Size(115, 222);
             this.StashBytesList.TabIndex = 158;
             // 
             // EnableStashSavesChkbox
@@ -928,7 +947,7 @@
             this.StashFileList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StashFileList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.StashFileList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.StashFileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StashFileList.ForeColor = System.Drawing.Color.Silver;
             this.StashFileList.FormattingEnabled = true;
@@ -938,23 +957,23 @@
             this.StashFileList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashFileList.Name = "StashFileList";
             this.StashFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.StashFileList.Size = new System.Drawing.Size(172, 148);
+            this.StashFileList.Size = new System.Drawing.Size(172, 172);
             this.StashFileList.TabIndex = 158;
             this.StashFileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StashList_MouseDown);
             // 
             // StashEditorbtn
             // 
-            this.StashEditorbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StashEditorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.StashEditorbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StashEditorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.StashEditorbtn.FlatAppearance.BorderSize = 0;
             this.StashEditorbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StashEditorbtn.ForeColor = System.Drawing.Color.SpringGreen;
             this.StashEditorbtn.Image = global::LunarROMCorruptor.Properties.Resources.pen;
             this.StashEditorbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StashEditorbtn.Location = new System.Drawing.Point(466, 195);
+            this.StashEditorbtn.Location = new System.Drawing.Point(538, 0);
             this.StashEditorbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StashEditorbtn.Name = "StashEditorbtn";
-            this.StashEditorbtn.Size = new System.Drawing.Size(172, 23);
+            this.StashEditorbtn.Size = new System.Drawing.Size(118, 23);
             this.StashEditorbtn.TabIndex = 0;
             this.StashEditorbtn.Text = "Stash Editor";
             this.StashEditorbtn.UseVisualStyleBackColor = false;
@@ -963,7 +982,7 @@
             // DeleteStash
             // 
             this.DeleteStash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.DeleteStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.DeleteStash.FlatAppearance.BorderSize = 0;
             this.DeleteStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteStash.ForeColor = System.Drawing.Color.Turquoise;
@@ -979,15 +998,16 @@
             // 
             // Corruptusingstashbtn
             // 
-            this.Corruptusingstashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Corruptusingstashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Corruptusingstashbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Corruptusingstashbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.Corruptusingstashbtn.FlatAppearance.BorderSize = 0;
             this.Corruptusingstashbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Corruptusingstashbtn.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Corruptusingstashbtn.ForeColor = System.Drawing.Color.Turquoise;
             this.Corruptusingstashbtn.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
             this.Corruptusingstashbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Corruptusingstashbtn.Location = new System.Drawing.Point(466, 171);
+            this.Corruptusingstashbtn.Location = new System.Drawing.Point(466, 195);
             this.Corruptusingstashbtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Corruptusingstashbtn.Name = "Corruptusingstashbtn";
             this.Corruptusingstashbtn.Size = new System.Drawing.Size(172, 23);
@@ -999,7 +1019,7 @@
             // RefreshStash
             // 
             this.RefreshStash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RefreshStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.RefreshStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.RefreshStash.FlatAppearance.BorderSize = 0;
             this.RefreshStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefreshStash.ForeColor = System.Drawing.Color.Turquoise;
@@ -1016,7 +1036,7 @@
             // RenameStash
             // 
             this.RenameStash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RenameStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.RenameStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.RenameStash.FlatAppearance.BorderSize = 0;
             this.RenameStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RenameStash.ForeColor = System.Drawing.Color.Turquoise;
@@ -1034,7 +1054,7 @@
             // 
             this.TransferStash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TransferStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.TransferStash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.TransferStash.FlatAppearance.BorderSize = 0;
             this.TransferStash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransferStash.Font = new System.Drawing.Font("Webdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -1042,7 +1062,7 @@
             this.TransferStash.Location = new System.Drawing.Point(446, 22);
             this.TransferStash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TransferStash.Name = "TransferStash";
-            this.TransferStash.Size = new System.Drawing.Size(19, 223);
+            this.TransferStash.Size = new System.Drawing.Size(19, 222);
             this.TransferStash.TabIndex = 0;
             this.TransferStash.Tag = "";
             this.TransferStash.Text = "4";
@@ -1067,6 +1087,7 @@
             this.MainTabControl.Controls.Add(this.FileCorruptionTab);
             this.MainTabControl.Controls.Add(this.CorruptionEngineTab);
             this.MainTabControl.Controls.Add(this.FileSaveTab);
+            this.MainTabControl.Controls.Add(this.ByteViewTab);
             this.MainTabControl.Controls.Add(this.AutomationPage);
             this.MainTabControl.Controls.Add(this.MemCorruptPage);
             this.MainTabControl.Controls.Add(this.AboutTab);
@@ -1086,7 +1107,7 @@
             this.CorruptionEngineTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CorruptionEngineTab.Name = "CorruptionEngineTab";
             this.CorruptionEngineTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptionEngineTab.Size = new System.Drawing.Size(642, 251);
+            this.CorruptionEngineTab.Size = new System.Drawing.Size(642, 252);
             this.CorruptionEngineTab.TabIndex = 1;
             this.CorruptionEngineTab.Text = "Corruption Engine Settings";
             // 
@@ -1095,7 +1116,7 @@
             this.ManualEnginePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManualEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.ManualEnginePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.ManualEnginePanel.Controls.Add(this.Label9);
             this.ManualEnginePanel.Controls.Add(this.GroupBox8);
             this.ManualEnginePanel.Controls.Add(this.GroupBox7);
@@ -1562,6 +1583,166 @@
             0,
             0});
             // 
+            // ByteViewTab
+            // 
+            this.ByteViewTab.Controls.Add(this.ByteViewContainer);
+            this.ByteViewTab.Location = new System.Drawing.Point(4, 22);
+            this.ByteViewTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewTab.Name = "ByteViewTab";
+            this.ByteViewTab.Size = new System.Drawing.Size(642, 251);
+            this.ByteViewTab.TabIndex = 8;
+            this.ByteViewTab.Text = "ByteView";
+            this.ByteViewTab.UseVisualStyleBackColor = true;
+            // 
+            // ByteViewContainer
+            // 
+            this.ByteViewContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ByteViewContainer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ByteViewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ByteViewContainer.Location = new System.Drawing.Point(0, 0);
+            this.ByteViewContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewContainer.Name = "ByteViewContainer";
+            // 
+            // ByteViewContainer.Panel1
+            // 
+            this.ByteViewContainer.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
+            this.ByteViewContainer.Panel1.Controls.Add(this.ByteViewSaveBtn);
+            this.ByteViewContainer.Panel1.Controls.Add(this.ByteViewRefreshBtn);
+            this.ByteViewContainer.Panel1.Controls.Add(this.flipVerticalChkbox);
+            this.ByteViewContainer.Panel1.Controls.Add(this.flipHorizontalChkbox);
+            this.ByteViewContainer.Panel1.Controls.Add(this.ByteViewupdateWhenCorruptedChkBox);
+            this.ByteViewContainer.Panel1.Controls.Add(this.ByteViewHelp);
+            this.ByteViewContainer.Panel1.Controls.Add(this.byteViewColourChkbox);
+            this.ByteViewContainer.Panel1.Controls.Add(this.ByteViewLbl);
+            this.ByteViewContainer.Panel1MinSize = 100;
+            // 
+            // ByteViewContainer.Panel2
+            // 
+            this.ByteViewContainer.Panel2.Controls.Add(this.ByteViewPictureBox);
+            this.ByteViewContainer.Size = new System.Drawing.Size(642, 251);
+            this.ByteViewContainer.SplitterDistance = 100;
+            this.ByteViewContainer.SplitterWidth = 5;
+            this.ByteViewContainer.TabIndex = 177;
+            // 
+            // ByteViewSaveBtn
+            // 
+            this.ByteViewSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ByteViewSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
+            this.ByteViewSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ByteViewSaveBtn.FlatAppearance.BorderSize = 0;
+            this.ByteViewSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ByteViewSaveBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.ByteViewSaveBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ByteViewSaveBtn.Location = new System.Drawing.Point(1, 58);
+            this.ByteViewSaveBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ByteViewSaveBtn.Name = "ByteViewSaveBtn";
+            this.ByteViewSaveBtn.Size = new System.Drawing.Size(95, 23);
+            this.ByteViewSaveBtn.TabIndex = 8;
+            this.ByteViewSaveBtn.Text = "Save Image";
+            this.ByteViewSaveBtn.UseVisualStyleBackColor = false;
+            this.ByteViewSaveBtn.Click += new System.EventHandler(this.ByteViewSaveImageBtn_Click);
+            // 
+            // ByteViewRefreshBtn
+            // 
+            this.ByteViewRefreshBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ByteViewRefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
+            this.ByteViewRefreshBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ByteViewRefreshBtn.FlatAppearance.BorderSize = 0;
+            this.ByteViewRefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ByteViewRefreshBtn.ForeColor = System.Drawing.Color.Turquoise;
+            this.ByteViewRefreshBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ByteViewRefreshBtn.Location = new System.Drawing.Point(2, 34);
+            this.ByteViewRefreshBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ByteViewRefreshBtn.Name = "ByteViewRefreshBtn";
+            this.ByteViewRefreshBtn.Size = new System.Drawing.Size(95, 23);
+            this.ByteViewRefreshBtn.TabIndex = 7;
+            this.ByteViewRefreshBtn.Text = "Convert/Update";
+            this.ByteViewRefreshBtn.UseVisualStyleBackColor = false;
+            this.ByteViewRefreshBtn.Click += new System.EventHandler(this.ByteViewRefreshBtn_Click);
+            // 
+            // flipVerticalChkbox
+            // 
+            this.flipVerticalChkbox.AutoSize = true;
+            this.flipVerticalChkbox.ForeColor = System.Drawing.Color.White;
+            this.flipVerticalChkbox.Location = new System.Drawing.Point(6, 172);
+            this.flipVerticalChkbox.Name = "flipVerticalChkbox";
+            this.flipVerticalChkbox.Size = new System.Drawing.Size(80, 17);
+            this.flipVerticalChkbox.TabIndex = 4;
+            this.flipVerticalChkbox.Text = "Flip Vertical";
+            this.flipVerticalChkbox.UseVisualStyleBackColor = true;
+            // 
+            // flipHorizontalChkbox
+            // 
+            this.flipHorizontalChkbox.AutoSize = true;
+            this.flipHorizontalChkbox.ForeColor = System.Drawing.Color.White;
+            this.flipHorizontalChkbox.Location = new System.Drawing.Point(6, 149);
+            this.flipHorizontalChkbox.Name = "flipHorizontalChkbox";
+            this.flipHorizontalChkbox.Size = new System.Drawing.Size(92, 17);
+            this.flipHorizontalChkbox.TabIndex = 4;
+            this.flipHorizontalChkbox.Text = "Flip Horizontal";
+            this.flipHorizontalChkbox.UseVisualStyleBackColor = true;
+            // 
+            // ByteViewupdateWhenCorruptedChkBox
+            // 
+            this.ByteViewupdateWhenCorruptedChkBox.AutoSize = true;
+            this.ByteViewupdateWhenCorruptedChkBox.ForeColor = System.Drawing.Color.White;
+            this.ByteViewupdateWhenCorruptedChkBox.Location = new System.Drawing.Point(7, 113);
+            this.ByteViewupdateWhenCorruptedChkBox.Name = "ByteViewupdateWhenCorruptedChkBox";
+            this.ByteViewupdateWhenCorruptedChkBox.Size = new System.Drawing.Size(90, 30);
+            this.ByteViewupdateWhenCorruptedChkBox.TabIndex = 4;
+            this.ByteViewupdateWhenCorruptedChkBox.Text = "Update when\r\ncorrupted";
+            this.ByteViewupdateWhenCorruptedChkBox.UseVisualStyleBackColor = true;
+            this.ByteViewupdateWhenCorruptedChkBox.CheckedChanged += new System.EventHandler(this.ByteViewupdateWhenCorruptedChkBox_CheckedChanged);
+            // 
+            // ByteViewHelp
+            // 
+            this.ByteViewHelp.AutoSize = true;
+            this.ByteViewHelp.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.ByteViewHelp.Location = new System.Drawing.Point(86, 15);
+            this.ByteViewHelp.Name = "ByteViewHelp";
+            this.ByteViewHelp.Size = new System.Drawing.Size(13, 13);
+            this.ByteViewHelp.TabIndex = 2;
+            this.ByteViewHelp.TabStop = true;
+            this.ByteViewHelp.Text = "?";
+            this.ByteViewHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ByteViewHelp_LinkClicked);
+            // 
+            // byteViewColourChkbox
+            // 
+            this.byteViewColourChkbox.AutoSize = true;
+            this.byteViewColourChkbox.ForeColor = System.Drawing.Color.White;
+            this.byteViewColourChkbox.Location = new System.Drawing.Point(7, 90);
+            this.byteViewColourChkbox.Name = "byteViewColourChkbox";
+            this.byteViewColourChkbox.Size = new System.Drawing.Size(86, 17);
+            this.byteViewColourChkbox.TabIndex = 1;
+            this.byteViewColourChkbox.Text = "Colour Mode";
+            this.byteViewColourChkbox.UseVisualStyleBackColor = true;
+            this.byteViewColourChkbox.CheckedChanged += new System.EventHandler(this.byteViewColourChkbox_CheckedChanged);
+            // 
+            // ByteViewLbl
+            // 
+            this.ByteViewLbl.AutoSize = true;
+            this.ByteViewLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ByteViewLbl.ForeColor = System.Drawing.Color.White;
+            this.ByteViewLbl.Location = new System.Drawing.Point(6, 10);
+            this.ByteViewLbl.Name = "ByteViewLbl";
+            this.ByteViewLbl.Size = new System.Drawing.Size(85, 22);
+            this.ByteViewLbl.TabIndex = 0;
+            this.ByteViewLbl.Text = "ByteView";
+            // 
+            // ByteViewPictureBox
+            // 
+            this.ByteViewPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ByteViewPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ByteViewPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.ByteViewPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewPictureBox.Name = "ByteViewPictureBox";
+            this.ByteViewPictureBox.Size = new System.Drawing.Size(535, 249);
+            this.ByteViewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ByteViewPictureBox.TabIndex = 176;
+            this.ByteViewPictureBox.TabStop = false;
+            // 
             // AutomationPage
             // 
             this.AutomationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
@@ -1569,7 +1750,7 @@
             this.AutomationPage.Controls.Add(this.AutoCorruptPanel);
             this.AutomationPage.Location = new System.Drawing.Point(4, 22);
             this.AutomationPage.Name = "AutomationPage";
-            this.AutomationPage.Size = new System.Drawing.Size(642, 251);
+            this.AutomationPage.Size = new System.Drawing.Size(642, 252);
             this.AutomationPage.TabIndex = 6;
             this.AutomationPage.Text = "Automation";
             // 
@@ -1631,7 +1812,7 @@
             // 
             // AutomationList
             // 
-            this.AutomationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.AutomationList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.AutomationList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AutomationList.Dock = System.Windows.Forms.DockStyle.Left;
             this.AutomationList.ForeColor = System.Drawing.Color.Silver;
@@ -1707,7 +1888,7 @@
             this.MoveTaskDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MoveTaskDownBtn.ForeColor = System.Drawing.Color.Turquoise;
             this.MoveTaskDownBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MoveTaskDownBtn.Location = new System.Drawing.Point(551, 2);
+            this.MoveTaskDownBtn.Location = new System.Drawing.Point(551, 1);
             this.MoveTaskDownBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MoveTaskDownBtn.Name = "MoveTaskDownBtn";
             this.MoveTaskDownBtn.Size = new System.Drawing.Size(76, 29);
@@ -1725,7 +1906,7 @@
             this.MoveTaskUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MoveTaskUpBtn.ForeColor = System.Drawing.Color.Turquoise;
             this.MoveTaskUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MoveTaskUpBtn.Location = new System.Drawing.Point(474, 2);
+            this.MoveTaskUpBtn.Location = new System.Drawing.Point(474, 1);
             this.MoveTaskUpBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MoveTaskUpBtn.Name = "MoveTaskUpBtn";
             this.MoveTaskUpBtn.Size = new System.Drawing.Size(76, 29);
@@ -1774,8 +1955,8 @@
             this.MemCorruptPage.Controls.Add(this.panel1);
             this.MemCorruptPage.Location = new System.Drawing.Point(4, 22);
             this.MemCorruptPage.Name = "MemCorruptPage";
-            this.MemCorruptPage.Padding = new System.Windows.Forms.Padding(3);
-            this.MemCorruptPage.Size = new System.Drawing.Size(642, 251);
+            this.MemCorruptPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.MemCorruptPage.Size = new System.Drawing.Size(642, 252);
             this.MemCorruptPage.TabIndex = 7;
             this.MemCorruptPage.Text = "Process Memory Corruption";
             // 
@@ -1803,7 +1984,7 @@
             this.ProcessMemPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
             this.ProcessMemPanel.Location = new System.Drawing.Point(3, 39);
             this.ProcessMemPanel.Name = "ProcessMemPanel";
-            this.ProcessMemPanel.Size = new System.Drawing.Size(622, 197);
+            this.ProcessMemPanel.Size = new System.Drawing.Size(622, 196);
             this.ProcessMemPanel.TabIndex = 92;
             // 
             // label5
@@ -1838,8 +2019,8 @@
             this.AboutTab.Controls.Add(this.panel5);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AboutTab.Size = new System.Drawing.Size(642, 251);
+            this.AboutTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.AboutTab.Size = new System.Drawing.Size(642, 252);
             this.AboutTab.TabIndex = 5;
             this.AboutTab.Text = "About";
             // 
@@ -1848,7 +2029,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.panel5.Controls.Add(this.richTextBox1);
             this.panel5.Controls.Add(this.AboutVerLabel);
             this.panel5.Controls.Add(this.label1);
@@ -1911,7 +2092,7 @@
             // 
             // StartEmulatorPanel
             // 
-            this.StartEmulatorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(51)))));
+            this.StartEmulatorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(61)))));
             this.StartEmulatorPanel.Controls.Add(this.StartEmulatorlbl);
             this.StartEmulatorPanel.Controls.Add(this.OverrideArgumentschbox);
             this.StartEmulatorPanel.Controls.Add(this.ReopenChbox);
@@ -1928,7 +2109,7 @@
             // 
             // BrowseEmulatorbutton
             // 
-            this.BrowseEmulatorbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(100)))));
+            this.BrowseEmulatorbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.BrowseEmulatorbutton.FlatAppearance.BorderSize = 0;
             this.BrowseEmulatorbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BrowseEmulatorbutton.ForeColor = System.Drawing.Color.Turquoise;
@@ -1957,7 +2138,7 @@
             // 
             // CorruptButton
             // 
-            this.CorruptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.CorruptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.CorruptButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CorruptButton.FlatAppearance.BorderSize = 0;
             this.CorruptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1981,7 +2162,7 @@
             // 
             this.SaveasTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveasTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.SaveasTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.SaveasTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SaveasTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.SaveasTxt.Location = new System.Drawing.Point(159, 27);
@@ -2013,6 +2194,7 @@
             this.EngineSelectPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EngineSelectPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(16)))), ((int)(((byte)(61)))));
             this.EngineSelectPanel.Controls.Add(this.CorruptionQueueChkbox);
             this.EngineSelectPanel.Controls.Add(this.CorruptionEnginelbl);
             this.EngineSelectPanel.Controls.Add(this.CorruptionEngineComboBox);
@@ -2023,7 +2205,7 @@
             // 
             // Restorefilebtn
             // 
-            this.Restorefilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Restorefilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.Restorefilebtn.FlatAppearance.BorderSize = 0;
             this.Restorefilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Restorefilebtn.ForeColor = System.Drawing.Color.SpringGreen;
@@ -2040,7 +2222,7 @@
             // 
             // Changesaveasbtn
             // 
-            this.Changesaveasbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Changesaveasbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.Changesaveasbtn.FlatAppearance.BorderSize = 0;
             this.Changesaveasbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Changesaveasbtn.ForeColor = System.Drawing.Color.Turquoise;
@@ -2057,7 +2239,7 @@
             // 
             // Openfilebtn
             // 
-            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(108)))));
             this.Openfilebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Openfilebtn.FlatAppearance.BorderSize = 0;
             this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2077,7 +2259,7 @@
             // 
             this.FileSelectiontxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileSelectiontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
+            this.FileSelectiontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.FileSelectiontxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FileSelectiontxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.FileSelectiontxt.Location = new System.Drawing.Point(159, 3);
@@ -2107,6 +2289,7 @@
             // 
             // contextStripStash
             // 
+            this.contextStripStash.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextStripStash.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.renameToolStripMenuItem,
             this.deleteToolStripMenuItem});
@@ -2142,7 +2325,7 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.FileSelectPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(666, 518);
+            this.MinimumSize = new System.Drawing.Size(666, 515);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LunarROMCorruptor - vx.x - UNSTABLE BUILD";
@@ -2192,6 +2375,13 @@
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RepeatNumericUpDown)).EndInit();
+            this.ByteViewTab.ResumeLayout(false);
+            this.ByteViewContainer.Panel1.ResumeLayout(false);
+            this.ByteViewContainer.Panel1.PerformLayout();
+            this.ByteViewContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ByteViewContainer)).EndInit();
+            this.ByteViewContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ByteViewPictureBox)).EndInit();
             this.AutomationPage.ResumeLayout(false);
             this.AutomationPage.PerformLayout();
             this.AutoCorruptPanel.ResumeLayout(false);
@@ -2345,6 +2535,17 @@
         internal System.Windows.Forms.CheckBox UseHexchbox;
         private System.Windows.Forms.LinkLabel ByteModeHelp;
         internal System.Windows.Forms.CheckBox EnableStashSavesChkbox;
+        private System.Windows.Forms.TabPage ByteViewTab;
+        private System.Windows.Forms.SplitContainer ByteViewContainer;
+        private System.Windows.Forms.PictureBox ByteViewPictureBox;
+        private System.Windows.Forms.Label ByteViewLbl;
+        private System.Windows.Forms.CheckBox byteViewColourChkbox;
+        private System.Windows.Forms.LinkLabel ByteViewHelp;
+        private System.Windows.Forms.CheckBox ByteViewupdateWhenCorruptedChkBox;
+        private System.Windows.Forms.CheckBox flipVerticalChkbox;
+        private System.Windows.Forms.CheckBox flipHorizontalChkbox;
+        internal System.Windows.Forms.Button ByteViewSaveBtn;
+        internal System.Windows.Forms.Button ByteViewRefreshBtn;
     }
 }
 

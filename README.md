@@ -32,6 +32,7 @@ For instance, let's say there's a corruption that alters the color of Mario in S
 
 ### Corrupt multiple files
 Not only can you corrupt just a ROM or a singular program, you can use this corruptor to corrupt several files or even select an entire folder of files to corrupt.
+
 ![MainWindow](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/CorruptionQueue.png)
 
 ### Engines
@@ -55,6 +56,7 @@ Here are the following engines that come with LunarROMCorruptor
  - Merge Engine
 
    An engine that copies bytes from one file to the other to create corruption (For example, 'merging' bytes from Super Mario Bros. with Donkey Kong bytes).
+   
  - Logic Engine
 
    An engine that uses bitwise/logical operations on two selected bytes.
@@ -72,7 +74,15 @@ Here are the following engines that come with LunarROMCorruptor
 
    An engine that takes the 2 neighbouring bytes where the selected byte is and corrupts the selected byte by using linear interpolation
    (e.g. 0 21 100 would become 0 50 100 if the Lerp Setting was set to 0.5)
- - Manual (User manually enables and sets what types of corruption takes place in the file.)
+
+ - Manual Engine
+
+   (User manually enables and sets what types of corruption takes place in the file.)
+
+### ByteView
+ByteView is a utility designed to provide users with a visual representation of binary content, offering users a visual representation via RGB or grayscale pixels. This tool provides a structured interface for the observation and analysis of byte values. ByteView is particularly useful for those seeking a non-intrusive approach to examining the underlying byte information within files.
+
+![ByteView](https://raw.githubusercontent.com/lloyd99901/LunarROMCorruptor/master/static/images/ByteView.png)
 
 ### Misc
 - With more engines and settings to play around with, the more interesting results you can get with the engines.
@@ -80,7 +90,8 @@ Here are the following engines that come with LunarROMCorruptor
 - Can run an emulator after corruption.
 - Audible feedback when corruption is done.
 - Corrupt multiple files.
-- Saves settings
+- Saves settings.
+- Automation of corruption and automatic selection of engines.
 
 ## Progress
 - [x] Import GUI from the old project
@@ -98,7 +109,7 @@ I've included the Nightmare Engine, which is an engine from the Windows Glitch H
 
 ### Requirements
 .NET Framework 4.7.2 is required to run the program.
-For development, Microsoft Visual Studio Community 2019 is recommended.
+For development, Microsoft Visual Studio Community 2022 is recommended.
 ## Contributing
 Pull requests are welcome. Major and minor.
 ## Notes
@@ -109,6 +120,6 @@ Active development is in the unstable branch of this repo. The master branch is 
 
 ## Corruption Warning
 - If you have epilepsy, it is advisable to refrain from participating in corruption activities, due to the flashing imagery that may occur with corruptions.
-- When corrupting specific games, there's a remote possibility of encountering a Blue Screen of Death (BSOD). Although BSOD occurrences are infrequent and generally don't cause major harm to your computer, they - will prompt an automatic restart. Always ensure you save any ongoing work before engaging in corruption to avoid data loss.
-- Using this corruptor in online games or those protected by anti-cheat software may result in account bans. Additionally, refrain from corrupting essential system files, such as system32, as it can lead to irreversible damage to - personal or critical system data. If you really want to, do it in a virutal machine to minimize potential risks.
-- It is essential to recognize that this program comes with no warranties of any kind and is provided "AS IS." Users are personally responsible for backing up their data before use and for any consequences arising from the appropriate - or inappropriate use of the program. Refrain from corrupting multiplayer game files, as anti-cheat software may be triggered.
+- When corrupting specific games, there's a remote possibility of encountering a Blue Screen of Death (BSOD). Although BSOD occurrences are infrequent and generally don't cause major harm to your computer, they will prompt an automatic restart. Always ensure you save any ongoing work before engaging in corruption to avoid data loss.
+- Using this corruptor in online games or those protected by anti-cheat software may result in account bans. Additionally, refrain from corrupting essential system files, such as system32, as it can lead to irreversible damage to personal or critical system data. If you really want to, do it in a virutal machine to minimize potential risks.
+- It is essential to recognize that this program comes with no warranties of any kind and is provided "AS IS." Users are personally responsible for backing up their data before use and for any consequences arising from the appropriate or inappropriate use of the program. Refrain from corrupting multiplayer game files, as anti-cheat software may be triggered.

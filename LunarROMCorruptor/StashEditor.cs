@@ -13,7 +13,6 @@ namespace LunarROMCorruptor
         {
             InitializeComponent();
         }
-
         public void AttemptStashLoad(string fileloc)
         {
             try

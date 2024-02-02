@@ -231,6 +231,7 @@
             // OpenFileDialog
             // 
             this.OpenFileDialog.Filter = "All files (*.*)|*.*";
+            this.OpenFileDialog.Multiselect = true;
             // 
             // CorruptionQueueList
             // 

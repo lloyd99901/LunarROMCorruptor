@@ -29,18 +29,18 @@ namespace LunarROMCorruptor.CorruptionInternals
                     {
                         //CorruptNTH selected
                         int i1 = StartByte;
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                         while (i1 <= EndByte)
                         {
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             NightmareEngine.CorruptByte(ROM, corruptiontype, i1);
                             i1 += Intensity;
                         }
                     }
                     else //Intensity Mode
                     {
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.NightmareComboBox.Text, out CorruptionOptions corruptiontype);
                             NightmareEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
                     }
@@ -79,18 +79,18 @@ namespace LunarROMCorruptor.CorruptionInternals
                     {
                         //CorruptNTH selected
                         int i1 = StartByte;
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                         while (i1 <= EndByte)
                         {
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, i1);
                             i1 += Intensity;
                         }
                     }
                     else //Intensity Mode
                     {
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.CorrTypeMerge.Text, out CorruptionOptions corruptiontype);
                             MergeEngine.CorruptByte(ROM, ROMmerge, corruptiontype, rnd.Next(StartByte, EndByte));
                         }
                     }
@@ -100,6 +100,7 @@ namespace LunarROMCorruptor.CorruptionInternals
                     if (CorruptNthByte)
                     {
                         //CorruptNTH selected
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
                         int i1 = StartByte;
                         while (i1 <= EndByte)
                         {
@@ -113,13 +114,13 @@ namespace LunarROMCorruptor.CorruptionInternals
                                 int randomValue = rnd.Next((int)Program.Form.CorruptionEngineFrame.ValueBitwise.Minimum, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Maximum);
                                 Program.Form.CorruptionEngineFrame.ValueBitwise.Value = randomValue;
                             }
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
                             LogicEngine.CorruptByte(ROM, corruptiontype, i1, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Value);
                             i1 += Intensity;
                         }
                     }
                     else //Intensity Mode
                     {
+                        Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
                         for (int i1 = 0; i1 <= Intensity - 1; i1++)
                         {
                             if (Program.Form.CorruptionEngineFrame.LogicRandomizeTypeCheckbox.Checked) //Randomize selection
@@ -132,7 +133,6 @@ namespace LunarROMCorruptor.CorruptionInternals
                                 int randomValue = rnd.Next((int)Program.Form.CorruptionEngineFrame.ValueBitwise.Minimum, (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Maximum);
                                 Program.Form.CorruptionEngineFrame.ValueBitwise.Value = randomValue;
                             }
-                            Enum.TryParse(Program.Form.CorruptionEngineFrame.BitwiseComboBox.Text, out CorruptionOptions corruptiontype);
                             //MessageBox.Show(StartByte.ToString() + EndByte.ToString());
                             LogicEngine.CorruptByte(ROM, corruptiontype, rnd.Next(StartByte, EndByte), (int)Program.Form.CorruptionEngineFrame.ValueBitwise.Value);
                         }

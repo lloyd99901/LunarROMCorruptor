@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteView.cs" />
     <Compile Include="CorruptionEngineOptions.cs">
       <SubType>Form</SubType>
     </Compile>

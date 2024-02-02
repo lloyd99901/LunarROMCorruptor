@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Net.Mime;
 using System.Text;
 using System.Windows.Forms;
 
@@ -49,7 +48,7 @@ namespace LunarROMCorruptor
         private int StartByte; //This stores the start byte that the user sets
         private int EndByte; //This stores the end byte that the user sets
         private readonly Random rnd = new Random(); //Used for random number generation
-        private readonly string vernumber = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; //"v1.0.4 - Build Number: " + 
+        private readonly string vernumber = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}"; //"v1.0.4 - Build Number: " + 
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
         readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm(); //Creates the corruption queue form and then it will be read later by the main form.
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
@@ -100,18 +99,20 @@ namespace LunarROMCorruptor
         public void LoadSettings()
         {
             // Read & check if the emulator path is valid
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.EmulatorPath) && File.Exists(Properties.Settings.Default.EmulatorPath))
+            if (!string.IsNullOrEmpty(Settings.Default.EmulatorPath) && File.Exists(Settings.Default.EmulatorPath))
             {
-                EmulatorLocationtxt.Text = Properties.Settings.Default.EmulatorPath;
+                EmulatorLocationtxt.Text = Settings.Default.EmulatorPath;
             }
 
             // Read and set checkbox states
-            SilentCorruptionchbox.Checked = Properties.Settings.Default.SilentCorruption;
-            EnableStashSavesChkbox.Checked = Properties.Settings.Default.StashSavesEnabled;
-            UseHexchbox.Checked = Properties.Settings.Default.UseHex;
-            Runemulatorchbox.Checked = Properties.Settings.Default.RunEmulator;
-            ReopenChbox.Checked = Properties.Settings.Default.ReopenEmulator;
-            FilesaveEnableAutoSaves.Checked = Properties.Settings.Default.AutoFileSaveEnabled;
+            SilentCorruptionchbox.Checked = Settings.Default.SilentCorruption;
+            EnableStashSavesChkbox.Checked = Settings.Default.StashSavesEnabled;
+            UseHexchbox.Checked = Settings.Default.UseHex;
+            Runemulatorchbox.Checked = Settings.Default.RunEmulator;
+            ReopenChbox.Checked = Settings.Default.ReopenEmulator;
+            FilesaveEnableAutoSaves.Checked = Settings.Default.AutoFileSaveEnabled;
+            byteViewColourChkbox.Checked = Settings.Default.ByteViewColourMode;
+            ByteViewupdateWhenCorruptedChkBox.Checked = Settings.Default.ByteViewUpdateOnCorruption;
         }
 
         public void RefreshCorruptionStashList()
@@ -233,6 +234,7 @@ namespace LunarROMCorruptor
                 CorruptButton.Text = $"Corrupt File ({size} {unit})";
                 AttentionPictureBox.Hide();
                 AttentionPictureBox.Image = Resources.dragicon;
+
             }
             else
             {
@@ -309,8 +311,8 @@ namespace LunarROMCorruptor
             StartByteNumb.Hexadecimal = UseHexchbox.Checked;
             EndByteNumb.Hexadecimal = UseHexchbox.Checked;
             //Save changes to settings
-            Properties.Settings.Default.UseHex = UseHexchbox.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.UseHex = UseHexchbox.Checked;
+            Settings.Default.Save();
         }
 
         private void Changesaveasbtn_Click(object sender, EventArgs e)
@@ -365,8 +367,8 @@ namespace LunarROMCorruptor
             {
                 EmulatorLocationtxt.Text = EmulatorFileDialog.FileName;
                 //Save selected path to settings
-                Properties.Settings.Default.EmulatorPath = EmulatorFileDialog.FileName;
-                Properties.Settings.Default.Save();
+                Settings.Default.EmulatorPath = EmulatorFileDialog.FileName;
+                Settings.Default.Save();
             }
         }
 
@@ -390,16 +392,13 @@ namespace LunarROMCorruptor
                 BrowseEmulatorbutton.Enabled = false;
             }
             //Save changes to settings
-            Properties.Settings.Default.RunEmulator = Runemulatorchbox.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.RunEmulator = Runemulatorchbox.Checked;
+            Settings.Default.Save();
         }
 
         private void CorruptButton_Click(object sender, EventArgs e)
         {
             //Main Function - Starts the corruption process.
-            StashBytesList.Items.Clear();
-            InternalStashItems.Clear();
-            InternalStashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
 
             //---Check if the corruption queue has been enabled--- If so, use this multi-corruption code.
             if (CorruptionQueueChkbox.Checked)
@@ -473,7 +472,9 @@ namespace LunarROMCorruptor
                 {
                     tmpintensity = (int)Intensity.Value;
                 }
-
+                StashBytesList.Items.Clear();
+                InternalStashItems.Clear();
+                InternalStashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
                 //For each file that is on the corruptionqueuelist, corrupt it.
                 for (int i = 0; i < CorruptionQueueFormSettings.CorruptionQueueList.Items.Count; i++)
                 {
@@ -585,7 +586,9 @@ namespace LunarROMCorruptor
                     MessageBox.Show("File doesn't exist.", $"Error - {nameof(LunarROMCorruptor)}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                StashBytesList.Items.Clear();
+                InternalStashItems.Clear();
+                InternalStashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
                 byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM. FinROM will contain the corrupted file when its run through the corruption engine.
 
                 FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptEverynthByteRadioBtn.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
@@ -635,6 +638,14 @@ namespace LunarROMCorruptor
                         }
                     }
                 }
+                if (ByteViewupdateWhenCorruptedChkBox.Checked)
+                {
+                    ByteViewPictureBox.Image = ByteView.ConvertByteToImage(FinROM, byteViewColourChkbox.Checked);
+                    if (flipVerticalChkbox.Checked || flipHorizontalChkbox.Checked)
+                    {
+                        ByteViewPictureBox.Image = ByteView.FlipImage((Bitmap)ByteViewPictureBox.Image, flipHorizontalChkbox.Checked, flipVerticalChkbox.Checked);
+                    }
+                }
                 //Clear FINROM and clean memory
                 FinROM = null;
                 GC.Collect();
@@ -643,7 +654,7 @@ namespace LunarROMCorruptor
             CorruptButton.BackColor = Color.Green; //Change colour of the corrupt button
             if (!SilentCorruptionchbox.Checked) //check if silent corruption is on. if it is, don't play the sound.
             {
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                using (var soundPlayer = new SoundPlayer(Resources.success3))
                 {
                     soundPlayer.Play();
                 }
@@ -719,7 +730,7 @@ namespace LunarROMCorruptor
                 CorruptButton.BackColor = Color.Green;
                 if (!SilentCorruptionchbox.Checked)
                 {
-                    using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                    using (var soundPlayer = new SoundPlayer(Resources.success3))
                     {
                         soundPlayer.Play();
                     }
@@ -753,6 +764,7 @@ namespace LunarROMCorruptor
                         builder.Append(listitem);
                         builder.AppendLine();
                     }
+                    return;
                 }
             }
             else
@@ -1044,7 +1056,7 @@ namespace LunarROMCorruptor
             CorruptButton.BackColor = Color.Green;
             if (!SilentCorruptionchbox.Checked)
             {
-                using (var soundPlayer = new SoundPlayer(Properties.Resources.success3))
+                using (var soundPlayer = new SoundPlayer(Resources.success3))
                 {
                     soundPlayer.Play();
                 }
@@ -1067,8 +1079,8 @@ namespace LunarROMCorruptor
             StashBytesList.Enabled = EnableStashSavesChkbox.Checked;
             TransferStash.Enabled = EnableStashSavesChkbox.Checked;
             //Save changes to settings
-            Properties.Settings.Default.StashSavesEnabled = EnableStashSavesChkbox.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.StashSavesEnabled = EnableStashSavesChkbox.Checked;
+            Settings.Default.Save();
         }
 
         private void StartByteNumb_ValueChanged(object sender, EventArgs e)
@@ -1097,22 +1109,22 @@ namespace LunarROMCorruptor
 
         private void SilentCorruptionchbox_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.SilentCorruption = SilentCorruptionchbox.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.SilentCorruption = SilentCorruptionchbox.Checked;
+            Settings.Default.Save();
         }
 
         private void ReopenChbox_CheckedChanged(object sender, EventArgs e)
         {
             //Save changes to settings
-            Properties.Settings.Default.ReopenEmulator = ReopenChbox.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.ReopenEmulator = ReopenChbox.Checked;
+            Settings.Default.Save();
         }
 
         private void FilesaveEnableAutoSaves_CheckedChanged(object sender, EventArgs e)
         {
             //Save changes to settings
-            Properties.Settings.Default.AutoFileSaveEnabled = FilesaveEnableAutoSaves.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.AutoFileSaveEnabled = FilesaveEnableAutoSaves.Checked;
+            Settings.Default.Save();
         }
 
         private void CorruptionQueueChkbox_CheckedChanged(object sender, EventArgs e)
@@ -1361,6 +1373,57 @@ namespace LunarROMCorruptor
         private void ByteModeHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show($"With Corrupt Every Nth Byte, you can apply regular corruptions to your file by specifying the interval to corrupt (e.g., every 1st byte, every 2nd byte, etc.).{Environment.NewLine}{Environment.NewLine}On the other hand, Intensity allows for randomized corruptions, where the corruptor selects random addresses to modify.", $"{nameof(LunarROMCorruptor)} - Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void ByteViewHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show($"ByteView is a utility that offers users a visual representation of binary content. ByteView allows users to see their corruptions to the byte data, ByteView is particularly useful for those seeking a non-intrusive approach to examining the underlying byte information within files. Covert/Update will convert the file that is currently loaded in LRC to grayscale or colour bytes that you can see.", $"{nameof(LunarROMCorruptor)} - Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void ByteViewSaveImageBtn_Click(object sender, EventArgs e)
+        {
+            if (ByteViewPictureBox.Image != null)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PNG Files (*.png)|*.png|JPEG Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*";
+                    saveFileDialog.Title = "Save Image";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Get the Bitmap from the PictureBox
+                        Bitmap imageToSave = new Bitmap(ByteViewPictureBox.Image);
+
+                        // Save the image to the specified path
+                        imageToSave.Save(saveFileDialog.FileName);
+
+                        // Dispose the image to free up resources
+                        imageToSave.Dispose();
+                    }
+                }
+            }
+        }
+
+        private void ByteViewRefreshBtn_Click(object sender, EventArgs e)
+        {
+            ByteViewPictureBox.Image = ByteView.ConvertByteToImage(ROM, byteViewColourChkbox.Checked);
+            if (flipVerticalChkbox.Checked || flipHorizontalChkbox.Checked)
+            {
+                ByteViewPictureBox.Image = ByteView.FlipImage((Bitmap)ByteViewPictureBox.Image, flipHorizontalChkbox.Checked, flipVerticalChkbox.Checked);
+            }
+            GC.Collect(); //Forces Garbage collection
+        }
+
+        private void byteViewColourChkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.ByteViewColourMode = byteViewColourChkbox.Checked;
+            Settings.Default.Save();
+        }
+
+        private void ByteViewupdateWhenCorruptedChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.ByteViewUpdateOnCorruption = ByteViewupdateWhenCorruptedChkBox.Checked;
+            Settings.Default.Save();
         }
     }
 }

@@ -45,11 +45,11 @@
             this.remove50btn = new System.Windows.Forms.Button();
             this.removeselbtn = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.restorebtn = new System.Windows.Forms.Button();
             this.SaveAndCorruptbtn = new System.Windows.Forms.Button();
+            this.Openfilebtn = new System.Windows.Forms.Button();
             this.RemoveAllbtn = new System.Windows.Forms.Button();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.restorebtn = new System.Windows.Forms.Button();
-            this.Openfilebtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.valueStashnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocationStash)).BeginInit();
             this.Panel1.SuspendLayout();
@@ -295,6 +295,22 @@
             this.Panel1.Size = new System.Drawing.Size(160, 529);
             this.Panel1.TabIndex = 160;
             // 
+            // restorebtn
+            // 
+            this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.restorebtn.FlatAppearance.BorderSize = 0;
+            this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.restorebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53531;
+            this.restorebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.restorebtn.Location = new System.Drawing.Point(12, 41);
+            this.restorebtn.Name = "restorebtn";
+            this.restorebtn.Size = new System.Drawing.Size(136, 23);
+            this.restorebtn.TabIndex = 2;
+            this.restorebtn.Text = "Restore";
+            this.restorebtn.UseVisualStyleBackColor = false;
+            this.restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
+            // 
             // SaveAndCorruptbtn
             // 
             this.SaveAndCorruptbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -310,6 +326,22 @@
             this.SaveAndCorruptbtn.Text = "Save stash and Corrupt";
             this.SaveAndCorruptbtn.UseVisualStyleBackColor = false;
             this.SaveAndCorruptbtn.Click += new System.EventHandler(this.SaveAndCorruptbtn_Click);
+            // 
+            // Openfilebtn
+            // 
+            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.Openfilebtn.FlatAppearance.BorderSize = 0;
+            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
+            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
+            this.Openfilebtn.Name = "Openfilebtn";
+            this.Openfilebtn.Size = new System.Drawing.Size(136, 23);
+            this.Openfilebtn.TabIndex = 2;
+            this.Openfilebtn.Text = "Open File";
+            this.Openfilebtn.UseVisualStyleBackColor = false;
+            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
             // 
             // RemoveAllbtn
             // 
@@ -329,38 +361,6 @@
             // SaveFileDialog
             // 
             this.SaveFileDialog.Filter = "All Files *.*|*.*";
-            // 
-            // restorebtn
-            // 
-            this.restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.restorebtn.FlatAppearance.BorderSize = 0;
-            this.restorebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.restorebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.restorebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53531;
-            this.restorebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.restorebtn.Location = new System.Drawing.Point(12, 41);
-            this.restorebtn.Name = "restorebtn";
-            this.restorebtn.Size = new System.Drawing.Size(136, 23);
-            this.restorebtn.TabIndex = 2;
-            this.restorebtn.Text = "Restore";
-            this.restorebtn.UseVisualStyleBackColor = false;
-            this.restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
-            // 
-            // Openfilebtn
-            // 
-            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
-            this.Openfilebtn.FlatAppearance.BorderSize = 0;
-            this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
-            this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
-            this.Openfilebtn.Name = "Openfilebtn";
-            this.Openfilebtn.Size = new System.Drawing.Size(136, 23);
-            this.Openfilebtn.TabIndex = 2;
-            this.Openfilebtn.Text = "Open File";
-            this.Openfilebtn.UseVisualStyleBackColor = false;
-            this.Openfilebtn.Click += new System.EventHandler(this.Openfilebtn_Click);
             // 
             // StashEditor
             // 

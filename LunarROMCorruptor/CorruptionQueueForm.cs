@@ -15,8 +15,11 @@ namespace LunarROMCorruptor
             //Main Function - If the user didn't cancel, load file.
             if (OpenFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                //add file to list
-                CorruptionQueueList.Items.Add(OpenFileDialog.FileName);
+                // Add each selected file to the list
+                foreach (string fileName in OpenFileDialog.FileNames)
+                {
+                    CorruptionQueueList.Items.Add(fileName);
+                }
             }
         }
         private void SendFilestoCorruptorBTN_Click(object sender, EventArgs e)
