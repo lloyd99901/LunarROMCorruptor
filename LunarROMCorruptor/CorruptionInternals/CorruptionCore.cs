@@ -1,8 +1,10 @@
 ﻿using LunarROMCorruptor.CorruptionEngines;
+using LunarROMCorruptor.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LunarROMCorruptor.CorruptionInternals
 {
@@ -19,6 +21,23 @@ namespace LunarROMCorruptor.CorruptionInternals
             if (x > 255)
                 return 255;
             return (byte)x;
+        }
+        public static void AttemptProtectedFileOverride(string FileLocation)
+        {
+            if (Settings.Default.AttemptProtectedFileOverride == true)
+            {
+                // Attempt Protected File Override
+                Console.WriteLine("LRC - Corruption Core: Attempting Protected File Ownership Override.");
+                string cmdArgs = $"/c takeown /F \"{FileLocation}\"";
+                Process cmdProcess = Process.Start("CMD.exe", cmdArgs);
+                Console.WriteLine("LRC - Corruption Core: Waiting for Ownership Override CMD to exit.");
+                cmdProcess.WaitForExit();
+                Console.WriteLine("LRC - Corruption Core: Attempting permission override.");
+                cmdArgs = $"/c icacls \"{FileLocation}\" /grant {Environment.UserDomainName}\\{Environment.UserName}:(OI)(CI)F /T";
+                cmdProcess = Process.Start("CMD.exe", cmdArgs);
+                Console.WriteLine("LRC - Corruption Core: Waiting for Permission Override CMD to exit.");
+                cmdProcess.WaitForExit();
+            }
         }
         public static byte[] StartCorruption(byte[] ROM, int StartByte, int EndByte, bool CorruptNthByte, int Intensity, string CorruptionEngine)
         {

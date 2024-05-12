@@ -169,6 +169,7 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutomationTimer = new System.Windows.Forms.Timer(this.components);
+            this.AttemptProtectedFileOverrideChkBox = new System.Windows.Forms.CheckBox();
             this.FileSaveTab.SuspendLayout();
             this.FileCorruptionTab.SuspendLayout();
             this.Panel4.SuspendLayout();
@@ -268,7 +269,7 @@
             this.FileSaveTab.Location = new System.Drawing.Point(4, 22);
             this.FileSaveTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FileSaveTab.Name = "FileSaveTab";
-            this.FileSaveTab.Size = new System.Drawing.Size(642, 252);
+            this.FileSaveTab.Size = new System.Drawing.Size(642, 251);
             this.FileSaveTab.TabIndex = 4;
             this.FileSaveTab.Text = "File Saves";
             // 
@@ -605,6 +606,7 @@
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(93)))));
             this.Panel4.Controls.Add(this.ByteModeHelp);
             this.Panel4.Controls.Add(this.AllowLargeIntensity);
+            this.Panel4.Controls.Add(this.AttemptProtectedFileOverrideChkBox);
             this.Panel4.Controls.Add(this.SilentCorruptionchbox);
             this.Panel4.Controls.Add(this.UseHexchbox);
             this.Panel4.Controls.Add(this.EndByteNumb);
@@ -654,7 +656,7 @@
             this.SilentCorruptionchbox.AutoSize = true;
             this.SilentCorruptionchbox.BackColor = System.Drawing.Color.Transparent;
             this.SilentCorruptionchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.SilentCorruptionchbox.Location = new System.Drawing.Point(117, 215);
+            this.SilentCorruptionchbox.Location = new System.Drawing.Point(7, 222);
             this.SilentCorruptionchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SilentCorruptionchbox.Name = "SilentCorruptionchbox";
             this.SilentCorruptionchbox.Size = new System.Drawing.Size(84, 17);
@@ -669,7 +671,7 @@
             this.UseHexchbox.BackColor = System.Drawing.Color.Transparent;
             this.UseHexchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UseHexchbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.UseHexchbox.Location = new System.Drawing.Point(7, 215);
+            this.UseHexchbox.Location = new System.Drawing.Point(7, 206);
             this.UseHexchbox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UseHexchbox.Name = "UseHexchbox";
             this.UseHexchbox.Size = new System.Drawing.Size(112, 17);
@@ -1107,7 +1109,7 @@
             this.CorruptionEngineTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CorruptionEngineTab.Name = "CorruptionEngineTab";
             this.CorruptionEngineTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CorruptionEngineTab.Size = new System.Drawing.Size(642, 252);
+            this.CorruptionEngineTab.Size = new System.Drawing.Size(642, 251);
             this.CorruptionEngineTab.TabIndex = 1;
             this.CorruptionEngineTab.Text = "Corruption Engine Settings";
             // 
@@ -1587,7 +1589,7 @@
             // 
             this.ByteViewTab.Controls.Add(this.ByteViewContainer);
             this.ByteViewTab.Location = new System.Drawing.Point(4, 22);
-            this.ByteViewTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewTab.Margin = new System.Windows.Forms.Padding(2);
             this.ByteViewTab.Name = "ByteViewTab";
             this.ByteViewTab.Size = new System.Drawing.Size(642, 251);
             this.ByteViewTab.TabIndex = 8;
@@ -1600,7 +1602,7 @@
             this.ByteViewContainer.Cursor = System.Windows.Forms.Cursors.Default;
             this.ByteViewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ByteViewContainer.Location = new System.Drawing.Point(0, 0);
-            this.ByteViewContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewContainer.Margin = new System.Windows.Forms.Padding(2);
             this.ByteViewContainer.Name = "ByteViewContainer";
             // 
             // ByteViewContainer.Panel1
@@ -1736,7 +1738,7 @@
             this.ByteViewPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ByteViewPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ByteViewPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.ByteViewPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ByteViewPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.ByteViewPictureBox.Name = "ByteViewPictureBox";
             this.ByteViewPictureBox.Size = new System.Drawing.Size(535, 249);
             this.ByteViewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1750,7 +1752,7 @@
             this.AutomationPage.Controls.Add(this.AutoCorruptPanel);
             this.AutomationPage.Location = new System.Drawing.Point(4, 22);
             this.AutomationPage.Name = "AutomationPage";
-            this.AutomationPage.Size = new System.Drawing.Size(642, 252);
+            this.AutomationPage.Size = new System.Drawing.Size(642, 251);
             this.AutomationPage.TabIndex = 6;
             this.AutomationPage.Text = "Automation";
             // 
@@ -1955,8 +1957,8 @@
             this.MemCorruptPage.Controls.Add(this.panel1);
             this.MemCorruptPage.Location = new System.Drawing.Point(4, 22);
             this.MemCorruptPage.Name = "MemCorruptPage";
-            this.MemCorruptPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.MemCorruptPage.Size = new System.Drawing.Size(642, 252);
+            this.MemCorruptPage.Padding = new System.Windows.Forms.Padding(3);
+            this.MemCorruptPage.Size = new System.Drawing.Size(642, 251);
             this.MemCorruptPage.TabIndex = 7;
             this.MemCorruptPage.Text = "Process Memory Corruption";
             // 
@@ -2019,8 +2021,8 @@
             this.AboutTab.Controls.Add(this.panel5);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.AboutTab.Size = new System.Drawing.Size(642, 252);
+            this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AboutTab.Size = new System.Drawing.Size(642, 251);
             this.AboutTab.TabIndex = 5;
             this.AboutTab.Text = "About";
             // 
@@ -2315,6 +2317,20 @@
             this.AutomationTimer.Interval = 5000;
             this.AutomationTimer.Tick += new System.EventHandler(this.AutomationTimer_Tick);
             // 
+            // AttemptProtectedFileOverrideChkBox
+            // 
+            this.AttemptProtectedFileOverrideChkBox.AutoSize = true;
+            this.AttemptProtectedFileOverrideChkBox.BackColor = System.Drawing.Color.Transparent;
+            this.AttemptProtectedFileOverrideChkBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.AttemptProtectedFileOverrideChkBox.Location = new System.Drawing.Point(123, 206);
+            this.AttemptProtectedFileOverrideChkBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AttemptProtectedFileOverrideChkBox.Name = "AttemptProtectedFileOverrideChkBox";
+            this.AttemptProtectedFileOverrideChkBox.Size = new System.Drawing.Size(105, 30);
+            this.AttemptProtectedFileOverrideChkBox.TabIndex = 172;
+            this.AttemptProtectedFileOverrideChkBox.Text = "Attempt to Take \r\nFile Ownership";
+            this.AttemptProtectedFileOverrideChkBox.UseVisualStyleBackColor = false;
+            this.AttemptProtectedFileOverrideChkBox.CheckedChanged += new System.EventHandler(this.AttemptProtectedFileOverrideChkBox_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2546,6 +2562,7 @@
         private System.Windows.Forms.CheckBox flipHorizontalChkbox;
         internal System.Windows.Forms.Button ByteViewSaveBtn;
         internal System.Windows.Forms.Button ByteViewRefreshBtn;
+        internal System.Windows.Forms.CheckBox AttemptProtectedFileOverrideChkBox;
     }
 }
 

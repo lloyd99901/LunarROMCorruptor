@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LunarROMCorruptor.Properties;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -201,6 +202,10 @@ namespace LunarROMCorruptor
         {
             //Run a void function on Form1 that is called CorruptUsingStashFile
             SaveToExistingStashFile();
+            if (LoadedStashLocation == null || Program.Form.CorruptionQueueChkbox.Checked)
+            {
+                return;
+            }
             Program.Form.CorruptUsingStashFile(LoadedStashLocation);
         }
     }

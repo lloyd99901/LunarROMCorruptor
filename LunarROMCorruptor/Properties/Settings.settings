@@ -29,5 +29,8 @@
     <Setting Name="ByteViewUpdateOnCorruption" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AttemptProtectedFileOverride" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -48,7 +48,7 @@ namespace LunarROMCorruptor
         private int StartByte; //This stores the start byte that the user sets
         private int EndByte; //This stores the end byte that the user sets
         private readonly Random rnd = new Random(); //Used for random number generation
-        private readonly string vernumber = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}"; //"v1.0.4 - Build Number: " + 
+        private readonly string vernumber = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version} [Debug Build]"; //"v1.0.4 - Build Number: " + 
         public List<string> InternalStashItems = new List<string>(); //Adding to this list will make corruptions faster as it's not in the GUI so it doesn't have to render every item update.
         readonly CorruptionQueueForm CorruptionQueueFormSettings = new CorruptionQueueForm(); //Creates the corruption queue form and then it will be read later by the main form.
         public readonly CorruptionEngineOptions CorruptionEngineFrame = new CorruptionEngineOptions() //This is the form that will be used to set the options for the corruption engine. It will be embedded in the main form.
@@ -113,6 +113,7 @@ namespace LunarROMCorruptor
             FilesaveEnableAutoSaves.Checked = Settings.Default.AutoFileSaveEnabled;
             byteViewColourChkbox.Checked = Settings.Default.ByteViewColourMode;
             ByteViewupdateWhenCorruptedChkBox.Checked = Settings.Default.ByteViewUpdateOnCorruption;
+            AttemptProtectedFileOverrideChkBox.Checked = Settings.Default.AttemptProtectedFileOverride;
         }
 
         public void RefreshCorruptionStashList()
@@ -497,7 +498,11 @@ namespace LunarROMCorruptor
                     StartByteNumb.Value = 0;
                     FileSelectiontxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
                     SaveasTxt.Text = CorruptionQueueFormSettings.CorruptionQueueList.Items[i].ToString();
-
+                    //Check if File Owner Override is set to on
+                    if (AttemptProtectedFileOverrideChkBox.Checked && File.Exists(SaveasTxt.Text)) //Attempt File Owner Override
+                    {
+                        CorruptionCore.AttemptProtectedFileOverride(SaveasTxt.Text);
+                    }
                     //Start Corruption in CorruptionCore
                     ROM = CorruptionCore.StartCorruption(ROM, StartByte, EndByte, CorruptEverynthByteRadioBtn.Checked, tmpintensity, CorruptionEngineComboBox.Text);
                     //Check if the corruption returned anything
@@ -589,6 +594,11 @@ namespace LunarROMCorruptor
                 StashBytesList.Items.Clear();
                 InternalStashItems.Clear();
                 InternalStashItems.TrimExcess(); //This probably isn't required, it resizes the internal array to free up more memory.
+                //Check if File Owner Override is set to on
+                if (AttemptProtectedFileOverrideChkBox.Checked && File.Exists(SaveasTxt.Text)) //Attempt File Owner Override
+                {
+                    CorruptionCore.AttemptProtectedFileOverride(SaveasTxt.Text);
+                }
                 byte[] FinROM = ROM.Clone() as byte[]; //Set FinROM to be the same as ROM. FinROM will contain the corrupted file when its run through the corruption engine.
 
                 FinROM = CorruptionCore.StartCorruption(FinROM, StartByte, EndByte, CorruptEverynthByteRadioBtn.Checked, tmpintensity, CorruptionEngineComboBox.Text); //Corrupts the ROM and returns the new ROM to the FinROM variable.
@@ -1423,6 +1433,19 @@ namespace LunarROMCorruptor
         private void ByteViewupdateWhenCorruptedChkBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.Default.ByteViewUpdateOnCorruption = ByteViewupdateWhenCorruptedChkBox.Checked;
+            Settings.Default.Save();
+        }
+
+        private void AttemptProtectedFileOverrideChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AttemptProtectedFileOverrideChkBox.Checked == true && Settings.Default.AttemptProtectedFileOverride == false) //User has enabled this option and it hasn't been saved to settings, so this is not the program setting it up via LoadSettings
+            {
+                if (MessageBox.Show("WARNING: You are about to enable ownership override. This action can potentially allow corruption of critical protected system files if you select the wrong file(s). Ensure you understand the implications before proceeding.\nDo you wish to enable this?", "WARNING - Critical Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    AttemptProtectedFileOverrideChkBox.Checked = false;
+                }
+            }
+            Settings.Default.AttemptProtectedFileOverride = AttemptProtectedFileOverrideChkBox.Checked;
             Settings.Default.Save();
         }
     }
