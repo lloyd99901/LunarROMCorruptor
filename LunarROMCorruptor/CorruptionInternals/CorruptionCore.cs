@@ -24,19 +24,26 @@ namespace LunarROMCorruptor.CorruptionInternals
         }
         public static void AttemptProtectedFileOverride(string FileLocation)
         {
-            if (Settings.Default.AttemptProtectedFileOverride == true)
+            if (Settings.Default.AttemptProtectedFileOverride)
             {
-                // Attempt Protected File Override
-                Console.WriteLine("LRC - Corruption Core: Attempting Protected File Ownership Override.");
-                string cmdArgs = $"/c takeown /F \"{FileLocation}\"";
-                Process cmdProcess = Process.Start("CMD.exe", cmdArgs);
-                Console.WriteLine("LRC - Corruption Core: Waiting for Ownership Override CMD to exit.");
-                cmdProcess.WaitForExit();
-                Console.WriteLine("LRC - Corruption Core: Attempting permission override.");
-                cmdArgs = $"/c icacls \"{FileLocation}\" /grant {Environment.UserDomainName}\\{Environment.UserName}:(OI)(CI)F /T";
-                cmdProcess = Process.Start("CMD.exe", cmdArgs);
-                Console.WriteLine("LRC - Corruption Core: Waiting for Permission Override CMD to exit.");
-                cmdProcess.WaitForExit();
+                try
+                {
+                    Console.WriteLine("LRC - Corruption Core: Attempting Protected File Ownership Override.");
+                    using (Process cmdProcess = new Process())
+                    {
+                        cmdProcess.StartInfo.FileName = "CMD.exe";
+                        cmdProcess.StartInfo.Arguments = $"/c takeown /F \"{FileLocation}\" && icacls \"{FileLocation}\" /grant {Environment.UserDomainName}\\{Environment.UserName}:(OI)(CI)F /T";
+                        cmdProcess.StartInfo.CreateNoWindow = true;
+                        cmdProcess.StartInfo.UseShellExecute = false;
+                        cmdProcess.Start();
+                        cmdProcess.WaitForExit();
+                    }
+                    Console.WriteLine("LRC - Corruption Core: File Ownership and Permission Override Completed.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"LRC - Corruption Core: Error during File Ownership and Permission Override. Exception: {ex.Message}");
+                }
             }
         }
         public static byte[] StartCorruption(byte[] ROM, int StartByte, int EndByte, bool CorruptNthByte, int Intensity, string CorruptionEngine)
