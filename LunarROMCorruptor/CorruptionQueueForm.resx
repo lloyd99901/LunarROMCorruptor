@@ -120,6 +120,23 @@
   <metadata name="SaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>33, 16</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="AddFolderBTN.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACTSURBVDhP7Y67CcNAEEQVuQc5N2pEfbgRBe7EgeQCVMw1cMfMBgeuwIEYkJJ1oB8CI/zgwTK7
+        N1xRnIIY41X6fBMAKjOD1Oz3q5jKSH7krtKU0m38WU/yJTUr087fz2Jmd5JdCOEC4Ck1k2y18/ermAp9
+        vpl/4X6OKHxIn58Ekg3J90Ib//6LnHMJoF6ibv3732cA9DHVNGIQ/zYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Openfilebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACTSURBVDhP7Y67CcNAEEQVuQc5N2pEfbgRBe7EgeQCVMw1cMfMBgeuwIEYkJJ1oB8CI/zgwTK7
+        N1xRnIIY41X6fBMAKjOD1Oz3q5jKSH7krtKU0m38WU/yJTUr087fz2Jmd5JdCOEC4Ck1k2y18/ermAp9
+        vpl/4X6OKHxIn58Ekg3J90Ib//6LnHMJoF6ibv3732cA9DHVNGIQ/zYAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 16</value>
   </metadata>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorruptionQueueForm));
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,7 +57,7 @@
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(83)))));
             this.Panel1.Controls.Add(this.groupBox1);
             this.Panel1.Controls.Add(this.AddFolderBTN);
             this.Panel1.Controls.Add(this.SendFilestoCorruptorBTN);
@@ -87,11 +88,11 @@
             // 
             // RunSelectedFileInEmuBTN
             // 
-            this.RunSelectedFileInEmuBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.RunSelectedFileInEmuBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.RunSelectedFileInEmuBTN.FlatAppearance.BorderSize = 0;
             this.RunSelectedFileInEmuBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RunSelectedFileInEmuBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RunSelectedFileInEmuBTN.ForeColor = System.Drawing.Color.Turquoise;
+            this.RunSelectedFileInEmuBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.RunSelectedFileInEmuBTN.Location = new System.Drawing.Point(6, 21);
             this.RunSelectedFileInEmuBTN.Name = "RunSelectedFileInEmuBTN";
             this.RunSelectedFileInEmuBTN.Size = new System.Drawing.Size(158, 39);
@@ -111,11 +112,11 @@
             // 
             // ClearSelectedRunFileBTN
             // 
-            this.ClearSelectedRunFileBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.ClearSelectedRunFileBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.ClearSelectedRunFileBTN.FlatAppearance.BorderSize = 0;
             this.ClearSelectedRunFileBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ClearSelectedRunFileBTN.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearSelectedRunFileBTN.ForeColor = System.Drawing.Color.Turquoise;
+            this.ClearSelectedRunFileBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.ClearSelectedRunFileBTN.Location = new System.Drawing.Point(6, 66);
             this.ClearSelectedRunFileBTN.Name = "ClearSelectedRunFileBTN";
             this.ClearSelectedRunFileBTN.Size = new System.Drawing.Size(158, 25);
@@ -138,11 +139,11 @@
             // 
             // AddFolderBTN
             // 
-            this.AddFolderBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.AddFolderBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.AddFolderBTN.FlatAppearance.BorderSize = 0;
             this.AddFolderBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddFolderBTN.ForeColor = System.Drawing.Color.Aqua;
-            this.AddFolderBTN.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.AddFolderBTN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.AddFolderBTN.Image = ((System.Drawing.Image)(resources.GetObject("AddFolderBTN.Image")));
             this.AddFolderBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AddFolderBTN.Location = new System.Drawing.Point(12, 41);
             this.AddFolderBTN.Name = "AddFolderBTN";
@@ -155,12 +156,12 @@
             // SendFilestoCorruptorBTN
             // 
             this.SendFilestoCorruptorBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SendFilestoCorruptorBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.SendFilestoCorruptorBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.SendFilestoCorruptorBTN.FlatAppearance.BorderSize = 0;
             this.SendFilestoCorruptorBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendFilestoCorruptorBTN.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SendFilestoCorruptorBTN.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.SendFilestoCorruptorBTN.Image = global::LunarROMCorruptor.Properties.Resources.SendSmall;
+            this.SendFilestoCorruptorBTN.Image = global::LunarROMCorruptor.Properties.Resources.arrow_up_circle_solid;
             this.SendFilestoCorruptorBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SendFilestoCorruptorBTN.Location = new System.Drawing.Point(12, 386);
             this.SendFilestoCorruptorBTN.Name = "SendFilestoCorruptorBTN";
@@ -186,11 +187,11 @@
             // 
             // Openfilebtn
             // 
-            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.Openfilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.Openfilebtn.FlatAppearance.BorderSize = 0;
             this.Openfilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Openfilebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.Openfilebtn.Image = global::LunarROMCorruptor.Properties.Resources.imageres_53391;
+            this.Openfilebtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.Openfilebtn.Image = ((System.Drawing.Image)(resources.GetObject("Openfilebtn.Image")));
             this.Openfilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Openfilebtn.Location = new System.Drawing.Point(12, 12);
             this.Openfilebtn.Name = "Openfilebtn";
@@ -202,10 +203,10 @@
             // 
             // ClearBtn
             // 
-            this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.ClearBtn.FlatAppearance.BorderSize = 0;
             this.ClearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClearBtn.ForeColor = System.Drawing.Color.Aqua;
+            this.ClearBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.ClearBtn.Location = new System.Drawing.Point(12, 99);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(170, 23);
@@ -216,10 +217,10 @@
             // 
             // removeselbtn
             // 
-            this.removeselbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
+            this.removeselbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(60)))), ((int)(((byte)(111)))));
             this.removeselbtn.FlatAppearance.BorderSize = 0;
             this.removeselbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeselbtn.ForeColor = System.Drawing.Color.Aqua;
+            this.removeselbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.removeselbtn.Location = new System.Drawing.Point(12, 70);
             this.removeselbtn.Name = "removeselbtn";
             this.removeselbtn.Size = new System.Drawing.Size(170, 23);
@@ -238,7 +239,7 @@
             this.CorruptionQueueList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CorruptionQueueList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.CorruptionQueueList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(83)))));
             this.CorruptionQueueList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CorruptionQueueList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CorruptionQueueList.FormattingEnabled = true;
@@ -256,7 +257,7 @@
             // 
             // DragandDropICON
             // 
-            this.DragandDropICON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
+            this.DragandDropICON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(27)))), ((int)(((byte)(55)))));
             this.DragandDropICON.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DragandDropICON.Image = global::LunarROMCorruptor.Properties.Resources.dragicon;
             this.DragandDropICON.Location = new System.Drawing.Point(0, 0);

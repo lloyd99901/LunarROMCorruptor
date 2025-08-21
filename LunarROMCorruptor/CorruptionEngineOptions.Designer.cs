@@ -217,7 +217,7 @@
             this.Label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Label14.Location = new System.Drawing.Point(18, 85);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(242, 15);
+            this.Label14.Size = new System.Drawing.Size(245, 15);
             this.Label14.TabIndex = 94;
             this.Label14.Text = "The Operation Type: NOT does not use value.";
             // 
@@ -565,7 +565,7 @@
             this.MergeOpenFilebtn.FlatAppearance.BorderSize = 0;
             this.MergeOpenFilebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MergeOpenFilebtn.ForeColor = System.Drawing.Color.Aqua;
-            this.MergeOpenFilebtn.Image = global::LunarROMCorruptor.Properties.Resources.Open;
+            this.MergeOpenFilebtn.Image = global::LunarROMCorruptor.Properties.Resources.upload;
             this.MergeOpenFilebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MergeOpenFilebtn.Location = new System.Drawing.Point(5, 41);
             this.MergeOpenFilebtn.Name = "MergeOpenFilebtn";
@@ -623,7 +623,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(27)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(642, 268);
             this.Controls.Add(this.Vector2EnginePanel);
             this.Controls.Add(this.NightmareEnginePanel);

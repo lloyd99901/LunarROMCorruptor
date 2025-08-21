@@ -41,7 +41,7 @@ using System.Windows.Forms;
 
 namespace LunarROMCorruptor
 {
-    public partial class Form1 : Form
+    public partial class MainCorruptionForm : Form
     {
         private byte[] ROM; //Used to store the file that is loaded into the program
         private int MaxByte; //This stores the maxium amount of bytes in the file that is loaded
@@ -56,7 +56,7 @@ namespace LunarROMCorruptor
             TopLevel = false
         };
         public int MainSelectedProcessID = 999999;
-        public Form1()
+        public MainCorruptionForm()
         {
             InitializeComponent();
         }
@@ -127,7 +127,7 @@ namespace LunarROMCorruptor
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error enumerating corruption stash list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories.", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error enumerating corruption stash list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories. {ex.Message}", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -142,7 +142,7 @@ namespace LunarROMCorruptor
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error enumerating file saves list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories.", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error enumerating file saves list. This folder may not exist or your anti-virus/ransomware protection may be enabled and is blocking LRC from searching those directories. {ex.Message}", $"{nameof(LunarROMCorruptor)} - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -336,11 +336,8 @@ namespace LunarROMCorruptor
             CorruptionEngineFrame.NightmareEnginePanel.Visible = CorruptionEngineComboBox.Text == "Nightmare Engine";
             CorruptionEngineFrame.LerpEnginePanel.Visible = CorruptionEngineComboBox.Text == "Lerp Engine";
             CorruptionEngineFrame.Vector2EnginePanel.Visible = CorruptionEngineComboBox.Text == "Vector2 Engine";
-            bool isManualEngineSelected = !CorruptionEngineFrame.MergeEnginePanel.Visible && !CorruptionEngineFrame.LogicEnginePanel.Visible &&
-                                          !CorruptionEngineFrame.NightmareEnginePanel.Visible && !CorruptionEngineFrame.LerpEnginePanel.Visible &&
-                                          !CorruptionEngineFrame.Vector2EnginePanel.Visible;
 
-            if (isManualEngineSelected)
+            if (CorruptionEngineComboBox.Text == "Manual")
             {
                 CorruptionEngineFrame.Hide();
                 ManualEnginePanel.Show();
@@ -737,9 +734,10 @@ namespace LunarROMCorruptor
             {
                 Directory.CreateDirectory(stashListDirectory);
             }
-
+            //Get the file name from the FileSelectiontxt TextBox, to use for the stash file name, e.g. if the location is C:\MyGame\game.exe, the stash file name will be game.stash
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileSelectiontxt.Text);
             // Generate a random file name and write the contents to the file
-            string randomFileName = Path.Combine(stashListDirectory, $"{rnd.Next(1000, 999999999)}.stash");
+            string randomFileName = Path.Combine(stashListDirectory, $"{fileNameWithoutExtension}-{rnd.Next(1000, 999999999)}.stash");
             File.WriteAllText(randomFileName, builder.ToString());
 
             // Populate StashFileList with the names of all files in the specified directory
@@ -1296,28 +1294,6 @@ namespace LunarROMCorruptor
             //    Changesaveasbtn.Visible = true;
             //    Restorefilebtn.Visible = true;
             //}
-        }
-
-        private void UnloadROMFromMemory()
-        {
-            ROM = null;
-            //GC collection force -Forces garbage collection
-            GC.Collect();
-            //Load ROM into memory.
-            MaxByte = 1000; //Set back to default values
-            StartByteTrackBar.Value = 0;
-            StartByteTrackBar.Maximum = MaxByte;
-            EndByteTrackbar.Maximum = MaxByte;
-            EndByteTrackbar.Value = 0;
-            EndByteNumb.Maximum = MaxByte;
-            EndByteNumb.Value = 0;
-            StartByteNumb.Maximum = MaxByte;
-            StartByteNumb.Value = 0;
-            FileSelectiontxt.Text = "No file selected.";
-            SaveasTxt.Text = "No save location set.";
-            MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
-            //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
-            CorruptButton.Text = "Corrupt File";
         }
 
         private void StashAndAutoSaveHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

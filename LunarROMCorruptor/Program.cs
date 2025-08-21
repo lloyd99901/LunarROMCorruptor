@@ -5,14 +5,14 @@ namespace LunarROMCorruptor
 {
     internal static class Program
     {
-        public static Form1 Form;
+        public static MainCorruptionForm Form;
 
         [STAThread]
         private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form = new Form1();
+            Form = new MainCorruptionForm();
             Application.Run(Form);
         }
     }
