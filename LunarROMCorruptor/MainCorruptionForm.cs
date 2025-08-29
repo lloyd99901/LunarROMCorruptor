@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 //MIT License
 
-//Copyright (c) 2022 LunarHunter
+//Copyright (c) 2025 lloyd99901
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -63,7 +63,7 @@ namespace LunarROMCorruptor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MainTabControl.TabPages.Remove(MemCorruptPage); // For now, remove process memory corruption tab
+            //MainTabControl.TabPages.Remove(MemCorruptPage); // For now, remove process memory corruption tab
             Text = $"{nameof(LunarROMCorruptor)} - " + vernumber;
             AboutVerLabel.Text = vernumber;
             if (!Directory.Exists(Application.StartupPath + "\\Saves\\")) //If file doesn't exist, assume it's the first time the program has been run and create the directory.
@@ -1085,7 +1085,7 @@ namespace LunarROMCorruptor
             //Disable Stash Saves if queue is enabled as well as file saves
             if (CorruptionQueueChkbox.Checked)
             {
-                Openfilebtn.Image = Resources.gameux_218;
+                Openfilebtn.Image = Resources.edit_pencil;
                 Openfilebtn.Text = "Edit Queue...";
                 EnableStashSavesChkbox.Checked = false;
                 FilesaveEnableAutoSaves.Checked = false;
@@ -1093,7 +1093,7 @@ namespace LunarROMCorruptor
             else
             {
                 Openfilebtn.Text = "Open File";
-                Openfilebtn.Image = Resources.imageres_53391;
+                Openfilebtn.Image = Resources.upload;
             }
             //Disable the ability to change the checkboxes
             EnableStashSavesChkbox.Enabled = !CorruptionQueueChkbox.Checked;
@@ -1274,26 +1274,49 @@ namespace LunarROMCorruptor
 
         private void EnableProcessMemCorruptChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            //if (EnableProcessMemCorruptChkBox.Checked)
-            //{
-            //    //Unload ROMS
-            //    UnloadROMFromMemory();
-            //    StartEmulatorPanel.Visible = false;
-            //    EngineSelectPanel.Visible = false;
-            //    CorruptButton.Text = "Start";
-            //    Openfilebtn.Text = "Load Process";
-            //    Changesaveasbtn.Visible = false;
-            //    Restorefilebtn.Visible = false;
-            //}
-            //else
-            //{
-            //    StartEmulatorPanel.Visible = true;
-            //    EngineSelectPanel.Visible = true;
-            //    CorruptButton.Text = "Corrupt File";
-            //    Openfilebtn.Text = "Open File";
-            //    Changesaveasbtn.Visible = true;
-            //    Restorefilebtn.Visible = true;
-            //}
+            if (EnableProcessMemCorruptChkBox.Checked)
+            {
+                //Unload ROMS
+                UnloadROMFromMemory();
+                StartEmulatorPanel.Visible = false;
+                EngineSelectPanel.Visible = false;
+                CorruptButton.Text = "Start";
+                Openfilebtn.Text = "Load Process";
+                Changesaveasbtn.Visible = false;
+                Restorefilebtn.Visible = false;
+            }
+            else
+            {
+                StartEmulatorPanel.Visible = true;
+                EngineSelectPanel.Visible = true;
+                CorruptButton.Text = "Corrupt File";
+                Openfilebtn.Text = "Open File";
+                Changesaveasbtn.Visible = true;
+                Restorefilebtn.Visible = true;
+            }
+        }
+
+
+        private void UnloadROMFromMemory()
+        {
+            ROM = null;
+            //GC collection force -Forces garbage collection
+            GC.Collect();
+            //Load ROM into memory.
+            MaxByte = 1000; //Set back to default values
+            StartByteTrackBar.Value = 0;
+            StartByteTrackBar.Maximum = MaxByte;
+            EndByteTrackbar.Maximum = MaxByte;
+            EndByteTrackbar.Value = 0;
+            EndByteNumb.Maximum = MaxByte;
+            EndByteNumb.Value = 0;
+            StartByteNumb.Maximum = MaxByte;
+            StartByteNumb.Value = 0;
+            FileSelectiontxt.Text = "No file selected.";
+            SaveasTxt.Text = "No save location set.";
+            MainSaveFileDialog.FileName = Path.GetDirectoryName(SaveasTxt.Text);
+            //Change the CorruptButton to say "Corrupt File " and in brackets put the file size in Gigabytes
+            CorruptButton.Text = "Corrupt File";
         }
 
         private void StashAndAutoSaveHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
